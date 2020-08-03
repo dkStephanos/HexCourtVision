@@ -10,6 +10,7 @@ module.exports = {
   resolve: {
     modules: [path.resolve(__dirname, './'), 'node_modules']
   },
+  watch: true,
   module: {
         rules: [
             {
