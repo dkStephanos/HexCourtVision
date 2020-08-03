@@ -23,5 +23,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+/frontend/node_modules
+
 # data
-../static/data/game_raw_data/*
+/static/data/game_raw_data/
