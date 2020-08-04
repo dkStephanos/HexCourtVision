@@ -88,9 +88,9 @@ def draw_court(ax=None, color="gray", lw=1, zorder=0):
 
     return ax
 
-game_df = pd.read_json(r"C:\Users\Stephanos\Documents\Dev\NBA Thesis\NBA_Thesis\NBA_Thesis\static\data\game_raw_data\0021500438.json")
+game_df = pd.read_json(r"C:\Users\Stephanos\Documents\Dev\NBA Thesis\NBA_Thesis\NBA_Thesis\static\data\game_raw_data\11.19.2015.GSW.at.LAC\0021500177.json")
 
-curr_event = game_df['events'].iloc[265]
+curr_event = game_df['events'].iloc[222]
 
 # A dict containing home players data
 home = curr_event["home"]
@@ -134,7 +134,7 @@ df = pd.DataFrame(player_moments, columns=headers)
 df["player_name"] = df.player_id.map(lambda x: id_dict[x][0])
 df["player_jersey"] = df.player_id.map(lambda x: id_dict[x][1])
 
-# get Harden's movements
+# get Curry's movements
 curry = df[df.player_name=="Stephen Curry"]
 # read in the court png file
 court = plt.imread("../../static/data/imgs/fullcourt.png")
