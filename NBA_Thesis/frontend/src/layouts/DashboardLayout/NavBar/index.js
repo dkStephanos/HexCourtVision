@@ -82,51 +82,6 @@ const navConfig = [
           }
         ]
       },
-      {
-        title: 'Products',
-        icon: ShoppingCartIcon,
-        href: '/app/management/products',
-        items: [
-          {
-            title: 'List Products',
-            href: '/app/management/products'
-          },
-          {
-            title: 'Create Product',
-            href: '/app/management/products/create'
-          }
-        ]
-      },
-      {
-        title: 'Orders',
-        icon: FolderIcon,
-        href: '/app/management/orders',
-        items: [
-          {
-            title: 'List Orders',
-            href: '/app/management/orders'
-          },
-          {
-            title: 'View Order',
-            href: '/app/management/orders/1'
-          }
-        ]
-      },
-      {
-        title: 'Invoices',
-        icon: ReceiptIcon,
-        href: '/app/management/invoices',
-        items: [
-          {
-            title: 'List Invoices',
-            href: '/app/management/invoices'
-          },
-          {
-            title: 'View Invoice',
-            href: '/app/management/invoices/1'
-          }
-        ]
-      }
     ]
   },
   {
@@ -155,101 +110,6 @@ const navConfig = [
           }
         ]
       },
-      {
-        title: 'Social Platform',
-        href: '/app/social',
-        icon: ShareIcon,
-        items: [
-          {
-            title: 'Profile',
-            href: '/app/social/profile'
-          },
-          {
-            title: 'Feed',
-            href: '/app/social/feed'
-          }
-        ]
-      },
-      {
-        title: 'Kanban',
-        href: '/app/kanban',
-        icon: TrelloIcon
-      },
-      {
-        title: 'Mail',
-        href: '/app/mail',
-        icon: MailIcon,
-        info: () => (
-          <Chip
-            color="secondary"
-            size="small"
-            label="Updated"
-          />
-        )
-      },
-      {
-        title: 'Chat',
-        href: '/app/chat',
-        icon: MessageCircleIcon,
-        info: () => (
-          <Chip
-            color="secondary"
-            size="small"
-            label="Updated"
-          />
-        )
-      },
-      {
-        title: 'Calendar',
-        href: '/app/calendar',
-        icon: CalendarIcon
-      },
-    ]
-  },
-  {
-    subheader: 'Auth',
-    items: [
-      {
-        title: 'Login',
-        href: '/login-unprotected',
-        icon: LockIcon
-      },
-      {
-        title: 'Register',
-        href: '/register-unprotected',
-        icon: UserPlusIcon
-      },
-      {
-        title: 'Login: Guest Protected',
-        href: '/login',
-        icon: ShieldIcon
-      },
-      {
-        title: 'Register: Guest Protected',
-        href: '/register',
-        icon: ShieldIcon
-      }
-    ]
-  },
-  {
-    subheader: 'Pages',
-    href: '/app/pages',
-    items: [
-      {
-        title: 'Account',
-        href: '/app/account',
-        icon: UserIcon
-      },
-      {
-        title: 'Error',
-        href: '/404',
-        icon: AlertCircleIcon
-      },
-      {
-        title: 'Pricing',
-        href: '/pricing',
-        icon: DollarSignIcon
-      }
     ]
   },
   {
@@ -266,36 +126,6 @@ const navConfig = [
           }
         ]
       },
-      {
-        title: 'Forms',
-        href: '/app/extra/forms',
-        icon: EditIcon,
-        items: [
-          {
-            title: 'Formik',
-            href: '/app/extra/forms/formik'
-          },
-          {
-            title: 'Redux Forms',
-            href: '/app/extra/forms/redux'
-          },
-        ]
-      },
-      {
-        title: 'Editors',
-        href: '/app/extra/editors',
-        icon: LayoutIcon,
-        items: [
-          {
-            title: 'DraftJS Editor',
-            href: '/app/extra/editors/draft-js'
-          },
-          {
-            title: 'Quill Editor',
-            href: '/app/extra/editors/quill'
-          }
-        ]
-      }
     ]
   }
 ];
@@ -466,15 +296,15 @@ function NavBar({ openMobile, onMobileClose, }) {
               variant="h6"
               color="textPrimary"
             >
-              Need Help?
+              Built by Koi Stephanos
             </Typography>
             <Link
               variant="subtitle1"
               color="secondary"
               component={RouterLink}
-              to="/docs"
+              href="https://github.com/dkStephanos/nba_thesis"
             >
-              Check our docs
+              Check my GitHub
             </Link>
           </Box>
         </Box>
