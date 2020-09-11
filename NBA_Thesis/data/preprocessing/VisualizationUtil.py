@@ -87,3 +87,28 @@ class VisualizationUtil:
             ax.add_patch(element)	
 
         return ax
+
+    @staticmethod
+    # Plots a single player's movements for a given action
+    def plot_player_movement(player_data):
+        # read in the court png file	
+        court = plt.imread(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\NBA_Thesis\static\data\imgs\fullcourt.png")	
+
+        plt.figure(figsize=(15, 11.5))	
+
+        # Plot the movemnts as scatter plot	
+        # using a colormap to show change in game clock	
+        plt.scatter(player_data.x_loc, -player_data.y_loc, c=player_data.game_clock,	
+                    cmap=plt.cm.Blues, s=1000, zorder=1, edgecolors='k')	
+        # Darker colors represent moments earlier on in the game	
+        cbar = plt.colorbar(orientation="horizontal")	
+        cbar.ax.invert_xaxis()	
+
+        VisualizationUtil.draw_court()	
+
+        # extend the x-values beyond the court b/c Harden	
+        # goes out of bounds	
+        plt.xlim(-7,101)	
+        plt.ylim(-50, 0)	
+
+        plt.show() 
