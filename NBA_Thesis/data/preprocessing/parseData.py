@@ -7,6 +7,7 @@ import seaborn as sns
 from IPython.display import IFrame	
 
 from VisualizationUtil import VisualizationUtil as VisUtil
+from FeatureUtil import FeatureUtil
 
 game_df = pd.read_json(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\NBA_Thesis\static\data\game_raw_data\11.19.2015.GSW.at.LAC\0021500177.json")	
 
@@ -57,4 +58,7 @@ df["player_jersey"] = df.player_id.map(lambda x: id_dict[x][1])
 # get Curry's movements	
 curry = df[df.player_name=="Stephen Curry"]	
 
-VisUtil.plot_player_movement(curry)
+#VisUtil.plot_player_movement(curry)
+
+dist = FeatureUtil.travel_dist(curry)
+print(dist)
