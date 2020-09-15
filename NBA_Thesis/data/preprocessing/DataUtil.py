@@ -38,3 +38,7 @@ class DataUtil:
         players_dict.update({-1: ['ball', np.nan]})	
 
         return players_dict
+
+    @staticmethod
+    def get_player_position_data(game_df, player_name):
+        return game_df[game_df.player_name==player_name]	

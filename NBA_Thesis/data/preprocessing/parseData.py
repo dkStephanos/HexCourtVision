@@ -50,5 +50,5 @@ curry = df[df.player_name=="Stephen Curry"]
 #average_speed = FeatureUtil.average_speed(df, curry)
 #print(average_speed)
 
-average_speed_all = FeatureUtil.average_speed_all(df)
-print(average_speed_all)
+#average_speed_all = FeatureUtil.average_speed_all(df)
+#print(average_speed_all)
