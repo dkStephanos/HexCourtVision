@@ -41,5 +41,8 @@ curry = df[df.player_name=="Stephen Curry"]
 
 #VisUtil.plot_player_movement(curry)
 
-dist = FeatureUtil.travel_dist(curry)
-print(dist)
+#dist = FeatureUtil.travel_dist(curry)
+#print(dist)
+
+all_dist = FeatureUtil.travel_dist_all(df)
+print(all_dist)

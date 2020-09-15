@@ -17,3 +17,11 @@ class FeatureUtil:
         
         # Then return the sum of all the distances
         return dist.sum()
+    
+    @staticmethod
+    def travel_dist_all(all_players):
+        player_travel_dist = all_players.groupby('player_name')[['x_loc', 'y_loc']].apply(FeatureUtil.travel_dist)
+        
+        return player_travel_dist
+
+    
