@@ -19,9 +19,18 @@ class FeatureUtil:
         return dist.sum()
     
     @staticmethod
-    def travel_dist_all(all_players):
-        player_travel_dist = all_players.groupby('player_name')[['x_loc', 'y_loc']].apply(FeatureUtil.travel_dist)
+    def travel_dist_all(game_data):
+        player_travel_dist = game_data.groupby('player_name')[['x_loc', 'y_loc']].apply(FeatureUtil.travel_dist)
         
         return player_travel_dist
 
-    
+    @staticmethod
+    def average_speed(game_data, player):
+        # get the number of seconds for the play
+        seconds = game_data.game_clock.max() - game_data.game_clock.min()
+        # feet per second
+        player_fps = FeatureUtil.travel_dist(player) / seconds
+        # convert to miles per hour
+        player_mph = 0.681818 * player_fps
+        
+        return player_mph

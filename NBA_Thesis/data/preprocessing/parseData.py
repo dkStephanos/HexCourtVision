@@ -44,5 +44,8 @@ curry = df[df.player_name=="Stephen Curry"]
 #dist = FeatureUtil.travel_dist(curry)
 #print(dist)
 
-all_dist = FeatureUtil.travel_dist_all(df)
-print(all_dist)
+#all_dist = FeatureUtil.travel_dist_all(df)
+#print(all_dist)
+
+average_speed = FeatureUtil.average_speed(df, curry)
+print(average_speed)
