@@ -1,5 +1,4 @@
 import numpy as np
-import DataUtil as DataUtil
 
 class FeatureUtil:
 
@@ -45,3 +44,8 @@ class FeatureUtil:
 
         return player_speeds
 
+    @staticmethod
+    # Function to find the distance between players at each moment
+    def player_dist(player_a, player_b):
+        return [euclidean(player_a.iloc[i], player_b.iloc[i])
+                for i in range(len(player_a))]
