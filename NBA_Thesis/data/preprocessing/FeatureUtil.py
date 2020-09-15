@@ -1,4 +1,5 @@
 import numpy as np
+import DataUtil as DataUtil
 
 class FeatureUtil:
 
@@ -43,3 +44,4 @@ class FeatureUtil:
         player_speeds = (FeatureUtil.travel_dist_all(game_data)/seconds) * 0.681818
 
         return player_speeds
+

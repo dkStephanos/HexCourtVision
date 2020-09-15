@@ -41,8 +41,16 @@ class DataUtil:
 
     @staticmethod
     def get_player_data(game_df, player_name):
+        
         return game_df[game_df.player_name==player_name]
     
     @staticmethod
     def get_player_position_data(game_df, player_name):
+        
         return game_df[game_df.player_name==player_name][["x_loc", "y_loc"]]
+
+    @staticmethod
+    def get_all_player_position_data(game_df):
+        group = game_df.groupby("player_name")[["x_loc", "y_loc"]]
+
+        return group
