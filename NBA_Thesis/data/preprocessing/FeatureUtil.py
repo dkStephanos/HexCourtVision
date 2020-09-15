@@ -34,3 +34,12 @@ class FeatureUtil:
         player_mph = 0.681818 * player_fps
         
         return player_mph
+
+    @staticmethod
+    def average_speed_all(game_data):
+        # get the number of seconds for the play
+        seconds = game_data.game_clock.max() - game_data.game_clock.min()
+        # apply travel_dist_all and divide by total num seconds
+        player_speeds = (FeatureUtil.travel_dist_all(game_data)/seconds) * 0.681818
+
+        return player_speeds
