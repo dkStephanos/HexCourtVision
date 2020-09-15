@@ -37,7 +37,9 @@ df["player_name"] = df.player_id.map(lambda x: players_dict[x][0])
 df["player_jersey"] = df.player_id.map(lambda x: players_dict[x][1])	
 
 # get Curry's movements	
-curry = df[df.player_name=="Stephen Curry"]	
+curry = df[df.player_name=="Stephen Curry"]
+
+print(curry.head())
 
 #VisUtil.plot_player_movement(curry)
 
@@ -52,3 +54,4 @@ curry = df[df.player_name=="Stephen Curry"]
 
 #average_speed_all = FeatureUtil.average_speed_all(df)
 #print(average_speed_all)
+
