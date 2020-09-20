@@ -58,3 +58,4 @@ print(all_player_loc.head())
 #average_speed_all = FeatureUtil.average_speed_all(game_df)
 #print(average_speed_all)
 
+print(FeatureUtil.distance_between_player_and_other_players("Stephen Curry", curry[["x_loc", "y_loc"]], game_df))

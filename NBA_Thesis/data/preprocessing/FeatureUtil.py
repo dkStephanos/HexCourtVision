@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.spatial.distance import euclidean
 
 class FeatureUtil:
 
@@ -46,6 +47,13 @@ class FeatureUtil:
 
     @staticmethod
     # Function to find the distance between players at each moment
-    def player_dist(player_a, player_b):
+    def distance_between_players(player_a, player_b):
         return [euclidean(player_a.iloc[i], player_b.iloc[i])
                 for i in range(len(player_a))]
+
+    @staticmethod
+
+    def distance_between_player_and_other_players(player_name, player_loc, game_data):
+        group = game_data[game_data.player_name!=player_name].groupby("player_name")[["x_loc", "y_loc"]]
+
+        return group.apply(FeatureUtil.distance_between_players, player_b=(player_loc))
