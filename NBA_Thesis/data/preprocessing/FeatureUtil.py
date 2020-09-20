@@ -52,7 +52,12 @@ class FeatureUtil:
                 for i in range(len(player_a))]
 
     @staticmethod
+    def distance_between_ball_and_players(game_data):
+        group = game_data[game_data.player_name!="ball"].groupby("player_name")[["x_loc", "y_loc"]]
 
+        return group.apply(FeatureUtil.distance_between_players, game_data[game_data.player_name=="ball"][["x_loc", "y_loc"]])
+
+    @staticmethod
     def distance_between_player_and_other_players(player_name, player_loc, game_data):
         group = game_data[game_data.player_name!=player_name].groupby("player_name")[["x_loc", "y_loc"]]
 
