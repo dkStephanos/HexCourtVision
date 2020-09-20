@@ -39,8 +39,8 @@ game_df["player_jersey"] = game_df.player_id.map(lambda x: players_dict[x][1])
 # get Curry's movements	
 curry = game_df[game_df.player_name=="Stephen Curry"]
 
-all_player_loc = DataUtil.get_all_player_position_data(game_df)
-print(all_player_loc.head())
+#all_player_loc = DataUtil.get_all_player_position_data(game_df)
+#print(all_player_loc.head())
 
 #print(curry.head())
 
@@ -58,4 +58,6 @@ print(all_player_loc.head())
 #average_speed_all = FeatureUtil.average_speed_all(game_df)
 #print(average_speed_all)
 
-print(FeatureUtil.distance_between_player_and_other_players("Stephen Curry", curry[["x_loc", "y_loc"]], game_df))
+ball_distances = FeatureUtil.distance_between_ball_and_players(game_df)
+bd_df = pd.DataFrame(ball_distances)
+bd_df.to_csv('static/data/features/ball_distances.csv')
