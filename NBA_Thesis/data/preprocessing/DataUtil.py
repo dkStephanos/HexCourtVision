@@ -17,6 +17,11 @@ class DataUtil:
         return game_df['events'].iloc[event_num]
 
     @staticmethod
+    def convert_labled_series_to_df(label_name, series_name, series_to_convert):
+        temp_df = pd.DataFrame({label_name:series_to_convert.index, series_name:series_to_convert.values})
+        return pd.DataFrame(temp_df[series_name].tolist(), index= temp_df[label_name])
+
+    @staticmethod
     def get_players_data(game_event):
         # A dict containing home players data	
         home = game_event["home"]	
