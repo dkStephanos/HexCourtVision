@@ -60,7 +60,9 @@ curry = event_df[event_df.player_name=="Stephen Curry"]
 
 ball_distances = FeatureUtil.distance_between_ball_and_players(event_df)
 ball_dist_df = DataUtil.convert_labled_series_to_df('player_name', 'ball_distances', ball_distances)
-min_dist_df = DataUtil.get_labled_mins_from_df(ball_dist_df)
+min_dist_df = DataUtil.get_labled_mins_from_df(ball_dist_df, 'dist_from_ball')
+#ball_dist_df.loc[ball_dist_df['ball_distances'] > 3.0, 'player_name'] = pd.NA
+
 print(min_dist_df.shape)
 print(min_dist_df)
 

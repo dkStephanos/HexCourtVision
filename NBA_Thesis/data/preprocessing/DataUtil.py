@@ -22,8 +22,8 @@ class DataUtil:
         return pd.DataFrame(temp_df[series_name].tolist(), index= temp_df[label_name])
 
     @staticmethod
-    def get_labled_mins_from_df(dataframe):
-        return pd.concat([dataframe.idxmin(), dataframe.min()], axis=1)
+    def get_labled_mins_from_df(dataframe, min_value_label):
+        return pd.concat([dataframe.idxmin(), dataframe.min()], axis=1, keys=[dataframe.index.name, min_value_label])
 
     @staticmethod
     def get_players_data(game_event):
