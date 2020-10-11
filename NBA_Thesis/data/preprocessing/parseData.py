@@ -60,6 +60,8 @@ curry = event_df[event_df.player_name=="Stephen Curry"]
 
 ball_distances = FeatureUtil.distance_between_ball_and_players(event_df)
 ball_dist_df = DataUtil.convert_labled_series_to_df('player_name', 'ball_distances', ball_distances)
-print(ball_dist_df.shape)
-print(ball_dist_df.head())
+min_dist_df = DataUtil.get_labled_mins_from_df(ball_dist_df)
+print(min_dist_df.shape)
+print(min_dist_df)
+
 #bd_df.to_csv('static/data/features/ball_distances.csv')

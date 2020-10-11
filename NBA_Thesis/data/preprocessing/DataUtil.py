@@ -22,6 +22,10 @@ class DataUtil:
         return pd.DataFrame(temp_df[series_name].tolist(), index= temp_df[label_name])
 
     @staticmethod
+    def get_labled_mins_from_df(dataframe):
+        return pd.concat([dataframe.idxmin(), dataframe.min()], axis=1)
+
+    @staticmethod
     def get_players_data(game_event):
         # A dict containing home players data	
         home = game_event["home"]	
