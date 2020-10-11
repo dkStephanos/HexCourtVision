@@ -31,15 +31,15 @@ for moment in moments:
         player.extend((moments.index(moment), moment[2], moment[3]))	
         player_moments.append(player)	
 
-game_df = pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	
+event_df = pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	
 
-game_df["player_name"] = game_df.player_id.map(lambda x: players_dict[x][0])	
-game_df["player_jersey"] = game_df.player_id.map(lambda x: players_dict[x][1])	
+event_df["player_name"] = event_df.player_id.map(lambda x: players_dict[x][0])	
+event_df["player_jersey"] = event_df.player_id.map(lambda x: players_dict[x][1])	
 
 # get Curry's movements	
-curry = game_df[game_df.player_name=="Stephen Curry"]
+curry = event_df[event_df.player_name=="Stephen Curry"]
 
-#all_player_loc = DataUtil.get_all_player_position_data(game_df)
+#all_player_loc = DataUtil.get_all_player_position_data(event_df)
 #print(all_player_loc.head())
 
 #print(curry.head())
@@ -49,15 +49,17 @@ curry = game_df[game_df.player_name=="Stephen Curry"]
 #dist = FeatureUtil.travel_dist(curry)
 #print(dist)
 
-#all_dist = FeatureUtil.travel_dist_all(game_df)
+#all_dist = FeatureUtil.travel_dist_all(event_df)
 #print(all_dist)
 
-#average_speed = FeatureUtil.average_speed(game_df, curry)
+#average_speed = FeatureUtil.average_speed(event_df, curry)
 #print(average_speed)
 
-#average_speed_all = FeatureUtil.average_speed_all(game_df)
+#average_speed_all = FeatureUtil.average_speed_all(event_df)
 #print(average_speed_all)
 
-ball_distances = FeatureUtil.distance_between_ball_and_players(game_df)
+ball_distances = FeatureUtil.distance_between_ball_and_players(event_df)
 bd_df = pd.DataFrame(ball_distances)
-bd_df.to_csv('static/data/features/ball_distances.csv')
+print(event_df.head())
+print(bd_df.head())
+#bd_df.to_csv('static/data/features/ball_distances.csv')

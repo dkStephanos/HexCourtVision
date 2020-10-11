@@ -20,15 +20,15 @@ class FeatureUtil:
         return dist.sum()
     
     @staticmethod
-    def travel_dist_all(game_data):
-        player_travel_dist = game_data.groupby('player_name')[['x_loc', 'y_loc']].apply(FeatureUtil.travel_dist)
+    def travel_dist_all(event_df):
+        player_travel_dist = event_df.groupby('player_name')[['x_loc', 'y_loc']].apply(FeatureUtil.travel_dist)
         
         return player_travel_dist
 
     @staticmethod
-    def average_speed(game_data, player):
+    def average_speed(event_df, player):
         # get the number of seconds for the play
-        seconds = game_data.game_clock.max() - game_data.game_clock.min()
+        seconds = event_df.game_clock.max() - event_df.game_clock.min()
         # feet per second
         player_fps = FeatureUtil.travel_dist(player) / seconds
         # convert to miles per hour
@@ -37,11 +37,11 @@ class FeatureUtil:
         return player_mph
 
     @staticmethod
-    def average_speed_all(game_data):
+    def average_speed_all(event_df):
         # get the number of seconds for the play
-        seconds = game_data.game_clock.max() - game_data.game_clock.min()
+        seconds = event_df.game_clock.max() - event_df.game_clock.min()
         # apply travel_dist_all and divide by total num seconds
-        player_speeds = (FeatureUtil.travel_dist_all(game_data)/seconds) * 0.681818
+        player_speeds = (FeatureUtil.travel_dist_all(event_df)/seconds) * 0.681818
 
         return player_speeds
 
@@ -52,13 +52,13 @@ class FeatureUtil:
                 for i in range(len(player_a))]
 
     @staticmethod
-    def distance_between_ball_and_players(game_data):
-        group = game_data[game_data.player_name!="ball"].groupby("player_name")[["x_loc", "y_loc"]]
+    def distance_between_ball_and_players(event_df):
+        group = event_df[event_df.player_name!="ball"].groupby("player_name")[["x_loc", "y_loc"]]
 
-        return group.apply(FeatureUtil.distance_between_players, game_data[game_data.player_name=="ball"][["x_loc", "y_loc"]])
+        return group.apply(FeatureUtil.distance_between_players, event_df[event_df.player_name=="ball"][["x_loc", "y_loc"]])
 
     @staticmethod
-    def distance_between_player_and_other_players(player_name, player_loc, game_data):
-        group = game_data[game_data.player_name!=player_name].groupby("player_name")[["x_loc", "y_loc"]]
+    def distance_between_player_and_other_players(player_name, player_loc, event_df):
+        group = event_df[event_df.player_name!=player_name].groupby("player_name")[["x_loc", "y_loc"]]
 
         return group.apply(FeatureUtil.distance_between_players, player_b=(player_loc))

@@ -40,17 +40,17 @@ class DataUtil:
         return players_dict
 
     @staticmethod
-    def get_player_data(game_df, player_name):
+    def get_player_data(event_df, player_name):
         
-        return game_df[game_df.player_name==player_name]
+        return event_df[event_df.player_name==player_name]
     
     @staticmethod
-    def get_player_position_data(game_df, player_name):
+    def get_player_position_data(event_df, player_name):
         
-        return game_df[game_df.player_name==player_name][["x_loc", "y_loc"]]
+        return event_df[event_df.player_name==player_name][["x_loc", "y_loc"]]
 
     @staticmethod
-    def get_all_player_position_data(game_df):
-        group = game_df.groupby("player_name")[["x_loc", "y_loc"]]
+    def get_all_player_position_data(event_df):
+        group = event_df.groupby("player_name")[["x_loc", "y_loc"]]
 
         return group
