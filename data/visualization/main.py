@@ -1,17 +1,21 @@
 from Game import Game
 
-game = Game(path_to_json='C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA-Player-Movements/data/11.19.2015.GSW.at.LAC/0021500177.json', event_index=13)
-game.read_json()
-
-game.start()
+games = {"1": 'C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.11.2015.GSW.at.BOS/0021500336.json'}
 
 while True:
-    print('Enter the path to the game you would like to see: ')
-    path = input()
-    print('\nEnter the event: ')
-    event = input()
+    print('Enter the path to the game you would like to see from the following list: \n1) GSWatBOS\n')
+    print('\nEnter the game (or exit): ')
+    selection = input()
+    if(selection == "exit"):
+        exit()
+    path = games[selection]
 
-    game = Game(path_to_json=path, event_index=event)
-    game.read_json()
+    while True:
+        print('\nEnter the event (or exit to return to game select): ')
+        event = input()
+        if(event == "exit"):
+            break
+        game = Game(path_to_json=path, event_index=event)
+        game.read_json()
 
-    game.start()
+        game.start()
