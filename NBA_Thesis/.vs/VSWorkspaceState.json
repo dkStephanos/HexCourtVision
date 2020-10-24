@@ -1,10 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\data",
-    "\\data\\preprocessing",
-    "\\static"
+    ""
   ],
-  "SelectedNode": "\\data\\preprocessing\\parseData.py",
   "PreviewInSolutionExplorer": false
 }
