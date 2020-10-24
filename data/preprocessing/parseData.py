@@ -10,9 +10,11 @@ from VisualizationUtil import VisualizationUtil as VisUtil
 from FeatureUtil import FeatureUtil
 from DataUtil import DataUtil
 
+game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.25.2015.LAC.at.LAL\0021500440.json")
+print(game_df["events"][200]["eventId"])
+
 game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.11.2015.GSW.at.BOS\0021500336.json")
-print(game_df["events"].count())
-curr_event = DataUtil.load_event_by_num(game_df, 222)	
+curr_event = DataUtil.load_event_by_num(game_df, 201)	
 
 players_dict = DataUtil.get_players_data(curr_event)
 
@@ -44,7 +46,7 @@ curry = event_df[event_df.player_name=="Stephen Curry"]
 
 #print(curry.head())
 
-#VisUtil.plot_player_movement(curry)
+VisUtil.plot_player_movement(curry)
 
 #dist = FeatureUtil.travel_dist(curry)
 #print(dist)

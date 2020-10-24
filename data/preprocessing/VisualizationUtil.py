@@ -92,7 +92,7 @@ class VisualizationUtil:
     # Plots a single player's movements for a given action
     def plot_player_movement(player_data):
         # read in the court png file	
-        court = plt.imread(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\NBA_Thesis\static\data\imgs\fullcourt.png")	
+        court = plt.imread(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\imgs\fullcourt.png")	
 
         plt.figure(figsize=(15, 11.5))	
 
