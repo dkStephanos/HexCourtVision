@@ -19,7 +19,7 @@ class Ball(models.Model):
     x = models.FloatField() 
     y = models.FloatField()
     radius = models.FloatField()
-    color = '#ff8c00'  # Hardcoded orange
+    color = models.models.CharField(max_length=7)
 
 class Team(models.Model):
     team_id = models.IntegerField()
