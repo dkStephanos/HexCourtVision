@@ -29,9 +29,9 @@ path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/N
 
 game_df = DataUtil.load_game_df(path)
 
-print(game_df.shape)
+curr_event = DataUtil.load_event_by_num(game_df, "201")	
 
-curr_event = DataUtil.load_event_by_num(game_df, 201)	
+print(curr_event)
 
 players_dict = DataUtil.get_players_data(curr_event)
 

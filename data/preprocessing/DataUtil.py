@@ -14,7 +14,9 @@ class DataUtil:
 
     @staticmethod
     def load_event_by_num(game_df, event_num):
-        return game_df['events'].iloc[event_num]
+        for event in game_df['events']:
+            if(event['eventId']  == event_num):
+                return event
 
     @staticmethod
     def convert_labled_series_to_df(label_name, series_name, series_to_convert):
