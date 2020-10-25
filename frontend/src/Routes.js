@@ -101,11 +101,6 @@ const routesConfig = [
       },
       {
         exact: true,
-        path: '/app/calendar',
-        component: lazy(() => import('src/views/calendar/CalendarView'))
-      },
-      {
-        exact: true,
         path: '/app/projects/overview',
         component: lazy(() => import('src/views/projects/OverviewView'))
       },
