@@ -20,7 +20,6 @@ class Game:
         self.event_index = min(int(self.event_index), last_default_index)
         index = self.event_index
 
-        print(Constant.MESSAGE + str(last_default_index))
         event = data_frame['events'][index]
         self.event = Event(event)
         self.home_team = Team(event['home']['teamid'])
