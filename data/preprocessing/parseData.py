@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns	
 
 from IPython.display import IFrame	
+import easygui
 
 from VisualizationUtil import VisualizationUtil as VisUtil
 from FeatureUtil import FeatureUtil
@@ -24,10 +25,12 @@ FONTSIZE = 6
 X_CENTER = X_MAX / 2 - DIFF / 1.5 + 0.10
 Y_CENTER = Y_MAX - DIFF / 1.5 - 0.35
 
-game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.25.2015.LAC.at.LAL\0021500440.json")
-print(game_df["events"][200]["eventId"])
+path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/")
 
-game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.11.2015.GSW.at.BOS\0021500336.json")
+game_df = DataUtil.load_game_df(path)
+
+print(game_df.shape)
+
 curr_event = DataUtil.load_event_by_num(game_df, 201)	
 
 players_dict = DataUtil.get_players_data(curr_event)
