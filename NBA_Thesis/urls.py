@@ -7,6 +7,7 @@ from django.conf.urls import url
 from django.urls import path
 import django.contrib.auth.views
 from django.conf.urls import include
+from django.contrib import admin
 
 
 import app.forms
@@ -18,5 +19,6 @@ import app.views
 # admin.autodiscover()
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', include('frontend.urls')),
 ]
