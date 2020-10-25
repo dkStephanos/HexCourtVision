@@ -135,26 +135,6 @@ const routesConfig = [
         component: lazy(() => import('src/views/extra/charts/ApexChartsView'))
       },
       {
-        exact: true,
-        path: '/app/extra/forms/formik',
-        component: lazy(() => import('src/views/extra/forms/FormikView'))
-      },
-      {
-        exact: true,
-        path: '/app/extra/forms/redux',
-        component: lazy(() => import('src/views/extra/forms/ReduxFormView'))
-      },
-      {
-        exact: true,
-        path: '/app/extra/editors/draft-js',
-        component: lazy(() => import('src/views/extra/editors/DraftEditorView'))
-      },
-      {
-        exact: true,
-        path: '/app/extra/editors/quill',
-        component: lazy(() => import('src/views/extra/editors/QuillEditorView'))
-      },
-      {
         component: () => <Redirect to="/404" />
       }
     ]
