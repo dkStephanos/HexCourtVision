@@ -13,6 +13,12 @@ class DataUtil:
         return game_df
 
     @staticmethod
+    def load_annotation_df(path):
+        annotation_df = pd.read_csv(path)
+        
+        return annotation_df
+
+    @staticmethod
     def load_event_by_num(game_df, event_num):
         for event in game_df['events']:
             if(event['eventId']  == event_num):
