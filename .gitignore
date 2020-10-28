@@ -27,6 +27,7 @@ yarn-error.log*
 
 # data
 /static/data/game_raw_data/
+/static/data/test/
 
 # frontend build files
 /frontend/static/frontend/
