@@ -7,33 +7,33 @@ import seaborn as sns
 from IPython.display import IFrame	
 import easygui
 
-from VisualizationUtil import VisualizationUtil as VisUtil
-from FeatureUtil import FeatureUtil
-from DataUtil import DataUtil
+from utilities.VisualizationUtil import VisualizationUtil as VisUtil
+from utilities.FeatureUtil import FeatureUtil
+from utilities.DataUtil import DataUtil
 
-NORMALIZATION_COEF = 7
-PLAYER_CIRCLE_SIZE = 12 / NORMALIZATION_COEF
-INTERVAL = 10
-DIFF = 6
-X_MIN = 0
-X_MAX = 100
-Y_MIN = 0
-Y_MAX = 50
-COL_WIDTH = 0.3
-SCALE = 1.65
-FONTSIZE = 6
-X_CENTER = X_MAX / 2 - DIFF / 1.5 + 0.10
-Y_CENTER = Y_MAX - DIFF / 1.5 - 0.35
+game_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/", title="Select a game file")
 
-path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/")
+game_df = DataUtil.load_game_df(game_path)
 
-game_df = DataUtil.load_game_df(path)
+events = game_df['events']
+
+print(game_df.shape)
+
+easygui.msgbox("Next select corresponding annotation file")
+
+annotation_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/", title="Select an annotation file")
+
+annotation_df = DataUtil.load_annotation_df(annotation_path)
+
+annotation_df = annotation_df.loc[annotation_df["EVENTMSGTYPE"].isin([1,2,5,6])]
+
+print(annotation_df.shape)
 
 curr_event = DataUtil.load_event_by_num(game_df, "201")	
 
-print(curr_event)
-
 players_dict = DataUtil.get_players_data(curr_event)
+
+print(players_dict)
 
 # A list containing each moment	
 moments = curr_event["moments"]	
@@ -53,4 +53,6 @@ for moment in moments:
 event_df = pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	
 
 event_df["player_name"] = event_df.player_id.map(lambda x: players_dict[x][0])	
-event_df["player_jersey"] = event_df.player_id.map(lambda x: players_dict[x][1])	
+event_df["player_jersey"] = event_df.player_id.map(lambda x: players_dict[x][1])
+
+event_df.to_csv("static/data/test/test.csv")
