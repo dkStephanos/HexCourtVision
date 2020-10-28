@@ -49,7 +49,7 @@ class DataUtil:
 
         # Add the values we want for the players (name and jersey number)
         for player in players:	
-            players_dict[player['playerid']] = [player["firstname"]+" "+player["lastname"], player["jersey"]]	
+            players_dict[player['playerid']] = [player["firstname"]+" "+player["lastname"], player["jersey"], player["position"]]	
         
         # Add an entry for the ball
         players_dict.update({-1: ['ball', np.nan]})	
