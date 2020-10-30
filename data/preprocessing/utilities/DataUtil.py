@@ -4,7 +4,7 @@ import pandas as pd
 class DataUtil:
 
     HEADERS = ["team_id", "player_id", "x_loc", "y_loc", 	
-           "radius", "moment", "game_clock", "shot_clock"]	
+           "radius", "moment", "game_clock", "shot_clock", "event_id"]	
 
     @staticmethod
     def load_game_df(path):
@@ -71,3 +71,23 @@ class DataUtil:
         group = event_df.groupby("player_name")[["x_loc", "y_loc"]]
 
         return group
+
+    @staticmethod
+    def get_moments_from_event(event_df):
+        # A list containing each moment	
+        moments = event_df["moments"]	
+
+        # Initialize our new list	
+        player_moments = []	
+
+        for moment in moments:	
+            # For each player/ball in the list found within each moment	
+            for player in moment[5]:	
+                # Add additional information to each player/ball	
+                # This info includes the index of each moment, the game clock	
+                # and shot clock values for each moment	
+                player.extend((moments.index(moment), moment[2], moment[3], event_df["eventId"]))	
+                player_moments.append(player)
+
+
+        return pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	
