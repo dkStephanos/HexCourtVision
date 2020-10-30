@@ -34,27 +34,28 @@ class DataUtil:
         return pd.concat([dataframe.idxmin(), dataframe.min()], axis=1, keys=[dataframe.index.name, min_value_label])
 
     @staticmethod
-    def get_players_data(game_event):
+    def get_players_df(game_event):
         # A dict containing home players data	
         home = game_event["home"]	
         # A dict containig visiting players data	
         visitor = game_event["visitor"]
-        # creates the players list with the home players	
-        players = home["players"]	
-        # Then add on the visiting players	
-        players.extend(visitor["players"])	
 
         # initialize new dictionary	
         players_dict = {}	
 
         # Add the values we want for the players (name and jersey number)
-        for player in players:	
-            players_dict[player['playerid']] = [player["firstname"], player["lastname"], player["jersey"], player["position"]]	
+        for player in home["players"]:	
+            players_dict[player['playerid']] = [home["teamid"], player["firstname"], player["lastname"], player["jersey"], player["position"]]
+        for player in visitor["players"]:	
+            players_dict[player['playerid']] = [visitor["teamid"], player["firstname"], player["lastname"], player["jersey"], player["position"]]	
         
         # Add an entry for the ball
         players_dict.update({-1: ['ball', np.nan]})	
 
-        return players_dict
+        del players_dict[-1]
+        players_df = pd.DataFrame.from_dict(players_dict, orient='index', columns=['team_id', 'first_name', 'last_name', 'jersey_number', 'position'])
+        players_df.reset_index(inplace=True)
+        return players_df.rename(columns={'index': 'player_id'})
 
     @staticmethod
     def get_player_data(event_df, player_id):

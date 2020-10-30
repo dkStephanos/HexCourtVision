@@ -21,21 +21,27 @@ from utilities.DataUtil import DataUtil
 
 game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.11.2015.GSW.at.BOS\0021500336.json")
 events = game_df['events']
-
 print(game_df.shape)
 
 annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\event_annotations\events-20151211GSWBOS.csv")
-
 annotation_df = annotation_df.loc[annotation_df["EVENTMSGTYPE"].isin([1,2,5,6])]
-
 print(annotation_df.shape)
 
 curr_event = DataUtil.load_event_by_num(game_df, "196")	
+moments_df = DataUtil.get_moments_from_event(curr_event)
+#moments_df.to_csv("static/data/test/test.csv")
 
-players_dict = DataUtil.get_players_data(curr_event)
+players_dict = DataUtil.get_players_df(curr_event)
+print(players_dict)
 
-del players_dict[-1]
-players_df = pd.DataFrame.from_dict(players_dict, orient='index', columns=['first_name', 'last_name', 'jersey_number', 'position'])
-players_df.reset_index(inplace=True)
-players_df = players_df.rename(columns={'index': 'player_id'})
-print(players_df)
+#ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df)
+#print(ball_distances.head())
+#ball_dist_df = DataUtil.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
+#min_dist_df = DataUtil.get_labled_mins_from_df(ball_dist_df, 'dist_from_ball')
+
+#min_dist_df.loc[min_dist_df['dist_from_ball'] > 3.0, 'player_id'] = pd.NA
+
+#print(min_dist_df.shape)
+#print(min_dist_df)
+
+#min_dist_df.to_csv('static/data/test/ball_handler.csv')
