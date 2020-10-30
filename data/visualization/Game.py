@@ -6,24 +6,28 @@ from Constant import Constant
 
 class Game:
     """A class for keeping info about the games"""
-    def __init__(self, path_to_json, event_index):
+    def __init__(self, path_to_json, event_num):
         # self.events = None
         self.home_team = None
         self.guest_team = None
         self.event = None
         self.path_to_json = path_to_json
-        self.event_index = event_index
+        self.event_num = event_num
+
+    @staticmethod
+    def load_event_by_num(game_df, event_num):
+        for event in game_df['events']:
+            if(event['eventId']  == event_num):
+                return event
 
     def read_json(self):
-        data_frame = pd.read_json(self.path_to_json)
-        last_default_index = len(data_frame) - 1
-        self.event_index = min(int(self.event_index), last_default_index)
-        index = self.event_index
+        game_df = pd.read_json(self.path_to_json)
 
-        event = data_frame['events'][index]
+        event = Game.load_event_by_num(game_df, self.event_num)
         self.event = Event(event)
         self.home_team = Team(event['home']['teamid'])
         self.guest_team = Team(event['visitor']['teamid'])
+
 
     def start(self):
         self.event.show()

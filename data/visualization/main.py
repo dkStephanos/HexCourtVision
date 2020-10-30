@@ -5,7 +5,7 @@ games = {"1": 'C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data
         }
 
 while True:
-    print('Enter the path to the game you would like to see from the following list: \n1) GSWatBOS\n2)LACatLAL')
+    print('Enter the path to the game you would like to see from the following list: \n1) GSWatBOS\n2) LACatLAL')
     print('\nEnter the game (or exit): ')
     selection = input()
     if(selection == "exit"):
@@ -17,7 +17,7 @@ while True:
         event = input()
         if(event == "exit"):
             break
-        game = Game(path_to_json=path, event_index=event)
+        game = Game(path_to_json=path, event_num=event)
         game.read_json()
 
         game.start()
