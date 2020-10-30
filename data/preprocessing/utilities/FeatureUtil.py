@@ -21,7 +21,7 @@ class FeatureUtil:
     
     @staticmethod
     def travel_dist_all(event_df):
-        player_travel_dist = event_df.groupby('player_name')[['x_loc', 'y_loc']].apply(FeatureUtil.travel_dist)
+        player_travel_dist = event_df.groupby('player_id')[['x_loc', 'y_loc']].apply(FeatureUtil.travel_dist)
         
         return player_travel_dist
 
@@ -53,12 +53,12 @@ class FeatureUtil:
 
     @staticmethod
     def distance_between_ball_and_players(event_df):
-        group = event_df[event_df.player_name!="ball"].groupby("player_name")[["x_loc", "y_loc"]]
+        group = event_df[event_df.player_id!=-1].groupby("player_id")[["x_loc", "y_loc"]]
 
-        return group.apply(FeatureUtil.distance_between_players, event_df[event_df.player_name=="ball"][["x_loc", "y_loc"]])
+        return group.apply(FeatureUtil.distance_between_players, event_df[event_df.player_id==-1][["x_loc", "y_loc"]])
 
     @staticmethod
-    def distance_between_player_and_other_players(player_name, player_loc, event_df):
-        group = event_df[event_df.player_name!=player_name].groupby("player_name")[["x_loc", "y_loc"]]
+    def distance_between_player_and_other_players(player_id, player_loc, event_df):
+        group = event_df[event_df.player_id!=player_id].groupby("player_id")[["x_loc", "y_loc"]]
 
         return group.apply(FeatureUtil.distance_between_players, player_b=(player_loc))
