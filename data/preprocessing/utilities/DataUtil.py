@@ -49,7 +49,7 @@ class DataUtil:
 
         # Add the values we want for the players (name and jersey number)
         for player in players:	
-            players_dict[player['playerid']] = [player["firstname"]+" "+player["lastname"], player["jersey"], player["position"]]	
+            players_dict[player['playerid']] = [player["firstname"], player["lastname"], player["jersey"], player["position"]]	
         
         # Add an entry for the ball
         players_dict.update({-1: ['ball', np.nan]})	
@@ -57,18 +57,18 @@ class DataUtil:
         return players_dict
 
     @staticmethod
-    def get_player_data(event_df, player_name):
+    def get_player_data(event_df, player_id):
         
-        return event_df[event_df.player_name==player_name]
+        return event_df[event_df.player_id==player_id]
     
     @staticmethod
-    def get_player_position_data(event_df, player_name):
+    def get_player_position_data(event_df, player_id):
         
-        return event_df[event_df.player_name==player_name][["x_loc", "y_loc"]]
+        return event_df[event_df.player_id==player_id][["x_loc", "y_loc"]]
 
     @staticmethod
     def get_all_player_position_data(event_df):
-        group = event_df.groupby("player_name")[["x_loc", "y_loc"]]
+        group = event_df.groupby("player_id")[["x_loc", "y_loc"]]
 
         return group
 
