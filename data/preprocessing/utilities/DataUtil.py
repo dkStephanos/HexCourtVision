@@ -13,6 +13,19 @@ class DataUtil:
         return game_df
 
     @staticmethod
+    def get_game_data(game_df, annotation_df):
+        game_dict = {}
+
+        game_dict["game_id"] = game_df.iloc[0]["gameid"]
+        game_dict["game_date"] = game_df.iloc[0]["gamedate"]
+        game_dict["home_team"] = game_df.iloc[0]["events"]["home"]["teamid"]
+        game_dict["visitor_team"] = game_df.iloc[0]["events"]["visitor"]["teamid"]
+        game_dict["final_score"] = annotation_df.iloc[-1]["SCORE"]
+        print(annotation_df.iloc[-1])
+        
+        return game_dict
+
+    @staticmethod
     def load_annotation_df(path):
         annotation_df = pd.read_csv(path)
         
