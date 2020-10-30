@@ -20,13 +20,14 @@ from utilities.DataUtil import DataUtil
 #annotation_df = DataUtil.load_annotation_df(annotation_path)
 
 game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.11.2015.GSW.at.BOS\0021500336.json")
-print(game_df.head())
 print(game_df.shape)
 
 annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\event_annotations\events-20151211GSWBOS.csv")
 
 game_data = DataUtil.get_game_data(game_df, annotation_df)
 print(game_data)
+teams_data = DataUtil.get_teams_data(game_df)
+print(teams_data)
 
 annotation_df = annotation_df.loc[annotation_df["EVENTMSGTYPE"].isin([1,2,5,6])]
 print(annotation_df.shape)

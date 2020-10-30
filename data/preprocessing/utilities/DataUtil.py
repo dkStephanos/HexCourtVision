@@ -4,7 +4,40 @@ import pandas as pd
 class DataUtil:
 
     HEADERS = ["team_id", "player_id", "x_loc", "y_loc", 	
-           "radius", "moment", "game_clock", "shot_clock", "event_id"]	
+           "radius", "moment", "game_clock", "shot_clock", "event_id"]
+
+    COLOR_DICT = {
+        1610612737: '#E13A3E',
+        1610612738: '#008348',
+        1610612751: '#061922',
+        1610612766: '#1D1160',
+        1610612741: '#CE1141',
+        1610612739: '#860038',
+        1610612742: '#007DC5',
+        1610612743: '#4D90CD',
+        1610612765: '#006BB6',
+        1610612744: '#FDB927',
+        1610612745: '#CE1141',
+        1610612754: '#00275D',
+        1610612746: '#ED174C',
+        1610612747: '#552582',
+        1610612763: '#0F586C',
+        1610612748: '#98002E',
+        1610612749: '#00471B',
+        1610612750: '#005083',
+        1610612740: '#002B5C',
+        1610612752: '#006BB6',
+        1610612760: '#007DC3',
+        1610612753: '#007DC5',
+        1610612755: '#006BB6',
+        1610612756: '#1D1160',
+        1610612757: '#E03A3E',
+        1610612758: '#724C9F',
+        1610612759: '#BAC3C9',
+        1610612761: '#CE1141',
+        1610612762: '#00471B',
+        1610612764: '#002B5C',
+    }
 
     @staticmethod
     def load_game_df(path):
@@ -21,9 +54,25 @@ class DataUtil:
         game_dict["home_team"] = game_df.iloc[0]["events"]["home"]["teamid"]
         game_dict["visitor_team"] = game_df.iloc[0]["events"]["visitor"]["teamid"]
         game_dict["final_score"] = annotation_df.iloc[-1]["SCORE"]
-        print(annotation_df.iloc[-1])
         
         return game_dict
+
+    @staticmethod
+    def get_teams_data(game_df):
+        home_team = {
+            "team_id": game_df.iloc[0]["events"]["home"]["teamid"], 
+            "team_name": game_df.iloc[0]["events"]["home"]["name"], 
+            "team_abreviation": game_df.iloc[0]["events"]["home"]["abbreviation"],
+            "color": DataUtil.COLOR_DICT[game_df.iloc[0]["events"]["home"]["teamid"]]
+        }
+        visitor_team = {
+            "team_id": game_df.iloc[0]["events"]["visitor"]["teamid"], 
+            "team_name": game_df.iloc[0]["events"]["visitor"]["name"], 
+            "team_abreviation": game_df.iloc[0]["events"]["visitor"]["abbreviation"],
+            "color": DataUtil.COLOR_DICT[game_df.iloc[0]["events"]["home"]["teamid"]]
+        }
+
+        return [home_team, visitor_team]   
 
     @staticmethod
     def load_annotation_df(path):
