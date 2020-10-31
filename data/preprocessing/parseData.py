@@ -24,22 +24,18 @@ print(game_df.shape)
 
 annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\event_annotations\events-20151211GSWBOS.csv")
 
-game_data = DataUtil.get_game_data(game_df, annotation_df)
-print(game_data)
-teams_data = DataUtil.get_teams_data(game_df)
-print(teams_data)
-
 annotation_df = annotation_df.loc[annotation_df["EVENTMSGTYPE"].isin([1,2,5,6])]
 print(annotation_df.shape)
+annotation_df.to_csv("static/data/test/annotations.csv")
+#print(annotation_df.head())
+curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
 
+print(curr_annotation)
 
-curr_event = DataUtil.load_event_by_num(game_df, "196")	
+curr_event = DataUtil.load_game_event_by_num(game_df, "196")	
 moments_df = DataUtil.get_moments_from_event(curr_event)
 #moments_df.to_csv("static/data/test/test.csv")
 
-players_dict = DataUtil.get_players_data(game_df)
-print(players_dict)
-print(len(players_dict))
 
 #ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df)
 #print(ball_distances.head())

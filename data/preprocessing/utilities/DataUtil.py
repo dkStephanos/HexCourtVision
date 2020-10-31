@@ -81,10 +81,14 @@ class DataUtil:
         return annotation_df
 
     @staticmethod
-    def load_event_by_num(game_df, event_num):
+    def load_game_event_by_num(game_df, event_num):
         for event in game_df['events']:
             if(event['eventId']  == event_num):
                 return event
+    
+    @staticmethod
+    def load_annotation_event_by_num(annotation_df, event_num):
+        return annotation_df[annotation_df["EVENTNUM"] == event_num]
 
     @staticmethod
     def convert_labled_series_to_df(label_name, series_name, series_to_convert):
