@@ -100,7 +100,29 @@ class DataUtil:
         annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("Offensive Charge", na=False)]
         annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("Offensive Charge", na=False)]
 
+        # Next, remove the columns we don't need
+        del annotation_df["WCTIMESTRING"]
+        del annotation_df["NEUTRALDESCRIPTION"]
+        del annotation_df["SCOREMARGIN"]
+        del annotation_df["PERSON1TYPE"]
+        del annotation_df["PLAYER1_NAME"]
+        del annotation_df["PLAYER1_TEAM_CITY"]
+        del annotation_df["PLAYER1_TEAM_NICKNAME"]
+        del annotation_df["PLAYER1_TEAM_ABBREVIATION"]
+        del annotation_df["PERSON2TYPE"]
+        del annotation_df["PLAYER2_NAME"]
+        del annotation_df["PLAYER2_TEAM_CITY"]
+        del annotation_df["PLAYER2_TEAM_NICKNAME"]
+        del annotation_df["PLAYER2_TEAM_ABBREVIATION"]
+        del annotation_df["PERSON3TYPE"]
+        del annotation_df["PLAYER3_NAME"]
+        del annotation_df["PLAYER3_TEAM_CITY"]
+        del annotation_df["PLAYER3_TEAM_NICKNAME"]
+        del annotation_df["PLAYER3_TEAM_ABBREVIATION"]
+
         return annotation_df
+
+    
 
     @staticmethod
     def convert_labled_series_to_df(label_name, series_name, series_to_convert):
