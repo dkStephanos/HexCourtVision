@@ -101,7 +101,7 @@ class DataUtil:
         annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("Offensive Charge", na=False)]
 
         # Next, remove the columns we don't need
-        annotation_df.drop(annotation_df.columns[[0, 1]], axis = 1, inplace = True) 
+        annotation_df.drop(annotation_df.columns[[0]], axis = 1, inplace = True) 
         del annotation_df["WCTIMESTRING"]
         del annotation_df["NEUTRALDESCRIPTION"]
         del annotation_df["SCOREMARGIN"]
@@ -140,6 +140,18 @@ class DataUtil:
         annotation_df['possession'] = possession
 
         return annotation_df   
+
+    # We want unique event_ids for each event, so combine the game_id and event_id in a new col
+    @staticmethod
+    def generate_event_ids(annotation_df):
+        event_ids = []
+
+        for index, row in annotation_df.iterrows():
+            event_ids.append(int(str(row['GAME_ID']) + str(row['EVENTNUM'])))
+
+        annotation_df["event_id"] = event_ids
+
+        return annotation_df
 
     @staticmethod
     def convert_labled_series_to_df(label_name, series_name, series_to_convert):
@@ -237,7 +249,7 @@ class DataUtil:
                 # Add additional information to each player/ball	
                 # This info includes the index of each moment, the game clock	
                 # and shot clock values for each moment	
-                player.extend((moments.index(moment), moment[2], moment[3], event_df["eventId"]))	
+                player.extend((moments.index(moment), moment[2], moment[3], event_df["event_id"]))	
                 player_moments.append(player)
 
 
