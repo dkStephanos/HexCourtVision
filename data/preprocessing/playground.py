@@ -6,7 +6,7 @@ import seaborn as sns
 
 from IPython.display import IFrame	
 
-from VisualizationUtil import VisualizationUtil as VisUtil
+from GraphUtil import GraphUtil
 from FeatureUtil import FeatureUtil
 from DataUtil import DataUtil
 
@@ -60,7 +60,7 @@ curry = event_df[event_df.player_name=="Stephen Curry"]
 
 #print(curry.head())
 
-VisUtil.plot_player_movement(curry)
+GraphUtil.plot_player_movement(curry)
 
 #dist = FeatureUtil.travel_dist(curry)
 #print(dist)

@@ -5,7 +5,7 @@ from IPython.display import IFrame
 
 from matplotlib.patches import Circle, Rectangle, Arc	
 
-class VisualizationUtil:
+class GraphUtil:
 
     @staticmethod
     # Function to draw the basketball court lines	
@@ -104,7 +104,7 @@ class VisualizationUtil:
         cbar = plt.colorbar(orientation="horizontal")	
         cbar.ax.invert_xaxis()	
 
-        VisualizationUtil.draw_court()	
+        GraphUtil.draw_court()	
 
         # extend the x-values beyond the court b/c Harden	
         # goes out of bounds	

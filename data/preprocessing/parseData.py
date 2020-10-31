@@ -7,7 +7,7 @@ import seaborn as sns
 from IPython.display import IFrame	
 import easygui
 
-from utilities.VisualizationUtil import VisualizationUtil as VisUtil
+from utilities.GraphUtil import GraphUtil
 from utilities.FeatureUtil import FeatureUtil
 from utilities.DataUtil import DataUtil
 
