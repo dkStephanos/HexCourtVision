@@ -24,7 +24,7 @@ print(game_df.shape)
 
 annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\event_annotations\events-20151211GSWBOS.csv")
 
-annotation_df = annotation_df.loc[annotation_df["EVENTMSGTYPE"].isin([1,2,5,6])]
+annotation_df = DataUtil.trim_annotations(annotation_df)
 print(annotation_df.shape)
 annotation_df.to_csv("static/data/test/annotations.csv")
 #print(annotation_df.head())

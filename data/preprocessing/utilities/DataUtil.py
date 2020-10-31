@@ -90,6 +90,18 @@ class DataUtil:
     def load_annotation_event_by_num(annotation_df, event_num):
         return annotation_df[annotation_df["EVENTNUM"] == event_num]
 
+    # The only events with interesting positional data are Makes, Misses, Turnovers, Fouls. Narrow to those
+    @staticmethod
+    def trim_annotations(annotation_df):
+        # First, extract only the make, miss, turnover, foul events
+        annotation_df = annotation_df.loc[annotation_df["EVENTMSGTYPE"].isin([1,2,5,6])]
+
+        # Next, trim out the offensive charge events, as they are duplicated as turnovers
+        annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("Offensive Charge", na=False)]
+        annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("Offensive Charge", na=False)]
+
+        return annotation_df
+
     @staticmethod
     def convert_labled_series_to_df(label_name, series_name, series_to_convert):
         temp_df = pd.DataFrame({label_name:series_to_convert.index, series_name:series_to_convert.values})
