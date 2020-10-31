@@ -101,6 +101,7 @@ class DataUtil:
         annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("Offensive Charge", na=False)]
 
         # Next, remove the columns we don't need
+        annotation_df.drop(annotation_df.columns[[0, 1]], axis = 1, inplace = True) 
         del annotation_df["WCTIMESTRING"]
         del annotation_df["NEUTRALDESCRIPTION"]
         del annotation_df["SCOREMARGIN"]
@@ -122,7 +123,6 @@ class DataUtil:
 
         return annotation_df
 
-    
 
     @staticmethod
     def convert_labled_series_to_df(label_name, series_name, series_to_convert):
