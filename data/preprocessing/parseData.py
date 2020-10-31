@@ -11,8 +11,6 @@ from utilities.GraphUtil import GraphUtil
 from utilities.FeatureUtil import FeatureUtil
 from utilities.DataUtil import DataUtil
 
-from .. import models
-
 # Load game with GUI
 #game_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/", title="Select a game file")
 #game_df = DataUtil.load_game_df(game_path)
@@ -28,7 +26,6 @@ annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\N
 
 game_data = DataUtil.get_game_data(game_df, annotation_df)
 print(game_data)
-Game.objects.create(game_data)
 teams_data = DataUtil.get_teams_data(game_df)
 print(teams_data)
 
@@ -40,8 +37,8 @@ curr_event = DataUtil.load_event_by_num(game_df, "196")
 moments_df = DataUtil.get_moments_from_event(curr_event)
 #moments_df.to_csv("static/data/test/test.csv")
 
-#players_dict = DataUtil.get_players_df(curr_event)
-#print(players_dict)
+players_dict = DataUtil.get_players_data(game_df)
+print(players_dict)
 
 #ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df)
 #print(ball_distances.head())

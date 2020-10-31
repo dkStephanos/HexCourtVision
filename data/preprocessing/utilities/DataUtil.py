@@ -114,10 +114,29 @@ class DataUtil:
         # Add an entry for the ball
         players_dict.update({-1: ['ball', np.nan]})	
 
-        del players_dict[-1]
         players_df = pd.DataFrame.from_dict(players_dict, orient='index', columns=['team_id', 'first_name', 'last_name', 'jersey_number', 'position'])
         players_df.reset_index(inplace=True)
+
         return players_df.rename(columns={'index': 'player_id'})
+
+    @staticmethod 
+    def get_players_data(game_df):
+
+        # A dict containing home players data	
+        home = game_df["events"][0]["home"]	
+        # A dict containig visiting players data	
+        visitor = game_df["events"][0]["visitor"]
+
+        # initialize new dictionary	
+        players_dict = {}	
+
+        # Add the values we want for the players (team_id, name, jersey number and position)
+        for player in home["players"]:	
+            players_dict[player['playerid']] = [home["teamid"], player["firstname"], player["lastname"], player["jersey"], player["position"]]
+        for player in visitor["players"]:	
+            players_dict[player['playerid']] = [visitor["teamid"], player["firstname"], player["lastname"], player["jersey"], player["position"]]
+
+        return players_dict	
 
     @staticmethod
     def get_player_data(event_df, player_id):

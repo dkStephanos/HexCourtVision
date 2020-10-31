@@ -17,6 +17,7 @@ def run():
     print("Processing Data Files")
     game_data = DataUtil.get_game_data(game_df, annotation_df)
     teams = DataUtil.get_teams_data(game_df)
+    players = DataUtil.get_player_data(game_df)
 
     print("Creating models")
     home_team = Team.objects.get_or_create(**teams[0])
