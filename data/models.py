@@ -14,8 +14,16 @@ class Player(models.Model):
     jersey_number = models.IntegerField()
     position = models.CharField(max_length=5)
 
+class Game(models.Model):
+    game_id = models.IntegerField(primary_key=True)
+    home_team = models.ForeignKey(Team, related_name="home_team", on_delete=models.SET_NULL, null=True)
+    visitor_team = models.ForeignKey(Team, related_name="visitor_team", on_delete=models.SET_NULL, null=True)
+    game_date = models.CharField(max_length=20)
+    final_score = models.CharField(max_length=9)
+
 class Event(models.Model):
     event_id = models.IntegerField(primary_key=True)
+    game = models.ForeignKey(Game, related_name="events", on_delete=models.SET_NULL, null=True)
     possesion_team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
     player_1 = models.ForeignKey(Player, related_name="player_1", on_delete=models.SET_NULL, null=True)
     player_2 = models.ForeignKey(Player, related_name="player_2", on_delete=models.SET_NULL, null=True)
@@ -40,11 +48,3 @@ class Moment(models.Model):
     index = models.IntegerField()
     game_clock = models.FloatField()
     shot_clock = models.FloatField()
-
-class Game(models.Model):
-    game_id = models.IntegerField(primary_key=True)
-    home_team = models.ForeignKey(Team, related_name="home_team", on_delete=models.SET_NULL, null=True)
-    visitor_team = models.ForeignKey(Team, related_name="visitor_team", on_delete=models.SET_NULL, null=True)
-    events = models.ForeignKey(Event, on_delete=models.SET_NULL, null=True)
-    game_date = models.CharField(max_length=20)
-    final_score = models.CharField(max_length=9)
