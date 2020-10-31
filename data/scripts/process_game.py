@@ -15,9 +15,15 @@ def run():
 
     game_data = DataUtil.get_game_data(game_df, annotation_df)
     teams = DataUtil.get_teams_data(game_df)
-    Team.objects.create(**teams[0])
-    Team.objects.create(**teams[1])
+    home_team = Team.objects.get_or_create(**teams[0])
+    visitor_team = Team.objects.get_or_create(**teams[1])
+    print(len(game_data["final_score"]))
     print(game_data)
     print(teams[0])
     print(teams[1])
-    #game = Game(**game_data)
+    Game.objects.get_or_create(
+        game_id=game_data["game_id"], 
+        game_date=game_data["game_date"], 
+        home_team=home_team[0], 
+        visitor_team=visitor_team[0], 
+        final_score=game_data["final_score"])

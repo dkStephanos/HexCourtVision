@@ -44,7 +44,7 @@ class Moment(models.Model):
 class Game(models.Model):
     game_id = models.IntegerField(primary_key=True)
     home_team = models.ForeignKey(Team, related_name="home_team", on_delete=models.SET_NULL, null=True)
-    guest_team = models.ForeignKey(Team, related_name="guest_team", on_delete=models.SET_NULL, null=True)
+    visitor_team = models.ForeignKey(Team, related_name="visitor_team", on_delete=models.SET_NULL, null=True)
     events = models.ForeignKey(Event, on_delete=models.SET_NULL, null=True)
     game_date = models.CharField(max_length=20)
-    final_score = models.CharField(max_length=7)
+    final_score = models.CharField(max_length=9)
