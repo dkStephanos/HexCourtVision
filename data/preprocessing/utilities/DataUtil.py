@@ -128,15 +128,29 @@ class DataUtil:
         visitor = game_df["events"][0]["visitor"]
 
         # initialize new dictionary	
-        players_dict = {}	
+        all_players = []	
 
         # Add the values we want for the players (team_id, name, jersey number and position)
-        for player in home["players"]:	
-            players_dict[player['playerid']] = [home["teamid"], player["firstname"], player["lastname"], player["jersey"], player["position"]]
+        for player in home["players"]:
+            all_players.append({
+                "player_id": player['playerid'],
+                 "team_id": home['teamid'],
+                 "first_name": player['firstname'],
+                 "last_name": player['lastname'],
+                 "jersey_number": player['jersey'],
+                 "position": player['position']
+                 })
         for player in visitor["players"]:	
-            players_dict[player['playerid']] = [visitor["teamid"], player["firstname"], player["lastname"], player["jersey"], player["position"]]
+            all_players.append({
+                "player_id": player['playerid'],
+                 "team_id": visitor['teamid'],
+                 "first_name": player['firstname'],
+                 "last_name": player['lastname'],
+                 "jersey_number": player['jersey'],
+                 "position": player['position']
+                 })
 
-        return players_dict	
+        return all_players	
 
     @staticmethod
     def get_player_data(event_df, player_id):

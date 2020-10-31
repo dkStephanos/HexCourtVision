@@ -8,6 +8,7 @@ from data.preprocessing.utilities.GraphUtil import GraphUtil
 
 from data.models import Game
 from data.models import Team
+from data.models import Player
 
 def run():
     print("Loading data files")
@@ -17,7 +18,7 @@ def run():
     print("Processing Data Files")
     game_data = DataUtil.get_game_data(game_df, annotation_df)
     teams = DataUtil.get_teams_data(game_df)
-    players = DataUtil.get_player_data(game_df)
+    players = DataUtil.get_players_data(game_df)
 
     print("Creating models")
     home_team = Team.objects.get_or_create(**teams[0])
@@ -28,5 +29,8 @@ def run():
         home_team=home_team[0], 
         visitor_team=visitor_team[0], 
         final_score=game_data["final_score"])
+
+    for player in players:
+        Player.objects.get_or_create(**player)
 
     print("Finished processing game")

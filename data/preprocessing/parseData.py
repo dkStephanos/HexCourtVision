@@ -39,6 +39,7 @@ moments_df = DataUtil.get_moments_from_event(curr_event)
 
 players_dict = DataUtil.get_players_data(game_df)
 print(players_dict)
+print(len(players_dict))
 
 #ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df)
 #print(ball_distances.head())
