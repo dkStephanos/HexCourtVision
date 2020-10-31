@@ -26,6 +26,7 @@ annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\N
 
 annotation_df = DataUtil.trim_annotations(annotation_df)
 print(annotation_df.shape)
+annotation_df = DataUtil.determine_possession(annotation_df)
 annotation_df.to_csv("static/data/test/annotations.csv")
 #print(annotation_df.head())
 curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
