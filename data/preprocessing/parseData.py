@@ -11,6 +11,8 @@ from utilities.VisualizationUtil import VisualizationUtil as VisUtil
 from utilities.FeatureUtil import FeatureUtil
 from utilities.DataUtil import DataUtil
 
+from .. import models
+
 # Load game with GUI
 #game_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/", title="Select a game file")
 #game_df = DataUtil.load_game_df(game_path)
@@ -26,6 +28,7 @@ annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\N
 
 game_data = DataUtil.get_game_data(game_df, annotation_df)
 print(game_data)
+Game.objects.create(game_data)
 teams_data = DataUtil.get_teams_data(game_df)
 print(teams_data)
 
