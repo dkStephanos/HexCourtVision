@@ -69,7 +69,7 @@ class DataUtil:
             "team_id": game_df.iloc[0]["events"]["visitor"]["teamid"], 
             "name": game_df.iloc[0]["events"]["visitor"]["name"], 
             "abreviation": game_df.iloc[0]["events"]["visitor"]["abbreviation"],
-            "color": DataUtil.COLOR_DICT[game_df.iloc[0]["events"]["home"]["teamid"]]
+            "color": DataUtil.COLOR_DICT[game_df.iloc[0]["events"]["visitor"]["teamid"]]
         }
 
         return [home_team, visitor_team]   
