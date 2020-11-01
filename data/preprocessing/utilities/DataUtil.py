@@ -259,7 +259,6 @@ class DataUtil:
     def get_moments_from_event(event_df):
         # A list containing each moment	
         moments = event_df["moments"]	
-        print(moments.head())
         # Initialize our new list	
         player_moments = []	
 

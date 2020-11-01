@@ -37,9 +37,8 @@ curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
 
 print(curr_annotation)
 
-#curr_event = DataUtil.load_game_event_by_num(game_df, "196")	
-#moments_df = DataUtil.get_moments_from_event(combined_event_df[:1])
-#moments_df.to_csv("static/data/test/test.csv")
+moments_df = DataUtil.get_moments_from_event(combined_event_df.iloc[0])
+moments_df.to_csv("static/data/test/test.csv")
 
 
 #ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df)
