@@ -24,18 +24,21 @@ print(game_df.shape)
 
 annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\event_annotations\events-20151211GSWBOS.csv")
 
-annotation_df = DataUtil.trim_annotations(annotation_df)
-print(annotation_df.shape)
+annotation_df = DataUtil.trim_annotation_rows(annotation_df)
 annotation_df = DataUtil.determine_possession(annotation_df)
 annotation_df = DataUtil.generate_event_ids(annotation_df)
-annotation_df.to_csv("static/data/test/annotations.csv")
 
+annotation_df = DataUtil.trim_annotation_cols(annotation_df)
+print(annotation_df.shape)
+combined_event_df = DataUtil.combine_game_and_annotation_events(game_df, annotation_df)
+print(combined_event_df.shape)
+#combined_event_df.to_csv("static/data/test/events.csv")
 curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
 
 print(curr_annotation)
 
-curr_event = DataUtil.load_game_event_by_num(game_df, "196")	
-moments_df = DataUtil.get_moments_from_event(curr_event)
+#curr_event = DataUtil.load_game_event_by_num(game_df, "196")	
+#moments_df = DataUtil.get_moments_from_event(combined_event_df[:1])
 #moments_df.to_csv("static/data/test/test.csv")
 
 

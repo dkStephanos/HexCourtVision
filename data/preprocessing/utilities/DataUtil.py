@@ -92,31 +92,38 @@ class DataUtil:
 
     # The only events with interesting positional data are Makes, Misses, Turnovers, Fouls. Narrow to those
     @staticmethod
-    def trim_annotations(annotation_df):
+    def trim_annotation_rows(annotation_df):
         # First, extract only the make, miss, turnover, foul events
         annotation_df = annotation_df.loc[annotation_df["EVENTMSGTYPE"].isin([1,2,5,6])]
 
         # Next, trim out the offensive charge events, as they are duplicated as turnovers
         annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("Offensive Charge", na=False)]
         annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("Offensive Charge", na=False)]
-
-        # Next, remove the columns we don't need
+        
+        return annotation_df
+    
+    @staticmethod
+    def trim_annotation_cols(annotation_df):
+        # remove the columns we don't need
         annotation_df.drop(annotation_df.columns[[0]], axis = 1, inplace = True) 
         del annotation_df["WCTIMESTRING"]
         del annotation_df["NEUTRALDESCRIPTION"]
         del annotation_df["SCOREMARGIN"]
         del annotation_df["PERSON1TYPE"]
         del annotation_df["PLAYER1_NAME"]
+        del annotation_df["PLAYER1_TEAM_ID"]
         del annotation_df["PLAYER1_TEAM_CITY"]
         del annotation_df["PLAYER1_TEAM_NICKNAME"]
         del annotation_df["PLAYER1_TEAM_ABBREVIATION"]
         del annotation_df["PERSON2TYPE"]
         del annotation_df["PLAYER2_NAME"]
+        del annotation_df["PLAYER2_TEAM_ID"]
         del annotation_df["PLAYER2_TEAM_CITY"]
         del annotation_df["PLAYER2_TEAM_NICKNAME"]
         del annotation_df["PLAYER2_TEAM_ABBREVIATION"]
         del annotation_df["PERSON3TYPE"]
         del annotation_df["PLAYER3_NAME"]
+        del annotation_df["PLAYER3_TEAM_ID"]
         del annotation_df["PLAYER3_TEAM_CITY"]
         del annotation_df["PLAYER3_TEAM_NICKNAME"]
         del annotation_df["PLAYER3_TEAM_ABBREVIATION"]
@@ -152,6 +159,19 @@ class DataUtil:
         annotation_df["event_id"] = event_ids
 
         return annotation_df
+
+    @staticmethod
+    def combine_game_and_annotation_events(game_df, annotation_df):
+        moments = []
+        
+        for event in game_df['events']:
+            if np.any(annotation_df['EVENTNUM'] == int(event['eventId'])):
+                moments.append({'EVENTNUM': int(event['eventId']), 'moments': event['moments']})
+
+        moments_df = pd.DataFrame(moments)
+
+        return annotation_df.merge(moments_df, how="inner")
+        
 
     @staticmethod
     def convert_labled_series_to_df(label_name, series_name, series_to_convert):
@@ -239,7 +259,7 @@ class DataUtil:
     def get_moments_from_event(event_df):
         # A list containing each moment	
         moments = event_df["moments"]	
-
+        print(moments.head())
         # Initialize our new list	
         player_moments = []	
 
