@@ -73,14 +73,23 @@ class FeatureUtil:
 
     @staticmethod
     def get_passess_for_event(moments_df, possession, players_data):
+        # First, calculate the distances between players and the ball, and get a min dist data frame
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df)
         ball_dist_df = DataUtil.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
         min_dist_df = DataUtil.get_labled_mins_from_df(ball_dist_df, 'dist_from_ball')
 
+        # Get the player ids for the team in possession, we wan't to exclude defensive players
         player_ids = DataUtil.get_possession_team_player_ids(possession, players_data)
-        min_dist_df.loc[min_dist_df['dist_from_ball'] > 3.0, 'player_id'] = pd.NA
         min_dist_df.loc[~min_dist_df['player_id'].isin(player_ids), 'player_id'] = pd.NA
         
+        # Also eliminate any moment where no player was within 3 feet of the ball
+        min_dist_df.loc[min_dist_df['dist_from_ball'] > 3.0, 'player_id'] = pd.NA
+
+        # We also need to check the ball radius to make sure we aren't counting shot attempts 
+        for i in range(0, len(min_dist_df)):
+            if moments_df.iloc[i*11]['radius'] >= 10.0:
+                min_dist_df.iat[i, 0] = pd.NA
+
         min_dist_df.to_csv('static/data/test/ball_handler.csv')
         
         return min_dist_df
