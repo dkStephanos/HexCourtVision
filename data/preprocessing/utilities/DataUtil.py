@@ -256,6 +256,16 @@ class DataUtil:
         return group
 
     @staticmethod
+    def get_possession_team_player_ids(possession, players_data):
+        player_ids = []
+        
+        for player in players_data:
+            if player['team_id'] == possession:
+                player_ids.append(player['player_id'])
+
+        return player_ids
+
+    @staticmethod
     def get_moments_from_event(event_df):
         # A list containing each moment	
         moments = event_df["moments"]	

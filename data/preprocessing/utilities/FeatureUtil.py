@@ -1,4 +1,6 @@
 import numpy as np
+import pandas as pd
+from .DataUtil import DataUtil
 from scipy.spatial.distance import euclidean
 
 class FeatureUtil:
@@ -48,8 +50,14 @@ class FeatureUtil:
     @staticmethod
     # Function to find the distance between players at each moment
     def distance_between_players(player_a, player_b):
+        # Make sure we know when to stop
+        player_range = 0
+        if len(player_a) < len(player_b):
+            player_range = len(player_a)
+        else:
+            player_range = len(player_b)
         return [euclidean(player_a.iloc[i], player_b.iloc[i])
-                for i in range(len(player_a))]
+                for i in range(player_range)]
 
     @staticmethod
     def distance_between_ball_and_players(event_df):
@@ -62,3 +70,17 @@ class FeatureUtil:
         group = event_df[event_df.player_id!=player_id].groupby("player_id")[["x_loc", "y_loc"]]
 
         return group.apply(FeatureUtil.distance_between_players, player_b=(player_loc))
+
+    @staticmethod
+    def get_passess_for_event(moments_df, possession, players_data):
+        ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df)
+        ball_dist_df = DataUtil.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
+        min_dist_df = DataUtil.get_labled_mins_from_df(ball_dist_df, 'dist_from_ball')
+
+        player_ids = DataUtil.get_possession_team_player_ids(possession, players_data)
+        min_dist_df.loc[min_dist_df['dist_from_ball'] > 3.0, 'player_id'] = pd.NA
+        min_dist_df.loc[~min_dist_df['player_id'].isin(player_ids), 'player_id'] = pd.NA
+        
+        min_dist_df.to_csv('static/data/test/ball_handler.csv')
+        
+        return min_dist_df

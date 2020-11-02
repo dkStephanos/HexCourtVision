@@ -22,6 +22,8 @@ from utilities.DataUtil import DataUtil
 game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.11.2015.GSW.at.BOS\0021500336.json")
 print(game_df.shape)
 
+players_data = DataUtil.get_players_data(game_df)
+
 annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\event_annotations\events-20151211GSWBOS.csv")
 
 annotation_df = DataUtil.trim_annotation_rows(annotation_df)
@@ -35,20 +37,8 @@ print(combined_event_df.shape)
 #combined_event_df.to_csv("static/data/test/events.csv")
 curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
 
-print(curr_annotation)
-
-moments_df = DataUtil.get_moments_from_event(combined_event_df.iloc[0])
-moments_df.to_csv("static/data/test/test.csv")
-
-
-#ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df)
-#print(ball_distances.head())
-#ball_dist_df = DataUtil.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
-#min_dist_df = DataUtil.get_labled_mins_from_df(ball_dist_df, 'dist_from_ball')
-
-#min_dist_df.loc[min_dist_df['dist_from_ball'] > 3.0, 'player_id'] = pd.NA
-
-#print(min_dist_df.shape)
-#print(min_dist_df)
-
-#min_dist_df.to_csv('static/data/test/ball_handler.csv')
+thomas_off_charge_play = combined_event_df.iloc[100]
+print(thomas_off_charge_play)
+moments_df = DataUtil.get_moments_from_event(thomas_off_charge_play)
+#moments_df.to_csv("static/data/test/test.csv")
+FeatureUtil.get_passess_for_event(moments_df, thomas_off_charge_play["possession"], players_data)
