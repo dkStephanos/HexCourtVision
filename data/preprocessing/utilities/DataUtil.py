@@ -271,15 +271,25 @@ class DataUtil:
         moments = event_df["moments"]	
         # Initialize our new list	
         player_moments = []	
+        last_shot_clock = 24
+        reached_end_of_play = False
 
-        for moment in moments:	
-            # For each player/ball in the list found within each moment	
-            for player in moment[5]:	
-                # Add additional information to each player/ball	
-                # This info includes the index of each moment, the game clock	
-                # and shot clock values for each moment	
-                player.extend((moments.index(moment), moment[2], moment[3], event_df["event_id"]))	
-                player_moments.append(player)
+        # We only care about positional data for the possession, so if shot clock resets, bail out
+        while not reached_end_of_play:
+            for moment in moments:	
+                # Check to see if shot clock is greater than previous entry, if so, break
+                if moment[3] > last_shot_clock:
+                    reached_end_of_play = True
+                else:
+                    last_shot_clock = moment[3]
+                    # For each player/ball in the list found within each moment	
+                    for player in moment[5]:	
+                        # Add additional information to each player/ball	
+                        # This info includes the index of each moment, the game clock	
+                        # and shot clock values for each moment	
+                        player.extend((moments.index(moment), moment[2], moment[3], event_df["event_id"]))	
+                        player_moments.append(player)
+            reached_end_of_play = True
 
 
         return pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	
