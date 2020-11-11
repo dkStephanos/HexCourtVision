@@ -37,7 +37,7 @@ print(combined_event_df.shape)
 #combined_event_df.to_csv("static/data/test/events.csv")
 curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
 
-thomas_off_charge_play = combined_event_df.iloc[99]
+thomas_off_charge_play = combined_event_df.iloc[101]
 print(thomas_off_charge_play)
 moments_df = DataUtil.get_moments_from_event(thomas_off_charge_play)
 moments_df.to_csv("static/data/test/test.csv")
