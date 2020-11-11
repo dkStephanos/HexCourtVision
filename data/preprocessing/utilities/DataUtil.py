@@ -90,6 +90,27 @@ class DataUtil:
     def load_annotation_event_by_num(annotation_df, event_num):
         return annotation_df[annotation_df["EVENTNUM"] == event_num]
 
+    @staticmethod
+    def get_players_moments_for_event(event_df):
+        players_dict = DataUtil.get_players_data(event_df)
+
+        # A list containing each moment	
+        moments = event_df["moments"]	
+
+        # Initialize our new list	
+        player_moments = []	
+
+        for moment in moments:	
+            # For each player/ball in the list found within each moment	
+            for player in moment[5]:	
+                # Add additional information to each player/ball	
+                # This info includes the index of each moment, the game clock	
+                # and shot clock values for each moment	
+                player.extend((moments.index(moment), moment[2], moment[3]))	
+                player_moments.append(player)	
+
+        return pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	
+
     # The only events with interesting positional data are Makes, Misses, Turnovers, Fouls. Narrow to those
     @staticmethod
     def trim_annotation_rows(annotation_df):

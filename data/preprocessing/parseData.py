@@ -22,6 +22,13 @@ from utilities.DataUtil import DataUtil
 game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.11.2015.GSW.at.BOS\0021500336.json")
 print(game_df.shape)
 
+# get Curry's movements
+event_df = DataUtil.load_game_event_by_num(game_df, "201")	
+print(event_df)
+curry = event_df[event_df.last_name=="Curry"]
+
+GraphUtil.plot_player_movement(curry)
+
 players_data = DataUtil.get_players_data(game_df)
 
 annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\event_annotations\events-20151211GSWBOS.csv")
