@@ -130,24 +130,6 @@ class DataUtil:
 
         return annotation_df
 
-    # We need to know which team has possesssion for each event, deduce from event type and add col to df
-    @staticmethod
-    def determine_possession(annotation_df):
-        possession = []
-        # Step through each possession
-        # For Make, Miss, Turnover events, set possesion to PLAYER_1_TEAM_ID
-        # For a Foul, set possesion to PLAYER_2_TEAM_ID
-        for index, row in annotation_df.iterrows():
-            if row['EVENTMSGTYPE'] in [1,2,5]:
-                possession.append(row['PLAYER1_TEAM_ID'])
-            if row['EVENTMSGTYPE'] == 6:
-                possession.append(row['PLAYER2_TEAM_ID'])
-        
-        # Add the list of team_ids to the dataframe as the possession col
-        annotation_df['possession'] = possession
-
-        return annotation_df   
-
     # We want unique event_ids for each event, so combine the game_id and event_id in a new col
     @staticmethod
     def generate_event_ids(annotation_df):
