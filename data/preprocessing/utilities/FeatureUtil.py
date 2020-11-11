@@ -71,6 +71,27 @@ class FeatureUtil:
 
         return group.apply(FeatureUtil.distance_between_players, player_b=(player_loc))
 
+    def convert_ball_handler_to_passes(ball_handler_df):
+        passes = []
+        passer = pd.NA
+        pass_moment = 0
+        receiver = pd.NA
+        receive_moment = 0
+        for i in range(0, len(ball_handler_df)):
+            if pd.isna(passer) and not pd.isna(ball_handler_df.iloc[i]['player_id']):
+                passer = ball_handler_df.iloc[i]['player_id']
+            elif (not pd.isna(passer) and pass_moment == 0) and pd.isna(ball_handler_df.iloc[i]['player_id']):
+                pass_moment = i - 1
+            elif not pd.isna(passer) and (not pd.isna(ball_handler_df.iloc[i]['player_id']) and ball_handler_df.iloc[i]['player_id'] != passer):
+                receiver = ball_handler_df.iloc[i]['player_id']
+                receive_moment = i
+                passes.append({'passer': passer, 'pass_moment': pass_moment, 'receiver': receiver, 'receive_moment': receive_moment})
+                passer = pd.NA
+                receiver = pd.NA
+                pass_moment = 0
+        
+        return passes
+
     @staticmethod
     def get_passess_for_event(moments_df, possession, players_data):
         # Get the player ids for the team in possession, we wan't to exclude defensive players
@@ -79,40 +100,20 @@ class FeatureUtil:
         # First, calculate the distances between players and the ball, and get a min dist data frame
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
         ball_dist_df = DataUtil.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
-        min_dist_df = DataUtil.get_labled_mins_from_df(ball_dist_df, 'dist_from_ball')
-
-        # Get the player ids for the team in possession, we wan't to exclude defensive players
-        #player_ids = DataUtil.get_possession_team_player_ids(possession, players_data)
-        #min_dist_df.loc[~min_dist_df['player_id'].isin(player_ids), 'player_id'] = pd.NA
+        ball_handler_df = DataUtil.get_labled_mins_from_df(ball_dist_df, 'dist_from_ball')
         
         # Also eliminate any moment where no player was within 3 feet of the ball
-        min_dist_df.loc[min_dist_df['dist_from_ball'] > 3.3, 'player_id'] = pd.NA
+        ball_handler_df.loc[ball_handler_df['dist_from_ball'] > 3.3, 'player_id'] = pd.NA
 
         # We also need to check the ball radius to make sure we aren't counting shot attempts 
-        for i in range(0, len(min_dist_df)):
+        for i in range(0, len(ball_handler_df)):
             if moments_df.iloc[i*11]['radius'] >= 10.0:
-                min_dist_df.iat[i, 0] = pd.NA
+                ball_handler_df.iat[i, 0] = pd.NA
 
         # Next, step through each moment and find the passes
-        passes = []
-        passer = pd.NA
-        pass_moment = 0
-        receiver = pd.NA
-        receive_moment = 0
-        for i in range(0, len(min_dist_df)):
-            if pd.isna(passer) and not pd.isna(min_dist_df.iloc[i]['player_id']):
-                passer = min_dist_df.iloc[i]['player_id']
-            elif (not pd.isna(passer) and pass_moment == 0) and pd.isna(min_dist_df.iloc[i]['player_id']):
-                pass_moment = i - 1
-            elif not pd.isna(passer) and (not pd.isna(min_dist_df.iloc[i]['player_id']) and min_dist_df.iloc[i]['player_id'] != passer):
-                receiver = min_dist_df.iloc[i]['player_id']
-                receive_moment = i
-                passes.append({'passer': passer, 'pass_moment': pass_moment, 'receiver': receiver, 'receive_moment': receive_moment})
-                passer = pd.NA
-                receiver = pd.NA
-                pass_moment = 0
+        passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
 
         print(passes)
-        min_dist_df.to_csv('static/data/test/ball_handler.csv')
+        ball_handler_df.to_csv('static/data/test/ball_handler.csv')
         
-        return min_dist_df
+        return ball_handler_df
