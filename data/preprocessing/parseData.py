@@ -27,7 +27,7 @@ players_data = DataUtil.get_players_data(game_df)
 annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\event_annotations\events-20151211GSWBOS.csv")
 
 annotation_df = DataUtil.trim_annotation_rows(annotation_df)
-annotation_df = DataUtil.determine_possession(annotation_df)
+annotation_df = FeatureUtil.determine_possession(annotation_df)
 annotation_df = DataUtil.generate_event_ids(annotation_df)
 
 annotation_df = DataUtil.trim_annotation_cols(annotation_df)
@@ -37,13 +37,16 @@ print(combined_event_df.shape)
 #combined_event_df.to_csv("static/data/test/events.csv")
 curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
 
-sample_event = combined_event_df.iloc[0]
-print(sample_event)
+# Testing directionality method
+combined_event_df = FeatureUtil.determine_directionality(combined_event_df)
+
+sample_event = combined_event_df.iloc[32]
+#print(sample_event)
 moments_df = DataUtil.get_moments_from_event(sample_event)
 
 # get Curry's movements for event and graph them
 curry_df = moments_df[moments_df.player_id==201939]
 GraphUtil.plot_player_movement(curry_df)
 
-moments_df.to_csv("static/data/test/test.csv")
+#moments_df.to_csv("static/data/test/test.csv")
 FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
