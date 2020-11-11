@@ -22,12 +22,8 @@ from utilities.DataUtil import DataUtil
 game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.11.2015.GSW.at.BOS\0021500336.json")
 print(game_df.shape)
 
-# get Curry's movements
+# get Curry's movements for event and graph them
 event_df = DataUtil.load_game_event_by_num(game_df, "201")	
-print(event_df)
-curry = event_df[event_df.last_name=="Curry"]
-
-GraphUtil.plot_player_movement(curry)
 
 players_data = DataUtil.get_players_data(game_df)
 
@@ -47,5 +43,9 @@ curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
 thomas_off_charge_play = combined_event_df.iloc[101]
 print(thomas_off_charge_play)
 moments_df = DataUtil.get_moments_from_event(thomas_off_charge_play)
+
+curry_df = moments_df[moments_df.player_id==201939]
+GraphUtil.plot_player_movement(curry_df)
+
 moments_df.to_csv("static/data/test/test.csv")
 FeatureUtil.get_passess_for_event(moments_df, thomas_off_charge_play["possession"], players_data)

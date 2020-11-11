@@ -6,9 +6,9 @@ import seaborn as sns
 
 from IPython.display import IFrame	
 
-from GraphUtil import GraphUtil
-from FeatureUtil import FeatureUtil
-from DataUtil import DataUtil
+from utilities.GraphUtil import GraphUtil
+from utilities.FeatureUtil import FeatureUtil
+from utilities.DataUtil import DataUtil
 
 NORMALIZATION_COEF = 7
 PLAYER_CIRCLE_SIZE = 12 / NORMALIZATION_COEF
@@ -28,7 +28,8 @@ game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA
 print(game_df["events"][200]["eventId"])
 
 game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.11.2015.GSW.at.BOS\0021500336.json")
-curr_event = DataUtil.load_event_by_num(game_df, 201)	
+print(game_df.head())
+curr_event = DataUtil.load_game_event_by_num(game_df, "201")	
 
 players_dict = DataUtil.get_players_data(curr_event)
 
