@@ -37,16 +37,16 @@ print(combined_event_df.shape)
 #combined_event_df.to_csv("static/data/test/events.csv")
 curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
 
-# Testing directionality method
+# Get direction for each play, and remove moments occuring on the other half of the court
 combined_event_df = FeatureUtil.determine_directionality(combined_event_df)
+combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
-sample_event = combined_event_df.iloc[190]
-print(sample_event)
+sample_event = combined_event_df.iloc[13]
 moments_df = DataUtil.get_moments_from_event(sample_event)
 
 # get Curry's movements for event and graph them
-curry_df = moments_df[moments_df.player_id==201939]
+curry_df = moments_df[moments_df.player_id==-1]
 GraphUtil.plot_player_movement(curry_df)
 
-#moments_df.to_csv("static/data/test/test.csv")
+#curry_df.to_csv("static/data/test/test.csv")
 FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)

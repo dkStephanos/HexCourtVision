@@ -130,6 +130,18 @@ class DataUtil:
 
         return annotation_df
 
+    # Work through the combined_event_df and del any moment that occurs in the backcourt
+    @staticmethod
+    def trim_moments_by_directionality(combined_event_df):
+
+        for index, event in combined_event_df.iterrows():
+            if event['direction'] == "RIGHT":
+                event['moments'][:] = [ x for x in event['moments'] if x[5][0][2] > 45.0]
+            else:
+                event['moments'][:] = [ x for x in event['moments'] if x[5][0][2] < 45.0]
+
+        return combined_event_df
+
     # We want unique event_ids for each event, so combine the game_id and event_id in a new col
     @staticmethod
     def generate_event_ids(annotation_df):
