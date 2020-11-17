@@ -40,8 +40,8 @@ curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
 # Testing directionality method
 combined_event_df = FeatureUtil.determine_directionality(combined_event_df)
 
-sample_event = combined_event_df.iloc[32]
-#print(sample_event)
+sample_event = combined_event_df.iloc[190]
+print(sample_event)
 moments_df = DataUtil.get_moments_from_event(sample_event)
 
 # get Curry's movements for event and graph them

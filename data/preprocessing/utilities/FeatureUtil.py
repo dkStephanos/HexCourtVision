@@ -27,14 +27,14 @@ class FeatureUtil:
     # Find the first FG instance, and determine which side of the court it was on, then set directionality for every event
     @staticmethod
     def determine_directionality(combined_event_df):
-        print("TESTING directionality")
         reached_end_of_play = False
         last_moment = []
         last_event = []
+        team_basket = {'team': -1, 'direction': ''}
 
-        for index, row in combined_event_df.iloc[20:-1,].iterrows():
-            if row['EVENTMSGTYPE'] == 1:
-                print(index)
+        # Loop through the events, looking for a made field goal in the first half
+        for index, row in combined_event_df.iterrows():
+            if row['EVENTMSGTYPE'] == 1 and row['PERIOD'] < 3:
                 # we want to find the end of the play, so we can determine which basket was scored on
                 while not reached_end_of_play:
                     for moment in row['moments']:	
@@ -49,12 +49,24 @@ class FeatureUtil:
                     break
 
         # Once we have found it, check the x_loc of the ball to determine basket
+        team_basket['team'] = last_event['possession']
         if last_moment[5][0][2] >= 90.0:
-            print('RIGHT')
+            team_basket['direction'] = 'RIGHT'
         else:
-            print('LEFT')
+            team_basket['direction'] = 'LEFT'
+        other_direction = 'RIGHT' if team_basket['direction'] == 'LEFT' else 'LEFT'
+        
+        # Next, set up the conditions and values for directionality, direction flips after the second period
+        conditions = [
+            (combined_event_df['possession'] == team_basket['team']) & (combined_event_df['PERIOD'] < 3),
+            (combined_event_df['possession'] != team_basket['team']) & (combined_event_df['PERIOD'] < 3),
+            (combined_event_df['possession'] == team_basket['team']) & (combined_event_df['PERIOD'] > 3),
+            (combined_event_df['possession'] != team_basket['team']) & (combined_event_df['PERIOD'] > 3),
+        ]
+        values = [team_basket['direction'], other_direction, other_direction, team_basket['direction']]
 
-        print(last_event)
+        # Finally, map the direction onto each event and return the combined event dataframe
+        combined_event_df['direction'] = np.select(conditions, values)
 
         return combined_event_df
 
