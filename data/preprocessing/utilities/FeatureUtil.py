@@ -150,6 +150,7 @@ class FeatureUtil:
             elif not pd.isna(passer) and (not pd.isna(ball_handler_df.iloc[i]['player_id']) and ball_handler_df.iloc[i]['player_id'] != passer):
                 receiver = ball_handler_df.iloc[i]['player_id']
                 receive_moment = i
+                pass_moment = i -1 if not pd.isna(ball_handler_df.iloc[i-1]['player_id']) else pass_moment
                 passes.append({'passer': passer, 'pass_moment': pass_moment, 'receiver': receiver, 'receive_moment': receive_moment})
                 passer = pd.NA
                 receiver = pd.NA
@@ -179,6 +180,6 @@ class FeatureUtil:
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
 
         print(passes)
-        #ball_handler_df.to_csv('static/data/test/ball_handler.csv')
+        ball_handler_df.to_csv('static/data/test/ball_handler.csv')
         
         return ball_handler_df

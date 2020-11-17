@@ -31,9 +31,7 @@ annotation_df = FeatureUtil.determine_possession(annotation_df)
 annotation_df = DataUtil.generate_event_ids(annotation_df)
 
 annotation_df = DataUtil.trim_annotation_cols(annotation_df)
-print(annotation_df.shape)
 combined_event_df = DataUtil.combine_game_and_annotation_events(game_df, annotation_df)
-print(combined_event_df.shape)
 #combined_event_df.to_csv("static/data/test/events.csv")
 curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
 
@@ -49,4 +47,4 @@ curry_df = moments_df[moments_df.player_id==-1]
 GraphUtil.plot_player_movement(curry_df)
 
 #curry_df.to_csv("static/data/test/test.csv")
-FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
+event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
