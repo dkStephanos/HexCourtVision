@@ -178,8 +178,17 @@ class FeatureUtil:
 
         # Next, step through each moment and find the passes
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
-
-        print(passes)
-        ball_handler_df.to_csv('static/data/test/ball_handler.csv')
         
-        return ball_handler_df
+        return passes
+
+    # Takes in a list of basic pass objects (passer, pass_moment, receiver, receive_moment) and filters to hand_off candidates, appending additional data
+    @staticmethod
+    def get_dribble_handoff_candidates(moments_df, event_passes):
+        candidates = []
+        for event_pass in event_passes:
+            player_pass_data = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
+
+            player_receive_data = moments_df.loc[(moments_df['moment'] == event_pass['receive_moment']) & (moments_df['player_id'] == event_pass['receiver'])]
+            print(player_pass_data)
+            print(player_receive_data)
+        return event_passes

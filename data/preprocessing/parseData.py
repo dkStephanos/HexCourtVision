@@ -20,7 +20,6 @@ from utilities.DataUtil import DataUtil
 #annotation_df = DataUtil.load_annotation_df(annotation_path)
 
 game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.11.2015.GSW.at.BOS\0021500336.json")
-print(game_df.shape)
 
 players_data = DataUtil.get_players_data(game_df)
 
@@ -42,9 +41,11 @@ combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 sample_event = combined_event_df.iloc[13]
 moments_df = DataUtil.get_moments_from_event(sample_event)
 
-# get Curry's movements for event and graph them
-curry_df = moments_df[moments_df.player_id==-1]
-GraphUtil.plot_player_movement(curry_df)
+# get ball movements for event and graph them
+#ball_df = moments_df[moments_df.player_id==-1]
+#GraphUtil.plot_player_movement(ball_df)
 
-#curry_df.to_csv("static/data/test/test.csv")
+#moments_df.to_csv("static/data/test/test.csv")
 event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
+print(event_passes)
+dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(moments_df, event_passes)
