@@ -40,10 +40,11 @@ combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
 sample_event = combined_event_df.iloc[13]
 moments_df = DataUtil.get_moments_from_event(sample_event)
+print(sample_event)
 
 # get ball movements for event and graph them
-#ball_df = moments_df[moments_df.player_id==-1]
-#GraphUtil.plot_player_movement(ball_df)
+ball_df = moments_df[moments_df.player_id==-1]
+GraphUtil.plot_player_movement(ball_df)
 
 #moments_df.to_csv("static/data/test/test.csv")
 event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)

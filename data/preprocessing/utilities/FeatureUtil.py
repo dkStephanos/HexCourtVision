@@ -181,14 +181,19 @@ class FeatureUtil:
         
         return passes
 
-    # Takes in a list of basic pass objects (passer, pass_moment, receiver, receive_moment) and filters to hand_off candidates, appending additional data
+    # Takes in a list of basic pass objects (passer, pass_moment, receiver, receive_moment) and calculates features for passes
     @staticmethod
-    def get_dribble_handoff_candidates(moments_df, event_passes):
+    def get_pass_features(moments_df, event_passes):
         candidates = []
         for event_pass in event_passes:
             player_pass_data = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
-
+            ball_pass_data = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == -1)]
             player_receive_data = moments_df.loc[(moments_df['moment'] == event_pass['receive_moment']) & (moments_df['player_id'] == event_pass['receiver'])]
+            ball_receive_data = moments_df.loc[(moments_df['moment'] == event_pass['receive_moment']) & (moments_df['player_id'] == -1)]     
             print(player_pass_data)
             print(player_receive_data)
+            print(ball_pass_data)
+            print(ball_receive_data)
         return event_passes
+
+        
