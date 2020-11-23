@@ -184,7 +184,6 @@ class FeatureUtil:
     # Takes in a list of basic pass objects (passer, pass_moment, receiver, receive_moment) and calculates features for passes
     @staticmethod
     def get_pass_features(moments_df, event_passes):
-        candidates = []
         for event_pass in event_passes:
             player_pass_data = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
             ball_pass_data = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == -1)]
@@ -196,4 +195,16 @@ class FeatureUtil:
             print(ball_receive_data)
         return event_passes
 
-        
+    # Takes list of event_passes, and filters out dribble_hand_off candidates based on pass/receive moments
+    @staticmethod
+    def get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes):
+        moment_range = 3    # The timespan we are using to capture candidates
+        candidates = []
+
+        for event_pass in event_passes:
+            if (event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
+                moment = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
+                event_id = moment['event_id'].values[0]
+                event = combined_event_df.loc[(combined_event_df['event_id'] == event_id)]
+                candidates.append({'event_id': event_id, 'classification_type': 'dribble-hand-off', 'classification': pd.NA, 'period': event['PERIOD'].values[0], 'game_clock': event['PCTIMESTRING'].values[0], 'shot_clock': moment['shot_clock'].values[0]})
+        return candidates

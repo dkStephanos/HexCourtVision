@@ -44,9 +44,11 @@ print(sample_event)
 
 # get ball movements for event and graph them
 ball_df = moments_df[moments_df.player_id==-1]
-GraphUtil.plot_player_movement(ball_df)
+#GraphUtil.plot_player_movement(ball_df)
 
 #moments_df.to_csv("static/data/test/test.csv")
 event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
 print(event_passes)
-dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(moments_df, event_passes)
+dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes)
+print("Hand off candidates")
+print(dribble_handoff_candidates[0])
