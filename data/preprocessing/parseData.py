@@ -38,17 +38,27 @@ curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
 combined_event_df = FeatureUtil.determine_directionality(combined_event_df)
 combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
-sample_event = combined_event_df.iloc[13]
-moments_df = DataUtil.get_moments_from_event(sample_event)
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 99)
 print(sample_event)
+moments_df = DataUtil.get_moments_from_event(sample_event)
 
 # get ball movements for event and graph them
-ball_df = moments_df[moments_df.player_id==-1]
+#ball_df = moments_df[moments_df.player_id==-1]
 #GraphUtil.plot_player_movement(ball_df)
 
 #moments_df.to_csv("static/data/test/test.csv")
 event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
-print(event_passes)
+#print(event_passes)
 dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes)
 print("Hand off candidates")
-print(dribble_handoff_candidates[0])
+print(dribble_handoff_candidates)
+
+all_candidates = []
+
+for index, event in combined_event_df.iterrows():
+    moments_df = DataUtil.get_moments_from_event(event)
+    event_passes = FeatureUtil.get_passess_for_event(moments_df, event["possession"], players_data)
+    dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes)
+    all_candidates += dribble_handoff_candidates
+    print(dribble_handoff_candidates)
+print(len(all_candidates))

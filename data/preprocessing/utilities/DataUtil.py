@@ -85,10 +85,12 @@ class DataUtil:
         for event in game_df['events']:
             if(event['eventId']  == event_num):
                 return event
-    
+
     @staticmethod
-    def load_annotation_event_by_num(annotation_df, event_num):
-        return annotation_df[annotation_df["EVENTNUM"] == event_num]
+    def load_combined_event_by_num(combined_event_df, event_num):
+        for index, event in combined_event_df.iterrows():
+            if(event['EVENTNUM'] == event_num):
+                return event
 
     # The only events with interesting positional data are Makes, Misses, Turnovers, Fouls. Narrow to those
     @staticmethod
