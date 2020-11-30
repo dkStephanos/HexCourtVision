@@ -32,33 +32,41 @@ annotation_df = DataUtil.generate_event_ids(annotation_df)
 annotation_df = DataUtil.trim_annotation_cols(annotation_df)
 combined_event_df = DataUtil.combine_game_and_annotation_events(game_df, annotation_df)
 #combined_event_df.to_csv("static/data/test/events.csv")
-curr_annotation = DataUtil.load_annotation_event_by_num(annotation_df, 196)
 
 # Get direction for each play, and remove moments occuring on the other half of the court
 combined_event_df = FeatureUtil.determine_directionality(combined_event_df)
 combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 99)
-print(sample_event)
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 103)
+#print(sample_event)
 moments_df = DataUtil.get_moments_from_event(sample_event)
+#print(moments_df)
 
 # get ball movements for event and graph them
-#ball_df = moments_df[moments_df.player_id==-1]
-#GraphUtil.plot_player_movement(ball_df)
+ball_df = moments_df[moments_df.player_id==-1]
+GraphUtil.plot_player_movement(ball_df)
 
 #moments_df.to_csv("static/data/test/test.csv")
-event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
+##event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
 #print(event_passes)
-dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes)
-print("Hand off candidates")
-print(dribble_handoff_candidates)
+#dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes)
+#print("Hand off candidates")
+#print(dribble_handoff_candidates)
 
 all_candidates = []
+succesful = 0
+failed = 0
 
 for index, event in combined_event_df.iterrows():
-    moments_df = DataUtil.get_moments_from_event(event)
-    event_passes = FeatureUtil.get_passess_for_event(moments_df, event["possession"], players_data)
-    dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes)
-    all_candidates += dribble_handoff_candidates
-    print(dribble_handoff_candidates)
-print(len(all_candidates))
+    try:
+        moments_df = DataUtil.get_moments_from_event(event)
+        event_passes = FeatureUtil.get_passess_for_event(moments_df, event["possession"], players_data)
+        dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes)
+        all_candidates += dribble_handoff_candidates
+        succesful += 1
+    except:
+        print("Issue at index: " + str(event['EVENTNUM']))
+        failed += 1
+
+all_candidates = [i for n, i in enumerate(all_candidates) if i not in all_candidates[n + 1:]]
+print("Number of candidates parsed: " + str(len(all_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed))

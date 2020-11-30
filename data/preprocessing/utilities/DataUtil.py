@@ -223,7 +223,7 @@ class DataUtil:
                  "jersey_number": player['jersey'],
                  "position": player['position']
                  })
-        for player in visitor["players"]:	
+        for player in visitor["players"]:	 
             all_players.append({
                 "player_id": player['playerid'],
                  "team_id": visitor['teamid'],

@@ -126,9 +126,9 @@ class FeatureUtil:
 
     @staticmethod
     def distance_between_ball_and_players(event_df, player_ids):
-        group = event_df[event_df.player_id.isin(player_ids)].groupby("player_id")[["x_loc", "y_loc"]]
-
-        return group.apply(FeatureUtil.distance_between_players, event_df[event_df.player_id==-1][["x_loc", "y_loc"]])
+        group = event_df[event_df.player_id.isin(player_ids)].groupby("player_id")[["x_loc", "y_loc", "moment"]]
+          
+        return group.apply(FeatureUtil.distance_between_players, event_df[event_df.player_id==-1][["x_loc", "y_loc", "moment"]])
 
     @staticmethod
     def distance_between_player_and_other_players(player_id, player_loc, event_df):
@@ -165,11 +165,13 @@ class FeatureUtil:
 
         # First, calculate the distances between players and the ball, and get a min dist data frame
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
+        #print(ball_distances)
         ball_dist_df = DataUtil.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
         ball_handler_df = DataUtil.get_labled_mins_from_df(ball_dist_df, 'dist_from_ball')
         
         # Also eliminate any moment where no player was within 3 feet of the ball
         ball_handler_df.loc[ball_handler_df['dist_from_ball'] > 3.3, 'player_id'] = pd.NA
+        ball_handler_df.to_csv("static/data/test/ball_handler.csv")
 
         # We also need to check the ball radius to make sure we aren't counting shot attempts 
         for i in range(0, len(ball_handler_df)):
@@ -200,10 +202,11 @@ class FeatureUtil:
     def get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes):
         moment_range = 3    # The timespan we are using to capture candidates
         candidates = []
-
         for event_pass in event_passes:
             if (event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
                 moment = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
+                #print("MOMENT")
+                #print(moment)
                 event_id = moment['event_id'].values[0]
                 event = combined_event_df.loc[(combined_event_df['event_id'] == event_id)]
                 candidates.append({'event_id': event_id, 'classification_type': 'dribble-hand-off', 'classification': pd.NA, 'period': event['PERIOD'].values[0], 'game_clock': event['PCTIMESTRING'].values[0], 'shot_clock': moment['shot_clock'].values[0]})
