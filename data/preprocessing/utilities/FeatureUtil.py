@@ -115,21 +115,25 @@ class FeatureUtil:
     @staticmethod
     # Function to find the distance between players at each moment
     def distance_between_players(player_a, player_b):
+
         # Make sure we know when to stop
         player_range = 0
         if len(player_a) < len(player_b):
             player_range = len(player_a)
         else:
             player_range = len(player_b)
-        return [euclidean(player_a.iloc[i], player_b.iloc[i])
+
+        # Returns a tuple with (Distance, Moment#)
+        return [(euclidean(player_a.iloc[i], player_b.iloc[i]), player_a.iloc[1]["moment"])
                 for i in range(player_range)]
 
     @staticmethod
     def distance_between_ball_and_players(event_df, player_ids):
         group = event_df[event_df.player_id.isin(player_ids)].groupby("player_id")[["x_loc", "y_loc", "moment"]]
-          
-        return group.apply(FeatureUtil.distance_between_players, event_df[event_df.player_id==-1][["x_loc", "y_loc", "moment"]])
 
+        ball_distances = group.apply(FeatureUtil.distance_between_players, event_df[event_df.player_id==-1][["x_loc", "y_loc", "moment"]])
+
+        return ball_distances
     @staticmethod
     def distance_between_player_and_other_players(player_id, player_loc, event_df):
         group = event_df[event_df.player_id!=player_id].groupby("player_id")[["x_loc", "y_loc"]]

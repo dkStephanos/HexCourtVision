@@ -1,5 +1,6 @@
 import pandas as pd	
 import numpy as np	
+import sys
 
 import matplotlib.pyplot as plt	
 import seaborn as sns	
@@ -39,12 +40,15 @@ combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
 sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 103)
 #print(sample_event)
-moments_df = DataUtil.get_moments_from_event(sample_event)
+#moments_df = DataUtil.get_moments_from_event(sample_event)
 #print(moments_df)
+moments_df = DataUtil.get_moments_from_event(sample_event)
+event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
+dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes)
 
 # get ball movements for event and graph them
-ball_df = moments_df[moments_df.player_id==-1]
-GraphUtil.plot_player_movement(ball_df)
+#ball_df = moments_df[moments_df.player_id==-1]
+#GraphUtil.plot_player_movement(ball_df)
 
 #moments_df.to_csv("static/data/test/test.csv")
 ##event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
@@ -65,8 +69,9 @@ for index, event in combined_event_df.iterrows():
         all_candidates += dribble_handoff_candidates
         succesful += 1
     except:
-        print("Issue at index: " + str(event['EVENTNUM']))
+        print("Issue at index: " + str(event['EVENTNUM']), sys.exc_info()[0])
         failed += 1
+    break
 
 all_candidates = [i for n, i in enumerate(all_candidates) if i not in all_candidates[n + 1:]]
 print("Number of candidates parsed: " + str(len(all_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed))
