@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import math
 
 class DataUtil:
 
@@ -44,6 +45,13 @@ class DataUtil:
         game_df = pd.read_json(path)
         
         return game_df
+
+    @staticmethod
+    def convert_game_clock_to_timestamp(game_clock):
+        seconds = int(float(game_clock)/60)
+        milliseconds = int(float(game_clock)%60)
+
+        return f'{seconds}:{milliseconds}'
 
     @staticmethod
     def get_game_data(game_df, annotation_df):
@@ -301,7 +309,7 @@ class DataUtil:
                     reached_end_of_play = True
                 else:
                     last_shot_clock = moment[3]
-                    # For each player/ball in the list found within each moment	
+                    # For each player/ball in the list found within each moment
                     for player in moment[5]:	
                         # Add additional information to each player/ball	
                         # This info includes the index of each moment, the game clock	

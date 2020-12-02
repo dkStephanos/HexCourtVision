@@ -124,21 +124,29 @@ class FeatureUtil:
             player_range = len(player_b)
 
         # Returns a tuple with (Distance, Moment#)
-        return [(euclidean(player_a.iloc[i], player_b.iloc[i]), player_a.iloc[1]["moment"])
+        return [(euclidean(player_a.iloc[i], player_b.iloc[i]))
                 for i in range(player_range)]
 
     @staticmethod
     def distance_between_ball_and_players(event_df, player_ids):
-        group = event_df[event_df.player_id.isin(player_ids)].groupby("player_id")[["x_loc", "y_loc", "moment"]]
-
-        ball_distances = group.apply(FeatureUtil.distance_between_players, event_df[event_df.player_id==-1][["x_loc", "y_loc", "moment"]])
+        group = event_df[event_df.player_id.isin(player_ids)].groupby("player_id")[["x_loc", "y_loc"]]
+        ball_distances = group.apply(FeatureUtil.distance_between_players, event_df[event_df.player_id==-1][["x_loc", "y_loc"]])
 
         return ball_distances
+
     @staticmethod
     def distance_between_player_and_other_players(player_id, player_loc, event_df):
         group = event_df[event_df.player_id!=player_id].groupby("player_id")[["x_loc", "y_loc"]]
 
         return group.apply(FeatureUtil.distance_between_players, player_b=(player_loc))
+
+    # Takes a series of player_id: (distance, moment), and returns momentNum: player_id, dist_from_ball. Works with players or ball data
+    @staticmethod
+    def get_min_distances_between_players_per_moment(player_distances):
+        print(player_distances[:-1])
+
+
+        return player_distances
 
     def convert_ball_handler_to_passes(ball_handler_df):
         passes = []
@@ -169,9 +177,9 @@ class FeatureUtil:
 
         # First, calculate the distances between players and the ball, and get a min dist data frame
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
-        #print(ball_distances)
+        ball_distances.to_csv("static/data/test/ball_distances.csv")
         ball_dist_df = DataUtil.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
-        ball_handler_df = DataUtil.get_labled_mins_from_df(ball_dist_df, 'dist_from_ball')
+        ball_handler_df = DataUtil.get_labled_mins_from_df(ball_dist_df, "dist_from_ball")
         
         # Also eliminate any moment where no player was within 3 feet of the ball
         ball_handler_df.loc[ball_handler_df['dist_from_ball'] > 3.3, 'player_id'] = pd.NA
@@ -213,5 +221,5 @@ class FeatureUtil:
                 #print(moment)
                 event_id = moment['event_id'].values[0]
                 event = combined_event_df.loc[(combined_event_df['event_id'] == event_id)]
-                candidates.append({'event_id': event_id, 'classification_type': 'dribble-hand-off', 'classification': pd.NA, 'period': event['PERIOD'].values[0], 'game_clock': event['PCTIMESTRING'].values[0], 'shot_clock': moment['shot_clock'].values[0]})
+                candidates.append({'event_id': event_id, 'classification_type': 'dribble-hand-off', 'classification': pd.NA, 'period': event['PERIOD'].values[0], 'game_clock': DataUtil.convert_game_clock_to_timestamp(moment['game_clock']), 'shot_clock': moment['shot_clock'].values[0]})
         return candidates
