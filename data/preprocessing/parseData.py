@@ -23,7 +23,6 @@ from utilities.DataUtil import DataUtil
 game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.11.2015.GSW.at.BOS\0021500336.json")
 
 players_data = DataUtil.get_players_data(game_df)
-print(players_data)
 
 annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\event_annotations\events-20151211GSWBOS.csv")
 
@@ -75,8 +74,8 @@ for index, event in combined_event_df.iterrows():
         failed += 1
     #break
 
-all_candidates = [i for n, i in enumerate(all_candidates) if i not in all_candidates[n + 1:]]
-print("Number of candidates parsed: " + str(len(all_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(round(succesful/(failed + succesful), 2)))
+final_candidates = DataUtil.remove_duplicate_candidates(all_candidates)
+print("Number of candidates parsed: " + str(len(final_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(round(succesful/(failed + succesful), 2)))
 
-canidate_df = pd.DataFrame(all_candidates)
-canidate_df.to_csv('static/data/test/candidates.csv')
+candidate_df = pd.DataFrame(final_candidates)
+candidate_df.to_csv('static/data/test/candidates.csv')

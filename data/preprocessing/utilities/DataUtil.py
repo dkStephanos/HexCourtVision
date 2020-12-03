@@ -321,3 +321,22 @@ class DataUtil:
 
 
         return pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	
+
+    # Scan ahead in the candidates by some set offset to remove duplicate entries from events with overlapping positional data
+    @staticmethod
+    def remove_duplicate_candidates(all_candidates):
+        final_candidates = []
+        offset_length = 5
+        duplicate = False
+
+        for index in range(0, len(all_candidates)):
+            for offset in range(1, offset_length):
+                if not index + offset >= len(all_candidates) and (all_candidates[index]['game_clock'] != all_candidates[index + offset]['game_clock'] or all_candidates[index]['shot_clock'] != all_candidates[index + offset]['shot_clock']):
+                    duplicate = False
+                else:
+                    duplicate = True
+                    break
+            if duplicate == False:
+                final_candidates.append(all_candidates[index])
+
+        return final_candidates
