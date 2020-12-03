@@ -33,16 +33,19 @@ annotation_df = DataUtil.generate_event_ids(annotation_df)
 
 annotation_df = DataUtil.trim_annotation_cols(annotation_df)
 combined_event_df = DataUtil.combine_game_and_annotation_events(game_df, annotation_df)
-#combined_event_df.to_csv("static/data/test/events.csv")
 
 # Get direction for each play, and remove moments occuring on the other half of the court
 combined_event_df = FeatureUtil.determine_directionality(combined_event_df)
 combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 4)
+"""
+print(combined_event_df.head())
+combined_event_df.to_csv("static/data/test/events.csv")
+
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 118)
 print(sample_event)
 moments_df = DataUtil.get_moments_from_event(sample_event)
-#moments_df.to_csv("static/data/test/test.csv")
+moments_df.to_csv("static/data/test/test.csv")
 print(len(moments_df))
 event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
 print(event_passes)
@@ -56,6 +59,7 @@ GraphUtil.plot_player_movement(ball_df)
 ball_df = moments_df[moments_df.player_id==2738]
 GraphUtil.plot_player_movement(ball_df)
 
+"""
 all_candidates = []
 succesful = 0
 failed = 0
@@ -72,7 +76,7 @@ for index, event in combined_event_df.iterrows():
     #break
 
 all_candidates = [i for n, i in enumerate(all_candidates) if i not in all_candidates[n + 1:]]
-print("Number of candidates parsed: " + str(len(all_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed))
+print("Number of candidates parsed: " + str(len(all_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(round(succesful/(failed + succesful), 2)))
 
 canidate_df = pd.DataFrame(all_candidates)
 canidate_df.to_csv('static/data/test/candidates.csv')

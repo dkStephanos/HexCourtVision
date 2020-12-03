@@ -304,8 +304,9 @@ class DataUtil:
         # We only care about positional data for the possession, so if shot clock resets, bail out
         while not reached_end_of_play:
             for moment in moments:	
+
                 # Check to see if shot clock is greater than previous entry, if so, break
-                if moment[3] > last_shot_clock:
+                if moment[3] is None or moment[3] > last_shot_clock:
                     reached_end_of_play = True
                 else:
                     last_shot_clock = moment[3]

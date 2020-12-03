@@ -140,14 +140,6 @@ class FeatureUtil:
 
         return group.apply(FeatureUtil.distance_between_players, player_b=(player_loc))
 
-    # Takes a series of player_id: (distance, moment), and returns momentNum: player_id, dist_from_ball. Works with players or ball data
-    @staticmethod
-    def get_min_distances_between_players_per_moment(player_distances):
-        print(player_distances[:-1])
-
-
-        return player_distances
-
     def convert_ball_handler_to_passes(ball_handler_df):
         passes = []
         passer = pd.NA
