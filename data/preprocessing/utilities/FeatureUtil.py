@@ -169,7 +169,7 @@ class FeatureUtil:
 
         # First, calculate the distances between players and the ball, and get a min dist data frame
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
-        #ball_distances.to_csv("static/data/test/ball_distances.csv")
+        moments_df.to_csv("static/data/test/moments.csv")
         ball_dist_df = DataUtil.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
         ball_handler_df = DataUtil.get_labled_mins_from_df(ball_dist_df, "dist_from_ball")
         

@@ -179,6 +179,8 @@ class DataUtil:
 
     @staticmethod
     def convert_labled_series_to_df(label_name, series_name, series_to_convert):
+        print("Inside convert_labled_series_to_df")
+        print(series_to_convert)
         temp_df = pd.DataFrame({label_name:series_to_convert.index, series_name:series_to_convert.values})
         return pd.DataFrame(temp_df[series_name].tolist(), index= temp_df[label_name])
 
@@ -304,9 +306,11 @@ class DataUtil:
         # We only care about positional data for the possession, so if shot clock resets, bail out
         while not reached_end_of_play:
             for moment in moments:	
-
+                # When shot clock expires, it is set to None, convert to 0.0 so we can process it in the loop below
+                if moment[3] is None:
+                    moment[3] = 0.0
                 # Check to see if shot clock is greater than previous entry, if so, break
-                if moment[3] is None or moment[3] > last_shot_clock:
+                if moment[3] > last_shot_clock:
                     reached_end_of_play = True
                 else:
                     last_shot_clock = moment[3]
@@ -319,10 +323,7 @@ class DataUtil:
                         player_moments.append(player)
             reached_end_of_play = True
 
-        # Create the moments dataframe, and replace all NA values in shot_clock with 0.0
-        moments_df = pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	
-        moments_df['shot_clock'].fillna(0.0, inplace=True)
-        return moments_df
+        return pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	
 
     # Scan ahead in the candidates by some set offset to remove duplicate entries from events with overlapping positional data
     @staticmethod
