@@ -37,7 +37,7 @@ combined_event_df = DataUtil.combine_game_and_annotation_events(game_df, annotat
 combined_event_df = FeatureUtil.determine_directionality(combined_event_df)
 combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
-
+"""
 print(combined_event_df.head())
 combined_event_df.to_csv("static/data/test/events.csv")
 
@@ -79,4 +79,3 @@ print("Number of candidates parsed: " + str(len(final_candidates)) + "\nSuccessf
 
 candidate_df = pd.DataFrame(final_candidates)
 candidate_df.to_csv('static/data/test/candidates.csv')
-"""

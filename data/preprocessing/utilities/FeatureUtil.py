@@ -146,6 +146,7 @@ class FeatureUtil:
         pass_moment = 0
         receiver = pd.NA
         receive_moment = 0
+        
         for i in range(0, len(ball_handler_df)):
             if pd.isna(passer) and not pd.isna(ball_handler_df.iloc[i]['player_id']):
                 passer = ball_handler_df.iloc[i]['player_id']
@@ -169,13 +170,13 @@ class FeatureUtil:
 
         # First, calculate the distances between players and the ball, and get a min dist data frame
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
-        moments_df.to_csv("static/data/test/moments.csv")
+        #moments_df.to_csv("static/data/test/moments.csv")
         ball_dist_df = DataUtil.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
         ball_handler_df = DataUtil.get_labled_mins_from_df(ball_dist_df, "dist_from_ball")
         
         # Also eliminate any moment where no player was within 3 feet of the ball
         ball_handler_df.loc[ball_handler_df['dist_from_ball'] > 3.3, 'player_id'] = pd.NA
-        ball_handler_df.to_csv("static/data/test/ball_handler.csv")
+        #ball_handler_df.to_csv("static/data/test/ball_handler.csv")
 
         # We also need to check the ball radius to make sure we aren't counting shot attempts 
         for i in range(0, len(ball_handler_df)):

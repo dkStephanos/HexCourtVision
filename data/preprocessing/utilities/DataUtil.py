@@ -179,8 +179,6 @@ class DataUtil:
 
     @staticmethod
     def convert_labled_series_to_df(label_name, series_name, series_to_convert):
-        print("Inside convert_labled_series_to_df")
-        print(series_to_convert)
         temp_df = pd.DataFrame({label_name:series_to_convert.index, series_name:series_to_convert.values})
         return pd.DataFrame(temp_df[series_name].tolist(), index= temp_df[label_name])
 
