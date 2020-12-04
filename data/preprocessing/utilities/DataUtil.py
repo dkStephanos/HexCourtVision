@@ -319,8 +319,10 @@ class DataUtil:
                         player_moments.append(player)
             reached_end_of_play = True
 
-
-        return pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	
+        # Create the moments dataframe, and replace all NA values in shot_clock with 0.0
+        moments_df = pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	
+        moments_df['shot_clock'].fillna(0.0, inplace=True)
+        return moments_df
 
     # Scan ahead in the candidates by some set offset to remove duplicate entries from events with overlapping positional data
     @staticmethod
