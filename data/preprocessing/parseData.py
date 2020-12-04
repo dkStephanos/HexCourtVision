@@ -37,14 +37,14 @@ combined_event_df = DataUtil.combine_game_and_annotation_events(game_df, annotat
 combined_event_df = FeatureUtil.determine_directionality(combined_event_df)
 combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
-"""
+
 print(combined_event_df.head())
 combined_event_df.to_csv("static/data/test/events.csv")
 
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 118)
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 135)
 print(sample_event)
 moments_df = DataUtil.get_moments_from_event(sample_event)
-moments_df.to_csv("static/data/test/test.csv")
+#moments_df.to_csv("static/data/test/test.csv")
 print(len(moments_df))
 event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
 print(event_passes)
@@ -53,8 +53,8 @@ print("Hand off candidates")
 print(dribble_handoff_candidates)
 
 # get ball movements for event and graph them
-#ball_df = moments_df[moments_df.player_id==-1]
-#GraphUtil.plot_player_movement(ball_df)
+ball_df = moments_df[moments_df.player_id==-1]
+GraphUtil.plot_player_movement(ball_df)
 #ball_df = moments_df[moments_df.player_id==2738]
 #GraphUtil.plot_player_movement(ball_df)
 
@@ -79,3 +79,4 @@ print("Number of candidates parsed: " + str(len(final_candidates)) + "\nSuccessf
 
 candidate_df = pd.DataFrame(final_candidates)
 candidate_df.to_csv('static/data/test/candidates.csv')
+"""

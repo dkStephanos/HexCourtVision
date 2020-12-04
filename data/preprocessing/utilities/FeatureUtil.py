@@ -152,6 +152,8 @@ class FeatureUtil:
                 passer = ball_handler_df.iloc[i]['player_id']
             elif (not pd.isna(passer) and pass_moment == 0) and pd.isna(ball_handler_df.iloc[i]['player_id']):
                 pass_moment = i - 1
+            elif (not pd.isna(passer) and not pd.isna(ball_handler_df.iloc[i]['player_id'])) and passer == ball_handler_df.iloc[i]['player_id'] and pass_moment != 0:
+                pass_moment = 0
             elif not pd.isna(passer) and (not pd.isna(ball_handler_df.iloc[i]['player_id']) and ball_handler_df.iloc[i]['player_id'] != passer):
                 receiver = ball_handler_df.iloc[i]['player_id']
                 receive_moment = i
@@ -205,7 +207,7 @@ class FeatureUtil:
     # Takes list of event_passes, and filters out dribble_hand_off candidates based on pass/receive moments
     @staticmethod
     def get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes):
-        moment_range = 6    # The timespan we are using to capture candidates
+        moment_range = 7    # The timespan we are using to capture candidates
         candidates = []
         for event_pass in event_passes:
             if (event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
