@@ -320,7 +320,7 @@ class DataUtil:
                         player.extend((moments.index(moment), moment[2], moment[3], event_df["event_id"]))	
                         player_moments.append(player)
             reached_end_of_play = True
-
+        
         return pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	
 
     # Scan ahead in the candidates by some set offset to remove duplicate entries from events with overlapping positional data

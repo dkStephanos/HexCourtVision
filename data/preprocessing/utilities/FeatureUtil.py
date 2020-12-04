@@ -60,8 +60,8 @@ class FeatureUtil:
         conditions = [
             (combined_event_df['possession'] == team_basket['team']) & (combined_event_df['PERIOD'] < 3),
             (combined_event_df['possession'] != team_basket['team']) & (combined_event_df['PERIOD'] < 3),
-            (combined_event_df['possession'] == team_basket['team']) & (combined_event_df['PERIOD'] > 3),
-            (combined_event_df['possession'] != team_basket['team']) & (combined_event_df['PERIOD'] > 3),
+            (combined_event_df['possession'] == team_basket['team']) & (combined_event_df['PERIOD'] >= 3),
+            (combined_event_df['possession'] != team_basket['team']) & (combined_event_df['PERIOD'] >= 3),
         ]
         values = [team_basket['direction'], other_direction, other_direction, team_basket['direction']]
 
