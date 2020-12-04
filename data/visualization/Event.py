@@ -1,3 +1,4 @@
+import pandas
 from Constant import Constant
 from Moment import Moment
 from Team import Team
@@ -28,11 +29,13 @@ class Event:
         for j, circle in enumerate(player_circles):
             circle.center = moment.players[j].x, moment.players[j].y
             annotations[j].set_position(circle.center)
+            if moment.shot_clock is None:
+                moment.shot_clock = 0.0
             clock_test = 'Quarter {:d}\n {:02d}:{:02d}\n {:03.1f}'.format(
-                         moment.quarter,
-                         int(moment.game_clock) % 3600 // 60,
-                         int(moment.game_clock) % 60,
-                         moment.shot_clock)
+                        moment.quarter,
+                        int(moment.game_clock) % 3600 // 60,
+                        int(moment.game_clock) % 60,
+                        moment.shot_clock)
             clock_info.set_text(clock_test)
         ball_circle.center = moment.ball.x, moment.ball.y
         ball_circle.radius = moment.ball.radius / Constant.NORMALIZATION_COEF
