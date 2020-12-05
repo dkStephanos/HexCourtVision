@@ -43,6 +43,7 @@ class FeatureUtil:
                             last_moment = moment
                             last_event = row
                             reached_end_of_play = True
+                            break
                     # If the ball never goes out of bounds, look for the next event
                     break
                 if reached_end_of_play:
