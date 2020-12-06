@@ -67,7 +67,7 @@
 65,21500440315,dribble-hand-off,FALSE,3,5:49,11.42,
 66,21500440316,dribble-hand-off,FALSE,3,5:31,11.89,
 67,21500440320,dribble-hand-off,TRUE,3,5:14,8.62,
-68,21500440321,dribble-hand-off,TRUE,3,4:59,24,fake
+68,21500440321,dribble-hand-off,TRUE,3,4:59,24,FAKE
 69,21500440327,dribble-hand-off,FALSE,3,4:06,16.17,
 70,21500440337,dribble-hand-off,TRUE,3,3:06,10.89,
 71,21500440340,dribble-hand-off,FALSE,3,2:35,24,
@@ -78,7 +78,7 @@
 76,21500440370,dribble-hand-off,FALSE,3,0:32,12.45,
 77,21500440383,dribble-hand-off,TRUE,4,11:55,7.48,
 78,21500440383,dribble-hand-off,FALSE,4,11:48,6.95,
-79,21500440385,dribble-hand-off,TRUE,4,11:35,16.45,fake
+79,21500440385,dribble-hand-off,TRUE,4,11:35,16.45,FAKE
 80,21500440386,dribble-hand-off,FALSE,4,11:14,11.46,
 81,21500440386,dribble-hand-off,FALSE,4,11:12,9.98,
 82,21500440387,dribble-hand-off,TRUE,4,11:00,14.74,
@@ -86,7 +86,7 @@
 84,21500440389,dribble-hand-off,FALSE,4,10:49,16.92,
 85,21500440395,dribble-hand-off,TRUE,4,10:39,11.35,
 86,21500440395,dribble-hand-off,FALSE,4,10:34,9.71,
-87,21500440405,dribble-hand-off,TRUE,4,9:45,10.86,fake
+87,21500440405,dribble-hand-off,TRUE,4,9:45,10.86,FAKE
 88,21500440409,dribble-hand-off,FALSE,4,9:20,11.14,
 89,21500440410,dribble-hand-off,FALSE,4,9:05,15.29,
 90,21500440415,dribble-hand-off,TRUE,4,8:12,9.92,
@@ -98,5 +98,5 @@
 96,21500440468,dribble-hand-off,FALSE,4,2:45,18.06,
 97,21500440471,dribble-hand-off,FALSE,4,2:13,11.05,
 ,,,,,,,
-,,,39,,,0.75,
+,,,39,,,0.75,0.8
 ,,,59,,,83,

@@ -1,0 +1,114 @@
+Warriors Celtics
+
+Issue at index: 102 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002746A37E408>)
+Issue at index: 372 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000027400A89488>)
+Issue at index: 374 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000027401463A08>)
+Issue at index: 463 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000027409379D88>)
+Issue at index: 690 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000027481DCEDC8>)
+Number of candidates parsed: 158
+Successful events: 300
+Failed events: 5
+Percent Successful: 0.98
+
+Notable Examples
+
+Q1 - 6:20 and 6:19 -- Detects Fake, mistakes two handoffs right after
+Q1 - 5:46 -- Fake then backdoor pass 
+Q1 - :54 -- Honestly, not sure, but inclined to say no
+Q1 - 1:23 and 1:22 -- Data error
+Q3 - 9:09 -- Borderline
+Q3 - 7:54 -- Borderline
+Q3 - 3:31 -- Borderline
+
+Missed Actions:
+
+
+Q2 - 8:33
+Q3 - 2:51 -- fake
+Q4 - 10:11 -- fake
+Q4 - 5:02 -- fake
+Q4 - 2:20
+OT2 - 3:39
+
+missed candidates: 6
+positive candidates: 39
+negative candidates: 59
+recall w/o fakes: .898
+recall w/ fakes: .891
+
+----------------------------------------------
+
+
+Clippers Lakers 12/25
+
+Issue at index: 161 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000026E2878B2C8>)
+Issue at index: 294 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000026E33065148>)
+Issue at index: 296 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000026E330674C8>)
+Issue at index: 299 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000026E3338D7C8>)
+Issue at index: 326 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000026E36795348>)
+Issue at index: 345 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000026E35A10308>)
+Issue at index: 346 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000026E382A00C8>)
+Issue at index: 408 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000026E3C489288>)
+Issue at index: 479 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000026E44DFB048>)
+Number of candidates parsed: 98
+Successful events: 218
+Failed events: 9
+Percent Successful: 0.96
+
+Questionable:
+
+Q1 - 10:12 -- Foul occurs before handoff
+Q2 - 4:22 -- Poked out of bounds before handoff
+
+Missed Candidates
+
+Q2 - 11:02 -- Fake
+Q2 - 7:48 -- Fake
+Q2 - 4:18
+Q2 - 3:55 -- Cutting screener
+Q2 - 2:45 -- Behind back pass
+Q3 - 11:15 -- Early pass, moving screen foul
+Q3 - 11:03 -- Fake
+Q3 - 11:02 -- Fake
+Q3 - 9:01
+Q3 - :23
+Q4 - 11:16
+Q4 - 7:05
+Q4 - 1:18
+
+missed candidates: 13
+positive candidates: 39
+negative candidates: 59
+recall w/o fakes: .75
+recall w/ fakes: .8
+
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
