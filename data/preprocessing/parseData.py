@@ -13,15 +13,32 @@ from utilities.FeatureUtil import FeatureUtil
 from utilities.DataUtil import DataUtil
 
 # Load game with GUI
-game_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/", title="Select a game file")
-game_df = DataUtil.load_game_df(game_path)
+#game_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/", title="Select a game file")
+#game_df = DataUtil.load_game_df(game_path)
 
-easygui.msgbox("Next select corresponding annotation file")
-annotation_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/", title="Select an annotation file")
-annotation_df = DataUtil.load_annotation_df(annotation_path)
+#easygui.msgbox("Next select corresponding annotation file")
+#annotation_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/", title="Select an annotation file")
+#annotation_df = DataUtil.load_annotation_df(annotation_path)
 
-#game_df = DataUtil.load_game_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\game_raw_data\12.11.2015.GSW.at.BOS\0021500336.json")
-#annotation_df = DataUtil.load_annotation_df(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\data\event_annotations\events-20151211GSWBOS.csv")
+games = {
+        "1": r'C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.11.2015.GSW.at.BOS/0021500336.json',
+        "2": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.LAC.at.LAL/0021500440.json",
+        "3": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.30.2015.DEN.at.POR/0021500482.json",
+        "4": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.30.2015.GSW.at.DAL/0021500480.json",
+        "5": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.PHX.at.OKC/0021500488.json",
+        "6": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/11.06.2015.MIL.at.NYK/0021500079.json"
+        }
+events = {
+        "1": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151211GSWBOS.csv",
+        "2": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151225LACLAL.csv",
+        "3": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151230DENPOR.csv",
+        "4": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151230GSWDAL.csv",
+        "5": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151231PHXOKC.csv",
+        "6": r'C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151106MILNYK.csv'
+    }
+
+game_df = DataUtil.load_game_df(games["2"])
+annotation_df = DataUtil.load_annotation_df(events["2"])
 
 players_data = DataUtil.get_players_data(game_df)
 print(players_data)
@@ -40,7 +57,7 @@ combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
 print(combined_event_df.head())
 #combined_event_df.to_csv("static/data/test/events.csv")
-"""
+
 sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 372)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
@@ -79,3 +96,4 @@ print("Number of candidates parsed: " + str(len(final_candidates)) + "\nSuccessf
 
 candidate_df = pd.DataFrame(final_candidates)
 candidate_df.to_csv('static/data/test/candidates.csv')
+"""

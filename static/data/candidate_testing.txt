@@ -64,14 +64,14 @@ Missed Candidates
 
 Q2 - 11:02 -- Fake
 Q2 - 7:48 -- Fake
-Q2 - 4:18
-Q2 - 3:55 -- Cutting screener
+!Q2 - 4:18  -- Missing from positional data
+Q2 - 3:53 -- Cutting screener
 Q2 - 2:45 -- Behind back pass
 Q3 - 11:15 -- Early pass, moving screen foul
 Q3 - 11:03 -- Fake
 Q3 - 11:02 -- Fake
-Q3 - 9:01
-Q3 - :23
+!Q3 - 9:01 -- Missing positional data
+Q3 - :23  
 Q4 - 11:16
 Q4 - 7:05
 Q4 - 1:18
