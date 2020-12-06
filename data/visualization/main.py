@@ -9,7 +9,7 @@ games = {"1": 'C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data
         }
 
 while True:
-    print('Enter the path to the game you would like to see from the following list: \n1) GSWatBOS\n2) LACatLAL')
+    print('Enter the path to the game you would like to see from the following list: \n1) GSWatBOS\n2) LACatLAL\n3) DENatPOR\n4) GSWatDAL\n5) PHXatOKC\n6) MILatNYK')
     print('\nEnter the game (or exit): ')
     selection = input()
     if(selection == "exit"):
