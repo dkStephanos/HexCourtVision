@@ -102,14 +102,22 @@ class DataUtil:
 
     # The only events with interesting positional data are Makes, Misses, Turnovers, Fouls. Narrow to those
     @staticmethod
-    def trim_annotation_rows(annotation_df):
+    def trim_annotation_rows(annotation_df, bad_events = []):
         # First, extract only the make, miss, turnover, foul events
         annotation_df = annotation_df.loc[annotation_df["EVENTMSGTYPE"].isin([1,2,5,6])]
 
         # Next, trim out the offensive charge events, as they are duplicated as turnovers
         annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("Offensive Charge", na=False)]
         annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("Offensive Charge", na=False)]
-        
+
+        # Next, trim out technical fouls, as they don't contain full positional data
+        annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("T.FOUL", na=False)]
+        annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("T.FOUL", na=False)]
+
+        # Finally, remove passed eventnums that have bad data
+        if len(bad_events) > 0:
+            annotation_df = annotation_df[~annotation_df["EVENTNUM"].isin(bad_events)]
+
         return annotation_df
     
     @staticmethod

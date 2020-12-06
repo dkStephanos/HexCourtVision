@@ -57,11 +57,11 @@ combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
 print(combined_event_df.head())
 #combined_event_df.to_csv("static/data/test/events.csv")
-
+"""
 sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 372)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
-#moments_df.to_csv("static/data/test/test.csv")
+moments_df.to_csv("static/data/test/test.csv")
 print(len(moments_df))
 event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
 print(event_passes)
@@ -83,7 +83,7 @@ for index, event in combined_event_df.iterrows():
     try:
         moments_df = DataUtil.get_moments_from_event(event)
         event_passes = FeatureUtil.get_passess_for_event(moments_df, event["possession"], players_data)
-        dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes)
+        dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, 8)
         all_candidates += dribble_handoff_candidates
         succesful += 1
     except:
@@ -96,4 +96,3 @@ print("Number of candidates parsed: " + str(len(final_candidates)) + "\nSuccessf
 
 candidate_df = pd.DataFrame(final_candidates)
 candidate_df.to_csv('static/data/test/candidates.csv')
-"""

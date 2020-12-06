@@ -205,10 +205,9 @@ class FeatureUtil:
             print(ball_receive_data)
         return event_passes
 
-    # Takes list of event_passes, and filters out dribble_hand_off candidates based on pass/receive moments
+    # Takes list of event_passes, and filters out dribble_hand_off candidates based on pass/receive moments within provided moment_range
     @staticmethod
-    def get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes):
-        moment_range = 7    # The timespan we are using to capture candidates
+    def get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_range):
         candidates = []
         for event_pass in event_passes:
             if (event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
