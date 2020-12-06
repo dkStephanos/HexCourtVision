@@ -106,9 +106,11 @@ class DataUtil:
         # First, extract only the make, miss, turnover, foul events
         annotation_df = annotation_df.loc[annotation_df["EVENTMSGTYPE"].isin([1,2,5,6])]
 
-        # Next, trim out the offensive charge events, as they are duplicated as turnovers
+        # Next, trim out the offensive foul events, as they are duplicated as turnovers
         annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("Offensive Charge", na=False)]
         annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("Offensive Charge", na=False)]
+        annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("OFF.FOUL", na=False)]
+        annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("OFF.FOUL", na=False)]
 
         # Next, trim out technical fouls, as they don't contain full positional data
         annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("T.FOUL", na=False)]

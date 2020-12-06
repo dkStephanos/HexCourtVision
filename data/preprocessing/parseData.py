@@ -36,14 +36,31 @@ events = {
         "5": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151231PHXOKC.csv",
         "6": r'C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151106MILNYK.csv'
     }
+bad_events = {
+    "1": [],
+    "2": [212, 294, 386],
+    "3": [],
+    "4": [],
+    "5": [],
+    "6": [],
+}
+moment_ranges = {
+    "1": 7,
+    "2": 8,
+    "3": [],
+    "4": [],
+    "5": [],
+    "6": [],
+}
 
-game_df = DataUtil.load_game_df(games["2"])
-annotation_df = DataUtil.load_annotation_df(events["2"])
+game_num = "2"
+game_df = DataUtil.load_game_df(games[game_num])
+annotation_df = DataUtil.load_annotation_df(events[game_num])
 
 players_data = DataUtil.get_players_data(game_df)
 print(players_data)
 
-annotation_df = DataUtil.trim_annotation_rows(annotation_df)
+annotation_df = DataUtil.trim_annotation_rows(annotation_df, bad_events[game_num])
 annotation_df = FeatureUtil.determine_possession(annotation_df)
 annotation_df = DataUtil.generate_event_ids(annotation_df)
 
@@ -57,15 +74,16 @@ combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
 print(combined_event_df.head())
 #combined_event_df.to_csv("static/data/test/events.csv")
+
 """
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 372)
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 279)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
 moments_df.to_csv("static/data/test/test.csv")
 print(len(moments_df))
 event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
 print(event_passes)
-dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes)
+dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_ranges[game_num])
 print("Hand off candidates")
 print(dribble_handoff_candidates)
 
@@ -83,7 +101,7 @@ for index, event in combined_event_df.iterrows():
     try:
         moments_df = DataUtil.get_moments_from_event(event)
         event_passes = FeatureUtil.get_passess_for_event(moments_df, event["possession"], players_data)
-        dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, 8)
+        dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_ranges[game_num])
         all_candidates += dribble_handoff_candidates
         succesful += 1
     except:
@@ -95,4 +113,4 @@ final_candidates = DataUtil.remove_duplicate_candidates(all_candidates)
 print("Number of candidates parsed: " + str(len(final_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(round(succesful/(failed + succesful), 2)))
 
 candidate_df = pd.DataFrame(final_candidates)
-candidate_df.to_csv('static/data/test/candidates.csv')
+candidate_df.to_csv('static/data/test/candidates1.csv')

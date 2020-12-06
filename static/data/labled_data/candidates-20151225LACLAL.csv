@@ -98,5 +98,5 @@
 96,21500440468,dribble-hand-off,FALSE,4,2:45,18.06,
 97,21500440471,dribble-hand-off,FALSE,4,2:13,11.05,
 ,,,,,,,
-,,,39,,,0.75,0.8
-,,,59,,,83,
+,,Postive Candidates,39,,Recall,0.897959184,
+,,Negative Candidates,59,,,0.911111111,

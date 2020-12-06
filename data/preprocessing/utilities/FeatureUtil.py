@@ -214,6 +214,6 @@ class FeatureUtil:
                 moment = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
                 event_id = moment['event_id'].values[0]
                 event = combined_event_df.loc[(combined_event_df['event_id'] == event_id)]
-                if len(candidates) == 0 or candidates[-1]['shot_clock'] - moment['shot_clock'].values[0] > .3:
+                if len(candidates) == 0 or candidates[-1]['shot_clock'] - moment['shot_clock'].values[0] > .2:
                     candidates.append({'event_id': event_id, 'classification_type': 'dribble-hand-off', 'classification': pd.NA, 'period': event['PERIOD'].values[0], 'game_clock': DataUtil.convert_game_clock_to_timestamp(moment['game_clock']), 'shot_clock': moment['shot_clock'].values[0]})
         return candidates
