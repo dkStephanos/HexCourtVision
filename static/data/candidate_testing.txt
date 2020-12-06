@@ -80,9 +80,23 @@ recall w/ fakes: .883
 
 --------------------------------------------------
 
+Denver Portland 12/30
 
 
 
+Questionable:
+
+
+
+Missed Candidates
+
+
+
+missed candidates: 
+positive candidates: 
+negative candidates: 
+recall w/o fakes: 
+recall w/ fakes: 
 
 
 

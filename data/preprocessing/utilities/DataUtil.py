@@ -54,6 +54,12 @@ class DataUtil:
         return f'{seconds}:{milliseconds}'
 
     @staticmethod
+    def convert_timestamp_to_game_clock(timestamp):
+        time = timestamp.split(':')
+
+        return int(time[0])*60 + int(time[1])
+
+    @staticmethod
     def get_game_data(game_df, annotation_df):
         game_dict = {}
 

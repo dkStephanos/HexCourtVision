@@ -47,13 +47,13 @@ bad_events = {
 moment_ranges = {
     "1": 7,
     "2": 8,
-    "3": [],
+    "3": 8,
     "4": [],
     "5": [],
     "6": [],
 }
 
-game_num = "2"
+game_num = "3"
 game_df = DataUtil.load_game_df(games[game_num])
 annotation_df = DataUtil.load_annotation_df(events[game_num])
 
@@ -76,7 +76,7 @@ print(combined_event_df.head())
 #combined_event_df.to_csv("static/data/test/events.csv")
 
 """
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 279)
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 19)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
 moments_df.to_csv("static/data/test/test.csv")
@@ -107,10 +107,9 @@ for index, event in combined_event_df.iterrows():
     except:
         print("Issue at index: " + str(event['EVENTNUM']), sys.exc_info())
         failed += 1
-    #break
 
 final_candidates = DataUtil.remove_duplicate_candidates(all_candidates)
 print("Number of candidates parsed: " + str(len(final_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(round(succesful/(failed + succesful), 2)))
 
 candidate_df = pd.DataFrame(final_candidates)
-candidate_df.to_csv('static/data/test/candidates1.csv')
+candidate_df.to_csv('static/data/test/candidates.csv')
