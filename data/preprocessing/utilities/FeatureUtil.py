@@ -37,26 +37,18 @@ class FeatureUtil:
             if row['EVENTMSGTYPE'] == 1 and row['PERIOD'] < 3:
                 event_time = DataUtil.convert_timestamp_to_game_clock(row['PCTIMESTRING'])
                 # we want to find the end of the play, so we can determine which basket was scored on
-                while not reached_end_of_play:
-                    for moment in row['moments']:	
-                        # After a score, the ball is taken out of bounds, so check if the x_loc of the ball passed either extreme
-                        if (moment[5][0][2] >= 90.0 or moment[5][0][2] <= 0.0):
-                            last_moment = moment
-                            last_event = row
-                            reached_end_of_play = True
-                            break
-                    # If the ball never goes out of bounds, look for the next event
-                    break
+                for moment in row['moments']:
+                    if (moment[2] <= event_time + 1) and (moment[2] >= event_time - 1):
+                        last_event = row
+                        last_moment = moment
+                        reached_end_of_play = True
+                        break
                 if reached_end_of_play:
                     break
                 
-        print("INSIDE DETERMINE DIRECTIONALITY")
-        print(last_moment)
-        print(last_event)
-        ball_handler = FeatureUtil.possession_at_moment(last_moment)
         # Once we have found it, check the x_loc of the ball to determine basket
-        team_basket['team'] = FeatureUtil.possession_at_moment(last_moment)
-        if last_moment[5][0][2] >= 90.0:
+        team_basket['team'] = last_event['possession']
+        if last_moment[5][0][2] >= 47.0:
             team_basket['direction'] = 'RIGHT'
         else:
             team_basket['direction'] = 'LEFT'
