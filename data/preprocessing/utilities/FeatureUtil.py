@@ -41,10 +41,6 @@ class FeatureUtil:
                     for moment in row['moments']:	
                         # After a score, the ball is taken out of bounds, so check if the x_loc of the ball passed either extreme
                         if (moment[5][0][2] >= 90.0 or moment[5][0][2] <= 0.0):
-                            print("Inside determine directionality -- success")
-                            print(moment)
-                            print(event_time)
-                            print(row)
                             last_moment = moment
                             last_event = row
                             reached_end_of_play = True
@@ -53,8 +49,7 @@ class FeatureUtil:
                     break
                 if reached_end_of_play:
                     break
-        
-        print(last_event)
+
         # Once we have found it, check the x_loc of the ball to determine basket
         team_basket['team'] = last_event['possession']
         if last_moment[5][0][2] >= 90.0:
@@ -70,9 +65,7 @@ class FeatureUtil:
             (combined_event_df['possession'] == team_basket['team']) & (combined_event_df['PERIOD'] >= 3),
             (combined_event_df['possession'] != team_basket['team']) & (combined_event_df['PERIOD'] >= 3),
         ]
-        #values = [team_basket['direction'], other_direction, other_direction, team_basket['direction']]
-        # Flipped values for testing
-        values = [other_direction, team_basket['direction'], team_basket['direction'], other_direction]
+        values = [team_basket['direction'], other_direction, other_direction, team_basket['direction']]
 
         # Finally, map the direction onto each event and return the combined event dataframe
         combined_event_df['direction'] = np.select(conditions, values)

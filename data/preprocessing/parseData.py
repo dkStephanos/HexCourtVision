@@ -61,7 +61,7 @@ event_offset = {
     "6": 0,
 }
 
-game_num = "3"
+game_num = "2"
 game_df = DataUtil.load_game_df(games[game_num])
 annotation_df = DataUtil.load_annotation_df(events[game_num])
 
@@ -110,8 +110,9 @@ for index, event in combined_event_df.iterrows():
     try:
         moments_df = DataUtil.get_moments_from_event(event)
         event_passes = FeatureUtil.get_passess_for_event(moments_df, event["possession"], players_data)
-        dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_ranges[game_num])
-        all_candidates += dribble_handoff_candidates
+        if len(event_passes) > 0:
+            dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_ranges[game_num])
+            all_candidates += dribble_handoff_candidates
         succesful += 1
     except:
         print("Issue at index: " + str(event['EVENTNUM']), sys.exc_info())
