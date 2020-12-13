@@ -106,6 +106,17 @@ class DataUtil:
             if(event['EVENTNUM'] == event_num):
                 return event
 
+    # Some games are missing the first couple events, so we must offset the numbers to correspond with the annotation data
+    @staticmethod
+    def add_offset_to_eventnums(game_df, event_offset):
+        print(game_df.head())
+        # If event_offset is zero, we can skip this
+        if (event_offset != 0):
+            for event in game_df['events']:
+                event['eventId'] = str(int(event['eventId']) + event_offset)
+
+        return game_df
+
     # The only events with interesting positional data are Makes, Misses, Turnovers, Fouls. Narrow to those
     @staticmethod
     def trim_annotation_rows(annotation_df, bad_events = []):
