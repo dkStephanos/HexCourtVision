@@ -159,13 +159,13 @@ class FeatureUtil:
             if pd.isna(passer) and not pd.isna(ball_handler_df.iloc[i]['player_id']):
                 passer = ball_handler_df.iloc[i]['player_id']
             elif (not pd.isna(passer) and pass_moment == 0) and pd.isna(ball_handler_df.iloc[i]['player_id']):
-                pass_moment = i - 1
+                pass_moment = ball_handler_df.iloc[i - 1]['moment']
             elif (not pd.isna(passer) and not pd.isna(ball_handler_df.iloc[i]['player_id'])) and passer == ball_handler_df.iloc[i]['player_id'] and pass_moment != 0:
                 pass_moment = 0
             elif not pd.isna(passer) and (not pd.isna(ball_handler_df.iloc[i]['player_id']) and ball_handler_df.iloc[i]['player_id'] != passer):
                 receiver = ball_handler_df.iloc[i]['player_id']
-                receive_moment = i
-                pass_moment = i -1 if not pd.isna(ball_handler_df.iloc[i-1]['player_id']) else pass_moment
+                receive_moment = ball_handler_df.iloc[i]['moment']
+                pass_moment = ball_handler_df.iloc[i - 1]['moment'] if not pd.isna(ball_handler_df.iloc[i-1]['player_id']) else pass_moment
                 passes.append({'passer': passer, 'pass_moment': pass_moment, 'receiver': receiver, 'receive_moment': receive_moment}) if len(passes) == 0 or passes[-1]['passer'] != passer else ""
                 passer = pd.NA
                 receiver = pd.NA
