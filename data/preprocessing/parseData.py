@@ -49,8 +49,8 @@ moment_ranges = {
     "2": 8,
     "3": 8,
     "4": 8,
-    "5": [],
-    "6": [],
+    "5": 7,
+    "6": 7,
 }
 event_offset = {
     "1": 0,
@@ -61,7 +61,7 @@ event_offset = {
     "6": 0,
 }
 
-game_num = "2"
+game_num = "1"
 game_df = DataUtil.load_game_df(games[game_num])
 annotation_df = DataUtil.load_annotation_df(events[game_num])
 

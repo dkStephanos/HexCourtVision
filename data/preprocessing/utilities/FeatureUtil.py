@@ -49,9 +49,13 @@ class FeatureUtil:
                     break
                 if reached_end_of_play:
                     break
-
+                
+        print("INSIDE DETERMINE DIRECTIONALITY")
+        print(last_moment)
+        print(last_event)
+        ball_handler = FeatureUtil.possession_at_moment(last_moment)
         # Once we have found it, check the x_loc of the ball to determine basket
-        team_basket['team'] = last_event['possession']
+        team_basket['team'] = FeatureUtil.possession_at_moment(last_moment)
         if last_moment[5][0][2] >= 90.0:
             team_basket['direction'] = 'RIGHT'
         else:
@@ -135,6 +139,16 @@ class FeatureUtil:
         ball_distances = group.apply(FeatureUtil.distance_between_players, event_df[event_df.player_id==-1][["x_loc", "y_loc"]])
 
         return ball_distances
+
+    @staticmethod
+    def possession_at_moment(moment_df):
+        distances = []
+
+        for player in moment_df[5][1:]:
+            distances.append([euclidean([moment_df[5][0][3], moment_df[5][0][4]], [player[3], player[4]]), player[0]])
+
+        return min(distances, key=lambda x: x[0])[1]
+
 
     @staticmethod
     def distance_between_player_and_other_players(player_id, player_loc, event_df):
