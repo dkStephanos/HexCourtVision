@@ -147,15 +147,32 @@ negative candidates: 78
 recall w/o fakes: .50
 recall w/ fakes: .537
 
+-------------------------------------
+
+Pheonix OKC 12/31/2015
+
+Issue at index: 3 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC0B95A548>)
+Issue at index: 5 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC24E1D2C8>)
+Issue at index: 75 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000002BC2BA9CB08>)
+Issue at index: 190 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000002BC3571BA48>)
+Issue at index: 290 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC3D751048>)
+Issue at index: 295 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC3D7510C8>)
+Issue at index: 297 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC3D751048>)
+Issue at index: 299 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC3F182348>)
+Issue at index: 385 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC43B46088>)
+Issue at index: 387 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC475DF748>)
+Issue at index: 413 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC48E150C8>)
+Issue at index: 415 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC49BDCF88>)
+Number of candidates parsed: 81
+Successful events: 219
+Failed events: 12
+Percent Successful: 0.95
+
+Questionable:
 
 
 
-
-
-
-
-
-
+Missed Candidates
 
 
 
