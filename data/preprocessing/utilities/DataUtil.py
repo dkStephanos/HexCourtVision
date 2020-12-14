@@ -325,6 +325,7 @@ class DataUtil:
         moments = event_df["moments"]	
         # Initialize our new list	
         player_moments = []	
+        last_game_clock = 720
         last_shot_clock = 24
         reached_end_of_play = False
 
@@ -335,10 +336,11 @@ class DataUtil:
                 if moment[3] is None:
                     moment[3] = 0.0
                 # Check to see if shot clock is greater than previous entry, if so, break
-                if moment[3] > last_shot_clock:
+                if moment[3] > last_shot_clock and moment[2] < DataUtil.convert_timestamp_to_game_clock(event_df['PCTIMESTRING']) :
                     reached_end_of_play = True
                 else:
                     last_shot_clock = moment[3]
+                    last_game_clock = moment[2]
                     # For each player/ball in the list found within each moment
                     for player in moment[5]:	
                         # Add additional information to each player/ball	
@@ -346,6 +348,7 @@ class DataUtil:
                         # and shot clock values for each moment	
                         player.extend((moments.index(moment), moment[2], moment[3], event_df["event_id"]))	
                         player_moments.append(player)
+
             reached_end_of_play = True
         
         return pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	

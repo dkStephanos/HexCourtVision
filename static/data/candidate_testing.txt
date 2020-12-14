@@ -80,103 +80,30 @@ recall w/ fakes: .883
 
 --------------------------------------------------
 
-Denver Portland 12/30
-
-Issue at index: 46 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000017F948C5788>)
-Issue at index: 48 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000017F95244EC8>)
-Issue at index: 50 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000017F9595F1C8>)
-Issue at index: 57 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017F95F9E248>)
-Issue at index: 67 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000017F948C5888>)
-Issue at index: 109 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017F9BC91808>)
-Issue at index: 196 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017FA2EEEE88>)
-Issue at index: 211 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017FA36EF088>)
-Issue at index: 212 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017FA3CA4408>)
-Issue at index: 308 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017FAD49D888>)
-Issue at index: 368 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000017FB2372348>)
-Issue at index: 369 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000017FB135B048>)
-Issue at index: 398 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017FB5515A48>)
-Issue at index: 406 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017FB6023F48>)
-Issue at index: 418 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017FB7798348>)
-Issue at index: 428 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017FB8B51688>)
-Issue at index: 439 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017FB9BD9888>)
-Issue at index: 454 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017FBAEDB888>)
-Issue at index: 455 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000017FBAEDBCC8>)
-Issue at index: 469 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000017FBCC78948>)
-
-Questionable:
-
-Q2 - 9:50 -- more like a short pass and a pick n roll**
-
-Missed Candidates
-
-event: 20, Q1 - 10:24 - Shoots before crossing screen
-event: 67, Q1 - 4:48
-event: 130, Q2 - 9:31 -- Fake
-event: 132, Q2 - 9:15 -- Fake
-event: 151, Q2 - 8:21
-event: 165, Q2 - 7:05
-event: 186, Q2 - 4:16 -- Pass intercepted
-event: 202, Q2 - 3:16 -- Fake
-event: 227, Q2 - :55
-event: 272, Q3 - 7:33
-event: 274, Q3 - 7:20
-event: 275, Q3 - 7:03
-event: 282, Q3 - 6:18 -- Fake
-event: 296, Q3 - 4:11
-event: 306, Q3 - 3:53
-event: 333, Q3 - 1:43 -- Fake
-event: 336, Q3 - 1:26 -- Fake
-event: 338, Q3 - 1:05
-event: 345, Q3 - :50
-event: 393, Q4 - 9:17
-event: 394, Q4 - 9:04
-event: 394, Q4 - 9:00
-event: 421, Q4 - 6:54
-event: 426, Q4 - 6:33 -- Fake
-event: 438, Q4 - 4:49
-event: 440, Q4 - 4:10
-event: 442, Q4 - 3:53
-event: 449, Q4 - 3:09
-event: 469, Q4 - 1:26 -- Fake
-event: 472, Q4 - :49
-
-
-missed candidates: 31
-positive candidates: 31
-negative candidates: 78
-recall w/o fakes: .50
-recall w/ fakes: .537
-
--------------------------------------
-
 Pheonix OKC 12/31/2015
 
-Issue at index: 3 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC0B95A548>)
-Issue at index: 5 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC24E1D2C8>)
-Issue at index: 75 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000002BC2BA9CB08>)
-Issue at index: 190 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000002BC3571BA48>)
-Issue at index: 290 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC3D751048>)
-Issue at index: 295 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC3D7510C8>)
-Issue at index: 297 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC3D751048>)
-Issue at index: 299 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC3F182348>)
-Issue at index: 385 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC43B46088>)
-Issue at index: 387 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC475DF748>)
-Issue at index: 413 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC48E150C8>)
-Issue at index: 415 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002BC49BDCF88>)
-Number of candidates parsed: 81
-Successful events: 219
-Failed events: 12
-Percent Successful: 0.95
+Issue at index: 75 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001DF285CCDC8>)
+Issue at index: 190 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001DF321721C8>)
+Number of candidates parsed: 129
+Successful events: 229
+Failed events: 2
+Percent Successful: 0.99
 
 Questionable:
 
-
+event: 9, Q1, 10:48 --- turnover
+event: 271, Q3, 7:41 --- borderline
 
 Missed Candidates
 
+event: , Q4, 8:13 --- fake
+event: , Q4, :17
 
-
-
+missed candidates: 2
+positive candidates: 38
+negative candidates: 91
+recall w/o fakes: .95
+recall w/ fakes: .973
 
 
 

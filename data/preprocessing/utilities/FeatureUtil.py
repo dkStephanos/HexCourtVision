@@ -231,7 +231,6 @@ class FeatureUtil:
         for event_pass in event_passes:
             if (event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
                 moment = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
-                print(moment)
                 event_id = moment['event_id'].values[0]
                 event = combined_event_df.loc[(combined_event_df['event_id'] == event_id)]
                 if len(candidates) == 0 or candidates[-1]['shot_clock'] - moment['shot_clock'].values[0] > .2:
