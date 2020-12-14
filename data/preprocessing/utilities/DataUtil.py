@@ -185,7 +185,7 @@ class DataUtil:
         event_ids = []
 
         for index, row in annotation_df.iterrows():
-            event_ids.append(int(str(row['GAME_ID']) + str(row['EVENTNUM'])))
+            event_ids.append(str(row['GAME_ID']) + f"{row['EVENTNUM']:03}")
 
         annotation_df["event_id"] = event_ids
 
