@@ -5,4 +5,4 @@ Excel functions to copy classification data
 3) On original sheet, move classification after new column
 4) On new sheet, add =CONCAT column too
 5) Add this formula to classification column: 
-	=VLOOKUP(=CONCAT column,'first sheet'!=Concat col:Classification col,2)
+	=VLOOKUP(K2,dfg!I$2:J$174,2,)

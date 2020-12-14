@@ -1,14 +1,10 @@
 Warriors Celtics
 
-Issue at index: 102 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x000002746A37E408>)
-Issue at index: 372 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000027400A89488>)
-Issue at index: 374 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000027401463A08>)
-Issue at index: 463 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000027409379D88>)
-Issue at index: 690 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000027481DCEDC8>)
-Number of candidates parsed: 158
-Successful events: 300
-Failed events: 5
-Percent Successful: 0.98
+Issue at index: 690 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000024801E6A848>)
+Number of candidates parsed: 196
+Successful events: 304
+Failed events: 1
+Percent Successful: 1.0
 
 Notable Examples
 
@@ -41,18 +37,14 @@ recall w/ fakes: .891
 
 Clippers Lakers 12/25
 
-Issue at index: 161 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000020E8FAE6248>)
-Issue at index: 296 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000020E9A3A9208>)
-Issue at index: 299 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000020E99C56108>)
-Issue at index: 326 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000020E9DAF3388>)
-Issue at index: 345 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000020E9F625C08>)
-Issue at index: 346 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000020E9F630C08>)
-Issue at index: 408 (<class 'IndexError'>, IndexError('index 0 is out of bounds for axis 0 with size 0'), <traceback object at 0x0000020EA504E0C8>)
-Issue at index: 479 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000020EAC158488>)
-Number of candidates parsed: 121
-Successful events: 216
-Failed events: 8
-Percent Successful: 0.96
+Issue at index: 161 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x00000259500454C8>)
+Issue at index: 296 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000002595A9D6308>)
+Issue at index: 326 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000002595E057A48>)
+Issue at index: 479 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000002596C67F288>)
+Number of candidates parsed: 130
+Successful events: 220
+Failed events: 4
+Percent Successful: 0.98
 
 Questionable:
 

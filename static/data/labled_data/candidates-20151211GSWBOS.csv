@@ -1,177 +1,197 @@
-,event_id,classification_type,classification,period,game_clock,shot_clock,
-0,215003362,dribble-hand-off,FALSE,1,11:53,18.37,
-1,215003364,dribble-hand-off,TRUE,1,11:32,17.68,
-2,215003364,dribble-hand-off,FALSE,1,11:30,15.81,
-3,215003364,dribble-hand-off,TRUE,1,11:28,13.95,
-4,215003368,dribble-hand-off,TRUE,1,11:02,11.79,
-5,215003368,dribble-hand-off,FALSE,1,10:58,8.26,
-6,215003368,dribble-hand-off,FALSE,1,10:57,7.37,
-7,2150033613,dribble-hand-off,TRUE,1,10:35,8.42,
-8,2150033617,dribble-hand-off,FALSE,1,10:13,17.56,
-9,2150033622,dribble-hand-off,FALSE,1,9:48,16.97,
-10,2150033624,dribble-hand-off,TRUE,1,9:10,12.66,
-11,2150033626,dribble-hand-off,TRUE,1,8:44,18.78,
-12,2150033630,dribble-hand-off,FALSE,1,8:20,20.19,
-13,2150033638,dribble-hand-off,FALSE,1,7:11,10.07,
-14,2150033640,dribble-hand-off,FALSE,1,6:56,12.53,
-15,2150033641,dribble-hand-off,FALSE,1,6:43,14.83,
-16,2150033643,dribble-hand-off,TRUE,1,6:31,20.22,
-17,2150033646,dribble-hand-off,TRUE,1,6:20,9.05,FAKE
-18,2150033646,dribble-hand-off,FALSE,1,6:19,8.57,
-19,2150033646,dribble-hand-off,FALSE,1,6:16,5.11,
-20,2150033650,dribble-hand-off,TRUE,1,5:46,9.72,
-21,2150033650,dribble-hand-off,FALSE,1,5:46,9.38,
-22,2150033664,dribble-hand-off,TRUE,1,4:44,13.56,
-23,2150033668,dribble-hand-off,FALSE,1,4:30,16,
-24,2150033670,dribble-hand-off,FALSE,1,4:16,16,
-25,2150033674,dribble-hand-off,TRUE,1,3:42,12.6,
-26,2150033674,dribble-hand-off,TRUE,1,3:40,10.38,
-27,2150033697,dribble-hand-off,TRUE,1,2:28,11.16,
-28,2150033697,dribble-hand-off,FALSE,1,2:26,8.84,
-29,2150033699,dribble-hand-off,TRUE,1,2:17,17.5,
-30,2150033699,dribble-hand-off,FALSE,1,2:15,16,
-31,21500336104,dribble-hand-off,TRUE,1,1:36,15.16,
-32,21500336106,dribble-hand-off,FALSE,1,1:23,18.76,
-33,21500336106,dribble-hand-off,FALSE,1,1:23,18.2,
-34,21500336106,dribble-hand-off,FALSE,1,1:18,13.57,
-35,21500336110,dribble-hand-off,FALSE,1,0:54,19.12,
-36,21500336110,dribble-hand-off,TRUE,1,0:52,17.24,
-37,21500336112,dribble-hand-off,FALSE,1,0:38,14.98,
-38,21500336112,dribble-hand-off,FALSE,1,0:37,13.74,
-39,21500336112,dribble-hand-off,FALSE,1,0:35,11.94,
-40,21500336133,dribble-hand-off,TRUE,2,11:33,12,
-41,21500336135,dribble-hand-off,TRUE,2,11:12,10.47,FAKE
-42,21500336139,dribble-hand-off,TRUE,2,10:53,11.02,
-43,21500336139,dribble-hand-off,FALSE,2,10:50,8.46,
-44,21500336146,dribble-hand-off,FALSE,2,9:44,19,
-45,21500336147,dribble-hand-off,FALSE,2,9:30,20.03,
-46,21500336149,dribble-hand-off,FALSE,2,9:18,19.09,
-47,21500336163,dribble-hand-off,TRUE,2,8:39,20.16,
-48,21500336163,dribble-hand-off,TRUE,2,8:37,18.68,
-49,21500336163,dribble-hand-off,TRUE,2,8:36,17.48,
-50,21500336169,dribble-hand-off,TRUE,2,7:56,16.49,
-51,21500336170,dribble-hand-off,TRUE,2,7:40,15.61,FAKE
-52,21500336173,dribble-hand-off,FALSE,2,7:29,19.66,
-53,21500336173,dribble-hand-off,FALSE,2,7:25,15.46,
-54,21500336173,dribble-hand-off,FALSE,2,7:21,11.1,
-55,21500336180,dribble-hand-off,FALSE,2,6:38,17.55,
-56,21500336190,dribble-hand-off,FALSE,2,6:11,15.7,
-57,21500336202,dribble-hand-off,FALSE,2,4:46,13,
-58,21500336205,dribble-hand-off,FALSE,2,4:37,13.25,
-59,21500336217,dribble-hand-off,TRUE,2,3:34,15.09,
-60,21500336233,dribble-hand-off,FALSE,2,3:03,17.06,
-61,21500336233,dribble-hand-off,FALSE,2,2:55,9.46,
-62,21500336242,dribble-hand-off,FALSE,2,2:23,12.22,
-63,21500336245,dribble-hand-off,FALSE,2,2:15,19.98,
-64,21500336250,dribble-hand-off,TRUE,2,2:03,19.64,
-65,21500336255,dribble-hand-off,FALSE,2,1:35,18.69,
-66,21500336262,dribble-hand-off,FALSE,2,1:11,15.53,
-67,21500336267,dribble-hand-off,FALSE,2,0:57,10,
-68,21500336269,dribble-hand-off,FALSE,2,0:36,11.54,
-69,21500336283,dribble-hand-off,TRUE,3,11:55,19.82,
-70,21500336285,dribble-hand-off,TRUE,3,11:40,15.85,
-71,21500336285,dribble-hand-off,TRUE,3,11:38,13.76,
-72,21500336285,dribble-hand-off,FALSE,3,11:35,10.85,
-73,21500336286,dribble-hand-off,TRUE,3,11:18,13.03,
-74,21500336295,dribble-hand-off,FALSE,3,10:21,14.27,
-75,21500336295,dribble-hand-off,FALSE,3,10:20,13.04,
-76,21500336295,dribble-hand-off,FALSE,3,10:12,5.7,
-77,21500336297,dribble-hand-off,TRUE,3,9:48,18.27,
-78,21500336297,dribble-hand-off,FALSE,3,9:48,17.47,
-79,21500336306,dribble-hand-off,TRUE,3,9:09,19.31,
-80,21500336324,dribble-hand-off,TRUE,3,7:54,17.09,
-81,21500336324,dribble-hand-off,FALSE,3,7:40,3.81,
-82,21500336328,dribble-hand-off,FALSE,3,7:14,15.53,
-83,21500336333,dribble-hand-off,FALSE,3,7:08,19.13,
-84,21500336335,dribble-hand-off,FALSE,3,6:51,18.58,
-85,21500336335,dribble-hand-off,FALSE,3,6:49,16.43,
-86,21500336347,dribble-hand-off,FALSE,3,6:00,18,
-87,21500336347,dribble-hand-off,FALSE,3,5:59,17.17,
-88,21500336351,dribble-hand-off,FALSE,3,5:31,20.02,
-89,21500336354,dribble-hand-off,TRUE,3,5:32,20.62,
-90,21500336359,dribble-hand-off,TRUE,3,4:44,16.11,
-91,21500336359,dribble-hand-off,FALSE,3,4:43,14.99,
-92,21500336361,dribble-hand-off,FALSE,3,4:34,19.67,
-93,21500336370,dribble-hand-off,TRUE,3,4:32,20.74,
-94,21500336387,dribble-hand-off,TRUE,3,3:31,12.63,
-95,21500336387,dribble-hand-off,FALSE,3,3:28,9.99,
-96,21500336405,dribble-hand-off,FALSE,3,2:29,13,
-97,21500336405,dribble-hand-off,FALSE,3,2:21,5,
-98,21500336409,dribble-hand-off,FALSE,3,2:08,21.66,
-99,21500336409,dribble-hand-off,FALSE,3,1:51,5.05,
-100,21500336417,dribble-hand-off,FALSE,3,1:30,18.17,
-101,21500336417,dribble-hand-off,FALSE,3,1:21,9.46,
-102,21500336419,dribble-hand-off,FALSE,3,0:51,11.68,
-103,21500336419,dribble-hand-off,FALSE,3,0:47,7.89,
-104,21500336421,dribble-hand-off,FALSE,3,0:11,4.28,
-105,21500336423,dribble-hand-off,FALSE,3,0:03,0,
-106,21500336428,dribble-hand-off,TRUE,4,11:51,16,
-107,21500336428,dribble-hand-off,TRUE,4,11:50,14,
-108,21500336434,dribble-hand-off,FALSE,4,11:12,17.07,
-109,21500336434,dribble-hand-off,FALSE,4,11:11,15.37,
-110,21500336435,dribble-hand-off,TRUE,4,10:50,14.99,
-111,21500336435,dribble-hand-off,FALSE,4,10:48,13.23,
-112,21500336438,dribble-hand-off,TRUE,4,10:36,18.46,
-113,21500336438,dribble-hand-off,FALSE,4,10:34,17.14,
-114,21500336443,dribble-hand-off,FALSE,4,10:09,17,
-115,21500336444,dribble-hand-off,TRUE,4,9:56,18.7,
-116,21500336444,dribble-hand-off,FALSE,4,9:48,11.3,
-117,21500336466,dribble-hand-off,FALSE,4,8:32,6.55,
-118,21500336466,dribble-hand-off,FALSE,4,8:30,4.04,
-119,21500336467,dribble-hand-off,FALSE,4,8:19,16.27,
-120,21500336473,dribble-hand-off,FALSE,4,7:42,11.6,
-121,21500336475,dribble-hand-off,TRUE,4,7:38,19.83,
-122,21500336477,dribble-hand-off,FALSE,4,7:11,18.6,
-123,21500336479,dribble-hand-off,FALSE,4,7:02,18.2,
-124,21500336480,dribble-hand-off,TRUE,4,6:45,17.05,
-125,21500336488,dribble-hand-off,FALSE,4,6:24,15.64,
-126,21500336494,dribble-hand-off,TRUE,4,5:54,18.25,
-127,21500336494,dribble-hand-off,FALSE,4,5:54,17.61,
-128,21500336494,dribble-hand-off,FALSE,4,5:53,16.77,
-129,21500336500,dribble-hand-off,FALSE,4,5:29,16.14,
-130,21500336506,dribble-hand-off,FALSE,4,4:41,18,
-131,21500336513,dribble-hand-off,FALSE,4,4:27,18.71,
-132,21500336513,dribble-hand-off,TRUE,4,4:25,16.79,
-133,21500336513,dribble-hand-off,FALSE,4,4:18,9.58,
-134,21500336513,dribble-hand-off,FALSE,4,4:10,2.01,
-135,21500336515,dribble-hand-off,TRUE,4,3:44,14.07,
-136,21500336521,dribble-hand-off,FALSE,4,3:36,15.78,
-137,21500336521,dribble-hand-off,FALSE,4,3:27,7.62,
-138,21500336522,dribble-hand-off,FALSE,4,3:19,16,
-139,21500336532,dribble-hand-off,FALSE,4,2:39,16.37,
-140,21500336532,dribble-hand-off,FALSE,4,2:37,14.43,
-141,21500336532,dribble-hand-off,FALSE,4,2:34,11.78,
-142,21500336547,dribble-hand-off,FALSE,4,1:18,17.3,
-143,21500336547,dribble-hand-off,FALSE,4,1:18,16.99,
-144,21500336547,dribble-hand-off,FALSE,4,1:17,16.44,
-145,21500336547,dribble-hand-off,FALSE,4,1:17,15.98,
-146,21500336558,dribble-hand-off,TRUE,4,1:14,20.96,
-147,21500336560,dribble-hand-off,FALSE,4,0:51,12.55,
-148,21500336591,dribble-hand-off,TRUE,5,4:28,17.47,FAKE
-149,21500336593,dribble-hand-off,TRUE,5,4:04,6.18,
-150,21500336603,dribble-hand-off,TRUE,5,3:36,18.99,
-151,21500336603,dribble-hand-off,FALSE,5,3:29,12.11,
-152,21500336603,dribble-hand-off,FALSE,5,3:29,11.71,
-153,21500336603,dribble-hand-off,FALSE,5,3:28,10.47,
-154,21500336604,dribble-hand-off,FALSE,5,3:28,14,
-155,21500336610,dribble-hand-off,FALSE,5,2:55,18.56,
-156,21500336610,dribble-hand-off,FALSE,5,2:50,14.2,
-157,21500336610,dribble-hand-off,FALSE,5,2:43,7.21,
-158,21500336618,dribble-hand-off,FALSE,5,1:59,18.66,
-159,21500336629,dribble-hand-off,FALSE,5,1:26,14.74,
-160,21500336632,dribble-hand-off,TRUE,5,0:56,16.49,
-161,21500336636,dribble-hand-off,FALSE,5,0:16,16.18,
-162,21500336636,dribble-hand-off,FALSE,5,0:01,0,
-163,21500336653,dribble-hand-off,FALSE,6,4:53,18.5,
-164,21500336653,dribble-hand-off,TRUE,6,4:49,14.7,
-165,21500336657,dribble-hand-off,FALSE,6,3:45,10,
-166,21500336677,dribble-hand-off,FALSE,6,2:43,14,
-167,21500336681,dribble-hand-off,FALSE,6,2:11,19,
-168,21500336681,dribble-hand-off,FALSE,6,2:04,12.36,
-169,21500336687,dribble-hand-off,FALSE,6,1:59,18.17,
-170,21500336687,dribble-hand-off,FALSE,6,1:53,13.29,
-171,21500336687,dribble-hand-off,FALSE,6,1:51,11.48,
-172,21500336688,dribble-hand-off,FALSE,6,1:31,4.98,
-,,,,,,,
-,,,53,,,,0.898305085
-,,,120,,,,0.890909091
+,event_id,classification_type,classification,period,game_clock,shot_clock,player_a,player_b
+0,21500336002,dribble-hand-off,FALSE,1,11:53,18.37,Ian Clark,Brandon Rush
+1,21500336004,dribble-hand-off,TRUE,1,11:32,17.68,Isaiah Thomas,Amir Johnson
+2,21500336004,dribble-hand-off,FALSE,1,11:30,15.81,Amir Johnson,Jared Sullinger
+3,21500336004,dribble-hand-off,TRUE,1,11:28,13.95,Jared Sullinger,Jae Crowder
+4,21500336008,dribble-hand-off,TRUE,1,11:02,11.79,Amir Johnson,Avery Bradley
+5,21500336008,dribble-hand-off,FALSE,1,10:58,8.26,Amir Johnson,Jared Sullinger
+6,21500336008,dribble-hand-off,FALSE,1,10:57,7.37,Jared Sullinger,Isaiah Thomas
+7,21500336013,dribble-hand-off,TRUE,1,10:35,8.42,Andrew Bogut,Stephen Curry
+8,21500336017,dribble-hand-off,FALSE,1,10:13,17.56,Isaiah Thomas,Jared Sullinger
+9,21500336022,dribble-hand-off,FALSE,1,9:48,16.97,Jared Sullinger,Avery Bradley
+10,21500336024,dribble-hand-off,TRUE,1,9:10,12.66,Jared Sullinger,Avery Bradley
+11,21500336026,dribble-hand-off,TRUE,1,8:44,18.78,Jared Sullinger,Isaiah Thomas
+12,21500336030,dribble-hand-off,FALSE,1,8:20,20.19,Isaiah Thomas,Jae Crowder
+13,21500336038,dribble-hand-off,FALSE,1,7:11,10.07,Stephen Curry,Draymond Green
+14,21500336040,dribble-hand-off,FALSE,1,6:56,12.53,Amir Johnson,Isaiah Thomas
+15,21500336041,dribble-hand-off,FALSE,1,6:43,14.83,Stephen Curry,Andrew Bogut
+16,21500336043,dribble-hand-off,TRUE,1,6:31,20.22,Andrew Bogut,Stephen Curry
+17,21500336046,dribble-hand-off,TRUE,1,6:20,9.05,Draymond Green,Ian Clark
+18,21500336046,dribble-hand-off,FALSE,1,6:19,8.57,Ian Clark,Draymond Green
+19,21500336046,dribble-hand-off,FALSE,1,6:16,5.11,Stephen Curry,Ian Clark
+20,21500336050,dribble-hand-off,#N/A,1,5:46,9.16,Andrew Bogut,Stephen Curry
+21,21500336050,dribble-hand-off,#N/A,1,5:45,8.82,Stephen Curry,Andrew Bogut
+22,21500336050,dribble-hand-off,#N/A,1,5:45,8.55,Andrew Bogut,Stephen Curry
+23,21500336060,dribble-hand-off,#N/A,1,4:58,23,Isaiah Thomas,Amir Johnson
+24,21500336064,dribble-hand-off,TRUE,1,4:44,13.56,Andre Iguodala,Stephen Curry
+25,21500336068,dribble-hand-off,FALSE,1,4:30,16,Amir Johnson,Isaiah Thomas
+26,21500336070,dribble-hand-off,FALSE,1,4:16,16,Draymond Green,Stephen Curry
+27,21500336074,dribble-hand-off,TRUE,1,3:42,12.6,Amir Johnson,Evan Turner
+28,21500336074,dribble-hand-off,TRUE,1,3:40,10.38,Kelly Olynyk,Avery Bradley
+29,21500336080,dribble-hand-off,#N/A,1,3:14,21.63,Andre Iguodala,Festus Ezeli
+30,21500336097,dribble-hand-off,TRUE,1,2:28,11.16,Kelly Olynyk,Evan Turner
+31,21500336097,dribble-hand-off,FALSE,1,2:26,8.84,Evan Turner,Avery Bradley
+32,21500336099,dribble-hand-off,TRUE,1,2:17,17.5,Draymond Green,Stephen Curry
+33,21500336102,dribble-hand-off,#N/A,1,1:54,17,David Lee,Kelly Olynyk
+34,21500336104,dribble-hand-off,TRUE,1,1:36,15.16,Kelly Olynyk,James Young
+35,21500336106,dribble-hand-off,FALSE,1,1:23,18.76,Draymond Green,Stephen Curry
+36,21500336106,dribble-hand-off,FALSE,1,1:23,18.2,Stephen Curry,Shaun Livingston
+37,21500336106,dribble-hand-off,#N/A,1,1:22,17.99,Shaun Livingston,Stephen Curry
+38,21500336106,dribble-hand-off,FALSE,1,1:18,13.57,Stephen Curry,Draymond Green
+39,21500336110,dribble-hand-off,FALSE,1,0:54,19.12,David Lee,Evan Turner
+40,21500336110,dribble-hand-off,TRUE,1,0:52,17.24,David Lee,James Young
+41,21500336112,dribble-hand-off,FALSE,1,0:38,14.98,Stephen Curry,Draymond Green
+42,21500336112,dribble-hand-off,FALSE,1,0:37,13.74,Draymond Green,Festus Ezeli
+43,21500336112,dribble-hand-off,FALSE,1,0:35,11.94,Festus Ezeli,Stephen Curry
+44,21500336133,dribble-hand-off,TRUE,2,11:32,12,Jae Crowder,David Lee
+45,21500336135,dribble-hand-off,TRUE,2,11:12,10.47,Marreese Speights,Leandro Barbosa
+46,21500336139,dribble-hand-off,TRUE,2,10:53,11.02,David Lee,Evan Turner
+47,21500336139,dribble-hand-off,FALSE,2,10:50,8.46,Evan Turner,Kelly Olynyk
+48,21500336140,dribble-hand-off,#N/A,2,10:33,24,Leandro Barbosa,Festus Ezeli
+49,21500336146,dribble-hand-off,FALSE,2,9:44,19,Kelly Olynyk,Evan Turner
+50,21500336147,dribble-hand-off,FALSE,2,9:30,20.03,Andre Iguodala,Shaun Livingston
+51,21500336149,dribble-hand-off,FALSE,2,9:18,19.09,David Lee,Kelly Olynyk
+52,21500336156,dribble-hand-off,#N/A,2,8:50,23,James Young,Kelly Olynyk
+53,21500336163,dribble-hand-off,TRUE,2,8:39,20.16,Evan Turner,Jae Crowder
+54,21500336163,dribble-hand-off,TRUE,2,8:37,18.68,Jae Crowder,James Young
+55,21500336163,dribble-hand-off,TRUE,2,8:36,17.48,James Young,David Lee
+56,21500336169,dribble-hand-off,TRUE,2,7:56,16.49,Marreese Speights,Shaun Livingston
+57,21500336170,dribble-hand-off,TRUE,2,7:40,15.61,David Lee,Jared Sullinger
+58,21500336173,dribble-hand-off,FALSE,2,7:29,19.66,Shaun Livingston,Festus Ezeli
+59,21500336173,dribble-hand-off,FALSE,2,7:25,15.46,Marreese Speights,Shaun Livingston
+60,21500336173,dribble-hand-off,FALSE,2,7:21,11.1,Marreese Speights,Shaun Livingston
+61,21500336180,dribble-hand-off,FALSE,2,6:38,17.55,Isaiah Thomas,Jared Sullinger
+62,21500336190,dribble-hand-off,FALSE,2,6:11,15.7,Isaiah Thomas,David Lee
+63,21500336202,dribble-hand-off,FALSE,2,4:46,13,David Lee,Jae Crowder
+64,21500336203,dribble-hand-off,#N/A,2,4:38,4.63,Jared Sullinger,Jae Crowder
+65,21500336205,dribble-hand-off,FALSE,2,4:37,13.25,Jared Sullinger,Isaiah Thomas
+66,21500336217,dribble-hand-off,TRUE,2,3:34,15.09,Amir Johnson,Avery Bradley
+67,21500336233,dribble-hand-off,FALSE,2,3:03,17.06,Brandon Rush,Draymond Green
+68,21500336233,dribble-hand-off,FALSE,2,2:55,9.46,Draymond Green,Andre Iguodala
+69,21500336242,dribble-hand-off,FALSE,2,2:23,12.22,Stephen Curry,Draymond Green
+70,21500336245,dribble-hand-off,FALSE,2,2:15,19.98,Isaiah Thomas,Jae Crowder
+71,21500336250,dribble-hand-off,TRUE,2,2:03,19.64,Leandro Barbosa,Stephen Curry
+72,21500336255,dribble-hand-off,FALSE,2,1:35,18.69,Isaiah Thomas,Avery Bradley
+73,21500336262,dribble-hand-off,FALSE,2,1:11,15.53,Stephen Curry,Festus Ezeli
+74,21500336267,dribble-hand-off,FALSE,2,0:57,10,Kelly Olynyk,Isaiah Thomas
+75,21500336269,dribble-hand-off,FALSE,2,0:36,11.54,Leandro Barbosa,Festus Ezeli
+76,21500336283,dribble-hand-off,TRUE,3,11:55,19.82,Isaiah Thomas,Avery Bradley
+77,21500336285,dribble-hand-off,TRUE,3,11:40,15.85,Draymond Green,Brandon Rush
+78,21500336285,dribble-hand-off,TRUE,3,11:38,13.76,Brandon Rush,Ian Clark
+79,21500336285,dribble-hand-off,FALSE,3,11:35,10.85,Ian Clark,Andrew Bogut
+80,21500336286,dribble-hand-off,TRUE,3,11:18,13.03,Jared Sullinger,Isaiah Thomas
+81,21500336295,dribble-hand-off,FALSE,3,10:21,14.27,Isaiah Thomas,Jared Sullinger
+82,21500336295,dribble-hand-off,#N/A,3,10:21,14.04,Jared Sullinger,Isaiah Thomas
+83,21500336295,dribble-hand-off,#N/A,3,10:11,5.09,Isaiah Thomas,Jared Sullinger
+84,21500336296,dribble-hand-off,#N/A,3,9:56,24,Andrew Bogut,Ian Clark
+85,21500336297,dribble-hand-off,TRUE,3,9:48,18.27,Isaiah Thomas,Amir Johnson
+86,21500336297,dribble-hand-off,FALSE,3,9:48,17.47,Amir Johnson,Isaiah Thomas
+87,21500336300,dribble-hand-off,#N/A,3,9:14,24,Draymond Green,Brandon Rush
+88,21500336306,dribble-hand-off,TRUE,3,9:09,19.31,Evan Turner,Amir Johnson
+89,21500336310,dribble-hand-off,#N/A,3,8:38,24,Jared Sullinger,Avery Bradley
+90,21500336324,dribble-hand-off,TRUE,3,7:54,17.09,Isaiah Thomas,Jae Crowder
+91,21500336324,dribble-hand-off,FALSE,3,7:40,3.81,Isaiah Thomas,Jae Crowder
+92,21500336328,dribble-hand-off,FALSE,3,7:14,15.53,Jared Sullinger,Jae Crowder
+93,21500336333,dribble-hand-off,FALSE,3,7:08,19.13,Andrew Bogut,Draymond Green
+94,21500336335,dribble-hand-off,FALSE,3,6:51,18.58,Jared Sullinger,Isaiah Thomas
+95,21500336335,dribble-hand-off,FALSE,3,6:49,16.43,Isaiah Thomas,Jared Sullinger
+96,21500336342,dribble-hand-off,#N/A,3,6:06,23,Jared Sullinger,Isaiah Thomas
+97,21500336347,dribble-hand-off,FALSE,3,6:00,18,Draymond Green,Andrew Bogut
+98,21500336347,dribble-hand-off,FALSE,3,5:59,17.17,Andrew Bogut,Stephen Curry
+99,21500336351,dribble-hand-off,#N/A,3,5:31,19.98,Kelly Olynyk,Isaiah Thomas
+100,21500336354,dribble-hand-off,TRUE,3,5:32,20.62,Isaiah Thomas,Kelly Olynyk
+101,21500336359,dribble-hand-off,TRUE,3,4:44,16.11,Isaiah Thomas,Kelly Olynyk
+102,21500336359,dribble-hand-off,FALSE,3,4:43,14.99,Kelly Olynyk,Isaiah Thomas
+103,21500336361,dribble-hand-off,FALSE,3,4:34,19.67,Festus Ezeli,Stephen Curry
+104,21500336361,dribble-hand-off,#N/A,3,4:34,19.39,Stephen Curry,Festus Ezeli
+105,21500336370,dribble-hand-off,#N/A,3,4:32,20.34,Isaiah Thomas,Jae Crowder
+106,21500336374,dribble-hand-off,#N/A,3,3:56,9.17,Ian Clark,Festus Ezeli
+107,21500336387,dribble-hand-off,TRUE,3,3:31,12.63,Jae Crowder,Isaiah Thomas
+108,21500336387,dribble-hand-off,FALSE,3,3:28,9.99,Isaiah Thomas,Kelly Olynyk
+109,21500336405,dribble-hand-off,FALSE,3,2:29,13,Kelly Olynyk,Evan Turner
+110,21500336405,dribble-hand-off,FALSE,3,2:21,5,Evan Turner,Kelly Olynyk
+111,21500336409,dribble-hand-off,FALSE,3,2:08,21.66,Shaun Livingston,Andre Iguodala
+112,21500336409,dribble-hand-off,#N/A,3,1:51,5.01,Ian Clark,James Michael McAdoo
+113,21500336409,dribble-hand-off,#N/A,3,1:50,4,James Michael McAdoo,Draymond Green
+114,21500336411,dribble-hand-off,#N/A,3,1:36,12.84,Jae Crowder,Kelly Olynyk
+115,21500336417,dribble-hand-off,#N/A,3,1:30,17.97,Andre Iguodala,Draymond Green
+116,21500336417,dribble-hand-off,#N/A,3,1:21,9.26,Leandro Barbosa,Draymond Green
+117,21500336419,dribble-hand-off,FALSE,3,0:51,11.68,Shaun Livingston,Andre Iguodala
+118,21500336419,dribble-hand-off,FALSE,3,0:47,7.89,James Michael McAdoo,Shaun Livingston
+119,21500336421,dribble-hand-off,FALSE,3,0:11,4.28,Shaun Livingston,Leandro Barbosa
+120,21500336423,dribble-hand-off,FALSE,3,0:03,0,Kelly Olynyk,Jae Crowder
+121,21500336428,dribble-hand-off,TRUE,4,11:51,16,James Michael McAdoo,Andre Iguodala
+122,21500336428,dribble-hand-off,TRUE,4,11:50,14,Andre Iguodala,Leandro Barbosa
+123,21500336434,dribble-hand-off,FALSE,4,11:12,17.07,David Lee,James Young
+124,21500336434,dribble-hand-off,FALSE,4,11:11,15.37,James Young,David Lee
+125,21500336435,dribble-hand-off,TRUE,4,10:50,14.99,Leandro Barbosa,Festus Ezeli
+126,21500336435,dribble-hand-off,FALSE,4,10:48,13.23,Festus Ezeli,Leandro Barbosa
+127,21500336438,dribble-hand-off,TRUE,4,10:36,18.46,David Lee,Avery Bradley
+128,21500336438,dribble-hand-off,FALSE,4,10:34,17.14,Avery Bradley,David Lee
+129,21500336443,dribble-hand-off,FALSE,4,10:09,17,David Lee,Kelly Olynyk
+130,21500336444,dribble-hand-off,TRUE,4,9:56,18.7,Andre Iguodala,Shaun Livingston
+131,21500336444,dribble-hand-off,FALSE,4,9:48,11.3,Festus Ezeli,Shaun Livingston
+132,21500336463,dribble-hand-off,#N/A,4,8:48,18.19,Stephen Curry,Draymond Green
+133,21500336466,dribble-hand-off,#N/A,4,8:32,6.44,Festus Ezeli,Stephen Curry
+134,21500336466,dribble-hand-off,#N/A,4,8:30,3.93,Stephen Curry,Festus Ezeli
+135,21500336467,dribble-hand-off,FALSE,4,8:19,16.27,Isaiah Thomas,Evan Turner
+136,21500336473,dribble-hand-off,FALSE,4,7:42,11.6,Stephen Curry,Shaun Livingston
+137,21500336475,dribble-hand-off,TRUE,4,7:38,19.83,Isaiah Thomas,Kelly Olynyk
+138,21500336477,dribble-hand-off,FALSE,4,7:11,18.6,David Lee,James Young
+139,21500336479,dribble-hand-off,FALSE,4,7:02,18.2,Stephen Curry,Draymond Green
+140,21500336480,dribble-hand-off,TRUE,4,6:45,17.05,Isaiah Thomas,Kelly Olynyk
+141,21500336481,dribble-hand-off,#N/A,4,6:33,19.49,Draymond Green,Shaun Livingston
+142,21500336488,dribble-hand-off,FALSE,4,6:24,15.64,Isaiah Thomas,Avery Bradley
+143,21500336494,dribble-hand-off,TRUE,4,5:54,18.25,Isaiah Thomas,Kelly Olynyk
+144,21500336494,dribble-hand-off,FALSE,4,5:54,17.61,Kelly Olynyk,Isaiah Thomas
+145,21500336494,dribble-hand-off,FALSE,4,5:53,16.77,Isaiah Thomas,Kelly Olynyk
+146,21500336500,dribble-hand-off,FALSE,4,5:29,16.14,Avery Bradley,Isaiah Thomas
+147,21500336506,dribble-hand-off,FALSE,4,4:41,18,Isaiah Thomas,Kelly Olynyk
+148,21500336513,dribble-hand-off,FALSE,4,4:27,18.71,Shaun Livingston,Draymond Green
+149,21500336513,dribble-hand-off,TRUE,4,4:25,16.79,Draymond Green,Stephen Curry
+150,21500336513,dribble-hand-off,FALSE,4,4:18,9.58,Festus Ezeli,Stephen Curry
+151,21500336513,dribble-hand-off,#N/A,4,4:10,1.97,Festus Ezeli,Stephen Curry
+152,21500336515,dribble-hand-off,TRUE,4,3:44,14.07,Draymond Green,Stephen Curry
+153,21500336521,dribble-hand-off,FALSE,4,3:36,15.78,Jared Sullinger,Jae Crowder
+154,21500336521,dribble-hand-off,FALSE,4,3:27,7.62,Isaiah Thomas,Kelly Olynyk
+155,21500336522,dribble-hand-off,FALSE,4,3:19,16,Stephen Curry,Andre Iguodala
+156,21500336528,dribble-hand-off,#N/A,4,2:46,23.76,Kelly Olynyk,Evan Turner
+157,21500336532,dribble-hand-off,FALSE,4,2:39,16.37,Draymond Green,Andre Iguodala
+158,21500336532,dribble-hand-off,FALSE,4,2:37,14.43,Andre Iguodala,Draymond Green
+159,21500336532,dribble-hand-off,FALSE,4,2:34,11.78,Stephen Curry,Draymond Green
+160,21500336543,dribble-hand-off,#N/A,4,1:46,24,Shaun Livingston,Stephen Curry
+161,21500336547,dribble-hand-off,FALSE,4,1:18,17.3,Stephen Curry,Draymond Green
+162,21500336547,dribble-hand-off,FALSE,4,1:18,16.99,Stephen Curry,Draymond Green
+163,21500336547,dribble-hand-off,FALSE,4,1:17,16.44,Draymond Green,Stephen Curry
+164,21500336547,dribble-hand-off,FALSE,4,1:17,15.98,Stephen Curry,Draymond Green
+165,21500336558,dribble-hand-off,TRUE,4,1:14,20.96,Kelly Olynyk,Isaiah Thomas
+166,21500336560,dribble-hand-off,#N/A,4,0:50,12.16,Draymond Green,Shaun Livingston
+167,21500336591,dribble-hand-off,#N/A,5,4:28,17.15,Amir Johnson,Kelly Olynyk
+168,21500336593,dribble-hand-off,TRUE,5,4:04,6.18,Festus Ezeli,Shaun Livingston
+169,21500336603,dribble-hand-off,TRUE,5,3:36,18.99,Isaiah Thomas,Amir Johnson
+170,21500336603,dribble-hand-off,FALSE,5,3:29,12.11,Isaiah Thomas,Amir Johnson
+171,21500336603,dribble-hand-off,FALSE,5,3:29,11.71,Amir Johnson,Isaiah Thomas
+172,21500336603,dribble-hand-off,FALSE,5,3:28,10.47,Isaiah Thomas,Amir Johnson
+173,21500336604,dribble-hand-off,FALSE,5,3:28,14,Jae Crowder,Isaiah Thomas
+174,21500336610,dribble-hand-off,FALSE,5,2:55,18.56,Isaiah Thomas,Evan Turner
+175,21500336610,dribble-hand-off,FALSE,5,2:50,14.2,Evan Turner,Kelly Olynyk
+176,21500336610,dribble-hand-off,FALSE,5,2:43,7.21,Evan Turner,Kelly Olynyk
+177,21500336616,dribble-hand-off,#N/A,5,2:05,23,Shaun Livingston,Stephen Curry
+178,21500336618,dribble-hand-off,#N/A,5,1:59,18.56,Jared Sullinger,Evan Turner
+179,21500336629,dribble-hand-off,FALSE,5,1:26,14.74,Stephen Curry,Andrew Bogut
+180,21500336632,dribble-hand-off,TRUE,5,0:56,16.49,Draymond Green,Stephen Curry
+181,21500336636,dribble-hand-off,FALSE,5,0:16,16.18,Isaiah Thomas,Evan Turner
+182,21500336636,dribble-hand-off,FALSE,5,0:01,0,Isaiah Thomas,Jae Crowder
+183,21500336653,dribble-hand-off,FALSE,6,4:53,18.5,Evan Turner,Kelly Olynyk
+184,21500336653,dribble-hand-off,TRUE,6,4:49,14.7,Amir Johnson,Jae Crowder
+185,21500336657,dribble-hand-off,FALSE,6,3:45,10,Evan Turner,Amir Johnson
+186,21500336664,dribble-hand-off,#N/A,6,3:11,22.71,Evan Turner,Isaiah Thomas
+187,21500336664,dribble-hand-off,#N/A,6,3:09,20.59,Isaiah Thomas,Evan Turner
+188,21500336668,dribble-hand-off,#N/A,6,2:58,24,Andre Iguodala,Leandro Barbosa
+189,21500336668,dribble-hand-off,#N/A,6,2:58,23,Leandro Barbosa,Andre Iguodala
+190,21500336677,dribble-hand-off,FALSE,6,2:43,14,Kelly Olynyk,Jae Crowder
+191,21500336681,dribble-hand-off,FALSE,6,2:11,19,Isaiah Thomas,Evan Turner
+192,21500336681,dribble-hand-off,#N/A,6,2:04,12.04,Kelly Olynyk,Evan Turner
+193,21500336687,dribble-hand-off,FALSE,6,1:59,18.17,Draymond Green,Shaun Livingston
+194,21500336687,dribble-hand-off,FALSE,6,1:53,13.29,Stephen Curry,Draymond Green
+195,21500336687,dribble-hand-off,FALSE,6,1:51,11.48,Draymond Green,Shaun Livingston
