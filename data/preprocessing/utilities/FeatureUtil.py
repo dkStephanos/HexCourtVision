@@ -226,7 +226,7 @@ class FeatureUtil:
 
     # Takes list of event_passes, and filters out dribble_hand_off candidates based on pass/receive moments within provided moment_range
     @staticmethod
-    def get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_range):
+    def get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_range, players_dict):
         candidates = []
         for event_pass in event_passes:
             if (event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
@@ -234,5 +234,13 @@ class FeatureUtil:
                 event_id = moment['event_id'].values[0]
                 event = combined_event_df.loc[(combined_event_df['event_id'] == event_id)]
                 if len(candidates) == 0 or candidates[-1]['shot_clock'] - moment['shot_clock'].values[0] > .2:
-                    candidates.append({'event_id': event_id, 'classification_type': 'dribble-hand-off', 'classification': pd.NA, 'period': event['PERIOD'].values[0], 'game_clock': DataUtil.convert_game_clock_to_timestamp(moment['game_clock']), 'shot_clock': moment['shot_clock'].values[0]})
+                    candidates.append({
+                        'event_id': event_id,
+                         'classification_type': 'dribble-hand-off',
+                         'classification': pd.NA,
+                         'period': event['PERIOD'].values[0],
+                         'game_clock': DataUtil.convert_game_clock_to_timestamp(moment['game_clock']),
+                         'shot_clock': moment['shot_clock'].values[0],
+                         'screener': players_dict[event_pass['passer']],
+                         'cutter': players_dict[event_pass['receiver']]})
         return candidates

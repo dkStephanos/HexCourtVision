@@ -66,6 +66,7 @@ game_df = DataUtil.load_game_df(games[game_num])
 annotation_df = DataUtil.load_annotation_df(events[game_num])
 
 players_data = DataUtil.get_players_data(game_df)
+players_dict = DataUtil.get_players_dict(game_df)
 print(players_data)
 
 game_df = DataUtil.add_offset_to_eventnums(game_df, event_offset[game_num])
@@ -111,7 +112,7 @@ for index, event in combined_event_df.iterrows():
         moments_df = DataUtil.get_moments_from_event(event)
         event_passes = FeatureUtil.get_passess_for_event(moments_df, event["possession"], players_data)
         if len(event_passes) > 0:
-            dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_ranges[game_num])
+            dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_ranges[game_num], players_dict)
             all_candidates += dribble_handoff_candidates
         succesful += 1
     except:
