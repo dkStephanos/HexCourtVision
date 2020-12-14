@@ -271,11 +271,11 @@ class DataUtil:
         return all_players	
 
     @staticmethod
-    def get_players_dict(game_event):
+    def get_players_dict(game_df):
         # A dict containing home players data	
-        home = game_event["home"]	
+        home = game_df["events"][0]["home"]	
         # A dict containig visiting players data	
-        visitor = game_event["visitor"]
+        visitor = game_df["events"][0]["visitor"]
         # creates the players list with the home players	
         players = home["players"]	
         # Then add on the visiting players	
