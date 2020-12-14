@@ -1,0 +1,8 @@
+Excel functions to copy classification data
+
+1) Add new data as sheet
+2) On original sheet, add column =CONCAT(event_id, shot_clock)
+3) On original sheet, move classification after new column
+4) On new sheet, add =CONCAT column too
+5) Add this formula to classification column: 
+	=VLOOKUP(=CONCAT column,'first sheet'!=Concat col:Classification col,2)
