@@ -61,7 +61,7 @@ event_offset = {
     "6": 0,
 }
 
-game_num = "6"
+game_num = "2"
 game_df = DataUtil.load_game_df(games[game_num])
 annotation_df = DataUtil.load_annotation_df(events[game_num])
 
@@ -85,8 +85,8 @@ combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 print(combined_event_df.head())
 combined_event_df.to_csv("static/data/test/events.csv")
 
-
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 185)
+"""
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 431)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
 #moments_df.to_csv("static/data/test/test.csv")
@@ -120,8 +120,7 @@ for index, event in combined_event_df.iterrows():
         failed += 1
 
 final_candidates = DataUtil.remove_duplicate_candidates(all_candidates)
-print("Number of candidates parsed: " + str(len(final_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(round(succesful/(failed + succesful), 2)))
+print("\nNumber of candidates parsed: " + str(len(final_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(round(succesful/(failed + succesful), 2)))
 
 candidate_df = pd.DataFrame(final_candidates)
 candidate_df.to_csv('static/data/test/candidates.csv')
-"""
