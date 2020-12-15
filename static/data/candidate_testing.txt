@@ -1,4 +1,4 @@
-Warriors Celtics
+Warriors Celtics 11/12/2015
 
 Issue at index: 690 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000024801E6A848>)
 Number of candidates parsed: 196
@@ -8,8 +8,6 @@ Percent Successful: 1.0
 
 Notable Examples
 
-Q1 - 6:20 and 6:19 -- Detects Fake, mistakes two handoffs right after
-Q1 - 5:46 -- Fake then backdoor pass 
 Q1 - :54 -- Honestly, not sure, but inclined to say no
 Q1 - 1:23 and 1:22 -- Data error
 Q3 - 9:09 -- Borderline
@@ -18,29 +16,33 @@ Q3 - 3:31 -- Borderline
 
 Missed Actions:
 
-
+event: 163, Q2 - 11:32  -- fake
 event: 163, Q2 - 8:33
+event: 163, Q2 - 7:42 -- fake
+event: 163, Q2 - 3:36 -- fake
 event: 402, Q3 - 2:51 -- fake
 event: 443, Q4 - 10:11 -- fake
 event: 502, Q4 - 5:02 -- fake
 event: 541, Q4 - 2:20
+event: 660, OT1 - 3:36 -- gets wrong passer
 event: 660, OT2 - 3:39
 
-missed candidates: 6
-positive candidates: 39
-negative candidates: 59
-recall w/o fakes: .898
-recall w/ fakes: .891
+missed candidates: 10
+positive candidates: 51
+negative candidates: 145
+recall w/o fakes: .923
+recall w/ fakes: .836
 
 ----------------------------------------------
 
 
-Clippers Lakers 12/25
+Clippers Lakers 12/25/2015
 
 Issue at index: 161 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x00000259500454C8>)
 Issue at index: 296 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000002595A9D6308>)
 Issue at index: 326 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000002595E057A48>)
 Issue at index: 479 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000002596C67F288>)
+
 Number of candidates parsed: 130
 Successful events: 220
 Failed events: 4
@@ -67,6 +69,7 @@ event: 431, Q4 - 7:05
 missed candidates: 7
 positive candidates: 41
 negative candidates: 83
+fake candidates: 4
 recall w/o fakes: .872
 recall w/ fakes: .883
 
@@ -96,6 +99,31 @@ positive candidates: 38
 negative candidates: 91
 recall w/o fakes: .95
 recall w/ fakes: .973
+
+--------------------------------------------------
+
+Mil NYK 11/06/2015
+
+Issue at index: 75 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001DF285CCDC8>)
+Issue at index: 190 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001DF321721C8>)
+Number of candidates parsed: 129
+Successful events: 229
+Failed events: 2
+Percent Successful: 0.99
+
+Questionable:
+
+
+
+Missed Candidates
+
+
+
+missed candidates: 
+positive candidates: 
+negative candidates: 
+recall w/o fakes: 
+recall w/ fakes: 
 
 
 
