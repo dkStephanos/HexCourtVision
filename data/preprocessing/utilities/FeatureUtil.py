@@ -173,6 +173,20 @@ class FeatureUtil:
         
         return passes
 
+    # Checks the start and end location of the ball to determine if the pass occurs in the paint, returns a boolean
+    @staticmethod
+    def check_for_paint_pass(moments_df, event_pass):
+        paint_pass = False
+        start_loc = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == -1)]
+        end_loc = moments_df.loc[(moments_df['moment'] == event_pass['receive_moment']) & (moments_df['player_id'] == -1)]
+
+        if (((((start_loc['x_loc'] >= 0.0) & (start_loc['x_loc'] <= 19.0)) | ((start_loc['x_loc'] >= 71.0) & (start_loc['x_loc'] <= 90.0))) & ((start_loc['y_loc'] >= 17.0) & (start_loc['y_loc'] <= 33.0))).all()):
+            paint_pass = True
+        if (((((end_loc['x_loc'] >= 0.0) & (end_loc['x_loc'] <= 19.0)) | ((end_loc['x_loc'] >= 71.0) & (end_loc['x_loc'] <= 90.0))) & ((end_loc['y_loc'] >= 17.0) & (end_loc['y_loc'] <= 33.0))).all()):
+            paint_pass = True
+
+        return paint_pass
+
     @staticmethod
     def get_ball_handler_for_event(moments_df, player_ids):
         # First, calculate the distances between players and the ball, and get a min dist data frame
@@ -229,7 +243,7 @@ class FeatureUtil:
     def get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_range, players_dict):
         candidates = []
         for event_pass in event_passes:
-            if (event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
+            if (not FeatureUtil.check_for_paint_pass(moments_df, event_pass) and event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
                 moment = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
                 event_id = moment['event_id'].values[0]
                 event = combined_event_df.loc[(combined_event_df['event_id'] == event_id)]
@@ -243,4 +257,5 @@ class FeatureUtil:
                          'shot_clock': moment['shot_clock'].values[0],
                          'player_a': players_dict[event_pass['passer']][0],
                          'player_b': players_dict[event_pass['receiver']][0]})
+        
         return candidates
