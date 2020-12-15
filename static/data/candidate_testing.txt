@@ -36,7 +36,6 @@ recall w/ fakes: .836
 
 ----------------------------------------------
 
-
 Clippers Lakers 12/25/2015
 
 Issue at index: 161 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000027C3D905E48>)
@@ -49,12 +48,12 @@ Successful events: 220
 Failed events: 4
 Percent Successful: 0.98
 
-Questionable:
+Notable Examples:
 
 Q1 - 10:12 -- Foul occurs before handoff
 Q2 - 4:22 -- Poked out of bounds before handoff
 
-Missed Candidates
+Missed Candidates:
 
 event: 125, Q2 - 11:02 -- Fake
 event: 162, Q2 - 7:48 -- Fake
@@ -79,17 +78,18 @@ Pheonix OKC 12/31/2015
 
 Issue at index: 75 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001DF285CCDC8>)
 Issue at index: 190 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001DF321721C8>)
+
 Number of candidates parsed: 129
 Successful events: 229
 Failed events: 2
 Percent Successful: 0.99
 
-Questionable:
+Notable Examples:
 
 event: 9, Q1, 10:48 --- turnover
 event: 271, Q3, 7:41 --- borderline
 
-Missed Candidates
+Missed Candidates:
 
 event: , Q4, 8:13 --- fake
 event: , Q4, :17
@@ -111,17 +111,16 @@ Issue at index: 110 (<class 'Exception'>, Exception('Data must be 1-dimensional'
 Issue at index: 281 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000002753E4FC708>)
 Issue at index: 497 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000027551255B08>)
 Issue at index: 582 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000027557D03A88>)
+
 Number of candidates parsed: 168
 Successful events: 233
 Failed events: 7
 Percent Successful: 0.97
 
-Questionable:
+Notable Examples:
 
 
-
-Missed Candidates
-
+Missed Candidates:
 
 
 missed candidates: 
@@ -130,13 +129,37 @@ negative candidates:
 recall w/o fakes: 
 recall w/ fakes: 
 
+---------------------------------------------------
+
+DEN POR 12/30/2015 
+
+Issue at index: 57 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEB0B49408>)
+Issue at index: 109 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEB666B048>)
+Issue at index: 196 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEBD9C18C8>)
+Issue at index: 211 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEBE708CC8>)
+Issue at index: 212 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEBE708608>)
+Issue at index: 308 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEC7E551C8>)
+Issue at index: 319 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEC8760848>)
+Issue at index: 398 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AECFF83DC8>)
+Issue at index: 406 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AED0B01748>)
+Issue at index: 428 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AED3318E08>)
+Issue at index: 439 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AED469AE48>)
+Issue at index: 454 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AED5931188>)
+Issue at index: 455 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AED59318C8>)
+
+Number of candidates parsed: 89
+Successful events: 223
+Failed events: 14
+Percent Successful: 0.94
+
+Questionable:
 
 
+Missed Candidates
 
 
-
-
-
-
-
-
+missed candidates: 
+positive candidates: 
+negative candidates: 
+recall w/o fakes: 
+recall w/ fakes: 

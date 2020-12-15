@@ -27,7 +27,7 @@ games = {
         "4": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.30.2015.GSW.at.DAL/0021500480.json",
         "5": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.PHX.at.OKC/0021500488.json",
         "6": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/11.06.2015.MIL.at.NYK/0021500079.json"
-        }
+}
 events = {
         "1": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151211GSWBOS.csv",
         "2": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151225LACLAL.csv",
@@ -35,7 +35,7 @@ events = {
         "4": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151230GSWDAL.csv",
         "5": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151231PHXOKC.csv",
         "6": r'C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151106MILNYK.csv'
-    }
+}
 bad_events = {
     "1": [],
     "2": [212, 294, 386],
@@ -55,13 +55,13 @@ moment_ranges = {
 event_offset = {
     "1": 0,
     "2": 0,
-    "3": 4,
-    "4": 0,
+    "3": 0,
+    "4": 1,
     "5": 0,
     "6": 0,
 }
 
-game_num = "2"
+game_num = "4"
 game_df = DataUtil.load_game_df(games[game_num])
 annotation_df = DataUtil.load_annotation_df(events[game_num])
 
