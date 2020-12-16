@@ -37,7 +37,7 @@ Clippers Lakers 12/25/2015
 
 No moments for event: 479
 
-Number of candidates parsed: 117
+Number of candidates parsed: 112
 Successful events: 218
 Failed events: 0
 Percent Successful: 1.0
@@ -110,6 +110,7 @@ Percent Successful: 1.0
 Notable Examples:
 
 event: , Q1, 10:26 -- very long pass, borderline
+event: 314, Q3, 10:18 -- transition, borderline
 
 Bad data:
 event: 110, Q1, :50
@@ -121,13 +122,16 @@ Missed Candidates:
 event: , Q1, 9:17 -- Fake
 event: , Q2, 8:28 -- Fake
 event: 204, Q2, :56 -- Fake
+event: 345, Q3, 6:37 -- very far extension, makes the pass look longer than it is
+event: 445, Q4, 11:53 -- Fake
+event: 447, Q4, 11:25 -- Fake
 
 
-missed candidates: 
-positive candidates: 
-negative candidates: 
-recall w/o fakes: 
-recall w/ fakes: 
+missed candidates: 1
+positive candidates: 30 
+negative candidates: 81
+recall w/o fakes: 96.8
+recall w/ fakes: 83.3
 
 ---------------------------------------------------
 

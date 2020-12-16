@@ -62,7 +62,7 @@ event_offset = {
 }
 
 
-game_num = "6"
+game_num = "5"
 game_df = DataUtil.load_game_df(games[game_num])
 annotation_df = DataUtil.load_annotation_df(events[game_num])
 
@@ -89,7 +89,7 @@ print(combined_event_df.head())
 #combined_event_df.to_csv("static/data/test/events.csv")
 
 """
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 131)
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 345)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
 moments_df.to_csv("static/data/test/test.csv")
