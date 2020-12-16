@@ -39,10 +39,10 @@ events = {
 bad_events = {
     "1": [],
     "2": [212, 294, 296, 386],
-    "3": [109, 196, 211,212,308,319,398,406,428,439,454,455],
+    "3": [212, 440, 455],
     "4": [],
     "5": [],
-    "6": [],
+    "6": [110],
 }
 moment_ranges = {
     "1": 7,
@@ -55,13 +55,14 @@ moment_ranges = {
 event_offset = {
     "1": 0,
     "2": 0,
-    "3": 0,
+    "3": 1,
     "4": 1,
     "5": 0,
     "6": 0,
 }
 
-game_num = "3"
+
+game_num = "6"
 game_df = DataUtil.load_game_df(games[game_num])
 annotation_df = DataUtil.load_annotation_df(events[game_num])
 
@@ -88,7 +89,7 @@ print(combined_event_df.head())
 #combined_event_df.to_csv("static/data/test/events.csv")
 
 """
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 190)
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 131)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
 moments_df.to_csv("static/data/test/test.csv")

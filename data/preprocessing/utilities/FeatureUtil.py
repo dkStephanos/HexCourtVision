@@ -139,7 +139,6 @@ class FeatureUtil:
     @staticmethod
     def distance_between_ball_and_players(moments_df, player_ids):
         group = moments_df[moments_df.player_id.isin(player_ids)].groupby("player_id")[["x_loc", "y_loc"]]
-        print(group.head())
         ball_distances = group.apply(FeatureUtil.distance_between_players, moments_df[moments_df.player_id==-1][["x_loc", "y_loc"]])
         
         return ball_distances
@@ -199,6 +198,17 @@ class FeatureUtil:
 
         return paint_pass
 
+    # Checks the start and end location of the ball to determine if it is an inbound pass, returns a boolean
+    @staticmethod
+    def check_for_inbound_pass(moments_df, event_pass):
+        inbound_pass = False
+        start_loc = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
+
+        if ((((start_loc['x_loc'] <= 0.0) | (start_loc['x_loc'] >= 94.0))) | ((start_loc['y_loc'] >= 50.0) | (start_loc['y_loc'] <= 0.0))).all():
+            inbound_pass = True
+
+        return inbound_pass
+
     @staticmethod
     def get_ball_handler_for_event(moments_df, player_ids):
         # First, calculate the distances between players and the ball, and get a min dist data frame
@@ -221,7 +231,7 @@ class FeatureUtil:
             if moments_df.iloc[i*11]['radius'] >= 10.0:
                 ball_handler_df.iat[i, 0] = pd.NA
 
-        ball_handler_df.to_csv("static/data/test/ball_handler.csv")
+        #ball_handler_df.to_csv("static/data/test/ball_handler.csv")
         return ball_handler_df
 
     @staticmethod
@@ -254,19 +264,22 @@ class FeatureUtil:
     @staticmethod
     def get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_range, players_dict):
         candidates = []
+        candidate_count = 0
         for event_pass in event_passes:
-            if (not FeatureUtil.check_for_paint_pass(moments_df, event_pass) and event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
+            if (not FeatureUtil.check_for_paint_pass(moments_df, event_pass) and not FeatureUtil.check_for_inbound_pass(moments_df, event_pass) and event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
                 moment = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
                 event_id = moment['event_id'].values[0]
                 event = combined_event_df.loc[(combined_event_df['event_id'] == event_id)]
+                candidate_count += 1
                 candidates.append({
+                    'candidate_id': f"{event_id}-{candidate_count}",
                     'event_id': event_id,
-                        'classification_type': 'dribble-hand-off',
-                        'classification': pd.NA,
-                        'period': event['PERIOD'].values[0],
-                        'game_clock': DataUtil.convert_game_clock_to_timestamp(moment['game_clock']),
-                        'shot_clock': moment['shot_clock'].values[0],
-                        'player_a': players_dict[event_pass['passer']][0],
-                        'player_b': players_dict[event_pass['receiver']][0]})
+                    'classification_type': 'dribble-hand-off',
+                    'classification': pd.NA,
+                    'period': event['PERIOD'].values[0],
+                    'game_clock': DataUtil.convert_game_clock_to_timestamp(moment['game_clock']),
+                    'shot_clock': moment['shot_clock'].values[0],
+                    'player_a': players_dict[event_pass['passer']][0],
+                    'player_b': players_dict[event_pass['receiver']][0]})
         
         return candidates
