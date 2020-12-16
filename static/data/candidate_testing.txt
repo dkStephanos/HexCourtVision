@@ -133,29 +133,60 @@ recall w/ fakes:
 
 DEN POR 12/30/2015 
 
-Issue at index: 57 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEB0B49408>)
-Issue at index: 109 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEB666B048>)
-Issue at index: 196 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEBD9C18C8>)
-Issue at index: 211 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEBE708CC8>)
-Issue at index: 212 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEBE708608>)
-Issue at index: 308 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEC7E551C8>)
-Issue at index: 319 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AEC8760848>)
-Issue at index: 398 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AECFF83DC8>)
-Issue at index: 406 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AED0B01748>)
-Issue at index: 428 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AED3318E08>)
-Issue at index: 439 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AED469AE48>)
-Issue at index: 454 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AED5931188>)
-Issue at index: 455 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001AED59318C8>)
+Issue at index: 109 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6A56DAE48>)
+Issue at index: 196 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6ACF74A48>)
+Issue at index: 211 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6ADCB6F48>)
+Issue at index: 212 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6ADCB6EC8>)
+Issue at index: 308 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6B742D208>)
+Issue at index: 319 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6B7D11C08>)
+Issue at index: 398 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6BF5332C8>)
+Issue at index: 406 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6C00AB288>)
+Issue at index: 418 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6C1727C88>)
+Issue at index: 428 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6C28C8D48>)
+Issue at index: 439 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6C3C48FC8>)
+Issue at index: 454 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6C4EE1048>)
+Issue at index: 455 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001A6C4EE1F88>)
 
-Number of candidates parsed: 89
-Successful events: 223
-Failed events: 14
+Number of candidates parsed: 88
+Successful events: 222
+Failed events: 13
 Percent Successful: 0.94
+Notable examples:
 
-Questionable:
+Q2 - 9:50 -- more like a short pass and a pick n roll**
 
+Missed Candidates:
 
-Missed Candidates
+event: 20, Q1 - 10:24 - Shoots before crossing screen
+event: 67, Q1 - 4:48
+event: 130, Q2 - 9:31 -- Fake
+event: 132, Q2 - 9:15 -- Fake
+event: 151, Q2 - 8:21
+event: 165, Q2 - 7:05
+event: 186, Q2 - 4:16 -- Pass intercepted
+event: 202, Q2 - 3:16 -- Fake
+event: 227, Q2 - :55
+event: 272, Q3 - 7:33
+event: 274, Q3 - 7:20
+event: 275, Q3 - 7:03
+event: 282, Q3 - 6:18 -- Fake
+event: 296, Q3 - 4:11
+event: 306, Q3 - 3:53
+event: 333, Q3 - 1:43 -- Fake
+event: 336, Q3 - 1:26 -- Fake
+event: 338, Q3 - 1:05
+event: 345, Q3 - :50
+event: 393, Q4 - 9:17
+event: 394, Q4 - 9:04
+event: 394, Q4 - 9:00
+event: 421, Q4 - 6:54
+event: 426, Q4 - 6:33 -- Fake
+event: 438, Q4 - 4:49
+event: 440, Q4 - 4:10
+event: 442, Q4 - 3:53
+event: 449, Q4 - 3:09
+event: 469, Q4 - 1:26 -- Fake
+event: 472, Q4 - :49
 
 
 missed candidates: 
