@@ -1,3 +1,12 @@
+Overall:
+
+positive candidates: 164
+negative candidates: 328
+total candidates: 492
+average recall: 94.85%
+
+----------------------------------
+
 Warriors Celtics 11/12/2015
 
 Number of candidates parsed: 153
@@ -27,7 +36,7 @@ event: 660, OT2 - 3:39
 
 missed candidates: 10
 positive candidates: 51
-negative candidates: 102
+negative candidates: 106
 recall w/o fakes: .923
 recall w/ fakes: .85
 
@@ -74,8 +83,10 @@ recall w/ fakes: .9
 
 Pheonix OKC 12/31/2015
 
-Number of candidates parsed: 130
-Successful events: 231
+No moments for event: 190
+
+Number of candidates parsed: 107
+Successful events: 229
 Failed events: 0
 Percent Successful: 1.0
 
@@ -91,7 +102,7 @@ event: , Q4, :17
 
 missed candidates: 2
 positive candidates: 38
-negative candidates: 92
+negative candidates: 69
 recall w/o fakes: .95
 recall w/ fakes: .973
 
