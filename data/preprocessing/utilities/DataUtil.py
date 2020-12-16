@@ -329,8 +329,7 @@ class DataUtil:
 
         # A list containing each moment	
         moments = event_df["moments"]	
-        print(len(moments))
-        print("inside moments")
+        
         # Initialize our new list	
         player_moments = []	
         last_game_clock = 720

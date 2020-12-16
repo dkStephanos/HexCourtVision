@@ -17,7 +17,6 @@ Missed Actions:
 
 event: 163, Q2 - 11:32  -- fake
 event: 163, Q2 - 8:33
-event: 163, Q2 - 7:42 -- fake
 event: 163, Q2 - 3:36 -- fake
 event: 402, Q3 - 2:51 -- fake
 event: 443, Q4 - 10:11 -- fake
@@ -30,53 +29,53 @@ missed candidates: 10
 positive candidates: 51
 negative candidates: 102
 recall w/o fakes: .923
-recall w/ fakes: .836
+recall w/ fakes: .85
 
 ----------------------------------------------
 
 Clippers Lakers 12/25/2015
 
-Issue at index: 479 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000027C59B1E5C8>)
 
 Number of candidates parsed: 117
 Successful events: 222
-Failed events: 1
-Percent Successful: 0.99
+Failed events: 0
+Percent Successful: 1.0
 
 Notable Examples:
 
 Q1 - 10:12 -- Foul occurs before handoff
 Q2 - 4:22 -- Poked out of bounds before handoff
 
+Bad data:
+
+event: 212, !Q2 - 4:18  -- BAD DATA
+event: 294, !Q3 - 9:01 -- BAD DATA
+event: 386, !Q4 - 11:16 -- BAD DATA
+
 Missed Candidates:
 
 event: 125, Q2 - 11:02 -- Fake
-event: 162, Q2 - 7:48 -- Fake
-event: 212, !Q2 - 4:18  -- BAD DATA
 event: 278, Q3 - 11:15 -- Early pass, moving screen foul
 event: 281, Q3 - 11:03 -- Fake
 event: 281, Q3 - 11:02 -- Fake
-event: 294, !Q3 - 9:01 -- BAD DATA
 event: 372, Q3 - :23  
-event: 386, !Q4 - 11:16 -- BAD DATA
 
-missed candidates: 6
-positive candidates: 44
-negative candidates: 69
-fake candidates: 3
+missed candidates: 5
+positive candidates: 45
+negative candidates: 72
+fake candidates: 4
 recall w/o fakes: .953
-recall w/ fakes: .88
+recall w/ fakes: .9
 
 --------------------------------------------------
 
 Pheonix OKC 12/31/2015
 
-Issue at index: 75 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001DF285CCDC8>)
 Issue at index: 190 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001DF321721C8>)
 
-Number of candidates parsed: 129
-Successful events: 229
-Failed events: 2
+Number of candidates parsed: 130
+Successful events: 230
+Failed events: 1
 Percent Successful: 0.99
 
 Notable Examples:
@@ -91,7 +90,7 @@ event: , Q4, :17
 
 missed candidates: 2
 positive candidates: 38
-negative candidates: 91
+negative candidates: 92
 recall w/o fakes: .95
 recall w/ fakes: .973
 
