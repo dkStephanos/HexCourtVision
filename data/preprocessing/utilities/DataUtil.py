@@ -129,11 +129,13 @@ class DataUtil:
         annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("OFF.FOUL", na=False)]
         annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("OFF.FOUL", na=False)]
 
-        # Next, trim out technical and loose ball fouls, as they don't contain full positional data
+        # Next, trim out technical, loose ball, and personal take fouls, as they don't contain full positional data
         annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("T.FOUL", na=False)]
         annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("T.FOUL", na=False)]
         annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("L.B.FOUL", na=False)]
         annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("L.B.FOUL", na=False)]
+        annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("Personal Take Foul", na=False)]
+        annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("Personal Take Foul", na=False)]
 
         # Finally, remove passed eventnums that have bad data
         if len(bad_events) > 0:

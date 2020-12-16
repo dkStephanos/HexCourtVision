@@ -36,15 +36,12 @@ recall w/ fakes: .836
 
 Clippers Lakers 12/25/2015
 
-Issue at index: 161 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000027C3D905E48>)
-Issue at index: 296 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000027C47E2D9C8>)
-Issue at index: 326 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000027C4B917DC8>)
 Issue at index: 479 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x0000027C59B1E5C8>)
 
-Number of candidates parsed: 113
-Successful events: 220
-Failed events: 4
-Percent Successful: 0.98
+Number of candidates parsed: 117
+Successful events: 222
+Failed events: 1
+Percent Successful: 0.99
 
 Notable Examples:
 
