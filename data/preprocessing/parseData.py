@@ -61,7 +61,7 @@ event_offset = {
     "6": 0,
 }
 
-game_num = "5"
+game_num = "3"
 game_df = DataUtil.load_game_df(games[game_num])
 annotation_df = DataUtil.load_annotation_df(events[game_num])
 
@@ -87,7 +87,7 @@ combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 print(combined_event_df.head())
 #combined_event_df.to_csv("static/data/test/events.csv")
 
-
+"""
 sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 190)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
@@ -128,4 +128,3 @@ print("\nNumber of candidates parsed: " + str(len(final_candidates)) + "\nSucces
 
 candidate_df = pd.DataFrame(final_candidates)
 candidate_df.to_csv('static/data/test/candidates.csv')
-"""
