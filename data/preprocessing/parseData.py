@@ -39,7 +39,7 @@ events = {
 bad_events = {
     "1": [],
     "2": [212, 294, 386],
-    "3": [],
+    "3": [109, 196, 211,212,308,319,398,406],
     "4": [],
     "5": [],
     "6": [],
@@ -83,13 +83,13 @@ combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
 
 print(combined_event_df.head())
-combined_event_df.to_csv("static/data/test/events.csv")
+#combined_event_df.to_csv("static/data/test/events.csv")
 
 
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 109)
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 418)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
-#moments_df.to_csv("static/data/test/test.csv")
+moments_df.to_csv("static/data/test/test.csv")
 print(len(moments_df))
 event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
 print(event_passes)

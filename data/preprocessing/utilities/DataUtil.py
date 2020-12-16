@@ -323,8 +323,12 @@ class DataUtil:
 
     @staticmethod
     def get_moments_from_event(event_df):
+        print("\n\ninside moments")
+
         # A list containing each moment	
         moments = event_df["moments"]	
+        print(len(moments))
+        print("inside moments")
         # Initialize our new list	
         player_moments = []	
         last_game_clock = 720
@@ -339,6 +343,8 @@ class DataUtil:
                     moment[3] = 0.0
                 # Check to see if shot clock is greater than previous entry, if so, break
                 if moment[3] > last_shot_clock and moment[2] < DataUtil.convert_timestamp_to_game_clock(event_df['PCTIMESTRING']) :
+                    print(f"\nlast shot clock: {last_shot_clock}")
+                    print(f"\ncurrent shot clock: {moment[2]}")
                     reached_end_of_play = True
                 else:
                     last_shot_clock = moment[3]
@@ -350,7 +356,7 @@ class DataUtil:
                         # and shot clock values for each moment	
                         player.extend((moments.index(moment), moment[2], moment[3], event_df["event_id"]))	
                         player_moments.append(player)
-
+            print(f"\nlast shot clock: {last_shot_clock}")
             reached_end_of_play = True
         
         return pd.DataFrame(player_moments, columns=DataUtil.HEADERS)	

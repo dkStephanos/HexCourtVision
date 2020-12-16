@@ -14,9 +14,13 @@ class FeatureUtil:
         # For Make, Miss, Turnover events, set possesion to PLAYER_1_TEAM_ID
         # For a Foul, set possesion to PLAYER_2_TEAM_ID
         for index, row in annotation_df.iterrows():
-            if row['EVENTMSGTYPE'] in [1,2,5]:
+            if row['EVENTMSGTYPE'] in [1,2]:
                 possession.append(row['PLAYER1_TEAM_ID'])
-            if row['EVENTMSGTYPE'] == 6:
+            elif 'Turnover: Shot Clock' in str(row['HOMEDESCRIPTION']):
+                possession.append(row['PLAYER1_ID'])
+            elif row['EVENTMSGTYPE'] == 5:
+                possession.append(row['PLAYER1_TEAM_ID'])
+            elif row['EVENTMSGTYPE'] == 6:
                 possession.append(row['PLAYER2_TEAM_ID'])
         
         # Add the list of team_ids to the dataframe as the possession col
@@ -128,6 +132,7 @@ class FeatureUtil:
     @staticmethod
     def distance_between_ball_and_players(moments_df, player_ids):
         group = moments_df[moments_df.player_id.isin(player_ids)].groupby("player_id")[["x_loc", "y_loc"]]
+        print(group.head())
         ball_distances = group.apply(FeatureUtil.distance_between_players, moments_df[moments_df.player_id==-1][["x_loc", "y_loc"]])
         
         return ball_distances
