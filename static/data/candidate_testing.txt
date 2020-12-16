@@ -1,8 +1,6 @@
 Warriors Celtics 11/12/2015
 
-Issue at index: 690 (<class 'Exception'>, Exception('Data must be 1-dimensional'), <traceback object at 0x000001F801E7AA08>)
-
-Number of candidates parsed: 152
+Number of candidates parsed: 153
 Successful events: 304
 Failed events: 1
 Percent Successful: 1.0
@@ -30,7 +28,7 @@ event: 660, OT2 - 3:39
 
 missed candidates: 10
 positive candidates: 51
-negative candidates: 101
+negative candidates: 102
 recall w/o fakes: .923
 recall w/ fakes: .836
 

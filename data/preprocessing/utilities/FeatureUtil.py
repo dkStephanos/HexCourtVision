@@ -8,7 +8,7 @@ class FeatureUtil:
 
     # We need to know which team has possesssion for each event, deduce from event type and add col to df
     @staticmethod
-    def determine_possession(annotation_df):
+    def determine_possession(annotation_df, teams_data):
         possession = []
         # Step through each possession
         # For Make, Miss, Turnover events, set possesion to PLAYER_1_TEAM_ID
@@ -16,8 +16,15 @@ class FeatureUtil:
         for index, row in annotation_df.iterrows():
             if row['EVENTMSGTYPE'] in [1,2]:
                 possession.append(row['PLAYER1_TEAM_ID'])
-            elif 'Turnover: Shot Clock' in str(row['HOMEDESCRIPTION']):
+            elif 'Turnover: Shot Clock' in str(row['HOMEDESCRIPTION']) or 'Turnover: Shot Clock' in str(row['VISITORDESCRIPTION']):
                 possession.append(row['PLAYER1_ID'])
+            elif 'Def. 3 Sec' in str(row['HOMEDESCRIPTION']) or 'Def. 3 Sec' in str(row['VISITORDESCRIPTION']):
+                if row['PLAYER1_TEAM_ID'] == teams_data[0]['team_id']:
+                    possession.append(teams_data[1]['team_id'])
+                else:
+                    possession.append(teams_data[0]['team_id'])
+            elif 'T.Foul' in str(row['HOMEDESCRIPTION']) or 'T.Foul' in str(row['VISITORDESCRIPTION']):
+                possession.append(row['PLAYER1_TEAM_ID'])
             elif row['EVENTMSGTYPE'] == 5:
                 possession.append(row['PLAYER1_TEAM_ID'])
             elif row['EVENTMSGTYPE'] == 6:

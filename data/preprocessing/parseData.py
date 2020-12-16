@@ -39,7 +39,7 @@ events = {
 bad_events = {
     "1": [],
     "2": [212, 294, 386],
-    "3": [109, 196, 211,212,308,319,398,406],
+    "3": [109, 196, 211,212,308,319,398,406,428,439,454,455],
     "4": [],
     "5": [],
     "6": [],
@@ -61,17 +61,19 @@ event_offset = {
     "6": 0,
 }
 
-game_num = "3"
+game_num = "2"
 game_df = DataUtil.load_game_df(games[game_num])
 annotation_df = DataUtil.load_annotation_df(events[game_num])
 
+teams_data = DataUtil.get_teams_data(game_df)
 players_data = DataUtil.get_players_data(game_df)
 players_dict = DataUtil.get_players_dict(game_df)
+print(teams_data)
 print(players_data)
 
 game_df = DataUtil.add_offset_to_eventnums(game_df, event_offset[game_num])
 annotation_df = DataUtil.trim_annotation_rows(annotation_df, bad_events[game_num])
-annotation_df = FeatureUtil.determine_possession(annotation_df)
+annotation_df = FeatureUtil.determine_possession(annotation_df, teams_data)
 annotation_df = DataUtil.generate_event_ids(annotation_df)
 
 annotation_df = DataUtil.trim_annotation_cols(annotation_df)
@@ -86,7 +88,7 @@ print(combined_event_df.head())
 #combined_event_df.to_csv("static/data/test/events.csv")
 
 
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 418)
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 161)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
 moments_df.to_csv("static/data/test/test.csv")
