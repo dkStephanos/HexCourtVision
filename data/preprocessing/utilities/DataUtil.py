@@ -109,10 +109,10 @@ class DataUtil:
     # Some games are missing the first couple events, so we must offset the numbers to correspond with the annotation data
     @staticmethod
     def add_offset_to_eventnums(game_df, event_offset):
-        print(game_df.head())
         # If event_offset is zero, we can skip this
         if (event_offset != 0):
             for event in game_df['events']:
+                
                 event['eventId'] = str(int(event['eventId']) + event_offset)
 
         return game_df
@@ -134,8 +134,6 @@ class DataUtil:
         annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("T.FOUL", na=False)]
         annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("L.B.FOUL", na=False)]
         annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("L.B.FOUL", na=False)]
-        annotation_df = annotation_df[~annotation_df["HOMEDESCRIPTION"].str.contains("Personal Take Foul", na=False)]
-        annotation_df = annotation_df[~annotation_df["VISITORDESCRIPTION"].str.contains("Personal Take Foul", na=False)]
 
         # Finally, remove passed eventnums that have bad data
         if len(bad_events) > 0:
@@ -189,7 +187,7 @@ class DataUtil:
         event_ids = []
 
         for index, row in annotation_df.iterrows():
-            event_ids.append(str(row['GAME_ID']) + f"{row['EVENTNUM']:03}")
+            event_ids.append(str(row['GAME_ID']) + f"-{row['EVENTNUM']:03}")
 
         annotation_df["event_id"] = event_ids
 
@@ -325,8 +323,6 @@ class DataUtil:
 
     @staticmethod
     def get_moments_from_event(event_df):
-        print("\n\ninside moments")
-
         # A list containing each moment	
         moments = event_df["moments"]	
         
