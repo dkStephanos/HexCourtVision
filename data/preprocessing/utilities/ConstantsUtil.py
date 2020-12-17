@@ -73,12 +73,6 @@ class ConstantsUtil:
             'bad_events': [],
             'moment_range': 8,
         },
-        "20151110LALMIA": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/11.10.2015.LAL.at.MIA/0021500108.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-.csv",
-            'bad_events': [],
-            'moment_range': 8,
-        },
         "20151211GSWBOS": {
             'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.11.2015.GSW.at.BOS/0021500336.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151211GSWBOS.csv",
@@ -98,73 +92,73 @@ class ConstantsUtil:
             'moment_range': 8,
         },
         "20151228ATLIND": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.ATL.at.IND/0021500459.json",
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.28.2015.ATL.at.IND/0021500459.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151228ATLIND.csv",
             'bad_events': [],
             'moment_range': 8,
         },
         "20151228CLEPHX": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.CLE.at.PHX/0021500466.json",
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.28.2015.CLE.at.PHX/0021500466.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151228CLEPHX.csv",
             'bad_events': [],
             'moment_range': 8,
         },
         "20151228LALCHA": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.LAL.at.CHA/0021500458.json",
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.28.2015.LAL.at.CHA/0021500458.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151228LALCHA.csv",
             'bad_events': [],
             'moment_range': 8,
         },
         "20151228PHIUTA": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.PHI.at.UTA/0021500467.json",
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.28.2015.PHI.at.UTA/0021500467.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151228PHIUTA.csv",
             'bad_events': [],
             'moment_range': 8,
         },
         "20151228SACGSW": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.SAC.at.GSW/0021500468.json",
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.28.2015.SAC.at.GSW/0021500468.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151228SACGSW.csv",
             'bad_events': [],
             'moment_range': 8,
         },
         "20151228TORCHI": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.TOR.at.CHI/0021500463.json",
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.28.2015.TOR.at.CHI/0021500463.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151228TORCHI.csv",
             'bad_events': [],
             'moment_range': 8,
         },
         "20151229ATLHOU": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.ATL.at.HOU/0021500470.json",
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.29.2015.ATL.at.HOU/0021500470.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151229ATLHOU.csv",
             'bad_events': [],
             'moment_range': 8,
         },
         "20151229CLEDEN": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.CLE.at.DEN/0021500473.json",
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.29.2015.CLE.at.DEN/0021500473.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151229CLEDEN.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20151230BKNORL": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.BKN.at.ORL/0021500475.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151230BKNORL.csv",
+        "20151230BKLORL": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.30.2015.BKN.at.ORL/0021500475.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151230BKLORL.csv",
             'bad_events': [],
             'moment_range': 8,
         },
         "20151230LALBOS": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.LAL.at.BOS/0021500476.json",
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.30.2015.LAL.at.BOS/0021500476.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151230LALBOS.csv",
             'bad_events': [],
             'moment_range': 8,
         },
         "20151230PHXSAS": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.PHX.at.SAS/0021500481.json",
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.30.2015.PHX.at.SAS/0021500481.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151230PHXSAS.csv",
             'bad_events': [],
             'moment_range': 8,
         },
         "20151230WASTOR": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.WAS.at.TOR/0021500477.json",
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.30.2015.WAS.at.TOR/0021500477.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151230WASTOR.csv",
             'bad_events': [],
             'moment_range': 8,
@@ -181,105 +175,105 @@ class ConstantsUtil:
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150102BKNBOS": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.BKN.at.BOS/0021500495.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150102BKNBOS.csv",
+        "20160102BKLBOS": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.02.2016.BKN.at.BOS/0021500495.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160102BKLBOS.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150102HOUSAS": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.HOU.at.SAS/0021500502.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150102HOUSAS.csv",
+        "20160102HOUSAS": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.02.2016.HOU.at.SAS/0021500502.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160102HOUSAS.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150118ORLATL": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.ORL.at.ATL/0021500620.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150118ORLATL.csv",
+        "20160118ORLATL": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.18.2016.ORL.at.ATL/0021500620.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160118ORLATL.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150118PHINYK": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.PHI.at.NYK/0021500615.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150118PHINYK.csv",
+        "20160118PHINYK": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.18.2016.PHI.at.NYK/0021500615.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160118PHINYK.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150120CHAOKC": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.CHA.at.OKC/0021500636.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150120CHAOKC.csv",
+        "20160120CHAOKC": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.20.2016.CHA.at.OKC/0021500636.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160120CHAOKC.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150120MIAWAS": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.MIA.at.WAS/0021500630.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150120MIAWAS.csv",
+        "20160120MIAWAS": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.20.2016.MIA.at.WAS/0021500630.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160120MIAWAS.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150121DETNOP": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.DET.at.NOP/0021500641.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150121DETNOP.csv",
+        "20160121DETNOP": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.21.2016.DET.at.NOP/0021500641.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160121DETNOP.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150122CHIBOS": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.CHI.at.BOS/0021500646.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150122CHIBOS.csv",
+        "20160122CHIBOS": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.22.2016.CHI.at.BOS/0021500646.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160122CHIBOS.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150122LACNYK": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.LAC.at.NYK/0021500648.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150122LACNYK.csv",
+        "20160122LACNYK": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.22.2016.LAC.at.NYK/0021500648.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160122LACNYK.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150122MIATOR": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.MIA.at.TOR/0021500649.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150122MIATOR.csv",
+        "20160122MIATOR": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.22.2016.MIA.at.TOR/0021500649.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160122MIATOR.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150122MILHOU": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.MIL.at.HOU/0021500650.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150122MILHOU.csv",
+        "20160122MILHOU": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.22.2016.MIL.at.HOU/0021500650.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160122MILHOU.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150123ATLPHX": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.ATL.at.PHX/0021500660.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150123ATLPHX.csv",
+        "20160123ATLPHX": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.23.2016.ATL.at.PHX/0021500660.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160123ATLPHX.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150123CHICLE": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.CHI.at.CLE/0021500659.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150123CHICLE.csv",
+        "20160123CHICLE": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.23.2016.CHI.at.CLE/0021500659.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160123CHICLE.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150123DETDEN": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.DET.at.DEN/0021500661.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150123DETDEN.csv",
+        "20160123DETDEN": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.23.2016.DET.at.DEN/0021500661.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160123DETDEN.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150123INDSAC": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.IND.at.SAC/0021500663.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150123INDSAC.csv",
+        "20160123INDSAC": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.23.2016.IND.at.SAC/0021500663.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160123INDSAC.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150123LALPOR": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.LAL.at.POR/0021500662.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150123LALPOR.csv",
+        "20160123LALPOR": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.23.2016.LAL.at.POR/0021500662.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160123LALPOR.csv",
             'bad_events': [],
             'moment_range': 8,
         },
-        "20150123NYKCHA": {
-            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.NYK.at.CHA/0021500655.json",
-            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20150123NYKCHA.csv",
+        "20160123NYKCHA": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/01.23.2016.NYK.at.CHA/0021500655.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20160123NYKCHA.csv",
             'bad_events': [],
             'moment_range': 8,
         },
