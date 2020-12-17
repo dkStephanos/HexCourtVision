@@ -37,37 +37,65 @@ class ConstantsUtil:
     }
 
     games = {
-        "20151211GSWBOS": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.11.2015.GSW.at.BOS/0021500336.json",
-        "20151225LACLAL": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.LAC.at.LAL/0021500440.json",
-        "20151230DENPOR": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.30.2015.DEN.at.POR/0021500482.json",
-        "20151230GSWDAL": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.30.2015.GSW.at.DAL/0021500480.json",
-        "20151231PHXOKC": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.PHX.at.OKC/0021500488.json",
-        "20151106MILNYK": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/11.06.2015.MIL.at.NYK/0021500079.json"
-    }
+        "20151029MEMIND": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/10.29.2015.MEM.at.IND/0021500018.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151029MEMIND.csv",
+            'bad_events': [],
+            'moment_range': 8
+        },
+        "20151106MIAIND": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/11.06.2015.MIA.at.IND/0021500080.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151106MIAIND.csv",
+            'bad_events': [],
+            'moment_range': 8,
+        },
+        "20151106MILNYK": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/11.06.2015.MIL.at.NYK/0021500079.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151106MILNYK.csv",
+            'bad_events': [110],
+            'moment_range': 8,
+        },
+        "20151106PHICLE": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/11.06.2015.PHI.at.CLE/0021500078.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151106PHICLE.csv",
+            'bad_events': [],
+            'moment_range': 8,
+        },
+        "20151110DALNOP": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/11.10.2015.DAL.at.NOP/0021500112.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151110DALNOP.csv",
+            'bad_events': [],
+            'moment_range': 8,
+        },
+        "20151110LALMIA": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/11.10.2015.LAL.at.MIA/0021500108.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151110LALMIA.csv",
+            'bad_events': [],
+            'moment_range': 8,
+        },
+        "20151110LALMIA": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/11.10.2015.LAL.at.MIA/0021500108.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-.csv",
+            'bad_events': [],
+            'moment_range': 8,
+        },
 
-    events = {
-        "20151211GSWBOS": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151211GSWBOS.csv",
-        "20151225LACLAL": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151225LACLAL.csv",
-        "20151230DENPOR": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151230DENPOR.csv",
-        "20151230GSWDAL": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151230GSWDAL.csv",
-        "20151231PHXOKC": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151231PHXOKC.csv",
-        "20151106MILNYK": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151106MILNYK.csv"
-    }
-    
-    bad_events = {
-        "20151211GSWBOS": [],
-        "20151225LACLAL": [212, 294, 296, 386],
-        "20151230DENPOR": [212, 440, 455],
-        "20151230GSWDAL": [],
-        "20151231PHXOKC": [],
-        "20151106MILNYK": [110],
-    }
-
-    moment_ranges = {
-        "20151211GSWBOS": 7,
-        "20151225LACLAL": 8,
-        "20151230DENPOR": 8,
-        "20151230GSWDAL": 8,
-        "20151231PHXOKC": 8,
-        "20151106MILNYK": 8, 
+        "20151211GSWBOS": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.11.2015.GSW.at.BOS/0021500336.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151211GSWBOS.csv",
+            'bad_events': [],
+            'moment_range': 7,
+        },
+        "20151225LACLAL": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.LAC.at.LAL/0021500440.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151225LACLAL.csv",
+            'bad_events': [212, 294, 296, 386],
+            'moment_range': 8,
+        },
+        "20151231PHXOKC": {
+            'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.PHX.at.OKC/0021500488.json",
+            'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151231PHXOKC.csv",
+            'bad_events': [],
+            'moment_range': 8,
+        },
     }

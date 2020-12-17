@@ -22,8 +22,8 @@ from utilities.ConstantsUtil import ConstantsUtil
 #annotation_df = DataUtil.load_annotation_df(annotation_path)
 
 game = "20151211GSWBOS"
-game_df = DataUtil.load_game_df(ConstantsUtil.games[game])
-annotation_df = DataUtil.load_annotation_df(ConstantsUtil.events[game])
+game_df = DataUtil.load_game_df(ConstantsUtil.games[game]['raw_data'])
+annotation_df = DataUtil.load_annotation_df(ConstantsUtil.games[game]['events'])
 
 teams_data = DataUtil.get_teams_data(game_df)
 players_data = DataUtil.get_players_data(game_df)
@@ -31,7 +31,7 @@ players_dict = DataUtil.get_players_dict(game_df)
 print(teams_data)
 print(players_data)
 
-annotation_df = DataUtil.trim_annotation_rows(annotation_df, ConstantsUtil.bad_events[game])
+annotation_df = DataUtil.trim_annotation_rows(annotation_df, ConstantsUtil.games[game]['bad_events'])
 annotation_df = FeatureUtil.determine_possession(annotation_df, teams_data)
 annotation_df = DataUtil.generate_event_ids(annotation_df)
 
@@ -54,7 +54,7 @@ moments_df.to_csv("static/data/test/test.csv")
 if len(moments_df) > 0:
     event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
     print(event_passes)
-    dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_ranges[game], players_dict)
+    dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, ConstantsUtil.games[game]['moment_range'], players_dict)
     print("Hand off candidates")
     print(dribble_handoff_candidates)
 
@@ -73,7 +73,7 @@ for index, event in combined_event_df.iterrows():
         moments_df = DataUtil.get_moments_from_event(event)
         if len(moments_df) > 0:
             event_passes = FeatureUtil.get_passess_for_event(moments_df, event["possession"], players_data)
-            dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, ConstantsUtil.moment_ranges[game], players_dict)
+            dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, ConstantsUtil.games[game]['moment_range'], players_dict)
             all_candidates += dribble_handoff_candidates
         else:
             print("No moments for event: " + str(event['EVENTNUM']))
