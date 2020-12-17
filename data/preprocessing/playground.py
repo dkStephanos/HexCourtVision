@@ -36,6 +36,12 @@ processed_games = [
     "20151231LACNOP", # 36 candidates
     "20160102BKLBOS", # 148 candidates  
     "20160102HOUSAS", # 29 candidates
+    "20160113ATLCHA", # 68 candidates
+    "20160113MIALAC", # 123 candidates  
+    "20160113NOPSAC", # 30 candidates
+    "20160113NYKBKL", # 32 candidates
+    "20160113UTAPOR", # 55 candidates  
+    "20160115ATLMIL", # 50 candidates
     "20160118ORLATL", # 50 candidates
     "20160118PHINYK", # 126 candidates
     "20160120CHAOKC", # 87 candidates
@@ -105,7 +111,7 @@ for game in ConstantsUtil.games:
         final_candidates = DataUtil.remove_duplicate_candidates(all_candidates)
         
         result = (
-            f"\n\n------------------------------\n\nStats for {game}:" +
+            f"\n\n------------------------------\n\nStats for {game}\n" +
             f"\nNumber of candidates parsed: {str(len(final_candidates))}" + 
             f"\nSuccessful events: {str(succesful)} \nFailed events: {str(failed)}" + 
             f"\nPercent Successful: {str(round(succesful/(failed + succesful), 2)*100)}%" +

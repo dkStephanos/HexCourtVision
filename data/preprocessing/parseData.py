@@ -86,4 +86,4 @@ final_candidates = DataUtil.remove_duplicate_candidates(all_candidates)
 print("\nNumber of candidates parsed: " + str(len(final_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(round(succesful/(failed + succesful), 2)))
 
 candidate_df = pd.DataFrame(final_candidates)
-candidate_df.to_csv(f'static/data/test/candidates-{game}.csv')
+candidate_df.to_csv(f'static/data/test/test.csv')
