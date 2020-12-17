@@ -11,6 +11,7 @@ import easygui
 from utilities.GraphUtil import GraphUtil
 from utilities.FeatureUtil import FeatureUtil
 from utilities.DataUtil import DataUtil
+from utilities.ConstantsUtil import ConstantsUtil
 
 # Load game with GUI
 #game_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/", title="Select a game file")
@@ -20,59 +21,9 @@ from utilities.DataUtil import DataUtil
 #annotation_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/", title="Select an annotation file")
 #annotation_df = DataUtil.load_annotation_df(annotation_path)
 
-games = {
-        "1": r'C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.11.2015.GSW.at.BOS/0021500336.json',
-        "2": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.LAC.at.LAL/0021500440.json",
-        "3": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.30.2015.DEN.at.POR/0021500482.json",
-        "4": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.30.2015.GSW.at.DAL/0021500480.json",
-        "5": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.PHX.at.OKC/0021500488.json",
-        "6": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/11.06.2015.MIL.at.NYK/0021500079.json"
-}
-game_names = {
-        "1": r"20151211GSWBOS",
-        "2": r"20151225LACLAL",
-        "3": r"20151230DENPOR",
-        "4": r"20151230GSWDAL",
-        "5": r"20151231PHXOKC",
-        "6": r'20151106MILNYK'
-}
-events = {
-        "1": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151211GSWBOS.csv",
-        "2": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151225LACLAL.csv",
-        "3": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151230DENPOR.csv",
-        "4": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151230GSWDAL.csv",
-        "5": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151231PHXOKC.csv",
-        "6": r'C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151106MILNYK.csv'
-}
-bad_events = {
-    "1": [],
-    "2": [212, 294, 296, 386],
-    "3": [212, 440, 455],
-    "4": [],
-    "5": [],
-    "6": [110],
-}
-moment_ranges = {
-    "1": 7,
-    "2": 8,
-    "3": 8,
-    "4": 8,
-    "5": 8,
-    "6": 8,
-}
-event_offset = {
-    "1": 0,
-    "2": 0,
-    "3": 1,
-    "4": 1,
-    "5": 0,
-    "6": 0,
-}
-
-
-game_num = "5"
-game_df = DataUtil.load_game_df(games[game_num])
-annotation_df = DataUtil.load_annotation_df(events[game_num])
+game = "20151211GSWBOS"
+game_df = DataUtil.load_game_df(ConstantsUtil.games[game])
+annotation_df = DataUtil.load_annotation_df(ConstantsUtil.events[game])
 
 teams_data = DataUtil.get_teams_data(game_df)
 players_data = DataUtil.get_players_data(game_df)
@@ -80,8 +31,7 @@ players_dict = DataUtil.get_players_dict(game_df)
 print(teams_data)
 print(players_data)
 
-game_df = DataUtil.add_offset_to_eventnums(game_df, event_offset[game_num])
-annotation_df = DataUtil.trim_annotation_rows(annotation_df, bad_events[game_num])
+annotation_df = DataUtil.trim_annotation_rows(annotation_df, ConstantsUtil.bad_events[game])
 annotation_df = FeatureUtil.determine_possession(annotation_df, teams_data)
 annotation_df = DataUtil.generate_event_ids(annotation_df)
 
@@ -104,7 +54,7 @@ moments_df.to_csv("static/data/test/test.csv")
 if len(moments_df) > 0:
     event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
     print(event_passes)
-    dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_ranges[game_num], players_dict)
+    dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_ranges[game], players_dict)
     print("Hand off candidates")
     print(dribble_handoff_candidates)
 
@@ -123,7 +73,7 @@ for index, event in combined_event_df.iterrows():
         moments_df = DataUtil.get_moments_from_event(event)
         if len(moments_df) > 0:
             event_passes = FeatureUtil.get_passess_for_event(moments_df, event["possession"], players_data)
-            dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_ranges[game_num], players_dict)
+            dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, ConstantsUtil.moment_ranges[game], players_dict)
             all_candidates += dribble_handoff_candidates
         else:
             print("No moments for event: " + str(event['EVENTNUM']))
@@ -136,4 +86,4 @@ final_candidates = DataUtil.remove_duplicate_candidates(all_candidates)
 print("\nNumber of candidates parsed: " + str(len(final_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(round(succesful/(failed + succesful), 2)))
 
 candidate_df = pd.DataFrame(final_candidates)
-candidate_df.to_csv(f'static/data/labeled_data/candidates-{game_names[game_num]}.csv')
+candidate_df.to_csv(f'static/data/test/candidates-{game}.csv')
