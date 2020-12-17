@@ -28,6 +28,14 @@ games = {
         "5": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.31.2015.PHX.at.OKC/0021500488.json",
         "6": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/11.06.2015.MIL.at.NYK/0021500079.json"
 }
+game_names = {
+        "1": r"20151211GSWBOS",
+        "2": r"20151225LACLAL",
+        "3": r"20151230DENPOR",
+        "4": r"20151230GSWDAL",
+        "5": r"20151231PHXOKC",
+        "6": r'20151106MILNYK'
+}
 events = {
         "1": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151211GSWBOS.csv",
         "2": r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151225LACLAL.csv",
@@ -128,4 +136,4 @@ final_candidates = DataUtil.remove_duplicate_candidates(all_candidates)
 print("\nNumber of candidates parsed: " + str(len(final_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(round(succesful/(failed + succesful), 2)))
 
 candidate_df = pd.DataFrame(final_candidates)
-candidate_df.to_csv('static/data/test/candidates.csv')
+candidate_df.to_csv(f'static/data/labeled_data/candidates-{game_names[game_num]}.csv')
