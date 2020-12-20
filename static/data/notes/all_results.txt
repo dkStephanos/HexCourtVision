@@ -1,0 +1,219 @@
+All Results:
+
+
+
+------------------------------
+
+Stats for 20151106MILNYK
+
+Number of candidates parsed: 101
+Successful events: 237 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 216
+Events w/ hand-off detected: 91
+Percent w/ candidate: 38.0%
+
+------------------------------
+
+Stats for 20151110DALNOP
+
+Number of candidates parsed: 98
+Successful events: 243 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 206
+Events w/ hand-off detected: 83
+Percent w/ candidate: 34.0%
+
+------------------------------
+
+Stats for 20151110LALMIA
+
+Number of candidates parsed: 124
+Successful events: 221 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 176
+Events w/ hand-off detected: 82
+Percent w/ candidate: 37.0%
+
+------------------------------
+
+Stats for 20151211GSWBOS
+
+Number of candidates parsed: 157
+Successful events: 299 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 260
+Events w/ hand-off detected: 124
+Percent w/ candidate: 41.0%
+
+------------------------------
+
+Stats for 20151225LACLAL
+
+Number of candidates parsed: 112
+Successful events: 218 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 178
+Events w/ hand-off detected: 84
+Percent w/ candidate: 39.0%
+
+------------------------------
+
+Stats for 20151225NOPMIA
+
+Number of candidates parsed: 151
+Successful events: 248 
+Failed events: 1
+Percent Successful: 100.0%
+Events w/ pass detected: 214
+Events w/ hand-off detected: 107
+Percent w/ candidate: 43.0%
+
+------------------------------
+
+Stats for 20151228LALCHA
+
+Number of candidates parsed: 102
+Successful events: 227 
+Failed events: 1
+Percent Successful: 100.0%
+Events w/ pass detected: 192
+Events w/ hand-off detected: 84
+Percent w/ candidate: 37.0%
+
+------------------------------
+
+Stats for 20151228SACGSW
+
+Number of candidates parsed: 120
+Successful events: 262 
+Failed events: 1
+Percent Successful: 100.0%
+Events w/ pass detected: 221
+Events w/ hand-off detected: 98
+Percent w/ candidate: 37.0%
+
+------------------------------
+
+Stats for 20151230LALBOS
+
+Number of candidates parsed: 155
+Successful events: 245 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 198
+Events w/ hand-off detected: 113
+Percent w/ candidate: 46.0%
+
+------------------------------
+
+Stats for 20151230WASTOR
+
+Number of candidates parsed: 93
+Successful events: 237 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 178
+Events w/ hand-off detected: 76
+Percent w/ candidate: 32.0%
+
+------------------------------
+
+Stats for 20151231PHXOKC
+
+Number of candidates parsed: 107
+Successful events: 229 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 195
+Events w/ hand-off detected: 99
+Percent w/ candidate: 43.0%
+
+------------------------------
+
+Stats for 20160102BKLBOS
+
+Number of candidates parsed: 148
+Successful events: 247 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 207
+Events w/ hand-off detected: 112
+Percent w/ candidate: 45.0%
+
+------------------------------
+
+Stats for 20160113MIALAC
+
+Number of candidates parsed: 123
+Successful events: 234 
+Failed events: 2
+Percent Successful: 99.0%
+Events w/ pass detected: 196
+Events w/ hand-off detected: 104
+Percent w/ candidate: 44.0%
+
+------------------------------
+
+Stats for 20160115DALCHI
+
+Number of candidates parsed: 133
+Successful events: 215 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 186
+Events w/ hand-off detected: 98
+Percent w/ candidate: 46.0%
+
+------------------------------
+
+Stats for 20160115MINOKC
+
+Number of candidates parsed: 117
+Successful events: 227 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 194
+Events w/ hand-off detected: 103
+Percent w/ candidate: 45.0%
+
+------------------------------
+
+Stats for 20160118PHINYK
+
+Number of candidates parsed: 126
+Successful events: 268 
+Failed events: 1
+Percent Successful: 100.0%
+Events w/ pass detected: 215
+Events w/ hand-off detected: 102
+Percent w/ candidate: 38.0%
+
+------------------------------
+
+Stats for 20160120MIAWAS
+
+Number of candidates parsed: 103
+Successful events: 214 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 184
+Events w/ hand-off detected: 80
+Percent w/ candidate: 37.0%
+
+------------------------------
+
+Stats for 20160123LALPOR
+
+Number of candidates parsed: 120
+Successful events: 233 
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 165
+Events w/ hand-off detected: 87
+Percent w/ candidate: 37.0%

@@ -333,17 +333,19 @@ class DataUtil:
     @staticmethod
     def remove_duplicate_candidates(all_candidates):
         final_candidates = []
-        offset_length = 5
+        offset_length = 3
         duplicate = False
 
         for index in range(0, len(all_candidates)):
-            for offset in range(1, offset_length):
-                if not index + offset >= len(all_candidates) and (all_candidates[index]['game_clock'] != all_candidates[index + offset]['game_clock'] or all_candidates[index]['shot_clock'] != all_candidates[index + offset]['shot_clock']):
-                    duplicate = False
-                else:
-                    duplicate = True
-                    break
-            if duplicate == False:
+            if index + offset_length >= len(all_candidates):
                 final_candidates.append(all_candidates[index])
+            else:
+                for offset in range(1, offset_length):
+                    if (all_candidates[index]['period'] == all_candidates[index + offset]['period'] and all_candidates[index]['game_clock'] == all_candidates[index + offset]['game_clock'] and all_candidates[index]['shot_clock'] == all_candidates[index + offset]['shot_clock']):
+                        duplicate = True
+                        break
+                if duplicate == False:
+                    final_candidates.append(all_candidates[index])
+                duplicate = False
 
         return final_candidates

@@ -70,7 +70,7 @@ all_results = "All Results:\n\n"
 
 for game in ConstantsUtil.games:
     if not game in processed_games:
-        print(f"Starting {game}")
+        print(f"\n\n------------------------------\n\nStarting {game}")
         game_df = DataUtil.load_game_df(ConstantsUtil.games[game]['raw_data'])
         annotation_df = DataUtil.load_annotation_df(ConstantsUtil.games[game]['events'])  
         print(f"Loaded game")
@@ -81,7 +81,6 @@ for game in ConstantsUtil.games:
         print("Extracted team/player data")
 
         print("Extracting events...")
-        game_df = DataUtil.add_offset_to_eventnums(game_df, ConstantsUtil.games[game]['event_offset'])
         annotation_df = DataUtil.trim_annotation_rows(annotation_df, ConstantsUtil.games[game]['bad_events'])
         annotation_df = FeatureUtil.determine_possession(annotation_df, teams_data)
         annotation_df = DataUtil.generate_event_ids(annotation_df)
@@ -132,8 +131,8 @@ for game in ConstantsUtil.games:
 
 
         candidate_df = pd.DataFrame(final_candidates)
-        #candidate_df.to_csv(f'static/data/test/candidates-{game}.csv')
-        #print("Saving to csv...\n")
+        candidate_df.to_csv(f'static/data/test/candidates-{game}.csv')
+        print("Saving to csv...\n")
 
 print("Writing all results to txt...")
 text_file = open("static/data/notes/all_results.txt", "w")

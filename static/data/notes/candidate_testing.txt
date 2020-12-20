@@ -241,3 +241,56 @@ positive candidates: 29
 negative candidates: 
 recall w/o fakes: 
 recall w/ fakes: 
+
+--------------------------------------------------
+
+HOU SAS 01/02/2016
+
+No moments for event: 103
+No moments for event: 116
+No moments for event: 126
+
+Number of candidates parsed: 106
+Successful events: 214
+Failed events: 0
+Percent Successful: 1.0
+
+Notable Examples:
+
+
+Bad data:
+
+
+Missed Candidates:
+
+event: , Q1, 11:54
+event: , Q1, 11:44 -- Fake
+event: , Q1, 9:52 -- Fake
+event: , Q1, 2:59 -- Fake
+event: , Q2, 10:56 -- Fake
+event: , Q2, 7:30  -- fast guard to guard
+event: 197, Q2, 4:29
+event: , Q2, 3:24
+event: , Q2, 2:20 -- Fake
+event: , Q2, 2:17
+event: , Q2, 1:25
+event: , Q3, 11:01 -- Fake
+event: , Q3, 10:35 -- Fake
+event: , Q3, 9:10 -- Fake
+event: , Q3, 6:51 -- Fake
+event: , Q3, 6:11 -- Fake
+event: , Q3, 4:05 -- Fake
+event: , Q3, 3:47 -- Fake
+event: , Q3, 2:19 -- Fake
+event: , Q3, 1:31 -- Fake
+event: , Q4, 4:06 -- Fake
+event: , Q4, 2:46 -- Fake
+event: , Q4, :58
+
+
+
+missed candidates: 8
+positive candidates: 30
+negative candidates: 
+recall w/o fakes: .789
+recall w/ fakes: 
