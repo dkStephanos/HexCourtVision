@@ -25,7 +25,7 @@ Q3 - 3:31 -- Borderline
 Missed Actions:
 
 event: 163, Q2 - 11:32  -- fake
-event: 163, Q2 - 8:33
+event: 163, Q2 - 8:33 
 event: 163, Q2 - 3:36 -- fake
 event: 402, Q3 - 2:51 -- fake
 event: 443, Q4 - 10:11 -- fake
@@ -144,6 +144,59 @@ negative candidates: 81
 recall w/o fakes: 96.8
 recall w/ fakes: 83.3
 
+--------------------------------------------------
+
+LAL POR 01/23/2016
+
+No moments for event: 113
+No moments for event: 213
+No moments for event: 258
+No moments for event: 274
+No moments for event: 345
+No moments for event: 372
+
+Number of candidates parsed: 120
+Successful events: 233
+Failed events: 0
+Percent Successful: 1.0
+
+Notable Examples:
+
+
+Bad data:
+
+
+Missed Candidates:
+
+event: 23, Q1, 9:10 -- ball shifts on data
+event 37, Q1, 7:57
+event 46, Q1, 7:31
+event , Q1, 6:50
+event , Q1, 1:24 -- Fake
+event 118, Q2, 11:54
+event 122, Q2, 11:34
+event 124, Q2, 10:55
+event 156, Q2, 8:34 -- Fake
+event 161, Q2, 7:19
+event 190, Q2, 4:24
+event 242, Q3, 11:53
+event 247, Q3, 11:16
+event 297, Q3, 6:29
+event , Q3, 3:42 -- foul on shot
+event , Q4, 11:09 -- Fake
+event , Q4, 9:07 -- Fake
+event 428, Q4, 7:19
+event 449, Q4, 4:30
+event , Q4, 2:23
+event 471, Q4, 2:02
+
+
+missed candidates: 21
+positive candidates: 45
+negative candidates: 75
+recall w/o fakes: .729
+recall w/ fakes: .692
+
 ---------------------------------------------------
 
 DEN POR 12/30/2015 
@@ -158,26 +211,24 @@ Percent Successful: 1.0
 
 invalid events: [212, 440, 455]
 
+Notable examples:
+
 Q2 - 9:50 -- more like a short pass and a pick n roll**
+event: 393, Q4 - 9:17 -- more like a short pass and a pick n roll**
+event: 272, Q3 - 1:05 -- extended release, turns into shot, borderline
+
 
 Missed Candidates:
 
-event: 20, Q1 - 10:24 - Shoots before crossing screen
-event: , Q1 - 10:13 -- Fake
-event: 130, Q2 - 9:32
 event: 130, Q2 - 9:31 -- Fake
-event: 151, Q2 - 8:21
+event: 151, Q2 - 8:21 -- Not in data
+event: 151, Q2 - 8:19 -- Not in data
 event: 186, Q2 - 4:16 -- Pass intercepted
-event: 194, Q2 - 3:07
 event: 202, Q2 - 3:16 -- Fake
-event: , Q3 - 8:09
+event: 167, Q3 - 8:09
 event: 272, Q3 - 7:33
 event: 282, Q3 - 6:18 -- Fake
 event: 336, Q3 - 1:26 -- Fake
-event: 338, Q3 - 1:05
-event: 393, Q4 - 9:23
-event: 393, Q4 - 9:17
-event: 394, Q4 - 9:00
 event: 426, Q4 - 6:33 -- Fake
 event: 438, Q4 - 4:49
 event: 440, Q4 - 4:10
@@ -185,8 +236,8 @@ event: 469, Q4 - 1:26 -- Fake
 event: 472, Q4 - :49
 
 
-missed candidates: 21
-positive candidates: 25
+missed candidates: 12
+positive candidates: 29
 negative candidates: 
 recall w/o fakes: 
 recall w/ fakes: 

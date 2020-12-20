@@ -12,40 +12,47 @@ from utilities.ConstantsUtil import ConstantsUtil
 processed_games = [
     "20151029MEMIND", # 81 candidates
     "20151106MIAIND", # 45 candidates
-    "20151106MILNYK", # 101 candidates
+    #"20151106MILNYK", # 101 candidates
     "20151106PHICLE", # 44 candidates
-    "20151110DALNOP", # 98 candidates
-    "20151211GSWBOS", # 157 candidates
-    "20151225LACLAL", # 112 candidates
-    "20151231PHXOKC", # 107 candidates
-    "20151110LALMIA", # 124 candidates
-    "20151225NOPMIA", # 151 candidates
+    #"20151110DALNOP", # 98 candidates
+    #"20151211GSWBOS", # 157 candidates
+    #"20151225LACLAL", # 112 candidates
+    #"20151231PHXOKC", # 107 candidates
+    #"20151110LALMIA", # 124 candidates
+    #"20151225NOPMIA", # 151 candidates
     "20151228ATLIND", # 46 candidates
     "20151228CLEPHX", # 27 candidates
-    "20151228LALCHA", # 102 candidates
+    #"20151228LALCHA", # 102 candidates
     "20151228PHIUTA", # 21 candidates
-    "20151228SACGSW", # 120 candidates
+    #"20151228SACGSW", # 120 candidates
     "20151228ATLIND", # 46 candidates
     "20151228TORCHI", # 53 candidates
     "20151229ATLHOU", # 33 candidates
     "20151229CLEDEN", # 48 candidates
     "20151230BKLORL", # 49 candidates
-    "20151230LALBOS", # 155 candidates
+    #"20151230LALBOS", # 155 candidates
     "20151230PHXSAS", # 46 candidates
-    "20151230WASTOR", # 93 candidates
+    #"20151230WASTOR", # 93 candidates
+    "20151230DENPOR", # 87 candidates
+    "20151230GSWDAL", # 44 candidates
     "20151231LACNOP", # 36 candidates
-    "20160102BKLBOS", # 148 candidates  
+    #"20160102BKLBOS", # 148 candidates  
     "20160102HOUSAS", # 29 candidates
     "20160113ATLCHA", # 68 candidates
-    "20160113MIALAC", # 123 candidates  
+    #"20160113MIALAC", # 123 candidates  
     "20160113NOPSAC", # 30 candidates
     "20160113NYKBKL", # 32 candidates
     "20160113UTAPOR", # 55 candidates  
     "20160115ATLMIL", # 50 candidates
+    "20160115CHANOP", # 46 candidates
+    #"20160115DALCHI", # 133 candidates
+    "20160115MIADEN", # 34 candidates
+    #"20160115MINOKC", # 117 candidates
+    "20160115WASIND", # 47 candidates
     "20160118ORLATL", # 50 candidates
-    "20160118PHINYK", # 126 candidates
+    #"20160118PHINYK", # 126 candidates
     "20160120CHAOKC", # 87 candidates
-    "20160120MIAWAS", # 103 candidates
+    #"20160120MIAWAS", # 103 candidates
     "20160121DETNOP", # 29 candidates
     "20160122CHIBOS", # 84 candidates
     "20160122LACNYK", # 58 candidates
@@ -55,7 +62,7 @@ processed_games = [
     "20160123CHICLE", # FAILED
     "20160123DETDEN", # 52 candidates
     "20160123INDSAC", # 31 candidates
-    "20160123LALPOR", # 122 candidates
+    #"20160123LALPOR", # 122 candidates
     "20160123NYKCHA", # 41 candidates
  ]
 
@@ -73,6 +80,8 @@ for game in ConstantsUtil.games:
         players_dict = DataUtil.get_players_dict(game_df)
         print("Extracted team/player data")
 
+        print("Extracting events...")
+        game_df = DataUtil.add_offset_to_eventnums(game_df, ConstantsUtil.games[game]['event_offset'])
         annotation_df = DataUtil.trim_annotation_rows(annotation_df, ConstantsUtil.games[game]['bad_events'])
         annotation_df = FeatureUtil.determine_possession(annotation_df, teams_data)
         annotation_df = DataUtil.generate_event_ids(annotation_df)
@@ -123,10 +132,10 @@ for game in ConstantsUtil.games:
 
 
         candidate_df = pd.DataFrame(final_candidates)
-        candidate_df.to_csv(f'static/data/test/candidates-{game}.csv')
-        print("Saving to csv...\n")
-"""
+        #candidate_df.to_csv(f'static/data/test/candidates-{game}.csv')
+        #print("Saving to csv...\n")
+
+print("Writing all results to txt...")
 text_file = open("static/data/notes/all_results.txt", "w")
 n = text_file.write(all_results)
 text_file.close()
-"""

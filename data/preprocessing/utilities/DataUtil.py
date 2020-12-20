@@ -75,9 +75,9 @@ class DataUtil:
     def add_offset_to_eventnums(game_df, event_offset):
         # If event_offset is zero, we can skip this
         if (event_offset != 0):
-            for event in game_df['events']:
-                
-                event['eventId'] = str(int(event['eventId']) + event_offset)
+            for index, event in enumerate(game_df['events']):
+                if index + event_offset < len(game_df):
+                    event['eventId'] =  game_df['events'][index + event_offset]['eventId']
 
         return game_df
 
@@ -312,12 +312,22 @@ class DataUtil:
                     for player in moment[5]:	
                         # Add additional information to each player/ball	
                         # This info includes the index of each moment, the game clock	
-                        # and shot clock values for each moment	
-                        player.extend((moments.index(moment), moment[2], moment[3], event_df["event_id"]))	
-                        player_moments.append(player)
+                        # and shot clock values for each moment
+                        player_copy = player.copy()	
+                        player_copy.extend((moments.index(moment), moment[2], moment[3], event_df["event_id"]))	
+                        player_moments.append(player_copy)
             reached_end_of_play = True
         
         return pd.DataFrame(player_moments, columns=ConstantsUtil.HEADERS)	
+
+    @staticmethod
+    def extend_event_moments(game_df):
+        for index in range(1, len(game_df['events'])): 
+            if not game_df['events'][index - 1]['moments'] == None:
+                moments_copy = game_df['events'][index - 1]['moments'].copy()
+                game_df['events'][index]['moments'] = game_df['events'][index]['moments'] + moments_copy
+
+        return game_df
 
     # Scan ahead in the candidates by some set offset to remove duplicate entries from events with overlapping positional data
     @staticmethod

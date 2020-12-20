@@ -1,0 +1,20 @@
+Quality Games:
+
+    "20160123LALPOR", # 122 candidates
+    "20160120MIAWAS", # 103 candidates
+    "20160118PHINYK", # 126 candidates
+    "20160115MINOKC", # 117 candidates
+    "20160115DALCHI", # 133 candidates
+    "20160113MIALAC", # 123 candidates  
+    "20160102BKLBOS", # 148 candidates  
+    "20151230WASTOR", # 93 candidates
+    "20151230LALBOS", # 155 candidates
+    "20151228SACGSW", # 120 candidates
+    "20151228LALCHA", # 102 candidates
+    "20151225NOPMIA", # 151 candidates
+    "20151110LALMIA", # 124 candidates
+    "20151110DALNOP", # 98 candidates
+    "20151211GSWBOS", # 157 candidates, 51 positive, recall .923
+    "20151225LACLAL", # 112 candidates, 45 positive, recall .953
+    "20151231PHXOKC", # 107 candidates, 38 positive, recall .95
+	"20151106MILNYK", # 101 candidates, 30 positive, recall .968

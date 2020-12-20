@@ -56,7 +56,7 @@ class FeatureUtil:
                         break
                 if reached_end_of_play:
                     break
-                
+
         # Once we have found it, check the x_loc of the ball to determine basket
         team_basket['team'] = last_event['possession']
         if last_moment[5][0][2] >= 47.0:
@@ -262,13 +262,15 @@ class FeatureUtil:
 
     # Takes list of event_passes, and filters out dribble_hand_off candidates based on pass/receive moments within provided moment_range
     @staticmethod
-    def get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_range, players_dict):
+    def get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_range, players_dict, offset = 0):
         candidates = []
         candidate_count = 0
         for event_pass in event_passes:
             if (not FeatureUtil.check_for_paint_pass(moments_df, event_pass) and not FeatureUtil.check_for_inbound_pass(moments_df, event_pass) and event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
                 moment = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
                 event_id = moment['event_id'].values[0]
+                if offset > 0:
+                    event_id = f"{event_id.split('-')[0]}-{int(event_id.split('-')[0]) + offset}"
                 event = combined_event_df.loc[(combined_event_df['event_id'] == event_id)]
                 candidate_count += 1
                 candidates.append({

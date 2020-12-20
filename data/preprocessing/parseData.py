@@ -21,7 +21,7 @@ from utilities.ConstantsUtil import ConstantsUtil
 #annotation_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/", title="Select an annotation file")
 #annotation_df = DataUtil.load_annotation_df(annotation_path)
 
-game = "20151211GSWBOS"
+game = "20160123LALPOR"
 game_df = DataUtil.load_game_df(ConstantsUtil.games[game]['raw_data'])
 annotation_df = DataUtil.load_annotation_df(ConstantsUtil.games[game]['events'])
 
@@ -47,17 +47,16 @@ print(combined_event_df.head())
 #combined_event_df.to_csv("static/data/test/events.csv")
 
 """
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 345)
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 156)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
-moments_df.to_csv("static/data/test/test.csv")
+#moments_df.to_csv("static/data/test/test.csv")
 if len(moments_df) > 0:
     event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
     print(event_passes)
     dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, ConstantsUtil.games[game]['moment_range'], players_dict)
     print("Hand off candidates")
     print(dribble_handoff_candidates)
-
     # get ball movements for event and graph them
     ball_df = moments_df[moments_df.player_id==-1]
     GraphUtil.plot_player_movement(ball_df)
@@ -86,4 +85,4 @@ final_candidates = DataUtil.remove_duplicate_candidates(all_candidates)
 print("\nNumber of candidates parsed: " + str(len(final_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(round(succesful/(failed + succesful), 2)))
 
 candidate_df = pd.DataFrame(final_candidates)
-candidate_df.to_csv(f'static/data/test/test.csv')
+candidate_df.to_csv(f'static/data/test/candidates-{game}.csv')

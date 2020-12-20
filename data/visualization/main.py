@@ -9,7 +9,10 @@ while True:
         event = input()
         if(event == "exit"):
             break
-        game = Game(path_to_json=game_path, event_num=event)
-        game.read_json()
+        try:
+            game = Game(path_to_json=game_path, event_num=event)
+            game.read_json()
 
-        game.start()
+            game.start()
+        except:
+            print("Invlid event number, try again.")
