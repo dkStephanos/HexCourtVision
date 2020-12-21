@@ -188,10 +188,9 @@ event , Q4, 9:07 -- Fake
 event 428, Q4, 7:19
 event 449, Q4, 4:30
 event , Q4, 2:23
-event 471, Q4, 2:02
 
 
-missed candidates: 21
+missed candidates: 20
 positive candidates: 45
 negative candidates: 75
 recall w/o fakes: .729
@@ -244,7 +243,7 @@ recall w/ fakes:
 
 --------------------------------------------------
 
-HOU SAS 01/02/2016
+MIA WAS 01/20/2016
 
 No moments for event: 103
 No moments for event: 116
@@ -271,8 +270,8 @@ event: , Q2, 10:56 -- Fake
 event: , Q2, 7:30  -- fast guard to guard
 event: 197, Q2, 4:29
 event: , Q2, 3:24
-event: , Q2, 2:20 -- Fake
-event: , Q2, 2:17
+event: , Q2, 2:20 -- Fake -- missing in data
+event: , Q2, 2:17 -- missing in data
 event: , Q2, 1:25
 event: , Q3, 11:01 -- Fake
 event: , Q3, 10:35 -- Fake
@@ -289,8 +288,44 @@ event: , Q4, :58
 
 
 
-missed candidates: 8
-positive candidates: 30
+missed candidates: 6
+positive candidates: 31
 negative candidates: 
-recall w/o fakes: .789
+recall w/o fakes: .833
+recall w/ fakes: 
+
+--------------------------------------------------
+
+DAL NOP 11/10/2015
+
+Number of candidates parsed: 102
+Successful events: 243
+Failed events: 0
+Percent Successful: 100.0%
+Events w/ pass detected: 206
+Events w/ hand-off detected: 83
+Percent w/ candidate: 34.0%
+
+Notable Examples:
+
+
+Bad data:
+
+
+Missed Candidates:
+
+event: , Q1, 11:47 -- Fake
+event: 103, Q1, 2:12 -- not in data
+event: , Q1, 1:50 -- Fake
+event: 162, Q2, 8:44 
+event: , Q2, 2:45
+event: , Q3, 9:30
+event: , Q3, 7:50 -- foul -- not in data
+event: , Q4, 6:07 -- Fake
+
+
+missed candidates: 3
+positive candidates: 34
+negative candidates: 
+recall w/o fakes: .919
 recall w/ fakes: 

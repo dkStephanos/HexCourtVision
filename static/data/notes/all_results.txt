@@ -6,7 +6,7 @@ All Results:
 
 Stats for 20151106MILNYK
 
-Number of candidates parsed: 101
+Number of candidates parsed: 105
 Successful events: 237 
 Failed events: 0
 Percent Successful: 100.0%
@@ -18,7 +18,7 @@ Percent w/ candidate: 38.0%
 
 Stats for 20151110DALNOP
 
-Number of candidates parsed: 98
+Number of candidates parsed: 102
 Successful events: 243 
 Failed events: 0
 Percent Successful: 100.0%
@@ -30,7 +30,7 @@ Percent w/ candidate: 34.0%
 
 Stats for 20151110LALMIA
 
-Number of candidates parsed: 124
+Number of candidates parsed: 131
 Successful events: 221 
 Failed events: 0
 Percent Successful: 100.0%
@@ -42,7 +42,7 @@ Percent w/ candidate: 37.0%
 
 Stats for 20151211GSWBOS
 
-Number of candidates parsed: 157
+Number of candidates parsed: 175
 Successful events: 299 
 Failed events: 0
 Percent Successful: 100.0%
@@ -54,7 +54,7 @@ Percent w/ candidate: 41.0%
 
 Stats for 20151225LACLAL
 
-Number of candidates parsed: 112
+Number of candidates parsed: 121
 Successful events: 218 
 Failed events: 0
 Percent Successful: 100.0%
@@ -66,7 +66,7 @@ Percent w/ candidate: 39.0%
 
 Stats for 20151225NOPMIA
 
-Number of candidates parsed: 151
+Number of candidates parsed: 157
 Successful events: 248 
 Failed events: 1
 Percent Successful: 100.0%
@@ -78,7 +78,7 @@ Percent w/ candidate: 43.0%
 
 Stats for 20151228LALCHA
 
-Number of candidates parsed: 102
+Number of candidates parsed: 112
 Successful events: 227 
 Failed events: 1
 Percent Successful: 100.0%
@@ -90,7 +90,7 @@ Percent w/ candidate: 37.0%
 
 Stats for 20151228SACGSW
 
-Number of candidates parsed: 120
+Number of candidates parsed: 127
 Successful events: 262 
 Failed events: 1
 Percent Successful: 100.0%
@@ -102,7 +102,7 @@ Percent w/ candidate: 37.0%
 
 Stats for 20151230LALBOS
 
-Number of candidates parsed: 155
+Number of candidates parsed: 172
 Successful events: 245 
 Failed events: 0
 Percent Successful: 100.0%
@@ -114,7 +114,7 @@ Percent w/ candidate: 46.0%
 
 Stats for 20151230WASTOR
 
-Number of candidates parsed: 93
+Number of candidates parsed: 105
 Successful events: 237 
 Failed events: 0
 Percent Successful: 100.0%
@@ -126,7 +126,7 @@ Percent w/ candidate: 32.0%
 
 Stats for 20151231PHXOKC
 
-Number of candidates parsed: 107
+Number of candidates parsed: 114
 Successful events: 229 
 Failed events: 0
 Percent Successful: 100.0%
@@ -138,7 +138,7 @@ Percent w/ candidate: 43.0%
 
 Stats for 20160102BKLBOS
 
-Number of candidates parsed: 148
+Number of candidates parsed: 173
 Successful events: 247 
 Failed events: 0
 Percent Successful: 100.0%
@@ -150,7 +150,7 @@ Percent w/ candidate: 45.0%
 
 Stats for 20160113MIALAC
 
-Number of candidates parsed: 123
+Number of candidates parsed: 129
 Successful events: 234 
 Failed events: 2
 Percent Successful: 99.0%
@@ -162,7 +162,7 @@ Percent w/ candidate: 44.0%
 
 Stats for 20160115DALCHI
 
-Number of candidates parsed: 133
+Number of candidates parsed: 150
 Successful events: 215 
 Failed events: 0
 Percent Successful: 100.0%
@@ -174,7 +174,7 @@ Percent w/ candidate: 46.0%
 
 Stats for 20160115MINOKC
 
-Number of candidates parsed: 117
+Number of candidates parsed: 122
 Successful events: 227 
 Failed events: 0
 Percent Successful: 100.0%
@@ -186,7 +186,7 @@ Percent w/ candidate: 45.0%
 
 Stats for 20160118PHINYK
 
-Number of candidates parsed: 126
+Number of candidates parsed: 134
 Successful events: 268 
 Failed events: 1
 Percent Successful: 100.0%
@@ -198,7 +198,7 @@ Percent w/ candidate: 38.0%
 
 Stats for 20160120MIAWAS
 
-Number of candidates parsed: 103
+Number of candidates parsed: 106
 Successful events: 214 
 Failed events: 0
 Percent Successful: 100.0%
@@ -210,7 +210,7 @@ Percent w/ candidate: 37.0%
 
 Stats for 20160123LALPOR
 
-Number of candidates parsed: 120
+Number of candidates parsed: 131
 Successful events: 233 
 Failed events: 0
 Percent Successful: 100.0%
