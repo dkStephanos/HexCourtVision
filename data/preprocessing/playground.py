@@ -39,7 +39,7 @@ processed_games = [
     #"20160102BKLBOS", # 148 candidates  
     "20160102HOUSAS", # 29 candidates
     "20160113ATLCHA", # 68 candidates
-    #"20160113MIALAC", # 123 candidates  
+    "20160113MIALAC", # 123 candidates  
     "20160113NOPSAC", # 30 candidates
     "20160113NYKBKL", # 32 candidates
     "20160113UTAPOR", # 55 candidates  

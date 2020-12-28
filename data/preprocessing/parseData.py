@@ -21,7 +21,7 @@ from utilities.ConstantsUtil import ConstantsUtil
 #annotation_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/", title="Select an annotation file")
 #annotation_df = DataUtil.load_annotation_df(annotation_path)
 
-game = "20160118PHINYK"
+game = "20160115DALCHI"
 game_df = DataUtil.load_game_df(ConstantsUtil.games[game]['raw_data'])
 annotation_df = DataUtil.load_annotation_df(ConstantsUtil.games[game]['events'])
 
@@ -46,8 +46,8 @@ combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 print(combined_event_df.head())
 #combined_event_df.to_csv("static/data/test/events.csv")
 
-"""
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 156)
+
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 281)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
 #moments_df.to_csv("static/data/test/test.csv")
@@ -86,3 +86,4 @@ print("\nNumber of candidates parsed: " + str(len(final_candidates)) + "\nSucces
 
 candidate_df = pd.DataFrame(final_candidates)
 candidate_df.to_csv(f'static/data/test/candidates.csv')
+"""
