@@ -1,18 +1,29 @@
 Overall:
 
-positive candidates: 164
-negative candidates: 328
-total candidates: 492
-average recall: 94.85%
+positive candidates: 
+negative candidates: 
+total candidates: 
+average recall: 
+
+----------------------------------
+
+Lakers Heat 11/10/2015
+
+Notable Examples
+
+
+Missed Actions:
+
+
+missed candidates: 
+positive candidates: 
+negative candidates: 
+recall w/o fakes: 
+recall w/ fakes: 
 
 ----------------------------------
 
 Warriors Celtics 11/12/2015
-
-Number of candidates parsed: 153
-Successful events: 304
-Failed events: 1
-Percent Successful: 1.0
 
 Notable Examples
 
@@ -46,11 +57,6 @@ Clippers Lakers 12/25/2015
 
 No moments for event: 479
 
-Number of candidates parsed: 112
-Successful events: 218
-Failed events: 0
-Percent Successful: 1.0
-
 invalid events: [212, 294, 296, 386]
 
 Notable Examples:
@@ -83,13 +89,6 @@ recall w/ fakes: .9
 
 Pheonix OKC 12/31/2015
 
-No moments for event: 190
-
-Number of candidates parsed: 107
-Successful events: 229
-Failed events: 0
-Percent Successful: 1.0
-
 Notable Examples:
 
 event: 9, Q1, 10:48 --- turnover
@@ -109,14 +108,6 @@ recall w/ fakes: .973
 --------------------------------------------------
 
 Mil NYK 11/06/2015
-
-No moments for event: 23
-No moments for event: 582
-
-Number of candidates parsed: 101
-Successful events: 237
-Failed events: 0
-Percent Successful: 1.0
 
 Notable Examples:
 
@@ -148,31 +139,17 @@ recall w/ fakes: 83.3
 
 LAL POR 01/23/2016
 
-No moments for event: 113
-No moments for event: 213
-No moments for event: 258
-No moments for event: 274
-No moments for event: 345
-No moments for event: 372
-
-Number of candidates parsed: 120
-Successful events: 233
-Failed events: 0
-Percent Successful: 1.0
-
 Notable Examples:
 
-
 Bad data:
-
 
 Missed Candidates:
 
 event: 23, Q1, 9:10 -- ball shifts on data
-event 37, Q1, 7:57
-event 46, Q1, 7:31
-event , Q1, 6:50
-event , Q1, 1:24 -- Fake
+event 037, Q1, 7:57
+event 046, Q1, 7:31
+event 000, Q1, 6:50
+event 000, Q1, 1:24 -- Fake
 event 118, Q2, 11:54
 event 122, Q2, 11:34
 event 124, Q2, 10:55
@@ -182,31 +159,23 @@ event 190, Q2, 4:24
 event 242, Q3, 11:53
 event 247, Q3, 11:16
 event 297, Q3, 6:29
-event , Q3, 3:42 -- foul on shot
-event , Q4, 11:09 -- Fake
-event , Q4, 9:07 -- Fake
+event 000, Q3, 3:42 -- foul on shot
+event 000, Q4, 11:09 -- Fake
+event 000, Q4, 9:07 -- Fake
 event 428, Q4, 7:19
 event 449, Q4, 4:30
-event , Q4, 2:23
+event 000, Q4, 2:23
 
 
 missed candidates: 20
 positive candidates: 45
 negative candidates: 75
-recall w/o fakes: .729
-recall w/ fakes: .692
+recall w/o fakes: .741
+recall w/ fakes: 
 
 ---------------------------------------------------
 
 DEN POR 12/30/2015 
-
-No moments for event: 308
-No moments for event: 491
-
-Number of candidates parsed: 128
-Successful events: 212
-Failed events: 0
-Percent Successful: 1.0
 
 invalid events: [212, 440, 455]
 
@@ -245,20 +214,9 @@ recall w/ fakes:
 
 MIA WAS 01/20/2016
 
-No moments for event: 103
-No moments for event: 116
-No moments for event: 126
-
-Number of candidates parsed: 106
-Successful events: 214
-Failed events: 0
-Percent Successful: 1.0
-
 Notable Examples:
 
-
 Bad data:
-
 
 Missed Candidates:
 
@@ -286,8 +244,6 @@ event: , Q4, 4:06 -- Fake
 event: , Q4, 2:46 -- Fake
 event: , Q4, :58
 
-
-
 missed candidates: 6
 positive candidates: 31
 negative candidates: 
@@ -298,34 +254,55 @@ recall w/ fakes:
 
 DAL NOP 11/10/2015
 
-Number of candidates parsed: 102
-Successful events: 243
-Failed events: 0
-Percent Successful: 100.0%
-Events w/ pass detected: 206
-Events w/ hand-off detected: 83
-Percent w/ candidate: 34.0%
-
 Notable Examples:
-
 
 Bad data:
 
-
 Missed Candidates:
 
-event: , Q1, 11:47 -- Fake
+event: , Q1,    11:47 -- Fake
 event: 103, Q1, 2:12 -- not in data
-event: , Q1, 1:50 -- Fake
+event: , Q1,    1:50 -- Fake
 event: 162, Q2, 8:44 
-event: , Q2, 2:45
-event: , Q3, 9:30
-event: , Q3, 7:50 -- foul -- not in data
-event: , Q4, 6:07 -- Fake
-
+event: , Q2,    2:45
+event: , Q3,    9:30
+event: , Q3,    7:50 -- foul -- not in data
+event: , Q4,    6:07 -- Fake
 
 missed candidates: 3
 positive candidates: 34
 negative candidates: 
 recall w/o fakes: .919
 recall w/ fakes: 
+
+--------------------------------------------------
+
+Stats for 20160118PHINYK
+
+Notable Examples:
+
+Bad data:
+
+Missed Candidates:
+
+event, Q1,    10:38 -- Fake
+event, Q1,    9:44 -- Fake
+event 35, Q1, 7:34
+event 50, Q1, 5:21 -- occurs next to paint
+event , Q2,   6:04 -- Fake
+event 242, Q, 11:38
+event 282, Q3,6:43 -- Fake
+event 286, Q3,6:25 -- Fake
+event , Q3,   4:19
+event , Q3,   1:41
+event , Q3,   0:38
+event , Q3,   0:18 -- Fake
+event , Q4,   11:53 -- Fake
+event , Q4,   3:53
+
+missed: 7
+positive candidates: 38
+negative candidates: 
+recall w/o fakes: .829
+recall w/ fakes: 
+

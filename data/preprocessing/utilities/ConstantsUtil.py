@@ -96,7 +96,7 @@ class ConstantsUtil:
         "20151225NOPMIA": {
             'raw_data': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/12.25.2015.NOP.at.MIA/0021500436.json",
             'events': r"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/events-20151225NOPMIA.csv",
-            'bad_events': [],
+            'bad_events': [427],
             'moment_range': 8,
             'event_offset': 0,
         },

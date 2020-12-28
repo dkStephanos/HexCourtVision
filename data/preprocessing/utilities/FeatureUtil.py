@@ -177,7 +177,7 @@ class FeatureUtil:
                 receiver = ball_handler_df.iloc[i]['player_id']
                 receive_moment = ball_handler_df.iloc[i]['moment']
                 pass_moment = ball_handler_df.iloc[i - 1]['moment'] if not pd.isna(ball_handler_df.iloc[i-1]['player_id']) else pass_moment
-                passes.append({'passer': passer, 'pass_moment': pass_moment, 'receiver': receiver, 'receive_moment': receive_moment})
+                passes.append({'passer': passer, 'pass_moment': pass_moment, 'receiver': receiver, 'receive_moment': receive_moment}) if len(passes) == 0 or passes[-1]['passer'] != passer or pass_moment > passes[-1]['pass_moment'] + 10 else ""
                 passer = pd.NA
                 receiver = pd.NA
                 pass_moment = 0
@@ -243,6 +243,7 @@ class FeatureUtil:
 
         # Next, step through each moment and find the passes
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
+        print(passes)
         return passes
 
     # Takes in a list of basic pass objects (passer, pass_moment, receiver, receive_moment) and calculates features for passes

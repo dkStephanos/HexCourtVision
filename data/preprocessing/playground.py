@@ -32,7 +32,7 @@ processed_games = [
     "20151230BKLORL", # 49 candidates
     #"20151230LALBOS", # 155 candidates
     "20151230PHXSAS", # 46 candidates
-    #"20151230WASTOR", # 93 candidates
+    "20151230WASTOR", # 93 candidates
     "20151230DENPOR", # 87 candidates
     "20151230GSWDAL", # 44 candidates
     "20151231LACNOP", # 36 candidates
