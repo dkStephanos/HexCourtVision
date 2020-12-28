@@ -1,4 +1,4 @@
-,candidate_id,event_id,classification_type,classification,period,game_clock,shot_clock,player_a,player_b,
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_b,
 0,21500662-004-1,21500662-004,dribble-hand-off,TRUE,1,11:35,18.05,Damian Lillard,CJ McCollum,
 1,21500662-017-1,21500662-017,dribble-hand-off,TRUE,1,9:59,13.11,Damian Lillard,CJ McCollum,
 2,21500662-017-2,21500662-017,dribble-hand-off,FALSE,1,9:59,13.07,CJ McCollum,Damian Lillard,

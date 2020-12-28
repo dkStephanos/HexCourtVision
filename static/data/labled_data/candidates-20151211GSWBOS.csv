@@ -1,4 +1,4 @@
-,candidate_id,event_id,classification_type,classification,period,game_clock,shot_clock,player_a,player_b,notes
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_b,notes
 0,21500336-002-1,21500336-002,dribble-hand-off,FALSE,1,11:53,18.37,Ian Clark,Brandon Rush,
 1,21500336-004-1,21500336-004,dribble-hand-off,TRUE,1,11:32,17.68,Isaiah Thomas,Amir Johnson,
 2,21500336-004-2,21500336-004,dribble-hand-off,FALSE,1,11:30,15.81,Amir Johnson,Jared Sullinger,

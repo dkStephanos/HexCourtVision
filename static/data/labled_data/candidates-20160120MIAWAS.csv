@@ -1,4 +1,4 @@
-,candidate_id,event_id,classification_type,classification,period,game_clock,shot_clock,player_a,player_b,notes
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_b,notes
 0,21500630-003-1,21500630-003,dribble-hand-off,FALSE,1,11:29,18.67,Tyler Johnson,Hassan Whiteside,
 1,21500630-003-2,21500630-003,dribble-hand-off,TRUE,1,11:25,14.19,Hassan Whiteside,Gerald Green,
 2,21500630-006-1,21500630-006,dribble-hand-off,TRUE,1,11:02,19.15,Luol Deng,Tyler Johnson,

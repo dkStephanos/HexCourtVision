@@ -277,7 +277,7 @@ class FeatureUtil:
                     'candidate_id': f"{event_id}-{candidate_count}",
                     'event_id': event_id,
                     'classification_type': 'dribble-hand-off',
-                    'classification': pd.NA,
+                    'manual_label': pd.NA,
                     'period': event['PERIOD'].values[0],
                     'game_clock': DataUtil.convert_game_clock_to_timestamp(moment['game_clock']),
                     'shot_clock': moment['shot_clock'].values[0],

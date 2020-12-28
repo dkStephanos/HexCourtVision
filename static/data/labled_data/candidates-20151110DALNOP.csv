@@ -1,4 +1,4 @@
-,candidate_id,event_id,classification_type,classification,period,game_clock,shot_clock,player_a,player_b,notes
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_b,notes
 0,21500112-002-1,21500112-002,dribble-hand-off,FALSE,1,11:53,18.58,Jrue Holiday,Omer Asik,
 1,21500112-010-1,21500112-010,dribble-hand-off,TRUE,1,11:16,19.98,Deron Williams,Chandler Parsons,
 2,21500112-010-2,21500112-010,dribble-hand-off,TRUE,1,11:13,17.14,Dirk Nowitzki,Wesley Matthews,

@@ -1,4 +1,4 @@
-,candidate_id,event_id,classification_type,classification,period,game_clock,shot_clock,player_a,player_b,notes
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_b,notes
 0,21500488-002-1,21500488-002,dribble-hand-off,FALSE,1,11:52,14.32,Russell Westbrook,Kevin Durant,
 1,21500488-005-1,21500488-005,dribble-hand-off,TRUE,1,11:35,12.96,TJ Warren,PJ Tucker,
 2,21500488-005-2,21500488-005,dribble-hand-off,TRUE,1,11:28,6.65,PJ Tucker,Brandon Knight,

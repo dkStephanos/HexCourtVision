@@ -1,4 +1,4 @@
-,candidate_id,event_id,classification_type,classification,period,game_clock,shot_clock,player_a,player_b,notes
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_b,notes
 0,21500079-004-1,21500079-004,dribble-hand-off,FALSE,1,11:19,18.84,Jose Calderon,Kristaps Porzingis,
 1,21500079-007-1,21500079-007,dribble-hand-off,TRUE,1,10:32,12.35,Greg Monroe,Khris Middleton,
 2,21500079-008-1,21500079-008,dribble-hand-off,FALSE,1,10:10,12.84,Robin Lopez,Carmelo Anthony,

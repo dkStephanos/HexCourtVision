@@ -1,4 +1,4 @@
-,candidate_id,event_id,classification_type,classification,period,game_clock,shot_clock,player_a,player_b,notes
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_b,notes
 0,21500440-004-1,21500440-004,dribble-hand-off,FALSE,1,11:55,12.12,Lou Williams,Kobe Bryant,
 1,21500440-004-2,21500440-004,dribble-hand-off,FALSE,1,11:51,10.72,Larry Nance Jr.,Jordan Clarkson,
 2,21500440-021-1,21500440-021,dribble-hand-off,FALSE,1,8:52,9.5,JJ Redick,Blake Griffin,

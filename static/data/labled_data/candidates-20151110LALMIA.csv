@@ -1,4 +1,4 @@
-,candidate_id,event_id,classification_type,classification,period,game_clock,shot_clock,player_a,player_b,notes
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_b,notes
 0,21500108-002-1,21500108-002,dribble-hand-off,FALSE,1,11:46,10.71,Dwyane Wade,Hassan Whiteside,
 1,21500108-002-2,21500108-002,dribble-hand-off,FALSE,1,11:45,9.27,Hassan Whiteside,Dwyane Wade,
 2,21500108-003-1,21500108-003,dribble-hand-off,TRUE,1,11:24,10.58,Roy Hibbert,D'Angelo Russell,
