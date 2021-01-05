@@ -15,14 +15,13 @@ processed_games = [
     #"20151106MILNYK", # 101 candidates
     "20151106PHICLE", # 44 candidates
     #"20151110DALNOP", # 98 candidates
+    #"20151110LALMIA", # 124 candidates
     #"20151211GSWBOS", # 157 candidates
     #"20151225LACLAL", # 112 candidates
-    #"20151231PHXOKC", # 107 candidates
-    #"20151110LALMIA", # 124 candidates
     #"20151225NOPMIA", # 151 candidates
     "20151228ATLIND", # 46 candidates
     "20151228CLEPHX", # 27 candidates
-    #"20151228LALCHA", # 102 candidates
+    "20151228LALCHA", # 102 candidates
     "20151228PHIUTA", # 21 candidates
     #"20151228SACGSW", # 120 candidates
     "20151228ATLIND", # 46 candidates
@@ -35,6 +34,7 @@ processed_games = [
     "20151230WASTOR", # 93 candidates
     "20151230DENPOR", # 87 candidates
     "20151230GSWDAL", # 44 candidates
+    #"20151231PHXOKC", # 107 candidates
     "20151231LACNOP", # 36 candidates
     #"20160102BKLBOS", # 148 candidates  
     "20160102HOUSAS", # 29 candidates

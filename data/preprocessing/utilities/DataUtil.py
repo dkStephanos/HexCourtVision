@@ -333,7 +333,7 @@ class DataUtil:
     @staticmethod
     def remove_duplicate_candidates(all_candidates):
         final_candidates = []
-        offset_length = 3
+        offset_length = 5
         duplicate = False
 
         for index in range(0, len(all_candidates)):

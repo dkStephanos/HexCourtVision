@@ -243,7 +243,7 @@ class FeatureUtil:
 
         # Next, step through each moment and find the passes
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
-        print(passes)
+
         return passes
 
     # Takes in a list of basic pass objects (passer, pass_moment, receiver, receive_moment) and calculates features for passes
