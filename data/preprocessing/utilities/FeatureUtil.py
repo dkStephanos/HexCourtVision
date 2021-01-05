@@ -281,7 +281,9 @@ class FeatureUtil:
                     'period': event['PERIOD'].values[0],
                     'game_clock': DataUtil.convert_game_clock_to_timestamp(moment['game_clock']),
                     'shot_clock': moment['shot_clock'].values[0],
-                    'player_a': players_dict[event_pass['passer']][0],
-                    'player_b': players_dict[event_pass['receiver']][0]})
+                    'player_a': players_dict[event_pass['passer']],
+                    'player_a_name': players_dict[event_pass['receiver']][0],
+                    'player_b': players_dict[event_pass['passer']],
+                    'player_b_name': players_dict[event_pass['receiver']][0]})
         
         return candidates
