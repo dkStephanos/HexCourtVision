@@ -33,13 +33,12 @@ class Event(models.Model):
     event_action_type = models.IntegerField()
     period = models.IntegerField()
     period_time = models.CharField(max_length=5)
-    home_desc = models.CharField(max_length=50)
-    visitor_desc = models.CharField(max_length=50)
-    score = models.CharField(max_length=7)
+    home_desc = models.CharField(max_length=100)
+    visitor_desc = models.CharField(max_length=100)
+    score = models.CharField(max_length=9)
     directionality = models.CharField(max_length=5)
 
 class Moment(models.Model):
-    moment_id = models.CharField(primary_key=True, max_length=15)
     team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
     player = models.ForeignKey(Player, on_delete=models.SET_NULL, null=True)
     event = models.ForeignKey(Event, on_delete=models.SET_NULL, null=True)
@@ -59,5 +58,8 @@ class Candidate(models.Model):
     game_clock = models.CharField(max_length=5)
     shot_clock = models.FloatField()
     player_a = models.ForeignKey(Player, related_name="player_a", on_delete=models.SET_NULL, null=True)
+    player_a_name = models.CharField(max_length=20)
     player_b = models.ForeignKey(Player, related_name="player_b", on_delete=models.SET_NULL, null=True)
+    player_b_name = models.CharField(max_length=20)
+    notes = models.CharField(max_length=100)
 
