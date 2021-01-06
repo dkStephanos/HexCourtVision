@@ -29,12 +29,13 @@ def run():
 
     print("Processing Data Files")
     game_data = DataUtil.get_game_data(game_df, annotation_df)
-    teams = DataUtil.get_teams_data(game_df)
-    players = DataUtil.get_players_data(game_df)
+    teams_data = DataUtil.get_teams_data(game_df)
+    players_data = DataUtil.get_players_data(game_df)
+    players_dict = DataUtil.get_players_dict(game_df)
 
     print("Creating Game/Team/Player models")
-    home_team = Team.objects.get_or_create(**teams[0])
-    visitor_team = Team.objects.get_or_create(**teams[1])
+    home_team = Team.objects.get_or_create(**teams_data[0])
+    visitor_team = Team.objects.get_or_create(**teams_data[1])
     game = Game.objects.get_or_create(
         game_id=game_data["game_id"], 
         game_date=game_data["game_date"], 
@@ -42,20 +43,10 @@ def run():
         visitor_team=visitor_team[0], 
         final_score=game_data["final_score"])
 
-    for player in players:
+    for player in players_data:
         Player.objects.get_or_create(**player)
 
     print("Finding Candidates")
-    print(f"\n\n------------------------------\n\nStarting {game}")
-    game_df = DataUtil.load_game_df(ConstantsUtil.games[game]['raw_data'])
-    annotation_df = DataUtil.load_annotation_df(ConstantsUtil.games[game]['events'])  
-    print(f"Loaded game")
-
-    teams_data = DataUtil.get_teams_data(game_df)
-    players_data = DataUtil.get_players_data(game_df)
-    players_dict = DataUtil.get_players_dict(game_df)
-    print("Extracted team/player data")
-
     print("Extracting events...")
     annotation_df = DataUtil.trim_annotation_rows(annotation_df, ConstantsUtil.games[game]['bad_events'])
     annotation_df = FeatureUtil.determine_possession(annotation_df, teams_data)
