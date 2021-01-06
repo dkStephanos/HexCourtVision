@@ -42,7 +42,7 @@ Percent w/ candidate: 37.0%
 
 Stats for 20151211GSWBOS
 
-Number of candidates parsed: 176
+Number of candidates parsed: 162
 Successful events: 299 
 Failed events: 0
 Percent Successful: 100.0%
@@ -54,7 +54,7 @@ Percent w/ candidate: 41.0%
 
 Stats for 20151225LACLAL
 
-Number of candidates parsed: 121
+Number of candidates parsed: 116
 Successful events: 218 
 Failed events: 0
 Percent Successful: 100.0%
@@ -66,19 +66,19 @@ Percent w/ candidate: 39.0%
 
 Stats for 20151225NOPMIA
 
-Number of candidates parsed: 157
-Successful events: 248 
+Number of candidates parsed: 151
+Successful events: 247 
 Failed events: 1
 Percent Successful: 100.0%
-Events w/ pass detected: 214
-Events w/ hand-off detected: 107
+Events w/ pass detected: 213
+Events w/ hand-off detected: 106
 Percent w/ candidate: 43.0%
 
 ------------------------------
 
 Stats for 20151228SACGSW
 
-Number of candidates parsed: 128
+Number of candidates parsed: 125
 Successful events: 262 
 Failed events: 1
 Percent Successful: 100.0%
@@ -90,7 +90,7 @@ Percent w/ candidate: 37.0%
 
 Stats for 20151230LALBOS
 
-Number of candidates parsed: 174
+Number of candidates parsed: 161
 Successful events: 245 
 Failed events: 0
 Percent Successful: 100.0%
@@ -102,7 +102,7 @@ Percent w/ candidate: 47.0%
 
 Stats for 20151231PHXOKC
 
-Number of candidates parsed: 115
+Number of candidates parsed: 112
 Successful events: 229 
 Failed events: 0
 Percent Successful: 100.0%
@@ -114,7 +114,7 @@ Percent w/ candidate: 44.0%
 
 Stats for 20160102BKLBOS
 
-Number of candidates parsed: 174
+Number of candidates parsed: 154
 Successful events: 247 
 Failed events: 0
 Percent Successful: 100.0%
@@ -124,21 +124,9 @@ Percent w/ candidate: 45.0%
 
 ------------------------------
 
-Stats for 20160113MIALAC
-
-Number of candidates parsed: 129
-Successful events: 234 
-Failed events: 2
-Percent Successful: 99.0%
-Events w/ pass detected: 196
-Events w/ hand-off detected: 104
-Percent w/ candidate: 44.0%
-
-------------------------------
-
 Stats for 20160115DALCHI
 
-Number of candidates parsed: 150
+Number of candidates parsed: 137
 Successful events: 215 
 Failed events: 0
 Percent Successful: 100.0%
@@ -150,7 +138,7 @@ Percent w/ candidate: 46.0%
 
 Stats for 20160115MINOKC
 
-Number of candidates parsed: 122
+Number of candidates parsed: 121
 Successful events: 227 
 Failed events: 0
 Percent Successful: 100.0%
@@ -160,9 +148,21 @@ Percent w/ candidate: 45.0%
 
 ------------------------------
 
+Stats for 20160118PHINYK
+
+Number of candidates parsed: 132
+Successful events: 268 
+Failed events: 1
+Percent Successful: 100.0%
+Events w/ pass detected: 215
+Events w/ hand-off detected: 102
+Percent w/ candidate: 38.0%
+
+------------------------------
+
 Stats for 20160120MIAWAS
 
-Number of candidates parsed: 106
+Number of candidates parsed: 107
 Successful events: 214 
 Failed events: 0
 Percent Successful: 100.0%
@@ -174,7 +174,7 @@ Percent w/ candidate: 37.0%
 
 Stats for 20160123LALPOR
 
-Number of candidates parsed: 132
+Number of candidates parsed: 125
 Successful events: 233 
 Failed events: 0
 Percent Successful: 100.0%
