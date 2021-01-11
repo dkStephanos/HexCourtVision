@@ -102,11 +102,11 @@ class FeatureUtil:
         return player_travel_dist
 
     @staticmethod
-    def average_speed(event_df, player):
+    def average_speed(event_df, player_id):
         # get the number of seconds for the play
         seconds = event_df.game_clock.max() - event_df.game_clock.min()
         # feet per second
-        player_fps = FeatureUtil.travel_dist(player) / seconds
+        player_fps = FeatureUtil.travel_dist(event_df[event_df['player_id'] == player_id]) / seconds
         # convert to miles per hour
         player_mph = 0.681818 * player_fps
         

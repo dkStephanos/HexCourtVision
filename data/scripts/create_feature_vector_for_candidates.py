@@ -26,9 +26,13 @@ def run():
         candidates += list(next_candidates)
 
     # Collects moments for single candidate -- Add loop later
-    target_candidate = candidates[0]
+    target_candidate = candidates[1]
     print(target_candidate)
     moments = pd.DataFrame(list(Moment.objects.filter(event_id=target_candidate['event_id']).values()))
+
+    # Collects players for single candidate
+    screener = Player.objects.values().get(player_id=target_candidate['player_a_id'])
+    cutter = Player.objects.values().get(player_id=target_candidate['player_a_id'])
 
     # Trim the moments data around the pass
     game_clock = DataUtil.convert_timestamp_to_game_clock(target_candidate['game_clock'])
@@ -36,16 +40,15 @@ def run():
     approach_moments = trimmed_moments[trimmed_moments.game_clock < game_clock]
     execution_moments = trimmed_moments[trimmed_moments.game_clock > game_clock]
     pass_moment = trimmed_moments[trimmed_moments.game_clock == game_clock]
-    print(len(moments))
-    print(len(trimmed_moments))
-    print(len(approach_moments))
-    print(len(execution_moments))
-    print(pass_moment)
 
     # Create the feature vector
     feature_vector = {
-        'cutter_archetype': Player.objects.get(player_id=target_candidate['player_a_id']).position,
-        'screener_archetype': Player.objects.get(player_id=target_candidate['player_b_id']).position,
+        'cutter_archetype': cutter['position'],
+        'screener_archetype': screener['position'],
+        'cutter_avg_speed_approach': FeatureUtil.average_speed(approach_moments, cutter['player_id']),
+        'cutter_avg_speed_execution': FeatureUtil.average_speed(execution_moments, cutter['player_id']),
+        'screener_avg_speed_approach': FeatureUtil.average_speed(approach_moments, screener['player_id']),
+        'screener_avg_speed_execution': FeatureUtil.average_speed(execution_moments, screener['player_id']),
     }
 
     print(feature_vector)
