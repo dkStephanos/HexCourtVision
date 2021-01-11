@@ -58,8 +58,8 @@ class Candidate(models.Model):
     game_clock = models.CharField(max_length=5)
     shot_clock = models.FloatField()
     player_a = models.ForeignKey(Player, related_name="player_a", on_delete=models.SET_NULL, null=True)
-    player_a_name = models.CharField(max_length=20)
+    player_a_name = models.CharField(max_length=25)
     player_b = models.ForeignKey(Player, related_name="player_b", on_delete=models.SET_NULL, null=True)
-    player_b_name = models.CharField(max_length=20)
+    player_b_name = models.CharField(max_length=25)
     notes = models.CharField(max_length=100)
 

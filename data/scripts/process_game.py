@@ -104,7 +104,7 @@ def run():
     print("\nCreating Moment models")
     for moments in all_moments:
         for index, moment in moments.iterrows():
-            Moment.objects.create(
+            Moment.objects.get_or_create(
                 team = Team.objects.get(team_id=moment['team_id']) if moment['team_id'] != -1 else None, 
                 player = Player.objects.get(player_id=moment['player_id']) if moment['player_id'] != -1 else None, 
                 event = Event.objects.get(event_id=moment['event_id']), 
@@ -117,19 +117,22 @@ def run():
             )
     print("\nCreating Candidate models")
     for index, candidate in candidate_df.iterrows():
-        Candidate.objects.create(
-            candidate_id = candidate['candidate_id'],
-            event = Event.objects.get(event_id=candidate['event_id']),
-            classification_type = candidate['classification_type'],
-            manual_label = candidate['manual_label'],
-            period = candidate['period'],
-            game_clock = candidate['game_clock'],
-            shot_clock = candidate['shot_clock'],
-            player_a = Player.objects.get(player_id=candidate['player_a']),
-            player_a_name = candidate['player_a_name'],
-            player_b = Player.objects.get(player_id=candidate['player_b']),
-            player_b_name = candidate['player_b_name'],
-            notes = candidate['notes'],
-        )
+        try:
+            Candidate.objects.get(candidate_id=candidate['candidate_id'])
+        except:
+            Candidate.objects.create(
+                candidate_id = candidate['candidate_id'],
+                event = Event.objects.get(event_id=candidate['event_id']),
+                classification_type = candidate['classification_type'],
+                manual_label = candidate['manual_label'],
+                period = candidate['period'],
+                game_clock = candidate['game_clock'],
+                shot_clock = candidate['shot_clock'],
+                player_a = Player.objects.get(player_id=candidate['player_a']),
+                player_a_name = candidate['player_a_name'],
+                player_b = Player.objects.get(player_id=candidate['player_b']),
+                player_b_name = candidate['player_b_name'],
+                notes = candidate['notes'],
+            )
     
     print("Finished processing game")

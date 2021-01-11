@@ -21,19 +21,19 @@ from utilities.ConstantsUtil import ConstantsUtil
 #annotation_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/", title="Select an annotation file")
 #annotation_df = DataUtil.load_annotation_df(annotation_path)
 
-game = "20160115DALCHI"
+game = "20151228SACGSW"
 game_df = DataUtil.load_game_df(ConstantsUtil.games[game]['raw_data'])
 annotation_df = DataUtil.load_annotation_df(ConstantsUtil.games[game]['events'])
 
 teams_data = DataUtil.get_teams_data(game_df)
 players_data = DataUtil.get_players_data(game_df)
 players_dict = DataUtil.get_players_dict(game_df)
-print(teams_data)
-print(players_data)
+
 
 annotation_df = DataUtil.trim_annotation_rows(annotation_df, ConstantsUtil.games[game]['bad_events'])
 annotation_df = FeatureUtil.determine_possession(annotation_df, teams_data)
 annotation_df = DataUtil.generate_event_ids(annotation_df)
+print(DataUtil.load_combined_event_by_num(annotation_df, 427))
 
 annotation_df = DataUtil.trim_annotation_cols(annotation_df)
 combined_event_df = DataUtil.combine_game_and_annotation_events(game_df, annotation_df)
@@ -47,7 +47,7 @@ print(combined_event_df.head())
 #combined_event_df.to_csv("static/data/test/events.csv")
 
 
-sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 281)
+sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 427)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
 #moments_df.to_csv("static/data/test/test.csv")
