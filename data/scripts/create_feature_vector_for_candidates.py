@@ -28,11 +28,19 @@ def run():
     # Collects moments for single candidate -- Add loop later
     target_candidate = candidates[0]
     print(target_candidate)
-    print(Player.objects.values().get(player_id=target_candidate['player_a_id']))
     moments = pd.DataFrame(list(Moment.objects.filter(event_id=target_candidate['event_id']).values()))
-    print(moments.head())
 
     # Trim the moments data around the pass
+    game_clock = DataUtil.convert_timestamp_to_game_clock(target_candidate['game_clock'])
+    trimmed_moments = moments[(moments.game_clock > game_clock - 2) & (moments.game_clock < game_clock + 2)]
+    approach_moments = trimmed_moments[trimmed_moments.game_clock < game_clock]
+    execution_moments = trimmed_moments[trimmed_moments.game_clock > game_clock]
+    pass_moment = trimmed_moments[trimmed_moments.game_clock == game_clock]
+    print(len(moments))
+    print(len(trimmed_moments))
+    print(len(approach_moments))
+    print(len(execution_moments))
+    print(pass_moment)
 
     # Create the feature vector
     feature_vector = {
