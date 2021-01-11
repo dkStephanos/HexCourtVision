@@ -33,6 +33,7 @@ def run():
     # Collects players for single candidate
     screener = Player.objects.values().get(player_id=target_candidate['player_a_id'])
     cutter = Player.objects.values().get(player_id=target_candidate['player_a_id'])
+    print(screener)
 
     # Trim the moments data around the pass
     game_clock = DataUtil.convert_timestamp_to_game_clock(target_candidate['game_clock'])
@@ -40,11 +41,20 @@ def run():
     approach_moments = trimmed_moments[trimmed_moments.game_clock < game_clock]
     execution_moments = trimmed_moments[trimmed_moments.game_clock > game_clock]
     pass_moment = trimmed_moments[trimmed_moments.game_clock == game_clock]
+    print(pass_moment.iloc[0])
+    print(type(pass_moment.iloc[0]['x_loc']))
 
     # Create the feature vector
     feature_vector = {
         'cutter_archetype': cutter['position'],
         'screener_archetype': screener['position'],
+        'cutter_x_loc_on_pass': pass_moment.loc[pass_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
+        'cutter_y_loc_on_pass': pass_moment.loc[pass_moment['player_id'] == cutter['player_id']]['y_loc'].values[0],
+        'screener_x_loc_on_pass': pass_moment.loc[pass_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
+        'screener_y_loc_on_pass': pass_moment.loc[pass_moment['player_id'] == screener['player_id']]['y_loc'].values[0],
+        'ball_x_loc_on_pass': pass_moment.loc[pass_moment['player_id'].isna()]['x_loc'].item(),
+        'ball_y_loc_on_pass': pass_moment.loc[pass_moment['player_id'].isna()]['y_loc'].item(),
+        'ball_radius_on_pass': pass_moment.loc[pass_moment['player_id'].isna()]['radius'].item(),
         'cutter_avg_speed_approach': FeatureUtil.average_speed(approach_moments, cutter['player_id']),
         'cutter_avg_speed_execution': FeatureUtil.average_speed(execution_moments, cutter['player_id']),
         'screener_avg_speed_approach': FeatureUtil.average_speed(approach_moments, screener['player_id']),
@@ -52,3 +62,4 @@ def run():
     }
 
     print(feature_vector)
+    print(len(feature_vector.keys()))
