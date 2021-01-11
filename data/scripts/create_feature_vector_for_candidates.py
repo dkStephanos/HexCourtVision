@@ -26,7 +26,18 @@ def run():
         candidates += list(next_candidates)
 
     # Collects moments for single candidate -- Add loop later
-    target_candidates = candidates[0]
-    print(target_candidates)
-    moments = pd.DataFrame(list(Moment.objects.filter(event_id=target_candidates['event_id']).values()))
+    target_candidate = candidates[0]
+    print(target_candidate)
+    print(Player.objects.values().get(player_id=target_candidate['player_a_id']))
+    moments = pd.DataFrame(list(Moment.objects.filter(event_id=target_candidate['event_id']).values()))
     print(moments.head())
+
+    # Trim the moments data around the pass
+
+    # Create the feature vector
+    feature_vector = {
+        'cutter_archetype': Player.objects.get(player_id=target_candidate['player_a_id']).position,
+        'screener_archetype': Player.objects.get(player_id=target_candidate['player_b_id']).position,
+    }
+
+    print(feature_vector)
