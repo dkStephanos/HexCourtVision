@@ -106,7 +106,10 @@ class FeatureUtil:
         # get the number of seconds for the play
         seconds = event_df.game_clock.max() - event_df.game_clock.min()
         # feet per second
-        player_fps = FeatureUtil.travel_dist(event_df[event_df['player_id'] == player_id]) / seconds
+        if (player_id is None):
+            player_fps = FeatureUtil.travel_dist(event_df[event_df['player_id'].isna()]) / seconds
+        else:
+            player_fps = FeatureUtil.travel_dist(event_df[event_df['player_id'] == player_id]) / seconds
         # convert to miles per hour
         player_mph = 0.681818 * player_fps
         
