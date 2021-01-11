@@ -1,7 +1,6 @@
 
 import pandas as pd
-import easygui
-import sys
+import math
 
 from data.preprocessing.utilities.DataUtil import DataUtil
 from data.preprocessing.utilities.FeatureUtil import FeatureUtil
@@ -75,6 +74,16 @@ def run():
         'ball_y_loc_on_end_execution': end_moment[end_moment['player_id'].isna()]['y_loc'].item(),
         'ball_radius_loc_on_end_execution': end_moment[end_moment['player_id'].isna()]['radius'].item(),
 
+        # Travel Distance Data
+        'cutter_dist_traveled_approach': FeatureUtil.travel_dist(approach_moments[approach_moments['player_id'] == cutter['player_id']]),
+        'cutter_dist_traveled_execution': FeatureUtil.travel_dist(execution_moments[execution_moments['player_id'] == cutter['player_id']]),
+        'screener_dist_traveled_approach': FeatureUtil.travel_dist(approach_moments[approach_moments['player_id'] == screener['player_id']]),
+        'screener_dist_traveled_execution': FeatureUtil.travel_dist(execution_moments[execution_moments['player_id'] == screener['player_id']]),
+        'ball_dist_traveled_approach': FeatureUtil.travel_dist(approach_moments[approach_moments['player_id'].isna()]),
+        'ball_dist_traveled_execution': FeatureUtil.travel_dist(execution_moments[execution_moments['player_id'].isna()]),
+
+        # Relative Distance Data
+
         # Speed/Acceleration Data
         'cutter_avg_speed_approach': FeatureUtil.average_speed(approach_moments, cutter['player_id']),
         'cutter_avg_speed_execution': FeatureUtil.average_speed(execution_moments, cutter['player_id']),
@@ -84,6 +93,8 @@ def run():
         'ball_avg_speed_execution': FeatureUtil.average_speed(execution_moments, None),
 
         # Play Data
+        'offset_into_play': math.floor(pass_moment.iloc[0]['shot_clock'] / 6),
+        'num_players_past_half_court': FeatureUtil.num_players_past_halfcourt(pass_moment),
     }
 
     print(feature_vector)

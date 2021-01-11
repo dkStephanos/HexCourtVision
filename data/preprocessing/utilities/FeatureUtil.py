@@ -146,6 +146,24 @@ class FeatureUtil:
         
         return ball_distances
 
+    # Takes in data for ball/players for a moment, returns an int containing the amount of players on the side of the court with the ball
+    @staticmethod
+    def num_players_past_halfcourt(moment_df):
+        # First, grab x_loc of ball to determine side of court
+        ball_loc = moment_df.iloc[0]['x_loc']
+        
+        count = 0
+        if (ball_loc > 47.0):
+            for index, row in moment_df[1:].iterrows():
+                if (row['x_loc'] > 47.0):
+                    count += 1
+        else:
+            for index, row in moment_df[1:].iterrows():
+                if (row['x_loc'] < 47.0):
+                    count += 1
+
+        return count
+
     @staticmethod
     def possession_at_moment(moment_df):
         distances = []
