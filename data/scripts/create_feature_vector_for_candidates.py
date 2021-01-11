@@ -15,13 +15,18 @@ from data.models import Moment
 from data.models import Candidate
 
 def run():
+    # Collects all games -- Add loop later
     print(Game.objects.all())
 
-    candidates = Candidate.objects.none()
+    # Collects all candidates for a given event -- Add loop later
+    candidates = []
     events = Event.objects.filter(game=Game.objects.all()[0])
     for event in events:
-        next_candidates = Candidate.objects.filter(event=event)
-        candidates = candidates | next_candidates
+        next_candidates = Candidate.objects.filter(event=event).values()
+        candidates += list(next_candidates)
 
-    print(candidates.count())
-    print(candidates[0])
+    # Collects moments for single candidate -- Add loop later
+    target_candidates = candidates[0]
+    print(target_candidates)
+    moments = pd.DataFrame(list(Moment.objects.filter(event_id=target_candidates['event_id']).values()))
+    print(moments.head())
