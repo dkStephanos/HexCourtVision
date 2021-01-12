@@ -34,6 +34,10 @@ def run():
     cutter = Player.objects.values().get(player_id=target_candidate['player_b_id'])
     print(screener)
 
+    # Collects passes for event
+    event_passes = FeatureUtil.get_passess_for_event(moments, Event.objects.values().get(event_id=target_candidate['event_id'])['possesion_team_id'], list(Player.objects.values()))
+    print(event_passes[0])
+
     # Trim the moments data around the pass
     game_clock = DataUtil.convert_timestamp_to_game_clock(target_candidate['game_clock'])
     trimmed_moments = moments[(moments.game_clock > game_clock - 2) & (moments.game_clock < game_clock + 2)]
@@ -95,7 +99,9 @@ def run():
         # Play Data
         'offset_into_play': math.floor(pass_moment.iloc[0]['shot_clock'] / 6),
         'num_players_past_half_court': FeatureUtil.num_players_past_halfcourt(pass_moment),
+        'is_inbounds_pass': FeatureUtil.check_for_inbound_pass(moments, event_passes[0])
     }
 
+    print("\n\n------------------------------ Feature Vector ---------------------------\n")
     print(feature_vector)
-    print(len(feature_vector.keys()))
+    print(f"\n Num Features: {len(feature_vector.keys())}")

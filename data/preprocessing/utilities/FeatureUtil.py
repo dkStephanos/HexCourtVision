@@ -142,7 +142,8 @@ class FeatureUtil:
     @staticmethod
     def distance_between_ball_and_players(moments_df, player_ids):
         group = moments_df[moments_df.player_id.isin(player_ids)].groupby("player_id")[["x_loc", "y_loc"]]
-        ball_distances = group.apply(FeatureUtil.distance_between_players, moments_df[moments_df.player_id==-1][["x_loc", "y_loc"]])
+        
+        ball_distances = group.apply(FeatureUtil.distance_between_players, moments_df[moments_df.player_id.isin([-1, None])][["x_loc", "y_loc"]])
         
         return ball_distances
 
@@ -191,13 +192,13 @@ class FeatureUtil:
             if pd.isna(passer) and not pd.isna(ball_handler_df.iloc[i]['player_id']):
                 passer = ball_handler_df.iloc[i]['player_id']
             elif (not pd.isna(passer) and pass_moment == 0) and pd.isna(ball_handler_df.iloc[i]['player_id']):
-                pass_moment = ball_handler_df.iloc[i - 1]['moment']
+                pass_moment = ball_handler_df.iloc[i - 1]['index']
             elif (not pd.isna(passer) and not pd.isna(ball_handler_df.iloc[i]['player_id'])) and passer == ball_handler_df.iloc[i]['player_id'] and pass_moment != 0:
                 pass_moment = 0
             elif not pd.isna(passer) and (not pd.isna(ball_handler_df.iloc[i]['player_id']) and ball_handler_df.iloc[i]['player_id'] != passer):
                 receiver = ball_handler_df.iloc[i]['player_id']
-                receive_moment = ball_handler_df.iloc[i]['moment']
-                pass_moment = ball_handler_df.iloc[i - 1]['moment'] if not pd.isna(ball_handler_df.iloc[i-1]['player_id']) else pass_moment
+                receive_moment = ball_handler_df.iloc[i]['index']
+                pass_moment = ball_handler_df.iloc[i - 1]['index'] if not pd.isna(ball_handler_df.iloc[i-1]['player_id']) else pass_moment
                 passes.append({'passer': passer, 'pass_moment': pass_moment, 'receiver': receiver, 'receive_moment': receive_moment}) if len(passes) == 0 or passes[-1]['passer'] != passer or pass_moment > passes[-1]['pass_moment'] + 10 else ""
                 passer = pd.NA
                 receiver = pd.NA
@@ -209,8 +210,8 @@ class FeatureUtil:
     @staticmethod
     def check_for_paint_pass(moments_df, event_pass):
         paint_pass = False
-        start_loc = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == -1)]
-        end_loc = moments_df.loc[(moments_df['moment'] == event_pass['receive_moment']) & (moments_df['player_id'] == -1)]
+        start_loc = moments_df.loc[(moments_df['index'] == event_pass['pass_moment']) & (moments_df['player_id'] == -1)]
+        end_loc = moments_df.loc[(moments_df['index'] == event_pass['receive_moment']) & (moments_df['player_id'] == -1)]
 
         if (((((start_loc['x_loc'] >= 0.0) & (start_loc['x_loc'] <= 19.0)) | ((start_loc['x_loc'] >= 71.0) & (start_loc['x_loc'] <= 90.0))) & ((start_loc['y_loc'] >= 17.0) & (start_loc['y_loc'] <= 33.0))).all()):
             paint_pass = True
@@ -223,7 +224,7 @@ class FeatureUtil:
     @staticmethod
     def check_for_inbound_pass(moments_df, event_pass):
         inbound_pass = False
-        start_loc = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
+        start_loc = moments_df.loc[(moments_df['index'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
 
         if ((((start_loc['x_loc'] <= 0.0) | (start_loc['x_loc'] >= 94.0))) | ((start_loc['y_loc'] >= 50.0) | (start_loc['y_loc'] <= 0.0))).all():
             inbound_pass = True
@@ -243,9 +244,9 @@ class FeatureUtil:
         # Add the moment to the ball_handler_df
         moment_nums = []
         for index, row in ball_handler_df.iterrows():
-            moment_nums.append(int(moments_df.iloc[index * 11]['moment']))
+            moment_nums.append(int(moments_df.iloc[index * 11]['index']))
         
-        ball_handler_df['moment'] = moment_nums
+        ball_handler_df['index'] = moment_nums
 
         # We also need to check the ball radius to make sure we aren't counting shot attempts 
         for i in range(0, len(ball_handler_df)):
@@ -259,27 +260,11 @@ class FeatureUtil:
     def get_passess_for_event(moments_df, possession, players_data):
         # Get the player ids for the team in possession, we wan't to exclude defensive players
         player_ids = DataUtil.get_possession_team_player_ids(possession, players_data)
-
         ball_handler_df = FeatureUtil.get_ball_handler_for_event(moments_df, player_ids)    
-
         # Next, step through each moment and find the passes
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
 
         return passes
-
-    # Takes in a list of basic pass objects (passer, pass_moment, receiver, receive_moment) and calculates features for passes
-    @staticmethod
-    def get_pass_features(moments_df, event_passes):
-        for event_pass in event_passes:
-            player_pass_data = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
-            ball_pass_data = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == -1)]
-            player_receive_data = moments_df.loc[(moments_df['moment'] == event_pass['receive_moment']) & (moments_df['player_id'] == event_pass['receiver'])]
-            ball_receive_data = moments_df.loc[(moments_df['moment'] == event_pass['receive_moment']) & (moments_df['player_id'] == -1)]     
-            print(player_pass_data)
-            print(player_receive_data)
-            print(ball_pass_data)
-            print(ball_receive_data)
-        return event_passes
 
     # Takes list of event_passes, and filters out dribble_hand_off candidates based on pass/receive moments within provided moment_range
     @staticmethod
@@ -288,7 +273,7 @@ class FeatureUtil:
         candidate_count = 0
         for event_pass in event_passes:
             if (not FeatureUtil.check_for_paint_pass(moments_df, event_pass) and not FeatureUtil.check_for_inbound_pass(moments_df, event_pass) and event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
-                moment = moments_df.loc[(moments_df['moment'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
+                moment = moments_df.loc[(moments_df['index'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
                 event_id = moment['event_id'].values[0]
                 if offset > 0:
                     event_id = f"{event_id.split('-')[0]}-{int(event_id.split('-')[0]) + offset}"

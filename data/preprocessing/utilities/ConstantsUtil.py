@@ -1,7 +1,7 @@
 class ConstantsUtil:
     
     HEADERS = ["team_id", "player_id", "x_loc", "y_loc", 	
-           "radius", "moment", "game_clock", "shot_clock", "event_id"]
+           "radius", "index", "game_clock", "shot_clock", "event_id"]
 
     COLOR_DICT = {
         1610612737: "#E13A3E",
