@@ -127,7 +127,6 @@ class FeatureUtil:
     @staticmethod
     # Function to find the distance between players at each moment
     def distance_between_players(player_a, player_b):
-
         # Make sure we know when to stop
         player_range = 0
         if len(player_a) < len(player_b):
@@ -137,6 +136,20 @@ class FeatureUtil:
 
         # Returns a tuple with (Distance, Moment#)
         return [(euclidean(player_a.iloc[i], player_b.iloc[i]))
+                for i in range(player_range)]
+
+    @staticmethod
+    # Function to find the distance between players at each moment
+    def distance_between_players_with_moment(player_a, player_b):
+        # Make sure we know when to stop
+        player_range = 0
+        if len(player_a) < len(player_b):
+            player_range = len(player_a)
+        else:
+            player_range = len(player_b)
+
+        # Returns a tuple with (Distance, Moment#)
+        return [(euclidean(player_a.iloc[i][:1], player_b.iloc[i][:1]), player_a.iloc[i][2])
                 for i in range(player_range)]
 
     @staticmethod
@@ -177,9 +190,9 @@ class FeatureUtil:
 
     @staticmethod
     def distance_between_player_and_other_players(player_id, player_loc, event_df):
-        group = event_df[event_df.player_id!=player_id].groupby("player_id")[["x_loc", "y_loc"]]
+        group = event_df[event_df.player_id!=player_id].groupby("player_id")[["x_loc", "y_loc", "index"]]
 
-        return group.apply(FeatureUtil.distance_between_players, player_b=(player_loc))
+        return group.apply(FeatureUtil.distance_between_players_with_moment, player_b=(player_loc))
 
     def convert_ball_handler_to_passes(ball_handler_df):
         passes = []

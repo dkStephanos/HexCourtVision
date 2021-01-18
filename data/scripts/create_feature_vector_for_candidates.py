@@ -47,6 +47,15 @@ def run():
     start_moment = approach_moments[approach_moments.game_clock == approach_moments.iloc[0].game_clock]
     end_moment = execution_moments[execution_moments.game_clock == execution_moments.iloc[-1].game_clock]
 
+    # Get's screen moment
+    screener_pos_data = DataUtil.get_player_position_data(trimmed_moments, screener['player_id'])
+    filtered_moments = trimmed_moments.loc[(trimmed_moments.player_id.isin([screener['player_id'], cutter['player_id']]))]
+    distance_from_screener = FeatureUtil.distance_between_player_and_other_players(screener['player_id'], screener_pos_data, filtered_moments)
+    min_dist_from_screen = min(distance_from_screener[0])
+    screen_moment = trimmed_moments.loc[trimmed_moments['index'] == int(min_dist_from_screen[1])]
+
+    print(screen_moment)
+
     print(pass_moment)
 
     # Create the feature vector
