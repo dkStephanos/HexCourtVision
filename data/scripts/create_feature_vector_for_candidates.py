@@ -1,10 +1,13 @@
 
+from matplotlib import colors
 import pandas as pd
+import matplotlib.pyplot as plt
 import math
 
 from data.preprocessing.utilities.DataUtil import DataUtil
 from data.preprocessing.utilities.FeatureUtil import FeatureUtil
 from data.preprocessing.utilities.ConstantsUtil import ConstantsUtil
+from data.preprocessing.utilities.GraphUtil import GraphUtil
 
 from data.models import Game
 from data.models import Team
@@ -54,9 +57,20 @@ def run():
     min_dist_from_screen = min(distance_from_screener[0])
     screen_moment = trimmed_moments.loc[trimmed_moments['index'] == int(min_dist_from_screen[1])]
 
-    print(screen_moment)
 
-    print(pass_moment)
+    cutter_df = trimmed_moments[trimmed_moments['player_id'] == cutter['player_id']][['x_loc', 'y_loc']]
+    cutter_df['y_loc'] = cutter_df['y_loc'] - 50.0
+    screener_df = trimmed_moments[trimmed_moments['player_id'] == screener['player_id']][['x_loc', 'y_loc']]
+    screener_df['y_loc'] = screener_df['y_loc'] - 50.0
+    
+    ax = GraphUtil.draw_court()	
+    ax.hexbin(x=cutter_df['x_loc'], y=cutter_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    
+    plt.xlim(0,94)	
+    plt.ylim(-50, 0)
+    plt.show()
+
 
     # Create the feature vector
     feature_vector = {
