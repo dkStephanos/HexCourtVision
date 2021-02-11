@@ -64,12 +64,18 @@ def run():
     screener_df['y_loc'] = screener_df['y_loc'] - 50.0
     
     ax = GraphUtil.draw_court()	
-    ax.hexbin(x=cutter_df['x_loc'], y=cutter_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
-    ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    cutter_hexbin = ax.hexbin(x=cutter_df['x_loc'], y=cutter_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    #ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
     
-    plt.xlim(0,94)	
-    plt.ylim(-50, 0)
-    plt.show()
+    print(cutter_hexbin)
+    print(vars(cutter_hexbin))
+    print(len(cutter_hexbin._offsets))
+    print(cutter_hexbin._axes)
+    print(cutter_df.loc[:,'x_loc':'y_loc'])
+    print(FeatureUtil.convert_coordinate_to_hexbin_vertex(cutter_df.iloc[0]['x_loc'], cutter_df.iloc[0]['y_loc'], cutter_hexbin._offsets))
+    #plt.xlim(0,94)	
+    #plt.ylim(-50, 0)
+    #plt.show()
 
 
     # Create the feature vector

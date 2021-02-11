@@ -1,8 +1,9 @@
 from matplotlib.pyplot import annotate
 import numpy as np
+from numpy.lib.twodim_base import mask_indices
 import pandas as pd
 from .DataUtil import DataUtil
-from scipy.spatial.distance import euclidean
+from scipy.spatial.distance import _validate_vector, euclidean
 
 class FeatureUtil:
 
@@ -306,3 +307,17 @@ class FeatureUtil:
                     'player_b_name': players_dict[event_pass['receiver']][0]})
         
         return candidates
+
+    @staticmethod
+    def convert_coordinate_to_hexbin_vertex(x_loc, y_loc, vertices):
+        min_distance = 10000
+        temp_distance = 0
+        closest_vertex = -1
+
+        for vertex in vertices:
+            temp_distance = abs(abs(x_loc) - abs(vertex[0])) + abs(abs(y_loc) - abs(vertex[1]))
+            if temp_distance < min_distance:
+                min_distance = temp_distance
+                closest_vertex = vertex
+
+        return closest_vertex
