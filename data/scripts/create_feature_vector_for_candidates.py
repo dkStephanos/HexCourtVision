@@ -123,6 +123,9 @@ def run():
         'ball_dist_traveled_execution': FeatureUtil.travel_dist(execution_moments[execution_moments['player_id'].isna()]),
 
         # Relative Distance Data
+        'players_dist_on_pass': FeatureUtil.distance_between_players_at_moment(
+            [pass_moment.loc[pass_moment['player_id'] == cutter['player_id']]['x_loc'].values[0], pass_moment.loc[pass_moment['player_id'] == cutter['player_id']]['y_loc'].values[0]],
+            [pass_moment.loc[pass_moment['player_id'] == screener['player_id']]['x_loc'].values[0], pass_moment.loc[pass_moment['player_id'] == screener['player_id']]['y_loc'].values[0]]),
         'players_dist_on_screen': FeatureUtil.distance_between_players_at_moment(
             [screen_moment.loc[screen_moment['player_id'] == cutter['player_id']]['x_loc'].values[0], screen_moment.loc[screen_moment['player_id'] == cutter['player_id']]['y_loc'].values[0]],
             [screen_moment.loc[screen_moment['player_id'] == screener['player_id']]['x_loc'].values[0], screen_moment.loc[screen_moment['player_id'] == screener['player_id']]['y_loc'].values[0]]),
