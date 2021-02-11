@@ -126,7 +126,15 @@ class FeatureUtil:
         return player_speeds
 
     @staticmethod
-    # Function to find the distance between players at each moment
+    # Function to find the distance between players at a given moment
+    def distance_between_players_at_moment(player_a, player_b):
+        print(player_a)
+        print(player_b)
+        # Returns a tuple with (Distance, Moment#)
+        return euclidean(player_a, player_b)
+
+    @staticmethod
+    # Function to find the distance between players at a moment
     def distance_between_players(player_a, player_b):
         # Make sure we know when to stop
         player_range = 0

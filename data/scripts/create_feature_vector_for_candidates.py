@@ -106,13 +106,13 @@ def run():
         'ball_x_loc_on_end_execution': end_moment[end_moment['player_id'].isna()]['x_loc'].item(),
         'ball_y_loc_on_end_execution': end_moment[end_moment['player_id'].isna()]['y_loc'].item(),
         'ball_radius_loc_on_end_execution': end_moment[end_moment['player_id'].isna()]['radius'].item(),
-        'cutter_x_loc_on_pass': screen_moment.loc[screen_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
-        'cutter_y_loc_on_pass': screen_moment.loc[screen_moment['player_id'] == cutter['player_id']]['y_loc'].values[0],
-        'screener_x_loc_on_pass': screen_moment.loc[screen_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
-        'screener_y_loc_on_pass': screen_moment.loc[screen_moment['player_id'] == screener['player_id']]['y_loc'].values[0],
-        'ball_x_loc_on_pass': screen_moment.loc[screen_moment['player_id'].isna()]['x_loc'].item(),
-        'ball_y_loc_on_pass': screen_moment.loc[screen_moment['player_id'].isna()]['y_loc'].item(),
-        'ball_radius_on_pass': screen_moment.loc[screen_moment['player_id'].isna()]['radius'].item(),
+        'cutter_x_loc_on_screen': screen_moment.loc[screen_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
+        'cutter_y_loc_on_screen': screen_moment.loc[screen_moment['player_id'] == cutter['player_id']]['y_loc'].values[0],
+        'screener_x_loc_on_screen': screen_moment.loc[screen_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
+        'screener_y_loc_on_screen': screen_moment.loc[screen_moment['player_id'] == screener['player_id']]['y_loc'].values[0],
+        'ball_x_loc_on_screen': screen_moment.loc[screen_moment['player_id'].isna()]['x_loc'].item(),
+        'ball_y_loc_on_screen': screen_moment.loc[screen_moment['player_id'].isna()]['y_loc'].item(),
+        'ball_radius_on_screen': screen_moment.loc[screen_moment['player_id'].isna()]['radius'].item(),
 
         # Travel Distance Data
         'cutter_dist_traveled_approach': FeatureUtil.travel_dist(approach_moments[approach_moments['player_id'] == cutter['player_id']]),
@@ -123,6 +123,15 @@ def run():
         'ball_dist_traveled_execution': FeatureUtil.travel_dist(execution_moments[execution_moments['player_id'].isna()]),
 
         # Relative Distance Data
+        'players_dist_on_screen': FeatureUtil.distance_between_players_at_moment(
+            [screen_moment.loc[screen_moment['player_id'] == cutter['player_id']]['x_loc'].values[0], screen_moment.loc[screen_moment['player_id'] == cutter['player_id']]['y_loc'].values[0]],
+            [screen_moment.loc[screen_moment['player_id'] == screener['player_id']]['x_loc'].values[0], screen_moment.loc[screen_moment['player_id'] == screener['player_id']]['y_loc'].values[0]]),
+        'players_dist_on_start_approach': FeatureUtil.distance_between_players_at_moment(
+            [start_moment.loc[start_moment['player_id'] == cutter['player_id']]['x_loc'].values[0], start_moment.loc[start_moment['player_id'] == cutter['player_id']]['y_loc'].values[0]],
+            [start_moment.loc[start_moment['player_id'] == screener['player_id']]['x_loc'].values[0], start_moment.loc[start_moment['player_id'] == screener['player_id']]['y_loc'].values[0]]),
+        'players_dist_on_end_execution': FeatureUtil.distance_between_players_at_moment(
+            [end_moment.loc[end_moment['player_id'] == cutter['player_id']]['x_loc'].values[0], end_moment.loc[end_moment['player_id'] == cutter['player_id']]['y_loc'].values[0]],
+            [end_moment.loc[end_moment['player_id'] == screener['player_id']]['x_loc'].values[0], end_moment.loc[end_moment['player_id'] == screener['player_id']]['y_loc'].values[0]]),
 
         # Speed/Acceleration Data
         'cutter_avg_speed_approach': FeatureUtil.average_speed(approach_moments, cutter['player_id']),
