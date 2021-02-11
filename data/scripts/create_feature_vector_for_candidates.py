@@ -61,12 +61,20 @@ def run():
     cutter_df = trimmed_moments[trimmed_moments['player_id'] == cutter['player_id']][['x_loc', 'y_loc']]
     screener_df = trimmed_moments[trimmed_moments['player_id'] == screener['player_id']][['x_loc', 'y_loc']]
     ball_df = trimmed_moments[trimmed_moments['player_id'].isna()][['x_loc', 'y_loc']]
-    print(ball_df)
     
     # Collect linregress stats for cutter, screener, ball
-    cutter_linregress_stats = FeatureUtil.get_lingress_results_for_player_trajectory(cutter_df)
-    screener_linregress_stats = FeatureUtil.get_lingress_results_for_player_trajectory(screener_df)
-    ball_linregress_stats = FeatureUtil.get_lingress_results_for_player_trajectory(ball_df)
+    cutter_df_approach = approach_moments[approach_moments['player_id'] == cutter['player_id']][['x_loc', 'y_loc']]
+    screener_df_approach = approach_moments[approach_moments['player_id'] == screener['player_id']][['x_loc', 'y_loc']]
+    ball_df_approach = approach_moments[approach_moments['player_id'].isna()][['x_loc', 'y_loc']]
+    cutter_linregress_stats_approach = FeatureUtil.get_lingress_results_for_player_trajectory(cutter_df_approach)
+    screener_linregress_stats_approach = FeatureUtil.get_lingress_results_for_player_trajectory(screener_df_approach)
+    ball_linregress_stats_approach = FeatureUtil.get_lingress_results_for_player_trajectory(ball_df_approach)
+    cutter_df_execution = execution_moments[execution_moments['player_id'] == cutter['player_id']][['x_loc', 'y_loc']]
+    screener_df_execution = execution_moments[execution_moments['player_id'] == screener['player_id']][['x_loc', 'y_loc']]
+    ball_df_execution = execution_moments[execution_moments['player_id'].isna()][['x_loc', 'y_loc']]
+    cutter_linregress_stats_execution = FeatureUtil.get_lingress_results_for_player_trajectory(cutter_df_execution)
+    screener_linregress_stats_execution = FeatureUtil.get_lingress_results_for_player_trajectory(screener_df_execution)
+    ball_linregress_stats_execution = FeatureUtil.get_lingress_results_for_player_trajectory(ball_df_execution)
 
     # Offset y_loc data to work with hexbin
     screener_df['y_loc'] = screener_df['y_loc'] - 50.0
@@ -148,12 +156,18 @@ def run():
         'ball_avg_speed_execution': FeatureUtil.average_speed(execution_moments, None),
 
         # Linear Regression Data
-        'slope_of_cutter_trajectory': cutter_linregress_stats[0],
-        'intercept_of_cutter_trajectory': cutter_linregress_stats[1],
-        'slope_of_screener_trajectory': screener_linregress_stats[0],
-        'intercept_of_screener_trajectory': screener_linregress_stats[1],
-        'slope_of_ball_trajectory': ball_linregress_stats[0],
-        'intercept_of_ball_trajectory': ball_linregress_stats[1],
+        'slope_of_cutter_trajectory_approach': cutter_linregress_stats_approach[0],
+        'intercept_of_cutter_trajectory_approach': cutter_linregress_stats_approach[1],
+        'slope_of_cutter_trajectory_execution': cutter_linregress_stats_execution[0],
+        'intercept_of_cutter_trajectory_execution': cutter_linregress_stats_execution[1],
+        'slope_of_screener_trajectory_approach': screener_linregress_stats_approach[0],
+        'intercept_of_screener_trajectory_approach': screener_linregress_stats_approach[1],
+        'slope_of_screener_trajectory_execution': screener_linregress_stats_execution[0],
+        'intercept_of_screener_trajectory_execution': screener_linregress_stats_execution[1],
+        'slope_of_ball_trajectory_approach': ball_linregress_stats_approach[0],
+        'intercept_of_ball_trajectory_approach': ball_linregress_stats_approach[1],
+        'slope_of_ball_trajectory_execution': ball_linregress_stats_execution[0],
+        'intercept_of_ball_trajectory_execution': ball_linregress_stats_execution[1],
 
         # Play Data
         'offset_into_play': math.floor(pass_moment.iloc[0]['shot_clock'] / 6),
