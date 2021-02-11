@@ -50,29 +50,32 @@ def run():
     start_moment = approach_moments[approach_moments.game_clock == approach_moments.iloc[0].game_clock]
     end_moment = execution_moments[execution_moments.game_clock == execution_moments.iloc[-1].game_clock]
 
-    # Get's screen moment
+    # Gets screen moment
     screener_pos_data = DataUtil.get_player_position_data(trimmed_moments, screener['player_id'])
     filtered_moments = trimmed_moments.loc[(trimmed_moments.player_id.isin([screener['player_id'], cutter['player_id']]))]
     distance_from_screener = FeatureUtil.distance_between_player_and_other_players(screener['player_id'], screener_pos_data, filtered_moments)
     min_dist_from_screen = min(distance_from_screener[0])
     screen_moment = trimmed_moments.loc[trimmed_moments['index'] == int(min_dist_from_screen[1])]
 
-
+    # Isolate cutter, screener and ball from trimmed_moments
     cutter_df = trimmed_moments[trimmed_moments['player_id'] == cutter['player_id']][['x_loc', 'y_loc']]
-    cutter_df['y_loc'] = cutter_df['y_loc'] - 50.0
     screener_df = trimmed_moments[trimmed_moments['player_id'] == screener['player_id']][['x_loc', 'y_loc']]
-    screener_df['y_loc'] = screener_df['y_loc'] - 50.0
+    ball_df = trimmed_moments[trimmed_moments['player_id'].isna()][['x_loc', 'y_loc']]
+    print(ball_df)
     
+    # Collect linregress stats for cutter, screener, ball
+    cutter_linregress_stats = FeatureUtil.get_lingress_results_for_player_trajectory(cutter_df)
+    screener_linregress_stats = FeatureUtil.get_lingress_results_for_player_trajectory(screener_df)
+    ball_linregress_stats = FeatureUtil.get_lingress_results_for_player_trajectory(ball_df)
+
+    # Offset y_loc data to work with hexbin
+    screener_df['y_loc'] = screener_df['y_loc'] - 50.0
+    cutter_df['y_loc'] = cutter_df['y_loc'] - 50.0
     ax = GraphUtil.draw_court()	
     cutter_hexbin = ax.hexbin(x=cutter_df['x_loc'], y=cutter_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
     #ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
-    
-    print(cutter_hexbin)
-    print(vars(cutter_hexbin))
-    print(len(cutter_hexbin._offsets))
-    print(cutter_hexbin._axes)
-    print(cutter_df.loc[:,'x_loc':'y_loc'])
-    print(FeatureUtil.convert_coordinate_to_hexbin_vertex(cutter_df.iloc[0]['x_loc'], cutter_df.iloc[0]['y_loc'], cutter_hexbin._offsets))
+
+    #print(FeatureUtil.convert_coordinate_to_hexbin_vertex(cutter_df.iloc[0]['x_loc'], cutter_df.iloc[0]['y_loc'], cutter_hexbin._offsets))
     #plt.xlim(0,94)	
     #plt.ylim(-50, 0)
     #plt.show()
@@ -144,6 +147,14 @@ def run():
         'ball_avg_speed_approach': FeatureUtil.average_speed(approach_moments, None),
         'ball_avg_speed_execution': FeatureUtil.average_speed(execution_moments, None),
 
+        # Linear Regression Data
+        'slope_of_cutter_trajectory': cutter_linregress_stats[0],
+        'intercept_of_cutter_trajectory': cutter_linregress_stats[1],
+        'slope_of_screener_trajectory': screener_linregress_stats[0],
+        'intercept_of_screener_trajectory': screener_linregress_stats[1],
+        'slope_of_ball_trajectory': ball_linregress_stats[0],
+        'intercept_of_ball_trajectory': ball_linregress_stats[1],
+
         # Play Data
         'offset_into_play': math.floor(pass_moment.iloc[0]['shot_clock'] / 6),
         'num_players_past_half_court': FeatureUtil.num_players_past_halfcourt(pass_moment),
@@ -153,3 +164,5 @@ def run():
     print("\n\n------------------------------ Feature Vector ---------------------------\n")
     print(feature_vector)
     print(f"\n Num Features: {len(feature_vector.keys())}")
+
+    print(FeatureUtil.get_lingress_results_for_player_trajectory(cutter_df)[0])

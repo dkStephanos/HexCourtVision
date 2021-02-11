@@ -4,6 +4,7 @@ from numpy.lib.twodim_base import mask_indices
 import pandas as pd
 from .DataUtil import DataUtil
 from scipy.spatial.distance import _validate_vector, euclidean
+from scipy.stats import linregress
 
 class FeatureUtil:
 
@@ -329,3 +330,7 @@ class FeatureUtil:
                 closest_vertex = vertex
 
         return closest_vertex
+
+    @staticmethod
+    def get_lingress_results_for_player_trajectory(player_trajectory):
+        return linregress(player_trajectory['x_loc'], player_trajectory['y_loc'])
