@@ -334,3 +334,10 @@ class FeatureUtil:
     @staticmethod
     def get_lingress_results_for_player_trajectory(player_trajectory):
         return linregress(player_trajectory['x_loc'], player_trajectory['y_loc'])
+
+    @staticmethod
+    def rotate_coordinates_around_center_court(moments_df):
+        moments_df['x_loc'] = 47.0 - (moments_df['x_loc'] - 47.0)
+        moments_df['y_loc'] = 50.0 - moments_df['y_loc']
+
+        return moments_df

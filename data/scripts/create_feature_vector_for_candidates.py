@@ -44,6 +44,13 @@ def run():
     # Trim the moments data around the pass
     game_clock = DataUtil.convert_timestamp_to_game_clock(target_candidate['game_clock'])
     trimmed_moments = moments[(moments.game_clock > game_clock - 2) & (moments.game_clock < game_clock + 2)]
+
+    # If the data occurs past half-court (x > 47), rotate the points about the center of the court so features appear consistent 
+    if(trimmed_moments.iloc[0]['x_loc'] > 47.0):
+        trimmed_moments['x_loc'] = 47.0 - (trimmed_moments['x_loc'] - 47.0)
+        trimmed_moments['y_loc'] = 50.0 - trimmed_moments['y_loc']
+
+    # Pull out other moment subsects for features
     approach_moments = trimmed_moments[trimmed_moments.game_clock < game_clock]
     execution_moments = trimmed_moments[trimmed_moments.game_clock > game_clock]
     pass_moment = trimmed_moments[trimmed_moments.game_clock == game_clock]
@@ -81,12 +88,12 @@ def run():
     cutter_df['y_loc'] = cutter_df['y_loc'] - 50.0
     ax = GraphUtil.draw_court()	
     cutter_hexbin = ax.hexbin(x=cutter_df['x_loc'], y=cutter_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
-    #ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
 
     #print(FeatureUtil.convert_coordinate_to_hexbin_vertex(cutter_df.iloc[0]['x_loc'], cutter_df.iloc[0]['y_loc'], cutter_hexbin._offsets))
-    #plt.xlim(0,94)	
-    #plt.ylim(-50, 0)
-    #plt.show()
+    plt.xlim(0,94)	
+    plt.ylim(-50, 0)
+    plt.show()
 
 
     # Create the feature vector
