@@ -1,9 +1,8 @@
-from matplotlib.pyplot import annotate
+import math
 import numpy as np
-from numpy.lib.twodim_base import mask_indices
 import pandas as pd
 from .DataUtil import DataUtil
-from scipy.spatial.distance import _validate_vector, euclidean
+from scipy.spatial.distance import euclidean
 from scipy.stats import linregress
 
 class FeatureUtil:
@@ -129,8 +128,6 @@ class FeatureUtil:
     @staticmethod
     # Function to find the distance between players at a given moment
     def distance_between_players_at_moment(player_a, player_b):
-        print(player_a)
-        print(player_b)
         # Returns a tuple with (Distance, Moment#)
         return euclidean(player_a, player_b)
 
@@ -337,7 +334,17 @@ class FeatureUtil:
 
     @staticmethod
     def rotate_coordinates_around_center_court(moments_df):
-        moments_df['x_loc'] = 47.0 - (moments_df['x_loc'] - 47.0)
-        moments_df['y_loc'] = 50.0 - moments_df['y_loc']
+        moments_df.loc[:,'x_loc'] = 47.0 - (moments_df.loc[:,'x_loc'] - 47.0)
+        moments_df.loc[:,'y_loc'] = 50.0 - moments_df.loc[:,'y_loc']
 
         return moments_df
+
+    @staticmethod
+    def get_offset_into_game(period, game_clock):
+        offset = game_clock
+        if (period <= 4):
+            offset += (period - 1) * 12
+        else:
+            offset += 48 + (period - 1) * 5
+
+        return math.floor(offset)

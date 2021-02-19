@@ -3,6 +3,7 @@ from matplotlib import colors
 import pandas as pd
 import matplotlib.pyplot as plt
 import math
+from django.forms.models import model_to_dict
 
 from data.preprocessing.utilities.DataUtil import DataUtil
 from data.preprocessing.utilities.FeatureUtil import FeatureUtil
@@ -16,9 +17,10 @@ from data.models import Event
 from data.models import Moment
 from data.models import Candidate
 
+pd.set_option('mode.chained_assignment', None)
+
 def run():
     # Collects all games -- Add loop later
-    print(Game.objects.all())
 
     # Collects all candidates for a given event -- Add loop later
     candidates = []
@@ -29,22 +31,20 @@ def run():
 
     # Collects moments for single candidate -- Add loop later
     target_candidate = candidates[1]
-    print(target_candidate)
+    target_event = model_to_dict(events[1])
     moments = pd.DataFrame(list(Moment.objects.filter(event_id=target_candidate['event_id']).values()))
 
     # Collects players for single candidate
     screener = Player.objects.values().get(player_id=target_candidate['player_a_id'])
     cutter = Player.objects.values().get(player_id=target_candidate['player_b_id'])
-    print(screener)
 
     # Collects passes for event
     event_passes = FeatureUtil.get_passess_for_event(moments, Event.objects.values().get(event_id=target_candidate['event_id'])['possesion_team_id'], list(Player.objects.values()))
-    print(event_passes[0])
 
     # Trim the moments data around the pass
     game_clock = DataUtil.convert_timestamp_to_game_clock(target_candidate['game_clock'])
     trimmed_moments = moments[(moments.game_clock > game_clock - 2) & (moments.game_clock < game_clock + 2)]
-
+    
     # If the data occurs past half-court (x > 47), rotate the points about the center of the court so features appear consistent 
     if(trimmed_moments.iloc[0]['x_loc'] > 47.0):
         trimmed_moments = FeatureUtil.rotate_coordinates_around_center_court(trimmed_moments)
@@ -87,13 +87,12 @@ def run():
     cutter_df['y_loc'] = cutter_df['y_loc'] - 50.0
     ax = GraphUtil.draw_court()	
     cutter_hexbin = ax.hexbin(x=cutter_df['x_loc'], y=cutter_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
-    ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    screener_hexbin = ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    ball_hexbin = ax.hexbin(x=ball_df['x_loc'], y=ball_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
 
-    #print(FeatureUtil.convert_coordinate_to_hexbin_vertex(cutter_df.iloc[0]['x_loc'], cutter_df.iloc[0]['y_loc'], cutter_hexbin._offsets))
     plt.xlim(0,94)	
     plt.ylim(-50, 0)
     plt.show()
-
 
     # Create the feature vector
     feature_vector = {
@@ -102,33 +101,57 @@ def run():
         'screener_archetype': screener['position'],
 
         # Location Data
-        'cutter_x_loc_on_pass': pass_moment.loc[pass_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
-        'cutter_y_loc_on_pass': pass_moment.loc[pass_moment['player_id'] == cutter['player_id']]['y_loc'].values[0],
-        'screener_x_loc_on_pass': pass_moment.loc[pass_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
-        'screener_y_loc_on_pass': pass_moment.loc[pass_moment['player_id'] == screener['player_id']]['y_loc'].values[0],
-        'ball_x_loc_on_pass': pass_moment.loc[pass_moment['player_id'].isna()]['x_loc'].item(),
-        'ball_y_loc_on_pass': pass_moment.loc[pass_moment['player_id'].isna()]['y_loc'].item(),
+        'cutter_loc_on_pass': FeatureUtil.convert_coordinate_to_hexbin_vertex(
+            pass_moment.loc[pass_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
+            pass_moment.loc[pass_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
+            cutter_hexbin._offsets),
+        'screener_loc_on_pass': FeatureUtil.convert_coordinate_to_hexbin_vertex(
+            pass_moment.loc[pass_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
+            pass_moment.loc[pass_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
+            screener_hexbin._offsets),
+        'ball_loc_on_pass': FeatureUtil.convert_coordinate_to_hexbin_vertex(
+            pass_moment.loc[pass_moment['player_id'].isna()]['x_loc'].item(),
+            pass_moment.loc[pass_moment['player_id'].isna()]['y_loc'].item(),
+            ball_hexbin._offsets),
         'ball_radius_on_pass': pass_moment.loc[pass_moment['player_id'].isna()]['radius'].item(),
-        'cutter_x_loc_on_start_approach': start_moment[start_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
-        'cutter_y_loc_on_start_approach': start_moment[start_moment['player_id'] == cutter['player_id']]['y_loc'].values[0],
-        'screener_x_loc_on_start_approach': start_moment[start_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
-        'screener_y_loc_on_start_approach': start_moment[start_moment['player_id'] == screener['player_id']]['y_loc'].values[0],
-        'ball_x_loc_on_start_approach': start_moment[start_moment['player_id'].isna()]['x_loc'].item(),
-        'ball_y_loc_on_start_approach': start_moment[start_moment['player_id'].isna()]['y_loc'].item(),
+        'cutter_loc_on_start_approach': FeatureUtil.convert_coordinate_to_hexbin_vertex(
+            start_moment.loc[start_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
+            start_moment.loc[start_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
+            cutter_hexbin._offsets),
+        'screener_loc_on_start_approach': FeatureUtil.convert_coordinate_to_hexbin_vertex(
+            start_moment.loc[start_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
+            start_moment.loc[start_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
+            screener_hexbin._offsets),
+        'ball_loc_on_start_approach': FeatureUtil.convert_coordinate_to_hexbin_vertex(
+            start_moment.loc[start_moment['player_id'].isna()]['x_loc'].item(),
+            start_moment.loc[start_moment['player_id'].isna()]['y_loc'].item(),
+            ball_hexbin._offsets),
         'ball_radius_loc_on_start_approach': start_moment[start_moment['player_id'].isna()]['radius'].item(),
-        'cutter_x_loc_on_end_execution': end_moment[end_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
-        'cutter_y_loc_on_end_execution': end_moment[end_moment['player_id'] == cutter['player_id']]['y_loc'].values[0],
-        'screener_x_loc_on_end_execution': end_moment[end_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
-        'screener_y_loc_on_end_execution': end_moment[end_moment['player_id'] == screener['player_id']]['y_loc'].values[0],
-        'ball_x_loc_on_end_execution': end_moment[end_moment['player_id'].isna()]['x_loc'].item(),
-        'ball_y_loc_on_end_execution': end_moment[end_moment['player_id'].isna()]['y_loc'].item(),
+        'cutter_loc_on_end_execution': FeatureUtil.convert_coordinate_to_hexbin_vertex(
+            end_moment.loc[end_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
+            end_moment.loc[end_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
+            cutter_hexbin._offsets),
+        'screener_loc_on_end_execution': FeatureUtil.convert_coordinate_to_hexbin_vertex(
+            end_moment.loc[end_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
+            end_moment.loc[end_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
+            screener_hexbin._offsets),
+        'ball_loc_on_end_execution': FeatureUtil.convert_coordinate_to_hexbin_vertex(
+            end_moment.loc[end_moment['player_id'].isna()]['x_loc'].item(),
+            end_moment.loc[end_moment['player_id'].isna()]['y_loc'].item(),
+            ball_hexbin._offsets),
         'ball_radius_loc_on_end_execution': end_moment[end_moment['player_id'].isna()]['radius'].item(),
-        'cutter_x_loc_on_screen': screen_moment.loc[screen_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
-        'cutter_y_loc_on_screen': screen_moment.loc[screen_moment['player_id'] == cutter['player_id']]['y_loc'].values[0],
-        'screener_x_loc_on_screen': screen_moment.loc[screen_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
-        'screener_y_loc_on_screen': screen_moment.loc[screen_moment['player_id'] == screener['player_id']]['y_loc'].values[0],
-        'ball_x_loc_on_screen': screen_moment.loc[screen_moment['player_id'].isna()]['x_loc'].item(),
-        'ball_y_loc_on_screen': screen_moment.loc[screen_moment['player_id'].isna()]['y_loc'].item(),
+        'cutter_loc_on_screen': FeatureUtil.convert_coordinate_to_hexbin_vertex(
+            screen_moment.loc[screen_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
+            screen_moment.loc[screen_moment['player_id'] == cutter['player_id']]['x_loc'].values[0],
+            cutter_hexbin._offsets),
+        'screener_loc_on_screen': FeatureUtil.convert_coordinate_to_hexbin_vertex(
+            screen_moment.loc[screen_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
+            screen_moment.loc[screen_moment['player_id'] == screener['player_id']]['x_loc'].values[0],
+            screener_hexbin._offsets),
+        'ball_loc_on_screen': FeatureUtil.convert_coordinate_to_hexbin_vertex(
+            screen_moment.loc[screen_moment['player_id'].isna()]['x_loc'].item(),
+            screen_moment.loc[screen_moment['player_id'].isna()]['y_loc'].item(),
+            ball_hexbin._offsets),
         'ball_radius_on_screen': screen_moment.loc[screen_moment['player_id'].isna()]['radius'].item(),
 
         # Travel Distance Data
@@ -177,6 +200,7 @@ def run():
 
         # Play Data
         'offset_into_play': math.floor(pass_moment.iloc[0]['shot_clock'] / 6),
+        'offset_into_game': FeatureUtil.get_offset_into_game(target_event['period'], pass_moment.iloc[0]['game_clock']),
         'num_players_past_half_court': FeatureUtil.num_players_past_halfcourt(pass_moment),
         'is_inbounds_pass': FeatureUtil.check_for_inbound_pass(moments, event_passes[0])
     }
@@ -184,5 +208,3 @@ def run():
     print("\n\n------------------------------ Feature Vector ---------------------------\n")
     print(feature_vector)
     print(f"\n Num Features: {len(feature_vector.keys())}")
-
-    print(FeatureUtil.get_lingress_results_for_player_trajectory(cutter_df)[0])
