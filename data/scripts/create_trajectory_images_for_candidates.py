@@ -55,7 +55,7 @@ def generate_trajectory_image(target_event, target_candidate):
     cutter_hexbin = ax.hexbin(x=cutter_df['x_loc'], y=cutter_df['y_loc'], cmap=cmapGreens, mincnt=1, gridsize=50, extent=(0,94,-50,0))
     screener_hexbin = ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=cmapBlues, mincnt=1, gridsize=50, extent=(0,94,-50,0))
 
-    GraphUtil.display_full_court()
+    GraphUtil.display_half_court()
 
 def run():
     game = Game.objects.all()[0]
@@ -63,5 +63,5 @@ def run():
     for event in events:
         next_candidates = Candidate.objects.filter(event=event).values()
         for candidate in next_candidates:
-            if (candidate['classification'] == True):
+            if (candidate['manual_label'] == True):
                 generate_trajectory_image(event, candidate)
