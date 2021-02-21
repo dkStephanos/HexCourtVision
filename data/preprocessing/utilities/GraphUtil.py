@@ -112,3 +112,9 @@ class GraphUtil:
         plt.ylim(-50, 0)	
 
         plt.show() 
+    
+    @staticmethod
+    def display_full_court():
+        plt.xlim(0,94)	
+        plt.ylim(-50, 0)
+        plt.show()
