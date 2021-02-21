@@ -106,8 +106,6 @@ class GraphUtil:
 
         GraphUtil.draw_court()	
 
-        # extend the x-values beyond the court b/c Harden	
-        # goes out of bounds	
         plt.xlim(-7,101)	
         plt.ylim(-50, 0)	
 
@@ -116,5 +114,11 @@ class GraphUtil:
     @staticmethod
     def display_full_court():
         plt.xlim(0,94)	
+        plt.ylim(-50, 0)
+        plt.show()
+
+    @staticmethod
+    def display_half_court():
+        plt.xlim(0,47)	
         plt.ylim(-50, 0)
         plt.show()
