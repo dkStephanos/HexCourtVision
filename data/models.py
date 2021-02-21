@@ -63,3 +63,70 @@ class Candidate(models.Model):
     player_b_name = models.CharField(max_length=25)
     notes = models.CharField(max_length=100)
 
+class CandidateFeatureVector(models.Model):
+    candidate = models.ForeignKey(Candidate, on_delete=models.SET_NULL, null=True)
+    classification = models.BooleanField()
+    
+    # Player Data
+    cutter_archetype = models.CharField(max_length=20)
+    screener_archetype = models.CharField(max_length=20)
+
+    # Location Data
+    cutter_loc_on_pass = models.CharField(max_length=100)
+    screener_loc_on_pass = models.CharField(max_length=100)
+    ball_loc_on_pass = models.CharField(max_length=100) 
+    ball_radius_on_pass = models.CharField(max_length=100) 
+    cutter_loc_on_start_approach = models.CharField(max_length=100) 
+    screener_loc_on_start_approach = models.CharField(max_length=100) 
+    ball_loc_on_start_approach = models.CharField(max_length=100) 
+    ball_radius_loc_on_start_approach = models.CharField(max_length=100) 
+    cutter_loc_on_end_execution = models.CharField(max_length=100) 
+    screener_loc_on_end_execution = models.CharField(max_length=100) 
+    ball_loc_on_end_execution = models.CharField(max_length=100) 
+    ball_radius_loc_on_end_execution = models.CharField(max_length=100) 
+    cutter_loc_on_screen = models.CharField(max_length=100) 
+    screener_loc_on_screen = models.CharField(max_length=100) 
+    ball_loc_on_screen = models.CharField(max_length=100) 
+    ball_radius_on_screen = models.CharField(max_length=100) 
+
+    # Travel Distance Data
+    cutter_dist_traveled_approach = models.FloatField() 
+    cutter_dist_traveled_execution = models.FloatField() 
+    screener_dist_traveled_approach = models.FloatField() 
+    screener_dist_traveled_execution = models.FloatField() 
+    ball_dist_traveled_approach = models.FloatField() 
+    ball_dist_traveled_execution = models.FloatField() 
+
+    # Relative Distance Data
+    players_dist_on_pass = models.FloatField() 
+    players_dist_on_screen = models.FloatField() 
+    players_dist_on_start_approach = models.FloatField() 
+    players_dist_on_end_execution = models.FloatField() 
+
+    # Speed/Acceleration Data
+    cutter_avg_speed_approach = models.FloatField() 
+    cutter_avg_speed_execution = models.FloatField() 
+    screener_avg_speed_approach = models.FloatField() 
+    screener_avg_speed_execution = models.FloatField() 
+    ball_avg_speed_approach = models.FloatField() 
+    ball_avg_speed_execution = models.FloatField() 
+
+    # Linear Regression Data
+    slope_of_cutter_trajectory_approach = models.FloatField() 
+    intercept_of_cutter_trajectory_approach = models.FloatField() 
+    slope_of_cutter_trajectory_execution = models.FloatField() 
+    intercept_of_cutter_trajectory_execution = models.FloatField() 
+    slope_of_screener_trajectory_approach = models.FloatField() 
+    intercept_of_screener_trajectory_approach = models.FloatField() 
+    slope_of_screener_trajectory_execution = models.FloatField() 
+    intercept_of_screener_trajectory_execution = models.FloatField() 
+    slope_of_ball_trajectory_approach = models.FloatField()
+    intercept_of_ball_trajectory_approach = models.FloatField()
+    slope_of_ball_trajectory_execution = models.FloatField() 
+    intercept_of_ball_trajectory_execution = models.FloatField() 
+
+    # Play Data
+    offset_into_play = models.IntegerField() 
+    offset_into_game = models.IntegerField() 
+    num_players_past_half_court = models.IntegerField() 
+    is_inbounds_pass = models.BooleanField()

@@ -1,0 +1,2 @@
+Total successful candidates: 1845
+Total failed candidates: 66

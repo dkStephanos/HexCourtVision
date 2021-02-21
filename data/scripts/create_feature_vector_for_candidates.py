@@ -1,7 +1,7 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import math
+import math, sys, os, traceback
 from django.forms.models import model_to_dict
 
 from data.preprocessing.utilities.DataUtil import DataUtil
@@ -13,6 +13,7 @@ from data.models import Player
 from data.models import Event
 from data.models import Moment
 from data.models import Candidate
+from data.models import CandidateFeatureVector
 
 pd.set_option('mode.chained_assignment', None)
 
@@ -69,17 +70,21 @@ def generate_feature_vector(target_event, target_candidate):
     ball_linregress_stats_execution = FeatureUtil.get_lingress_results_for_player_trajectory(ball_df_execution)
 
     # Offset y_loc data to work with hexbin
-    screener_df['y_loc'] = screener_df['y_loc'] - 50.0
-    cutter_df['y_loc'] = cutter_df['y_loc'] - 50.0
+    screener_hex_df = screener_df.copy(deep=True)
+    cutter_hex_df = screener_df.copy(deep=True)
+    ball_hex_df = ball_df.copy(deep=True)
+    screener_hex_df['y_loc'] = screener_hex_df['y_loc'] - 50.0
+    cutter_hex_df['y_loc'] = cutter_hex_df['y_loc'] - 50.0
     ax = GraphUtil.draw_court()	
-    cutter_hexbin = ax.hexbin(x=cutter_df['x_loc'], y=cutter_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
-    screener_hexbin = ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
-    ball_hexbin = ax.hexbin(x=ball_df['x_loc'], y=ball_df['y_loc'], cmap=plt.cm.winter, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    screener_hexbin = ax.hexbin(x=screener_hex_df['x_loc'], y=screener_hex_df['y_loc'], cmap=plt.cm.greens, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    cutter_hexbin = ax.hexbin(x=cutter_hex_df['x_loc'], y=cutter_hex_df['y_loc'], cmap=plt.cm.blues, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    ball_hexbin = ax.hexbin(x=ball_hex_df['x_loc'], y=ball_hex_df['y_loc'], cmap=plt.cm.reds, mincnt=1, gridsize=50, extent=(0,94,-50,0))
 
     # Create the feature vector
     feature_vector = {
         # Classification
         'classification': target_candidate['manual_label'],
+        'candidate_id': target_candidate['candidate_id'],
 
         # Player Data
         'cutter_archetype': cutter['position'],
@@ -192,7 +197,7 @@ def generate_feature_vector(target_event, target_candidate):
 
     print("\n\n------------------------------ Feature Vector ---------------------------\n")
     print(feature_vector)
-    print(f"\n Num Features: {len(feature_vector.keys()-1)}")
+    print(f"\n Num Features: {len(feature_vector.keys())-2}")
 
     return feature_vector
 
@@ -200,27 +205,28 @@ def run():
     num_failed_candidates = 0
     num_successful_candidates = 0
     issue_candidates = []
-    feature_vectors = []
-    #for game in Game.objects.all():
-    game = Game.objects.all()[0]
-    events = Event.objects.filter(game=game, pk__in=['21500079-302', '21500079-317'])
-    for event in events:
-        target_event = model_to_dict(event)
-        next_candidates = Candidate.objects.filter(event=event).values()
-        for target_candidate in next_candidates:
-            try:
-                vector = generate_feature_vector(target_event, target_candidate)
-                feature_vectors.append(vector)
-                num_successful_candidates += 1
-            except Exception as e:
-                print(f"Issue at candidate: {target_candidate['candidate_id']}")
-                issue_candidates.append(target_candidate)
-                num_failed_candidates += 1
+    for game in Game.objects.all():
+        events = Event.objects.filter(game=game)
+        for event in events:
+            target_event = model_to_dict(event)
+            next_candidates = Candidate.objects.filter(event=event).values()
+            for target_candidate in next_candidates:
+                try:
+                    vector = generate_feature_vector(target_event, target_candidate)
+                    CandidateFeatureVector.objects.update_or_create(**vector)
+                    num_successful_candidates += 1
+                except Exception as e:
+                    print(f"Issue at candidate: {target_candidate['candidate_id']}")
+                    exc_type, exc_obj, exc_tb = sys.exc_info()
+                    fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+                    print(exc_type, fname)
+                    print(traceback.print_tb(exc_tb))
+                    issue_candidates.append(target_candidate)
+                    num_failed_candidates += 1
 
-    print(f"Total successful candidates: {num_successful_candidates}")
-    print(f"Total failed candidates: {num_failed_candidates}")
-    print(issue_candidates)
-
-    for candidate in issue_candidates:
-        generate_feature_vector(Event.objects.get(pk=candidate['event_id']), candidate)
+        output = f"Total successful candidates: {num_successful_candidates}\nTotal failed candidates: {num_failed_candidates}" 
+        print(output)
+        text_file = open("static/data/test/feature_gen_results.txt", "w")
+        text_file.write(output)
+        text_file.close()
     
