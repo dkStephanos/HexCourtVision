@@ -326,7 +326,7 @@ class FeatureUtil:
                 min_distance = temp_distance
                 closest_vertex = vertex
 
-        return closest_vertex
+        return f"({closest_vertex[0]},{closest_vertex[1]})"
 
     @staticmethod
     def get_lingress_results_for_player_trajectory(player_trajectory):
