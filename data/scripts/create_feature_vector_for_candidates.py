@@ -71,14 +71,15 @@ def generate_feature_vector(target_event, target_candidate):
 
     # Offset y_loc data to work with hexbin
     screener_hex_df = screener_df.copy(deep=True)
-    cutter_hex_df = screener_df.copy(deep=True)
+    cutter_hex_df = cutter_df.copy(deep=True)
     ball_hex_df = ball_df.copy(deep=True)
     screener_hex_df['y_loc'] = screener_hex_df['y_loc'] - 50.0
     cutter_hex_df['y_loc'] = cutter_hex_df['y_loc'] - 50.0
+    ball_hex_df['y_loc'] = ball_hex_df['y_loc'] - 50.0
     ax = GraphUtil.draw_court()	
-    screener_hexbin = ax.hexbin(x=screener_hex_df['x_loc'], y=screener_hex_df['y_loc'], cmap=plt.cm.greens, mincnt=1, gridsize=50, extent=(0,94,-50,0))
-    cutter_hexbin = ax.hexbin(x=cutter_hex_df['x_loc'], y=cutter_hex_df['y_loc'], cmap=plt.cm.blues, mincnt=1, gridsize=50, extent=(0,94,-50,0))
-    ball_hexbin = ax.hexbin(x=ball_hex_df['x_loc'], y=ball_hex_df['y_loc'], cmap=plt.cm.reds, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    screener_hexbin = ax.hexbin(x=screener_hex_df['x_loc'], y=screener_hex_df['y_loc'], cmap=plt.cm.Greens, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    cutter_hexbin = ax.hexbin(x=cutter_hex_df['x_loc'], y=cutter_hex_df['y_loc'], cmap=plt.cm.Blues, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    ball_hexbin = ax.hexbin(x=ball_hex_df['x_loc'], y=ball_hex_df['y_loc'], cmap=plt.cm.Reds, mincnt=1, gridsize=50, extent=(0,94,-50,0))
 
     # Create the feature vector
     feature_vector = {
