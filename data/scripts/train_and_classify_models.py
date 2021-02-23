@@ -33,8 +33,9 @@ def run():
 
     X = candidates_df.drop(columns=['classification'])
     y = candidates_df['classification']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
 
-    svm = SVM('linear')
-
-    print(type(svm.get_model()))
+    svm = SVM(kernel='linear')
+    svm.fit_and_predict(X_train, X_test, y_train)
+    print(svm.get_confusion_matrix(y_test))
+    print(svm.get_classification_report(y_test))
