@@ -1,5 +1,8 @@
 from sklearn import svm
 
 class SVM:
-    def create_model(self):
-        self.clf = svm.SVC()
+    def __init__(self,kernel):
+        self.clf = svm.SVC(kernel=kernel)
+
+    def get_model(self):
+        return self.clf

@@ -1,6 +1,8 @@
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 from data.classification.utilities.EncodingUtil import EncodingUtil
+from data.classification.ML.SVM import SVM
 
 from data.models import CandidateFeatureVector
 
@@ -29,4 +31,10 @@ def run():
                                                                                 'ball_loc_on_screen',
                                                                                 'ball_radius_on_screen'])
 
-    print(candidates_df.iloc[0])
+    X = candidates_df.drop(columns=['classification'])
+    y = candidates_df['classification']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    svm = SVM('linear')
+
+    print(type(svm.get_model()))
