@@ -2,8 +2,8 @@ from sklearn import svm, preprocessing
 from sklearn.metrics import classification_report, confusion_matrix
 
 class SVM:
-    def __init__(self,kernel):
-        self.clf = svm.SVC(kernel=kernel)
+    def __init__(self, C, kernel="poly"):
+        self.clf = svm.SVC(C=C, kernel=kernel)
         self.min_max_scaler = preprocessing.MinMaxScaler()
 
     def get_model(self):
