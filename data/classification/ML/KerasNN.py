@@ -6,7 +6,8 @@ class KerasNN:
     def __init__(self,):
         self.min_max_scaler = preprocessing.MinMaxScaler()
         self.model = Sequential()
-        self.model.add(Dense(12, input_dim=50, activation='relu'))
+        self.model.add(Dense(32, input_dim=50, activation='relu'))
+        self.model.add(Dense(16, activation='relu'))
         self.model.add(Dense(8, activation='relu'))
         self.model.add(Dense(1, activation='sigmoid'))
         self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
