@@ -1,5 +1,4 @@
-from sklearn import svm, preprocessing
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn import svm
 from .SklearnClf import SklearnClf
 
 class SVM(SklearnClf):

@@ -1,5 +1,4 @@
-from sklearn import preprocessing, naive_bayes
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn import naive_bayes
 from .SklearnClf import SklearnClf
 
 class GaussianNB(SklearnClf):
