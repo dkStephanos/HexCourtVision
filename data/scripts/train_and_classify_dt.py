@@ -16,7 +16,7 @@ def run():
     candidates_df = EncodingUtil.basic_label_encode_cols(candidates_df, ConstantsUtil.BASIC_ENCODE_COLS)
     candidates_df = EncodingUtil.sort_position_cols_and_encode(candidates_df, ConstantsUtil.STRING_TUPLE_ENCODE_COLS)
 
-    dt = DecisionTree(criterion='gini')
+    dt = DecisionTree(criterion="entropy")
     X_train, X_test, y_train, y_test = dt.split_test_data(candidates_df, .3, 'classification', True)
     dt.fit_and_predict(X_train, X_test, y_train)
     print(dt.get_confusion_matrix(y_test))
