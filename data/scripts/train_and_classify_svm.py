@@ -17,7 +17,17 @@ def run():
     candidates_df = EncodingUtil.sort_position_cols_and_encode(candidates_df, ConstantsUtil.STRING_TUPLE_ENCODE_COLS)
 
     svm = SVM(C=.75, kernel='poly')
-    X_train, X_test, y_train, y_test = svm.split_test_data(candidates_df, .3, 'classification', True)
+    svm.set_data(candidates_df, 'classification')
+    X_train, X_test, y_train, y_test = svm.split_test_data(.3, True)
     svm.fit_and_predict(X_train, X_test, y_train)
     print(svm.get_confusion_matrix(y_test))
     print(svm.get_classification_report(y_test))
+
+    params_to_optimize = {
+        'C': {
+            'init': 1.0,
+            'type': 'float',
+            'range': (.0001,1000.0)
+        },
+
+    }

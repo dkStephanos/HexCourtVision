@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from copy import deepcopy
 
 class GeneticOptimizer:
-    def __init__(self,initial_configuration={},num_generations=100,population_size=200,mutation_rate=0.1,display_rate=20,init_crossover_strategy='multipoint',rand_selection=False):
+    def __init__(self,initial_configuration={}, params_to_optimize={},num_generations=100,population_size=200,mutation_rate=0.1,display_rate=20,init_crossover_strategy='multipoint',rand_selection=False):
         self.initial_configuration = initial_configuration
         self.num_generations = num_generations
         self.population_size = population_size
@@ -40,17 +40,16 @@ class GeneticOptimizer:
 
         return temp_data
 
+    def random_sample(self):
+        pass
+
     # Returns a list containing chromosome,fitness ready to be inserted into a population
     def calculate_fitness(self, chromosome):
         """
         Fitness is the total route cost using the haversine distance.
         The GA should attempt to minimize the fitness; minimal fitness => best fitness
         """
-        fitness = 0.0
-        
-        for point in range(len(chromosome) - 1):
-            fitness += haversine(chromosome[point][1], chromosome[point + 1][1])
-
+        fitness = self.clf_model.train_and_predict()
 
         return [chromosome,fitness]
 
@@ -67,7 +66,7 @@ class GeneticOptimizer:
         # Loop through creating chromosomes until we fill the population
         for chromosome in range(0, self.population_size):
             # Shuffle the list of points and calculate the fitness of the path which returns the [chromosme,fitness] ready to be added to the population
-            my_population.append(self.calculate_fitness(random.sample(points, len(points))))     
+            my_population.append(self.calculate_fitness(self.random_sample()))     
 
         # Sort the population by fitness
         my_population.sort(key=lambda x: x[1])
@@ -89,12 +88,12 @@ class GeneticOptimizer:
         ## Conduct selection, reproduction, and mutation operations to fill the rest of the population
         while len(new_population) < self.population_size:
             # Select the two parents from the growing population
-            parent1, parent2 = selection(gen, random_selection)
+            parent1, parent2 = self.selection(gen, random_selection)
             # Generate the child according to the designated crossover_strategy
-            child = crossover(parent1, parent2, crossover_strategy)
+            child = self.crossover(parent1, parent2, crossover_strategy)
             # Generate a random number, if it falls beneath the mutation_rate, perform a point swap mutation on the child
-            if (random.random() < MUTATION_RATE):
-                child = mutate(child[0])
+            if (random.random() < self.mutation_rate):
+                child = self.mutate(child[0])
                 
             new_population.append(child)
 
