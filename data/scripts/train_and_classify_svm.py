@@ -29,5 +29,29 @@ def run():
             'type': 'float',
             'range': (.0001,1000.0)
         },
-
+        'kernel': {
+            'init': 2,
+            'type': 'enum',
+            'range': ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed']
+        },
+        'degree': {
+            'init': 3,
+            'type': 'int',
+            'range': (2,5)
+        },
+        'gamma': {
+            'init': 0,
+            'type': 'enum',
+            'range': ['scale', 'auto']
+        },
+        'shrinking': {
+            'init': True,
+            'type': 'bool',
+            'range': [True, False]
+        },
+        'probability': {
+            'init': True,
+            'type': 'bool',
+            'range': [True, False]
+        }
     }

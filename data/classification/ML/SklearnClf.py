@@ -2,7 +2,7 @@ import pandas as pd
 import statistics as stats
 from sklearn import metrics, preprocessing
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.metrics import confusion_matrix, classification_report, f1_score
 from sklearn.model_selection import train_test_split
 
 class SklearnClf:
@@ -42,3 +42,6 @@ class SklearnClf:
 
     def get_classification_report(self, y_test):
         return classification_report(y_test, self.predictions)
+
+    def get_f1_score(self, y_test):
+        return f1_score(y_test, self.predictions)
