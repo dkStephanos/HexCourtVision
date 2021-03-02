@@ -8,6 +8,7 @@ from copy import deepcopy
 class GeneticOptimizer:
     def __init__(self,initial_configuration={}, params_to_optimize={},num_generations=100,population_size=200,mutation_rate=0.1,display_rate=20,init_crossover_strategy='multipoint',rand_selection=False):
         self.initial_configuration = initial_configuration
+        self.params_to_optimize = params_to_optimize
         self.num_generations = num_generations
         self.population_size = population_size
         self.mutation_rate = mutation_rate
@@ -40,8 +41,33 @@ class GeneticOptimizer:
 
         return temp_data
 
+    def get_random_bool_param(param):
+        return bool(random.getrandbits(1))
+
+    def get_random_enum_param(param):
+        index = random.randrange(0,len(param['range']),1)
+        return param['range'][index]
+
+    def get_random_int_param(param):
+        return random.randrange(param['range'][0],param['range'][1],1)
+
+    def get_random_float_param(param):
+        return round(random.uniform(param['range'][0],param['range'][1]),3)
+
     def random_sample(self):
-        pass
+        get_field = {
+            'bool': self.get_random_bool_param,
+            'enum': self.get_random_enum_param,
+            'int': self.get_random_int_param,
+            'float': self.get_random_float_param,
+        }
+
+        chromosome = {}
+
+        for key, param in self.params_to_optimize.items():
+            chromosome[key] = get_field[param['type']](param)
+
+        return chromosome
 
     # Returns a list containing chromosome,fitness ready to be inserted into a population
     def calculate_fitness(self, chromosome):
@@ -49,13 +75,15 @@ class GeneticOptimizer:
         Fitness is the total route cost using the haversine distance.
         The GA should attempt to minimize the fitness; minimal fitness => best fitness
         """
-        fitness = self.clf_model.train_and_predict()
+        X_train, X_test, y_train, y_test = self.clf_model.split_test_data(chromosome['test_size'], chromosome['is_fixed'])
+        self.clf_model.fit_and_predict(X_train, X_test, y_train)
+        fitness = self.clf_model.get_f1_score(y_test)
 
         return [chromosome,fitness]
 
 
     ## initialize population
-    def initialize_population(self, ):
+    def initialize_population(self):
         """
         Initialize the population by creating self.population_size chromosomes.
         Each chromosome represents the index of the point in the points list.
@@ -74,7 +102,7 @@ class GeneticOptimizer:
         self.generations.append(my_population)
 
     # Takes the index to the generation to repopulate from, and a crossover strategy (accepts: uniform, singlepoint, multipoint)
-    def repopulate(self, gen, crossover_strategy, random_selection=False):
+    def repopulate(self, gen, crossover_strategy, random_selection):
         """
         Creates a new generation by repopulation based on the previous generation.
         Calls selection, crossover, and mutate to create a child chromosome. Calculates fitness
@@ -192,26 +220,32 @@ class GeneticOptimizer:
 
     def mutate(self, chromosome):
         """
-        Strategy: swap two pairs of points. Return the chromosome after mutation.
+        Choose a param and reset it with a randomized value
         """
+        get_field = {
+            'bool': self.get_random_bool_param,
+            'enum': self.get_random_enum_param,
+            'int': self.get_random_int_param,
+            'float': self.get_random_float_param,
+        }
+
         # Copy the child
         mutant_child = deepcopy(chromosome)
-        # Select two random points
-        point1, point2 = random.sample(range(len(mutant_child)), 2)
-        #Swap the points
-        mutant_child[point1], mutant_child[point2] = mutant_child[point2], mutant_child[point1]
+
+        param_to_mutate = math.floor(random.randint(len(mutant_child)))
+        mutant_child[param_to_mutate] = get_field(self.params_to_optimize[param_to_mutate])
         
         return self.calculate_fitness(mutant_child)
 
     # Modified to rake a crossover strategy and random_selection flag (defaulted to False)
-    def run_ga(self, crossover_strategy, random_selection=False):
+    def run_ga(self):
         """
         Initialize and repopulate until you have reached the maximum generations
         """
         self.initialize_population()
 
         for gen in range(self.num_generations-1):      #Note, you already ran generation 1
-            self.repopulate(gen+1, crossover_strategy, random_selection)
+            self.repopulate(gen+1, self.crossover_strategy, self.rand_selection)
             if gen % self.display_rate == 0:
                 print("Best Geneartion:") # Print the generation, and the best (lowest) fitness score in the population for that generation
                 print(self.generations[gen])

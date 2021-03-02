@@ -24,6 +24,16 @@ def run():
     print(svm.get_classification_report(y_test))
 
     params_to_optimize = {
+        'test_size': {
+            'init': .2,
+            'type': 'float',
+            'range': (.1, .3)
+        },
+        'is_fixed': {
+            'init': True,
+            'type': 'bool',
+            'range': [True, False]
+        },
         'C': {
             'init': 1.0,
             'type': 'float',
