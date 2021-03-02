@@ -34,7 +34,8 @@ class SklearnClf:
 
         return X_train, X_test, Y_train, Y_test
 
-    
+    def run_genetic_optimization_on_model(self,generations=100,pop_size=200,mutation_rate=0.1,display_rate=20,init_crossover_strategy='multipoint',rand_selection=False):
+        pass  
 
     def get_confusion_matrix(self, y_test):
         return confusion_matrix(y_test, self.predictions)
