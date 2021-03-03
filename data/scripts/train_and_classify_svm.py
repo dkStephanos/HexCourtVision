@@ -66,4 +66,4 @@ def run():
         }
     }
 
-    svm.run_genetic_optimization_on_model(params_to_optimize)
+    svm.run_genetic_optimization_on_features()

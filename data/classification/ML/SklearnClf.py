@@ -41,6 +41,11 @@ class SklearnClf:
         gen_optimizer.run_ga()
         gen_optimizer.plot_ga()
 
+    def run_genetic_optimization_on_features(self,num_generations=20,pop_size=25,mutation_rate=0.25,display_rate=2,rand_selection=False):
+        gen_optimizer = GeneticOptimizer({},num_generations, pop_size, mutation_rate, display_rate, rand_selection)
+        gen_optimizer.set_model(self)
+        gen_optimizer.run_ga_features()
+        gen_optimizer.plot_ga()
 
     def get_confusion_matrix(self, y_test):
         return confusion_matrix(y_test, self.predictions)
