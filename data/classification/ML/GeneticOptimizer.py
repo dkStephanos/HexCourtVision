@@ -6,14 +6,12 @@ import matplotlib.pyplot as plt
 from copy import deepcopy
 
 class GeneticOptimizer:
-    def __init__(self,initial_configuration={}, params_to_optimize={},num_generations=100,population_size=200,mutation_rate=0.1,display_rate=20,init_crossover_strategy='multipoint',rand_selection=False):
-        self.initial_configuration = initial_configuration
+    def __init__(self,params_to_optimize,num_generations,population_size,mutation_rate,display_rate,rand_selection):
         self.params_to_optimize = params_to_optimize
         self.num_generations = num_generations
         self.population_size = population_size
         self.mutation_rate = mutation_rate
         self.display_rate = display_rate
-        self.init_crossover_strategy = init_crossover_strategy
         self.rand_selection = rand_selection
         self.generations = []
 
@@ -21,37 +19,40 @@ class GeneticOptimizer:
         self.clf_model = clf_model
 
     # Modified to take a crossover strategy and gensave the image instead of display it, and return the data dict
-    def plot_ga(self, crossover_strategy):
+    def plot_ga(self):
         generation_values = []
         best = []
+        median = []
         worst = []
         gen = 1
         for g in self.generations:
             best_route = g[0]
+            median_route = g[math.floor(self.population_size/2)]
             worst_route = g[self.population_size-1]
             best.append(best_route[1])
+            median.append(median_route[1])
             worst.append(worst_route[1])
             generation_values.append(gen)
             gen = gen+1
-        temp_data = {'Best':best,'Worst':worst }
+        temp_data = {'Best': best, 'Median': median, 'Worst': worst }
         df = pandas.DataFrame(temp_data)
-        plot = df.plot(title=f"Fitness Across Generations: {crossover_strategy} crossover", xlabel="Generatons", ylabel="Fitness")
-        plot.figure.savefig(f"FitnessAcrossGenerations_{crossover_strategy}-crossover.png")
+        plot = df.plot(title=f"Fitness Across Generations", xlabel="Generatons", ylabel="Fitness")
+        plot.figure.savefig(f"FitnessAcrossGeneration.png")
         plt.clf()
 
         return temp_data
 
-    def get_random_bool_param(param):
+    def get_random_bool_param(self, param):
         return bool(random.getrandbits(1))
 
-    def get_random_enum_param(param):
+    def get_random_enum_param(self, param):
         index = random.randrange(0,len(param['range']),1)
         return param['range'][index]
 
-    def get_random_int_param(param):
+    def get_random_int_param(self, param):
         return random.randrange(param['range'][0],param['range'][1],1)
 
-    def get_random_float_param(param):
+    def get_random_float_param(self, param):
         return round(random.uniform(param['range'][0],param['range'][1]),3)
 
     def random_sample(self):
@@ -102,7 +103,7 @@ class GeneticOptimizer:
         self.generations.append(my_population)
 
     # Takes the index to the generation to repopulate from, and a crossover strategy (accepts: uniform, singlepoint, multipoint)
-    def repopulate(self, gen, crossover_strategy, random_selection):
+    def repopulate(self, gen, random_selection):
         """
         Creates a new generation by repopulation based on the previous generation.
         Calls selection, crossover, and mutate to create a child chromosome. Calculates fitness
@@ -117,8 +118,7 @@ class GeneticOptimizer:
         while len(new_population) < self.population_size:
             # Select the two parents from the growing population
             parent1, parent2 = self.selection(gen, random_selection)
-            # Generate the child according to the designated crossover_strategy
-            child = self.crossover(parent1, parent2, crossover_strategy)
+            child = self.crossover(parent1, parent2)
             # Generate a random number, if it falls beneath the mutation_rate, perform a point swap mutation on the child
             if (random.random() < self.mutation_rate):
                 child = self.mutate(child[0])
@@ -126,7 +126,7 @@ class GeneticOptimizer:
             new_population.append(child)
 
         # Sort the population by fitness
-        new_population.sort(key=lambda x: x[1])
+        new_population.sort(key=lambda x: x[1],reverse=True)
 
         self.generations.append(new_population)
 
@@ -172,9 +172,7 @@ class GeneticOptimizer:
 
         return parent1, parent2
 
-    # Adopted and modified from Genetic Search Algorithm lab
-    # Set crossover_strategy to "singlepoint"/"multipoint" to divert from typical behavior and instead perform a singlepoint/multipoint reproduction strategy
-    def crossover(self, parent1, parent2, crossover_strategy="uniform"):
+    def crossover(self, parent1, parent2):
         '''
         Parameters
         ----------
@@ -190,30 +188,16 @@ class GeneticOptimizer:
 
         '''
         # Initialization
-        child = []
-        chromosome_size = len(parent1)
-        if crossover_strategy == "singlepoint":
-            # Randomly choose a split point
-            split_point = chromosome_size - random.randint(0, chromosome_size)
-            child = parent1[:split_point] + parent2[split_point:]
-        elif crossover_strategy == "multipoint":
-            points = []
-            while len(points) < 2: 
-                split_point = chromosome_size - random.randint(0, chromosome_size) 
-                if split_point not in points:
-                    points.append(split_point)
-            points.sort()
-            child = parent1[:points[0]] + parent2[points[0]:points[1]] + parent1[points[1]:]
-        else:
-            # Step through each item in the chromosome and randomly choose which
-            #  parent's genetic material to select
-            for i in range(0, chromosome_size):
-                bit = None
-                if random.randint(0,1) == 0:
-                    bit = parent1[i]
-                else:
-                    bit = parent2[i]
-                child.append(bit)
+        child = {}
+        # Step through each item in the chromosome and randomly choose which
+        #  parent's genetic material to select
+        for key in parent1.keys():
+            value = None
+            if random.randint(0,1) == 0:
+                value = parent1[key]
+            else:
+                value = parent2[key]
+            child[key] = value
 
         return self.calculate_fitness(child)
 
@@ -232,8 +216,8 @@ class GeneticOptimizer:
         # Copy the child
         mutant_child = deepcopy(chromosome)
 
-        param_to_mutate = math.floor(random.randint(len(mutant_child)))
-        mutant_child[param_to_mutate] = get_field(self.params_to_optimize[param_to_mutate])
+        param_to_mutate = random.choice(list(self.params_to_optimize.keys()))
+        mutant_child[param_to_mutate] = get_field[self.params_to_optimize[param_to_mutate]['type']](self.params_to_optimize[param_to_mutate])
         
         return self.calculate_fitness(mutant_child)
 
@@ -245,9 +229,10 @@ class GeneticOptimizer:
         self.initialize_population()
 
         for gen in range(self.num_generations-1):      #Note, you already ran generation 1
-            self.repopulate(gen+1, self.crossover_strategy, self.rand_selection)
-            if gen % self.display_rate == 0:
-                print("Best Geneartion:") # Print the generation, and the best (lowest) fitness score in the population for that generation
-                print(self.generations[gen])
+            self.repopulate(gen+1, self.rand_selection)
+            print(f"Starting generation {gen+1}")
+            if (gen + 1) % self.display_rate == 0:
+                print("Best Settings for Gen:") # Print the generation, and the best (lowest) fitness score in the population for that generation
+                print(self.generations[gen][0])
                 print("Fitness Score")
-                print(self.generations[gen][0][1])
+                print(f"{round(self.generations[gen][0][1],3)*100}%")

@@ -65,3 +65,5 @@ def run():
             'range': [True, False]
         }
     }
+
+    svm.run_genetic_optimization_on_model(params_to_optimize)
