@@ -23,47 +23,9 @@ def run():
     print(svm.get_confusion_matrix(y_test))
     print(svm.get_classification_report(y_test))
 
-    params_to_optimize = {
-        'test_size': {
-            'init': .2,
-            'type': 'float',
-            'range': (.1, .3)
-        },
-        'is_fixed': {
-            'init': True,
-            'type': 'bool',
-            'range': [True, False]
-        },
-        'C': {
-            'init': 1.0,
-            'type': 'float',
-            'range': (.0001,1000.0)
-        },
-        'kernel': {
-            'init': 2,
-            'type': 'enum',
-            'range': ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed']
-        },
-        'degree': {
-            'init': 3,
-            'type': 'int',
-            'range': (2,5)
-        },
-        'gamma': {
-            'init': 0,
-            'type': 'enum',
-            'range': ['scale', 'auto']
-        },
-        'shrinking': {
-            'init': True,
-            'type': 'bool',
-            'range': [True, False]
-        },
-        'probability': {
-            'init': True,
-            'type': 'bool',
-            'range': [True, False]
-        }
-    }
+    optimized_configuration = svm.run_genetic_optimization_on_model(svm.PARAMS_TO_OPTIMIZE, num_generations=500,pop_size=100,display_rate=50)
+    optimized_features = svm.run_genetic_optimization_on_features(num_generations=500,pop_size=100,display_rate=50)
 
-    svm.run_genetic_optimization_on_features()
+    text_file = open("static/data/test/genetic_algorithm_test.txt", "w")
+    text_file.write(f'Ideal configuration found:\n{optimized_configuration}\n\nIdeal Feature Set found:\n{optimized_features}')
+    text_file.close()

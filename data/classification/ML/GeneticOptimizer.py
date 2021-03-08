@@ -21,7 +21,7 @@ class GeneticOptimizer:
         self.clf_model = clf_model
 
     # Modified to take a crossover strategy and gensave the image instead of display it, and return the data dict
-    def plot_ga(self):
+    def plot_ga(self, dir):
         generation_values = []
         best = []
         median = []
@@ -39,7 +39,7 @@ class GeneticOptimizer:
         temp_data = {'Best': best, 'Median': median, 'Worst': worst }
         df = pandas.DataFrame(temp_data)
         plot = df.plot(title=f"Fitness Across Generations", xlabel="Generatons", ylabel="Fitness")
-        plot.figure.savefig(f"FitnessAcrossGeneration.png")
+        plot.figure.savefig(f"{dir}FitnessAcrossGeneration.png")
         plt.clf()
 
         return temp_data
@@ -239,7 +239,7 @@ class GeneticOptimizer:
         '''
         # Set the elitism factor and calculate the max index
         if rand == False:
-            factor = 0.5	# Select from top 50%
+            factor = 0.25	# Select from top %
             high = math.ceil(self.population_size*factor)
         else:
             high = self.population_size - 1
@@ -344,7 +344,7 @@ class GeneticOptimizer:
         # Copy the child
         mutant_child = deepcopy(chromosome[0])
         
-        for i in range(0,3):
+        for i in range(0,num_mutations):
             if len(mutant_child) == 50:
                 random.shuffle(mutant_child)
                 mutant_child.pop()
@@ -372,6 +372,8 @@ class GeneticOptimizer:
                 print("Fitness Score")
                 print(f"{round(self.generations[gen][0][1],3)*100}%")
 
+        return self.generations[self.num_generations-1][0]
+
     # Modified to rake a crossover strategy and random_selection flag (defaulted to False)
     def run_ga_features(self):
         """
@@ -380,10 +382,12 @@ class GeneticOptimizer:
         self.initialize_population_features()
 
         for gen in range(self.num_generations-1):      #Note, you already ran generation 1
-            self.repopulate_features(gen+1, self.rand_selection, random.randint(-5,5))
+            self.repopulate_features(gen+1, self.rand_selection, random.randint(-7,7))
             print(f"Starting generation {gen+1}")
             if (gen + 1) % self.display_rate == 0:
                 print("Best Feature Set for Gen:") # Print the generation, and the best (lowest) fitness score in the population for that generation
                 print(self.generations[gen][0])
                 print("Fitness Score")
                 print(f"{round(self.generations[gen][0][1],3)*100}%")
+
+        return self.generations[self.num_generations-1][0]
