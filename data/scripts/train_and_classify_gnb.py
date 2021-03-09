@@ -18,7 +18,9 @@ def run():
 
     gnb = GaussianNB()
     gnb.set_data(candidates_df, 'classification')
-    X_train, X_test, y_train, y_test = gnb.split_test_data(.2, True)
+    X_train, X_test, y_train, y_test = gnb.split_test_data(.3, True)
     gnb.fit_and_predict(X_train, X_test, y_train)
-    print(gnb.get_confusion_matrix(y_test))
-    print(gnb.get_classification_report(y_test))
+    #print(gnb.get_confusion_matrix(y_test))
+    #print(gnb.get_classification_report(y_test))
+
+    print(gnb.get_avg_metrics_for_n_iterations(10, .3, True))

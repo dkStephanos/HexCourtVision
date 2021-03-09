@@ -17,7 +17,10 @@ def run():
     candidates_df = EncodingUtil.sort_position_cols_and_encode(candidates_df, ConstantsUtil.STRING_TUPLE_ENCODE_COLS)
 
     dt = DecisionTree(criterion="entropy")
-    X_train, X_test, y_train, y_test = dt.split_test_data(candidates_df, .3, 'classification', True)
+    dt.set_data(candidates_df, 'classification')
+    X_train, X_test, y_train, y_test = dt.split_test_data(.3, True)
     dt.fit_and_predict(X_train, X_test, y_train)
     print(dt.get_confusion_matrix(y_test))
     print(dt.get_classification_report(y_test))
+
+    print(dt.get_avg_metrics_for_n_iterations(10, .3, True))

@@ -19,11 +19,10 @@ def run():
     svm = SVM(C=.75, kernel='poly')
     svm.set_data(candidates_df, 'classification')
     X_train, X_test, y_train, y_test = svm.split_test_data(.3, True)
-    svm.fit_and_predict(X_train, X_test, y_train)
-    print(svm.get_confusion_matrix(y_test))
-    print(svm.get_classification_report(y_test))
+    svm.fit_and_predict(X_train, X_test, y_train)    
 
-    
+    metrics = svm.get_avg_metrics_for_n_iterations(10, .3, True)
+    print(metrics)
     '''
     Genetic optimization stuff -- needs work
     optimized_configuration = svm.run_genetic_optimization_on_model(svm.PARAMS_TO_OPTIMIZE, num_generations=20,pop_size=10,display_rate=2)
