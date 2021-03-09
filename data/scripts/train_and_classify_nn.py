@@ -17,3 +17,5 @@ def run():
     candidates_df = EncodingUtil.sort_position_cols_and_encode(candidates_df, ConstantsUtil.STRING_TUPLE_ENCODE_COLS)
 
     NeuralNetwork.classify(candidates_df, .05, (512,256,128,64,32,16), 'relu', 'adam', .2, 'classification')
+
+    NeuralNetwork.testNIterations(candidates_df, .05, (512,256,128,64,32,16), 'relu', 'adam', .2, 'classification', 10)

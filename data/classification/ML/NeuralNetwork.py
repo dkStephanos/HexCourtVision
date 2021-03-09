@@ -40,11 +40,10 @@ class NeuralNetwork:
 
     #Finds the accuracy values given a number of classification tests
     @staticmethod
-    def testNIterations(dataFrame, alphaToUse, hiddenLayerSize, activationToUse, solverToUse, test_size, nIterations):
+    def testNIterations(dataFrame, alphaToUse, hiddenLayerSize, activationToUse, solverToUse, test_size, target_col, nIterations):
         accuracyResults = []
-        layerSizes = [(60,), (100,), (120,),(60,60),(100,100),(120,120)]
         for test in range(0, nIterations):
-            accuracy, curve = NeuralNetwork.classify(dataFrame, alphaToUse, layerSizes[test], activationToUse, solverToUse, test_size, False, True)
+            accuracy, curve = NeuralNetwork.classify(dataFrame, alphaToUse, hiddenLayerSize, activationToUse, solverToUse, test_size, target_col, False, True)
             accuracyResults.append(accuracy)
             
         accuracyResults = pd.DataFrame(accuracyResults)
