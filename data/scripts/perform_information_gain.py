@@ -9,18 +9,26 @@ from data.classification.utilities.ConstantsUtil import ConstantsUtil
 from data.models import CandidateFeatureVector\
 
 def run():
+    feat_importances = []
     candidates = CandidateFeatureVector.objects.all().values()
     candidates_df = pd.DataFrame(candidates)
     candidates_df.set_index('id', inplace=True)
-    y = candidates_df['classification']
-    X = candidates_df.copy()
-    X.drop(columns=['candidate_id', 'classification'], inplace=True)
+    for i in range(0,10):
+        y = candidates_df['classification']
+        X = candidates_df.copy()
+        X.drop(columns=['candidate_id', 'classification'], inplace=True)
 
-    X = EncodingUtil.basic_label_encode_cols(X, ConstantsUtil.BASIC_ENCODE_COLS)
-    X = EncodingUtil.sort_position_cols_and_encode(X, ConstantsUtil.STRING_TUPLE_ENCODE_COLS)
+        X = EncodingUtil.basic_label_encode_cols(X, ConstantsUtil.BASIC_ENCODE_COLS)
+        X = EncodingUtil.sort_position_cols_and_encode(X, ConstantsUtil.STRING_TUPLE_ENCODE_COLS)
 
 
-    importances = mutual_info_classif(X.values, y)
-    feat_importances = pd.Series(importances, X.columns)
-    feat_importances.plot(kind='barh', color='teal')
+        importances = mutual_info_classif(X.values, y)
+        feat_importances.append(pd.Series(importances, X.columns))
+    
+    feature_df = pd.DataFrame(feat_importances)
+    print(feature_df.mean())
+    '''
+    feat_importances.plot(kind='barh')
     plt.show()
+    print(feat_importances)
+    '''
