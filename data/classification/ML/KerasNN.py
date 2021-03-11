@@ -1,6 +1,9 @@
 from sklearn import preprocessing
+from sklearn.utils import validation
 from keras.models import Sequential
 from keras.layers import Dense
+import matplotlib.pyplot as plt
+import pandas as pd
 
 class KerasNN:
     def __init__(self,):
@@ -19,8 +22,14 @@ class KerasNN:
         X = self.min_max_scaler.fit_transform(X)
         self.X = X
         self.y = y
-        
-        self.model.fit(X, y, epochs=150, batch_size=10)
+        self.history = self.model.fit(X, y, epochs=120, batch_size=10, validation_split=.2)
 
     def get_classification_report(self):
         return self.model.evaluate(self.X, self.y)
+
+    def plot_training_validation(self):
+        pd.DataFrame(self.history.history).plot(figsize=(8, 5))
+        plt.grid(True)
+        plt.gca().set_ylim(0, 1) # set the vertical range to [0-1]
+        plt.title("Learning Curves for Keras NN")
+        plt.show()

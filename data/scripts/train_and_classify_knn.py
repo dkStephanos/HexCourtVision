@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 from data.classification.utilities.EncodingUtil import EncodingUtil
 from data.classification.utilities.ConstantsUtil import ConstantsUtil
@@ -23,3 +24,5 @@ def run():
     knn = KerasNN()
     knn.fit_model(X,y)
     print(knn.get_classification_report())
+
+    knn.plot_training_validation()

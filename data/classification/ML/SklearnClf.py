@@ -1,11 +1,15 @@
 import numpy as np
-from sklearn import metrics, preprocessing
+import pandas as pd
+import seaborn
+import matplotlib.pyplot as plt
+from sklearn import preprocessing, metrics
 from sklearn.metrics import confusion_matrix, classification_report, f1_score
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, learning_curve, validation_curve
 from .GeneticOptimizer import GeneticOptimizer
 
 class SklearnClf:
-    def __init__(self):
+    def __init__(self, name):
+        self.name = name
         self.min_max_scaler = preprocessing.MinMaxScaler()
 
     def get_model(self):
@@ -80,3 +84,74 @@ class SklearnClf:
 
     def get_f1_score(self, y_test):
         return f1_score(y_test, self.predictions)
+
+    def get_roc_curve(self, X_test, y_test):
+        metrics.plot_roc_curve(self.clf, self.X, self.y)
+        plt.show()
+        '''
+        # calculate the fpr and tpr for all thresholds of the classification
+        probs = self.clf.predict_proba(X_test)
+        preds = probs[:,1]
+        fpr, tpr, threshold = metrics.roc_curve(y_test, preds)
+        roc_auc = metrics.auc(fpr, tpr)
+
+        # method I: plt
+        plt.title('Receiver Operating Characteristic')
+        plt.plot(fpr, tpr, 'b', label = 'AUC = %0.2f' % roc_auc)
+        plt.legend(loc = 'lower right')
+        plt.plot([0, 1], [0, 1],'r--')
+        plt.xlim([0, 1])
+        plt.ylim([0, 1])
+        plt.ylabel('True Positive Rate')
+        plt.xlabel('False Positive Rate')
+        plt.show() 
+        '''
+
+    def get_learning_curve(self):
+        train_sizes = [.01, .05, .1, .15, .2, .25, .3,]
+
+        train_sizes, train_scores, validation_scores = learning_curve(
+            self.clf, self.X, self.y, train_sizes = train_sizes, cv=5,	
+            shuffle=True,)
+
+        train_scores_mean = -train_scores.mean(axis = 1)
+        validation_scores_mean = -validation_scores.mean(axis = 1)
+
+        print('Mean training scores\n\n', pd.Series(train_scores_mean, index = train_sizes))
+        print('\n', '-' * 20) # separator
+        print('\nMean validation scores\n\n',pd.Series(validation_scores_mean, index = train_sizes))
+        
+        plt.style.use('seaborn')
+        plt.plot(train_sizes, train_scores_mean, label = 'Training error')
+        plt.plot(train_sizes, validation_scores_mean, label = 'Validation error')
+        plt.ylabel('MSE', fontsize = 14)
+        plt.xlabel('Training set size', fontsize = 14)
+        plt.title(f'Learning curves for {self.name} model', fontsize = 18, y = 1.03)
+        plt.legend()
+        plt.show()
+
+    def get_validation_curve(self):
+        param_range = np.logspace(-6, -1, 5)
+        train_scores, test_scores = validation_curve(
+            self.clf, self.X, self.y, param_name="gamma", param_range=param_range, verbose=5, n_jobs=-1)
+        train_scores_mean = np.mean(train_scores, axis=1)
+        train_scores_std = np.std(train_scores, axis=1)
+        test_scores_mean = np.mean(test_scores, axis=1)
+        test_scores_std = np.std(test_scores, axis=1)
+
+        plt.title(f"Validation Curve with {self.name}")
+        plt.xlabel(r"$\gamma$")
+        plt.ylabel("Score")
+        lw = 2
+        plt.semilogx(param_range, train_scores_mean, label="Training score",
+                     color="darkorange", lw=lw)
+        plt.fill_between(param_range, train_scores_mean - train_scores_std,
+                         train_scores_mean + train_scores_std, alpha=0.2,
+                         color="darkorange", lw=lw)
+        plt.semilogx(param_range, test_scores_mean, label="Cross-validation score",
+                     color="navy", lw=lw)
+        plt.fill_between(param_range, test_scores_mean - test_scores_std,
+                         test_scores_mean + test_scores_std, alpha=0.2,
+                         color="navy", lw=lw)
+        plt.legend(loc="best")
+        plt.show()

@@ -15,11 +15,16 @@ def run():
 
     candidates_df = EncodingUtil.basic_label_encode_cols(candidates_df, ConstantsUtil.BASIC_ENCODE_COLS)
     candidates_df = EncodingUtil.sort_position_cols_and_encode(candidates_df, ConstantsUtil.STRING_TUPLE_ENCODE_COLS)
+    #candidates_df.drop(columns=ConstantsUtil.FEATURES_IGNORED_BY_INFORMATION_GAIN, inplace=True)
 
     svm = SVM(C=.75, kernel='poly')
     svm.set_data(candidates_df, 'classification')
     X_train, X_test, y_train, y_test = svm.split_test_data(.3, True)
-    svm.fit_and_predict(X_train, X_test, y_train)    
+    svm.fit_and_predict(X_train, X_test, y_train)
+    print(svm.get_classification_report(y_test))
+
+    #svm.get_learning_curve()
+    svm.get_validation_curve()
 
     metrics = svm.get_avg_metrics_for_n_iterations(10, .3, True)
     print(metrics)
@@ -32,3 +37,5 @@ def run():
     text_file.write(f'Ideal configuration found:\n{optimized_configuration}\n\nIdeal Feature Set found:\n{optimized_features}')
     text_file.close()
     '''
+
+    

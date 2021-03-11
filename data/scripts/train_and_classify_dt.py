@@ -23,4 +23,7 @@ def run():
     print(dt.get_confusion_matrix(y_test))
     print(dt.get_classification_report(y_test))
 
+    dt.get_learning_curve()
+
     print(dt.get_avg_metrics_for_n_iterations(10, .3, True))
+
