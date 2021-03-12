@@ -47,6 +47,7 @@ class NeuralNetwork:
         roc_auc = metrics.auc(fpr, tpr)
 
         # method I: plt
+        plt.style.use('seaborn')
         plt.title(f'Receiver Operating Characteristic for MLP')
         plt.plot(fpr, tpr, 'b', label = 'AUC = %0.2f' % roc_auc)
         plt.legend(loc = 'lower right')

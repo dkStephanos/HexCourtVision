@@ -1,5 +1,4 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
 from data.classification.utilities.EncodingUtil import EncodingUtil
@@ -22,7 +21,8 @@ def run():
     y = candidates_df['classification']
 
     knn = KerasNN()
-    knn.fit_model(X,y)
-    #print(knn.get_classification_report())
+    X_train, X_test, y_train, y_test = knn.fit_model(X,y)
+    print(knn.get_classification_report(X_test, y_test))
+    knn.get_accuracy_stats(X_test, y_test)
 
     knn.plot_roc_curve()
