@@ -11,11 +11,11 @@ class KerasNN:
     def __init__(self,):
         self.min_max_scaler = preprocessing.MinMaxScaler()
         self.model = Sequential()
-        self.model.add(Dense(32, input_dim=50, activation='relu'))
-        self.model.add(Dense(16, activation='relu'))
-        self.model.add(Dense(8, activation='relu'))
+        self.model.add(Dense(24, input_dim=50, activation='relu'))
+        #self.model.add(Dense(24, activation='relu'))
+        self.model.add(Dense(12, activation='relu'))
         self.model.add(Dense(1, activation='sigmoid'))
-        self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+        self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy', 'mse'])
 
     def get_model(self):
         return self.model
@@ -28,13 +28,13 @@ class KerasNN:
 
         return X_train, X_test, y_train, y_test
 
-    def fit_model(self, X, y):      
+    def fit_model(self, X, y, epochs):      
         X = self.min_max_scaler.fit_transform(X)
         self.X = X
         self.y = y
         X_train, X_test, y_train, y_test = self.split_test_data(.3)
 
-        self.history = self.model.fit(X_train, y_train, epochs=120, batch_size=10, validation_split=.2)
+        self.history = self.model.fit(X_train, y_train, epochs=epochs, batch_size=10, validation_split=.2)
 
         return X_train, X_test, y_train, y_test
 
@@ -59,6 +59,7 @@ class KerasNN:
 
     def plot_training_validation(self):
         pd.DataFrame(self.history.history).plot(figsize=(8, 5))
+        plt.style.use('seaborn')
         plt.grid(True)
         plt.gca().set_ylim(0, 1) # set the vertical range to [0-1]
         plt.title("Learning Curves for Keras NN")
