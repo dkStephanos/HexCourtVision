@@ -127,10 +127,10 @@ class SklearnClf:
         plt.legend()
         plt.show()
 
-    def get_validation_curve(self):
-        param_range = np.logspace(-6, -1, 5)
+    def get_validation_curve(self, param_name="gamma", param_range=np.logspace(-6, -1, 5)):
+
         train_scores, test_scores = validation_curve(
-            self.clf, self.X, self.y, param_name="gamma", param_range=param_range, verbose=5, n_jobs=-1)
+            self.clf, self.X, self.y, param_name=param_name, param_range=param_range, verbose=5, n_jobs=-1)
         train_scores_mean = np.mean(train_scores, axis=1)
         train_scores_std = np.std(train_scores, axis=1)
         test_scores_mean = np.mean(test_scores, axis=1)
