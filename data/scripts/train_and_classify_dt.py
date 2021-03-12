@@ -19,6 +19,8 @@ def run():
     dt = DecisionTree(criterion="entropy")
     dt.set_data(candidates_df, 'classification')
     X_train, X_test, y_train, y_test = dt.split_test_data(.3, True)
+    dt.get_roc_curve(X_train, X_test, y_train, y_test)
+    
     dt.fit_and_predict(X_train, X_test, y_train)
     print(dt.get_confusion_matrix(y_test))
     print(dt.get_classification_report(y_test))

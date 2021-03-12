@@ -20,11 +20,14 @@ def run():
     svm = SVM(C=.75, kernel='poly')
     svm.set_data(candidates_df, 'classification')
     X_train, X_test, y_train, y_test = svm.split_test_data(.3, True)
+        
+    svm.get_roc_curve(X_train, X_test, y_train, y_test)
+
     svm.fit_and_predict(X_train, X_test, y_train)
     print(svm.get_classification_report(y_test))
 
     #svm.get_learning_curve()
-    svm.get_validation_curve()
+    #svm.get_validation_curve()
 
     metrics = svm.get_avg_metrics_for_n_iterations(10, .3, True)
     print(metrics)

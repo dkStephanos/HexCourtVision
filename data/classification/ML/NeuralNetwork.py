@@ -5,6 +5,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 class NeuralNetwork:
     @staticmethod
@@ -26,6 +27,52 @@ class NeuralNetwork:
             NeuralNetwork.printStats(alphaToUse, solverToUse, hiddenLayerSize, activationToUse, test_size, isFixed, Y_test, mlp_predictions)
 
         return [metrics.accuracy_score(Y_test, mlp_predictions)*100,metrics.precision_score(Y_test, mlp_predictions, average='weighted')*100,metrics.recall_score(Y_test, mlp_predictions, average='weighted')*100], mlp.loss_curve_        #only works with sgd
+
+    @staticmethod
+    def plot_roc_curve(dataFrame, alphaToUse, hiddenLayerSize, activationToUse, solverToUse, test_size, target_col, isFixed=False):
+
+        X_train, X_test, Y_train, Y_test = NeuralNetwork.splitTestData(dataFrame, test_size, target_col, isFixed)      #Split the data
+        scaler=StandardScaler()
+        scaler.fit(X_train)
+        X_train=scaler.transform(X_train)
+        X_test=scaler.transform(X_test)
+
+        mlp = MLPClassifier(activation=activationToUse, hidden_layer_sizes = hiddenLayerSize, solver=solverToUse, alpha=alphaToUse, early_stopping=True, max_iter=1000) #Generate the Learning infrastructure
+
+        mlp.fit(X_train, Y_train)
+        # calculate the fpr and tpr for all thresholds of the classification
+        probs = mlp.predict_proba(X_test)
+        preds = probs[:,1]
+        fpr, tpr, threshold = metrics.roc_curve(Y_test, preds)
+        roc_auc = metrics.auc(fpr, tpr)
+
+        # method I: plt
+        plt.title(f'Receiver Operating Characteristic for MLP')
+        plt.plot(fpr, tpr, 'b', label = 'AUC = %0.2f' % roc_auc)
+        plt.legend(loc = 'lower right')
+        plt.plot([0, 1], [0, 1],'r--')
+        plt.xlim([0, 1])
+        plt.ylim([0, 1])
+        plt.ylabel('True Positive Rate')
+        plt.xlabel('False Positive Rate')
+        plt.show() 
+
+    @staticmethod
+    def plot_loss_val_curve(dataFrame, alphaToUse, hiddenLayerSize, activationToUse, solverToUse, test_size, target_col, isFixed=False):
+
+        X_train, X_test, Y_train, Y_test = NeuralNetwork.splitTestData(dataFrame, test_size, target_col, isFixed)      #Split the data
+        scaler=StandardScaler()
+        scaler.fit(X_train)
+        X_train=scaler.transform(X_train)
+        X_test=scaler.transform(X_test)
+
+        mlp = MLPClassifier(activation=activationToUse, hidden_layer_sizes = hiddenLayerSize, solver=solverToUse, alpha=alphaToUse, early_stopping=True, max_iter=1000) #Generate the Learning infrastructure
+
+        mlp.fit(X_train, Y_train)
+        
+        plt.plot(mlp.loss_curve_)
+        plt.plot(mlp.validation_scores_)
+        plt.show()
 
     @staticmethod
     def splitTestData(dataFrame, test_size, target_col, isFixed=False):

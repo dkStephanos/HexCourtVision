@@ -23,6 +23,6 @@ def run():
 
     knn = KerasNN()
     knn.fit_model(X,y)
-    print(knn.get_classification_report())
+    #print(knn.get_classification_report())
 
-    knn.plot_training_validation()
+    knn.plot_roc_curve()

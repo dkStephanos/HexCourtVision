@@ -85,10 +85,8 @@ class SklearnClf:
     def get_f1_score(self, y_test):
         return f1_score(y_test, self.predictions)
 
-    def get_roc_curve(self, X_test, y_test):
-        metrics.plot_roc_curve(self.clf, self.X, self.y)
-        plt.show()
-        '''
+    def get_roc_curve(self, X_train, X_test, y_train, y_test):
+        self.clf.fit(X_train, y_train)
         # calculate the fpr and tpr for all thresholds of the classification
         probs = self.clf.predict_proba(X_test)
         preds = probs[:,1]
@@ -96,7 +94,7 @@ class SklearnClf:
         roc_auc = metrics.auc(fpr, tpr)
 
         # method I: plt
-        plt.title('Receiver Operating Characteristic')
+        plt.title(f'Receiver Operating Characteristic for {self.name}')
         plt.plot(fpr, tpr, 'b', label = 'AUC = %0.2f' % roc_auc)
         plt.legend(loc = 'lower right')
         plt.plot([0, 1], [0, 1],'r--')
@@ -105,7 +103,6 @@ class SklearnClf:
         plt.ylabel('True Positive Rate')
         plt.xlabel('False Positive Rate')
         plt.show() 
-        '''
 
     def get_learning_curve(self):
         train_sizes = [.01, .05, .1, .15, .2, .25, .3,]
