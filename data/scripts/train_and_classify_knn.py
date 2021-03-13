@@ -26,7 +26,7 @@ def run():
     X = candidates_df.drop(columns=['classification'])
     y = candidates_df['classification']
 
-    knn = KerasNN()
+    knn = KerasNN(input_dim=len(X.columns))
     X_train, X_test, y_train, y_test = knn.fit_model(X,y,20)
     #knn.plot_training_validation()
     print(knn.get_classification_report(X_test, y_test))
