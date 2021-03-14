@@ -348,3 +348,13 @@ class FeatureUtil:
             offset += 48 + (period - 1) * 5
 
         return math.floor(offset)
+
+    @staticmethod
+    def get_pass_duration(moments, event_passes, target_candidate):
+        # Loop through the event passes and find the one corresponding to the candidate, returning the delta between the receive and pass moments 
+        for event_pass in event_passes:
+            if(moments.iloc[11*event_pass['pass_moment']]['shot_clock'] == target_candidate['shot_clock']):
+                return event_pass['receive_moment'] - event_pass['pass_moment']
+
+        # If this fails, just return NaN
+        return np.NaN

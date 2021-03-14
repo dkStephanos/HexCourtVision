@@ -127,6 +127,6 @@ class CandidateFeatureVector(models.Model):
 
     # Play Data
     offset_into_play = models.IntegerField() 
-    offset_into_game = models.IntegerField() 
+    pass_duration = models.IntegerField() 
     num_players_past_half_court = models.IntegerField() 
     is_inbounds_pass = models.BooleanField()

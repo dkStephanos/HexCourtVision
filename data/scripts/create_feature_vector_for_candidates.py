@@ -31,7 +31,7 @@ def generate_feature_vector(target_event, target_candidate):
     # Trim the moments data around the pass
     game_clock = DataUtil.convert_timestamp_to_game_clock(target_candidate['game_clock'])
     trimmed_moments = moments[(moments.game_clock > game_clock - 2) & (moments.game_clock < game_clock + 2)]
-    
+
     # If the data occurs past half-court (x > 47), rotate the points about the center of the court so features appear consistent 
     if(trimmed_moments.iloc[0]['x_loc'] > 47.0):
         trimmed_moments = FeatureUtil.rotate_coordinates_around_center_court(trimmed_moments)
@@ -191,7 +191,7 @@ def generate_feature_vector(target_event, target_candidate):
 
         # Play Data
         'offset_into_play': math.floor(pass_moment.iloc[0]['shot_clock'] / 6),
-        'offset_into_game': FeatureUtil.get_offset_into_game(target_event['period'], pass_moment.iloc[0]['game_clock']),
+        'pass_duration': FeatureUtil.get_pass_duration(moments, event_passes, target_candidate),
         'num_players_past_half_court': FeatureUtil.num_players_past_halfcourt(pass_moment),
         'is_inbounds_pass': FeatureUtil.check_for_inbound_pass(moments, event_passes[0])
     }
