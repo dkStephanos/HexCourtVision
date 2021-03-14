@@ -15,7 +15,7 @@ class KerasNN:
         self.model.add(Dense(36, input_dim=input_dim, activation='relu'))
         self.model.add(Dense(12, activation='relu'))
         self.model.add(Dense(1, activation='sigmoid'))
-        self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy', 'mse'])
+        self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['mse'])
 
     def get_model(self):
         return self.model
@@ -34,7 +34,7 @@ class KerasNN:
         self.y = y
         X_train, X_test, y_train, y_test = self.split_test_data(.3)
 
-        self.history = self.model.fit(X_train, y_train, epochs=epochs, batch_size=1, validation_split=.2)
+        self.history = self.model.fit(X_train, y_train, epochs=epochs, batch_size=10, validation_split=.2)
 
         return X_train, X_test, y_train, y_test
 

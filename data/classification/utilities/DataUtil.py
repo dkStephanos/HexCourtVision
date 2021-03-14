@@ -3,8 +3,7 @@ from data.classification.utilities.EncodingUtil import EncodingUtil
 from data.classification.utilities.ConstantsUtil import ConstantsUtil
 
 class DataUtil:
-
-    @classmethod
+    @staticmethod
     def get_candidates_df(candidates, drop_fakes=True, drop_min_features=False):
         candidates_df = pd.DataFrame(candidates)
         candidates_df.set_index('id', inplace=True)
