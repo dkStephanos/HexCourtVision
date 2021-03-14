@@ -28,13 +28,13 @@ class KerasNN:
 
         return X_train, X_test, y_train, y_test
 
-    def fit_model(self, X, y, epochs):      
+    def fit_model(self, X, y, epochs, class_weight={0: 1., 1: 3.}):      
         X = self.min_max_scaler.fit_transform(X)
         self.X = X
         self.y = y
         X_train, X_test, y_train, y_test = self.split_test_data(.3)
 
-        self.history = self.model.fit(X_train, y_train, epochs=epochs, batch_size=10, validation_split=.2)
+        self.history = self.model.fit(X_train, y_train, epochs=epochs, batch_size=10, validation_split=.2, class_weight=class_weight)
 
         return X_train, X_test, y_train, y_test
 

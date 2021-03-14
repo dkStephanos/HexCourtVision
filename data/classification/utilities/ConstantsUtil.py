@@ -28,5 +28,4 @@ class ConstantsUtil:
                                             'slope_of_screener_trajectory_execution',
                                             'intercept_of_screener_trajectory_execution',
                                             'slope_of_ball_trajectory_approach',
-                                            'intercept_of_ball_trajectory_approach',
-                                            'offset_into_game']
+                                            'intercept_of_ball_trajectory_approach']

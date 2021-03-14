@@ -26,9 +26,9 @@ def run():
         feat_importances.append(pd.Series(importances, X.columns))
     
     feature_df = pd.DataFrame(feat_importances)
-    print(feature_df.mean())
-    '''
-    feat_importances.plot(kind='barh')
+    importance_means = feature_df.mean()
+    
+    importance_means.plot(kind='barh')
     plt.show()
-    print(feat_importances)
-    '''
+    print(importance_means)
+    
