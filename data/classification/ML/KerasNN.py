@@ -2,7 +2,7 @@ from sklearn import preprocessing
 from sklearn.utils import validation
 from sklearn.model_selection import train_test_split
 from keras.models import Sequential
-from keras.layers import Dense
+from keras.layers import Dense, Dropout, BatchNormalization
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn import metrics
@@ -11,11 +11,15 @@ class KerasNN:
     def __init__(self,input_dim):
         self.min_max_scaler = preprocessing.MinMaxScaler()
         self.model = Sequential()
-        #self.model.add(Dense(24, input_dim=input_dim, activation='relu'))
-        self.model.add(Dense(36, input_dim=input_dim, activation='relu'))
+        self.model.add(BatchNormalization())
+        self.model.add(Dense(24, input_dim=input_dim, activation='relu'))
+        self.model.add(Dropout(0.2))
+        self.model.add(BatchNormalization())
         self.model.add(Dense(12, activation='relu'))
+        self.model.add(Dropout(0.2))
+        self.model.add(BatchNormalization())
         self.model.add(Dense(1, activation='sigmoid'))
-        self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['mse'])
+        self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['mse', 'accuracy', 'AUC'])
 
     def get_model(self):
         return self.model
@@ -28,13 +32,13 @@ class KerasNN:
 
         return X_train, X_test, y_train, y_test
 
-    def fit_model(self, X, y, epochs, class_weight={0: 1., 1: 3.}):      
+    def fit_model(self, X, y, epochs, class_weight={0: 1., 1: 1.}):      
         X = self.min_max_scaler.fit_transform(X)
         self.X = X
         self.y = y
         X_train, X_test, y_train, y_test = self.split_test_data(.3)
 
-        self.history = self.model.fit(X_train, y_train, epochs=epochs, batch_size=10, validation_split=.2, class_weight=class_weight)
+        self.history = self.model.fit(X_train, y_train, epochs=epochs, batch_size=100, validation_split=.2, class_weight=class_weight)
 
         return X_train, X_test, y_train, y_test
 
@@ -56,6 +60,9 @@ class KerasNN:
         # f1: 2 tp / (2 tp + fp + fn)
         f1 = metrics.f1_score(y_test, predictions)
         print('F1 score: %f' % f1)
+
+        print('Confusion Matrix: ')
+        print(metrics.confusion_matrix(y_test, predictions))
 
     def plot_training_validation(self):
         pd.DataFrame(self.history.history).plot(figsize=(8, 5))

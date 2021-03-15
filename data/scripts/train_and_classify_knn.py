@@ -21,18 +21,18 @@ def run():
 
     candidates_df = EncodingUtil.basic_label_encode_cols(candidates_df, ConstantsUtil.BASIC_ENCODE_COLS)
     candidates_df = EncodingUtil.sort_position_cols_and_encode(candidates_df, ConstantsUtil.STRING_TUPLE_ENCODE_COLS)
-    #candidates_df.drop(columns=ConstantsUtil.FEATURES_IGNORED_BY_INFORMATION_GAIN, inplace=True)
+    candidates_df.drop(columns=ConstantsUtil.FEATURES_IGNORED_BY_INFORMATION_GAIN, inplace=True)
 
     X = candidates_df.drop(columns=['classification'])
     y = candidates_df['classification']
 
     knn = KerasNN(input_dim=len(X.columns))
-    X_train, X_test, y_train, y_test = knn.fit_model(X,y,80)
-    #knn.plot_training_validation()
+    X_train, X_test, y_train, y_test = knn.fit_model(X,y,120)
+    knn.plot_training_validation()
     print(knn.get_classification_report(X_test, y_test))
     knn.get_accuracy_stats(X_test, y_test)
 
-    #knn.plot_roc_curve()
+    knn.plot_roc_curve()
 
     '''
     Feature ranking stuff with shap, not sure if it works, can't render stupid html 
