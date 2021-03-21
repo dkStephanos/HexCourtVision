@@ -70,6 +70,8 @@ class KerasNN:
         plt.grid(True)
         plt.gca().set_ylim(0, 1) # set the vertical range to [0-1]
         plt.title("Learning Curves for Keras NN")
+        plt.ylabel('Loss')
+        plt.xlabel('Epochs')
         plt.show()
 
     def plot_roc_curve(self):

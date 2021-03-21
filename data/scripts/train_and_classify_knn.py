@@ -7,14 +7,15 @@ from keras.datasets import imdb
 from IPython.display import HTML,display
 
 from data.classification.utilities.EncodingUtil import EncodingUtil
+from data.classification.utilities.DataUtil import DataUtil
 from data.classification.utilities.ConstantsUtil import ConstantsUtil
 from data.classification.ML.KerasNN import KerasNN
 
 from data.models import CandidateFeatureVector
 
-
 def run():
     candidates = CandidateFeatureVector.objects.all().values()
+    candidates = DataUtil.remove_fake_candidates(candidates)    
     candidates_df = pd.DataFrame(candidates)
     candidates_df.set_index('id', inplace=True)
     candidates_df.drop(columns=['candidate_id'], inplace=True)
@@ -32,7 +33,7 @@ def run():
     print(knn.get_classification_report(X_test, y_test))
     knn.get_accuracy_stats(X_test, y_test)
 
-    knn.plot_roc_curve()
+    #knn.plot_roc_curve()
 
     '''
     Feature ranking stuff with shap, not sure if it works, can't render stupid html 

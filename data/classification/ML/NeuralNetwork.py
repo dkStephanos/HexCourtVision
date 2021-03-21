@@ -11,27 +11,27 @@ class NeuralNetwork:
     @staticmethod
     def classify(dataFrame, alphaToUse, hiddenLayerSize, activationToUse, solverToUse, test_size, target_col, isFixed=False, printResults=True):
 
-        X_train, X_test, Y_train, Y_test = NeuralNetwork.splitTestData(dataFrame, test_size, target_col, isFixed)      #Split the data
+        X_train, X_test, y_train, y_test = NeuralNetwork.splitTestData(dataFrame, test_size, target_col, isFixed)      #Split the data
         scaler=StandardScaler()
         scaler.fit(X_train)
         X_train=scaler.transform(X_train)
         X_test=scaler.transform(X_test)
 
-        mlp = MLPClassifier(activation=activationToUse, hidden_layer_sizes = hiddenLayerSize, solver=solverToUse, alpha=alphaToUse, early_stopping=True, max_iter=1000) #Generate the Learning infrastructure
+        mlp = MLPClassifier(activation=activationToUse, hidden_layer_sizes = hiddenLayerSize, solver=solverToUse, alpha=alphaToUse, learning_rate_init=.03, early_stopping=True, max_iter=1000) #Generate the Learning infrastructure
 
-        mlp_model = mlp.fit(X_train, Y_train)                                                           #generate model from training data
+        mlp_model = mlp.fit(X_train, y_train)                                                           #generate model from training data
         mlp_predictions = mlp_model.predict(X_test)                                                     #Make predictions
-        accuracy = mlp_model.score(X_test, Y_test)                                                      #Model Accuracy
+        accuracy = mlp_model.score(X_test, y_test)                                                      #Model Accuracy
 
         if(printResults):
-            NeuralNetwork.printStats(alphaToUse, solverToUse, hiddenLayerSize, activationToUse, test_size, isFixed, Y_test, mlp_predictions)
+            NeuralNetwork.printStats(alphaToUse, solverToUse, hiddenLayerSize, activationToUse, test_size, isFixed, y_test, mlp_predictions)
 
-        return [metrics.accuracy_score(Y_test, mlp_predictions)*100,metrics.precision_score(Y_test, mlp_predictions, average='weighted')*100,metrics.recall_score(Y_test, mlp_predictions, average='weighted')*100], mlp.loss_curve_        #only works with sgd
+        return [metrics.accuracy_score(y_test, mlp_predictions)*100,metrics.precision_score(y_test, mlp_predictions, average='weighted')*100,metrics.recall_score(y_test, mlp_predictions, average='weighted')*100], mlp.loss_curve_        #only works with sgd
 
     @staticmethod
     def plot_roc_curve(dataFrame, alphaToUse, hiddenLayerSize, activationToUse, solverToUse, test_size, target_col, isFixed=False):
 
-        X_train, X_test, Y_train, Y_test = NeuralNetwork.splitTestData(dataFrame, test_size, target_col, isFixed)      #Split the data
+        X_train, X_test, y_train, y_test = NeuralNetwork.splitTestData(dataFrame, test_size, target_col, isFixed)      #Split the data
         scaler=StandardScaler()
         scaler.fit(X_train)
         X_train=scaler.transform(X_train)
@@ -39,11 +39,11 @@ class NeuralNetwork:
 
         mlp = MLPClassifier(activation=activationToUse, hidden_layer_sizes = hiddenLayerSize, solver=solverToUse, alpha=alphaToUse, early_stopping=True, max_iter=1000) #Generate the Learning infrastructure
 
-        mlp.fit(X_train, Y_train)
+        mlp.fit(X_train, y_train)
         # calculate the fpr and tpr for all thresholds of the classification
         probs = mlp.predict_proba(X_test)
         preds = probs[:,1]
-        fpr, tpr, threshold = metrics.roc_curve(Y_test, preds)
+        fpr, tpr, threshold = metrics.roc_curve(y_test, preds)
         roc_auc = metrics.auc(fpr, tpr)
 
         # method I: plt
@@ -61,18 +61,24 @@ class NeuralNetwork:
     @staticmethod
     def plot_loss_val_curve(dataFrame, alphaToUse, hiddenLayerSize, activationToUse, solverToUse, test_size, target_col, isFixed=False):
 
-        X_train, X_test, Y_train, Y_test = NeuralNetwork.splitTestData(dataFrame, test_size, target_col, isFixed)      #Split the data
+        X_train, X_test, y_train, y_test = NeuralNetwork.splitTestData(dataFrame, test_size, target_col, isFixed)      #Split the data
         scaler=StandardScaler()
         scaler.fit(X_train)
         X_train=scaler.transform(X_train)
         X_test=scaler.transform(X_test)
 
-        mlp = MLPClassifier(activation=activationToUse, hidden_layer_sizes = hiddenLayerSize, solver=solverToUse, alpha=alphaToUse, early_stopping=True, max_iter=1000) #Generate the Learning infrastructure
+        mlp = MLPClassifier(activation=activationToUse, hidden_layer_sizes = hiddenLayerSize, solver=solverToUse, alpha=alphaToUse, learning_rate_init=.025, early_stopping=True, max_iter=1000) #Generate the Learning infrastructure
 
-        mlp.fit(X_train, Y_train)
-        
-        plt.plot(mlp.loss_curve_)
-        plt.plot(mlp.validation_scores_)
+        mlp.fit(X_train, y_train)
+        mlp.score(X_train,y_train)
+
+        plt.style.use('seaborn')
+        plt.title(f'Learning Curve for MLP')
+        plt.plot(mlp.loss_curve_, label='Loss')
+        plt.plot(mlp.validation_scores_, label='Validation Accuracy')
+        plt.ylabel('Loss')
+        plt.xlabel('Epochs')
+        plt.legend(loc = 'upper right')
         plt.show()
 
     @staticmethod
@@ -80,11 +86,11 @@ class NeuralNetwork:
         X = dataFrame.drop(columns=[target_col])
         Y = dataFrame[target_col]
         if(isFixed):    #Use the same seed when generating test and training sets
-            X_train, X_test, Y_train, Y_test = train_test_split(X, Y, shuffle = True, random_state = 42, test_size = test_size)
+            X_train, X_test, y_train, y_test = train_test_split(X, Y, shuffle = True, random_state = 42, test_size = test_size)
         else:           #Use a completely random set of test and training data
-            X_train, X_test, Y_train, Y_test = train_test_split(X, Y, shuffle = True, test_size = test_size)
+            X_train, X_test, y_train, y_test = train_test_split(X, Y, shuffle = True, test_size = test_size)
 
-        return X_train, X_test, Y_train, Y_test
+        return X_train, X_test, y_train, y_test
 
     #Finds the accuracy values given a number of classification tests
     @staticmethod
@@ -117,7 +123,7 @@ class NeuralNetwork:
         return (float)(stats._sum(resultArray)[1]/numResults)
 
     @staticmethod
-    def printStats(Alpha, solverToUse, hiddenLayerSize, activation, test_size, isFixed, Y_test, mlp_predictions):
+    def printStats(Alpha, solverToUse, hiddenLayerSize, activation, test_size, isFixed, y_test, mlp_predictions):
         print("\t The results for for NN with settings: ")
         print("\t Solver: "+solverToUse)
         print("\t Activation: "+activation)
@@ -127,13 +133,13 @@ class NeuralNetwork:
         print("\t Test Set Percentage: "+str(test_size))
         print("\n\t are as follows: ")
 
-        report_lr = metrics.precision_recall_fscore_support(Y_test, mlp_predictions, average='micro')
+        report_lr = metrics.precision_recall_fscore_support(y_test, mlp_predictions, average='micro')
         print ("\n     precision = %0.2f, recall = %0.2f, F1 = %0.2f, accuracy = %0.2f\n" % \
-           (report_lr[0], report_lr[1], report_lr[2], metrics.accuracy_score(Y_test, mlp_predictions)))
+           (report_lr[0], report_lr[1], report_lr[2], metrics.accuracy_score(y_test, mlp_predictions)))
 
-        print("\n    Accuracy: ",metrics.accuracy_score(Y_test, mlp_predictions))
-        print("\n    Precision: ",metrics.precision_score(Y_test, mlp_predictions, average='weighted'))
-        print("\n    Recall:",metrics.recall_score(Y_test, mlp_predictions, average='weighted'))
+        print("\n    Accuracy: ",metrics.accuracy_score(y_test, mlp_predictions))
+        print("\n    Precision: ",metrics.precision_score(y_test, mlp_predictions, average='weighted'))
+        print("\n    Recall:",metrics.recall_score(y_test, mlp_predictions, average='weighted'))
 
         print("\n\n  Confusion Matrix: ")
-        print(confusion_matrix(Y_test, mlp_predictions))
+        print(confusion_matrix(y_test, mlp_predictions))
