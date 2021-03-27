@@ -99,9 +99,17 @@ class CandidateFeatureVector(models.Model):
 
     # Relative Distance Data
     players_dist_on_pass = models.FloatField() 
+    cutter_dist_from_ball_on_pass = models.FloatField() 
+    screener_dist_from_ball_on_pass = models.FloatField() 
     players_dist_on_screen = models.FloatField() 
+    cutter_dist_from_ball_on_screen = models.FloatField() 
+    screener_dist_from_ball_on_screen = models.FloatField() 
     players_dist_on_start_approach = models.FloatField() 
+    cutter_dist_from_ball_on_approach = models.FloatField() 
+    screener_dist_from_ball_on_approach = models.FloatField() 
     players_dist_on_end_execution = models.FloatField() 
+    cutter_dist_from_ball_on_execution = models.FloatField() 
+    screener_dist_from_ball_on_execution = models.FloatField() 
 
     # Speed/Acceleration Data
     cutter_avg_speed_approach = models.FloatField() 
