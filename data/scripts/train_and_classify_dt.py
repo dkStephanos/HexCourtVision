@@ -27,5 +27,5 @@ def run():
 
     dt.get_learning_curve()
 
-    print(dt.get_avg_metrics_for_n_iterations(10, .3, True))
+    #print(dt.get_avg_metrics_for_n_iterations(10, .3, True))
 

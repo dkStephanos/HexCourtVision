@@ -26,7 +26,7 @@ class NeuralNetwork:
         if(printResults):
             NeuralNetwork.printStats(alphaToUse, solverToUse, hiddenLayerSize, activationToUse, test_size, isFixed, y_test, mlp_predictions)
 
-        return [metrics.accuracy_score(y_test, mlp_predictions)*100,metrics.precision_score(y_test, mlp_predictions, average='weighted')*100,metrics.recall_score(y_test, mlp_predictions, average='weighted')*100], mlp.loss_curve_        #only works with sgd
+        return [metrics.accuracy_score(y_test, mlp_predictions)*100,metrics.precision_score(y_test, mlp_predictions, average='weighted')*100,metrics.recall_score(y_test, mlp_predictions, average='weighted')*100], metrics.confusion_matrix(y_test, mlp_predictions)        #only works with sgd
 
     @staticmethod
     def plot_roc_curve(dataFrame, alphaToUse, hiddenLayerSize, activationToUse, solverToUse, test_size, target_col, isFixed=False):
@@ -76,7 +76,7 @@ class NeuralNetwork:
         plt.title(f'Learning Curve for MLP')
         plt.plot(mlp.loss_curve_, label='Loss')
         plt.plot(mlp.validation_scores_, label='Validation Accuracy')
-        plt.ylabel('Loss')
+        plt.ylabel('Score')
         plt.xlabel('Epochs')
         plt.legend(loc = 'upper right')
         plt.show()
@@ -96,13 +96,21 @@ class NeuralNetwork:
     @staticmethod
     def testNIterations(dataFrame, alphaToUse, hiddenLayerSize, activationToUse, solverToUse, test_size, target_col, nIterations):
         accuracyResults = []
+        matrixTotals = {'tn': 0, 'fp': 0, 'fn': 0, 'tp': 0,}
         for test in range(0, nIterations):
-            accuracy, curve = NeuralNetwork.classify(dataFrame, alphaToUse, hiddenLayerSize, activationToUse, solverToUse, test_size, target_col, False, True)
+            accuracy, confusion_matrix = NeuralNetwork.classify(dataFrame, alphaToUse, hiddenLayerSize, activationToUse, solverToUse, test_size, target_col, False, True)
             accuracyResults.append(accuracy)
+            matrixTotals['tn'] += confusion_matrix[0][0]
+            matrixTotals['fp'] += confusion_matrix[0][1]
+            matrixTotals['fn'] += confusion_matrix[1][0]
+            matrixTotals['tp'] += confusion_matrix[1][1]
+
+        for total in matrixTotals:
+            matrixTotals[total] = matrixTotals[total] / nIterations
             
         accuracyResults = pd.DataFrame(accuracyResults)
-
-        return accuracyResults.mean()
+        
+        return accuracyResults.mean(), matrixTotals
 
     #find the value 
     def testAlpha(dataFrame, alphaToFind, hiddenLayerSize, activationToUse, solverToUse, test_size, nIterations):

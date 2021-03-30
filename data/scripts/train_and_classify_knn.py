@@ -28,12 +28,14 @@ def run():
     y = candidates_df['classification']
 
     knn = KerasNN(input_dim=len(X.columns))
-    X_train, X_test, y_train, y_test = knn.fit_model(X,y,120)
+    X_train, X_test, y_train, y_test = knn.fit_model(X,y,120,.3,.2)
     knn.plot_training_validation()
+    knn.plot_roc_curve()
     print(knn.get_classification_report(X_test, y_test))
     knn.get_accuracy_stats(X_test, y_test)
 
-    #knn.plot_roc_curve()
+    results = knn.test_n_iterations(X,y,120,.3,.2,10)
+    print(results)
 
     '''
     Feature ranking stuff with shap, not sure if it works, can't render stupid html 
