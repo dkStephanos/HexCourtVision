@@ -148,6 +148,7 @@ class FeatureUtil:
     @staticmethod
     # Function to find the distance between players at each moment
     def distance_between_players_with_moment(player_a, player_b):
+        print('inside distance_between_players_with_moment with: ', player_a, player_b)
         # Make sure we know when to stop
         player_range = 0
         if len(player_a) < len(player_b):
@@ -166,6 +167,14 @@ class FeatureUtil:
         ball_distances = group.apply(FeatureUtil.distance_between_players, moments_df[moments_df.player_id.isin([-1, None])][["x_loc", "y_loc"]])
         
         return ball_distances
+
+    @staticmethod
+    def distance_between_player_and_other_players(player_id, defending_ids, moments_df):
+        print('inside distance_between_player_and_other_players with: ', player_id, defending_ids)
+        print(moments_df[moments_df.player_id.isin(defending_ids)])
+        group = moments_df[moments_df.player_id.isin(defending_ids)].groupby("player_id")[["x_loc", "y_loc"]]
+    
+        return group.apply(FeatureUtil.distance_between_players_with_moment, moments_df[moments_df.player_id == player_id][["x_loc", "y_loc"]])
 
     # Takes in data for ball/players for a moment, returns an int containing the amount of players on the side of the court with the ball
     @staticmethod
@@ -193,13 +202,6 @@ class FeatureUtil:
             distances.append([euclidean([moment_df[5][0][3], moment_df[5][0][4]], [player[3], player[4]]), player[0]])
 
         return min(distances, key=lambda x: x[0])[1]
-
-
-    @staticmethod
-    def distance_between_player_and_other_players(player_id, player_loc, event_df):
-        group = event_df[event_df.player_id!=player_id].groupby("player_id")[["x_loc", "y_loc", "index"]]
-
-        return group.apply(FeatureUtil.distance_between_players_with_moment, player_b=(player_loc))
 
     def convert_ball_handler_to_passes(ball_handler_df):
         passes = []
@@ -275,6 +277,19 @@ class FeatureUtil:
 
         #ball_handler_df.to_csv("static/data/test/ball_handler.csv")
         return ball_handler_df
+
+    @staticmethod
+    def get_defender_for_player(moment_df, player_id, defensive_team_ids):
+        print("Inside get_defender_for_player", player_id, defensive_team_ids)
+        # First, calculate the distances between players and the defensive players, and get a min dist data frame
+        ball_distances = FeatureUtil.distance_between_player_and_other_players(str(player_id), defensive_team_ids, moment_df)
+        print(ball_distances)
+        ball_dist_df = DataUtil.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
+        print(ball_dist_df)
+        closest_defender_df = DataUtil.get_labled_mins_from_df(ball_dist_df, "dist_from_player")
+
+        closest_defender_df.to_csv("static/data/test/defender.csv")
+        return closest_defender_df
 
     @staticmethod
     def get_passess_for_event(moments_df, possession, players_data):

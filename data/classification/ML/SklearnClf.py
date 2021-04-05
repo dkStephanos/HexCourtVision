@@ -45,7 +45,6 @@ class SklearnClf:
         support = 0
         confusion_matrix = np.zeros((2,2))
 
-
         for i in range(0,n_iterations):
             X_train, X_test, y_train, y_test = self.split_test_data(test_size, is_fixed)
             self.fit_and_predict(X_train, X_test, y_train)
