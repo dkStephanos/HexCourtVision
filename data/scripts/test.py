@@ -36,6 +36,9 @@ def generate_trajectory_image(target_event, target_candidate):
     # Collects moments for single candidate
     moments = pd.DataFrame(list(Moment.objects.filter(event_id=target_candidate['event_id']).values()))
 
+    event_passes = FeatureUtil.get_passess_for_event(moments, Event.objects.values().get(event_id=target_candidate['event_id'])['possesion_team_id'], list(Player.objects.values()))
+    pass_moment, receive_moment = FeatureUtil.get_pass_start_end(moments, event_passes, target_candidate)
+
     # Collects players for single candidate
     screener = Player.objects.values().get(player_id=target_candidate['player_a_id'])
     cutter = Player.objects.values().get(player_id=target_candidate['player_b_id'])
@@ -56,6 +59,7 @@ def generate_trajectory_image(target_event, target_candidate):
     cutter_df = trimmed_moments[trimmed_moments['player_id'] == cutter['player_id']][['x_loc', 'y_loc']]
     screener_df = trimmed_moments[trimmed_moments['player_id'] == screener['player_id']][['x_loc', 'y_loc']]
     ball_df = trimmed_moments[trimmed_moments['player_id'].isna()][['x_loc', 'y_loc']]
+    ball_df = ball_df[(ball_df.index > pass_moment) & (ball_df.index < receive_moment)]
 
     # Offset location data to work with hexbins
     screener_df['y_loc'] = screener_df['y_loc'] - 50.0
