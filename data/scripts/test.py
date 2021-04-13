@@ -76,9 +76,9 @@ def generate_trajectory_image(target_event, target_candidate):
 
     # Draw the court and the hexbins
     ax = GraphUtil.draw_court()	    
-    ball_hexbin = ax.hexbin(x=ball_df['x_loc'], y=ball_df['y_loc'], cmap=cmapReds, mincnt=1, gridsize=50, extent=(0,94,-50,0))
     cutter_hexbin = ax.hexbin(x=cutter_df['x_loc'], y=cutter_df['y_loc'], cmap=cmapGreens, mincnt=1, gridsize=50, extent=(0,94,-50,0))
     screener_hexbin = ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=cmapBlues, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    ball_hexbin = ax.hexbin(x=ball_df['x_loc'], y=ball_df['y_loc'], cmap=cmapReds, mincnt=1, gridsize=50, extent=(0,94,-50,0))
 
     GraphUtil.display_half_court()
 
