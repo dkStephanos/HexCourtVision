@@ -84,7 +84,11 @@ class GraphUtil:
 
         # Add the court elements onto the axes	
         for element in court_elements:	
-            ax.add_patch(element)	
+            ax.add_patch(element)
+
+        # Remove the axix ticks
+        ax.xaxis.set_visible(False)
+        ax.yaxis.set_visible(False)
 
         return ax
 
@@ -122,3 +126,9 @@ class GraphUtil:
         plt.xlim(0,47)	
         plt.ylim(-50, 0)
         plt.show()
+
+    @staticmethod
+    def save_half_court(filepath):
+        plt.xlim(0,47)	
+        plt.ylim(-50, 0)
+        plt.savefig(filepath)
