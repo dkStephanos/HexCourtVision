@@ -132,3 +132,4 @@ class GraphUtil:
         plt.xlim(0,47)	
         plt.ylim(-50, 0)
         plt.savefig(filepath)
+        plt.clf()
