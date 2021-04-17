@@ -33,7 +33,7 @@ def generate_feature_vector(target_event, target_candidate):
     trimmed_moments = moments[(moments.game_clock > game_clock - 2) & (moments.game_clock < game_clock + 2)]
 
     # If the data occurs past half-court (x > 47), rotate the points about the center of the court so features appear consistent 
-    if(trimmed_moments.iloc[0]['x_loc'] > 47.0):
+    if(trimmed_moments.iloc[math.ceil(len(trimmed_moments)/2)]['x_loc'] > 47.0):
         trimmed_moments = FeatureUtil.rotate_coordinates_around_center_court(trimmed_moments)
 
     # Pull out other moment subsects for features
