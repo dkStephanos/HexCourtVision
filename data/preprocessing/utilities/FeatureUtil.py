@@ -169,8 +169,14 @@ class FeatureUtil:
         return ball_distances
 
     @staticmethod
-    def distance_between_player_and_other_players(player_id, defending_ids, moments_df):
-        print('inside distance_between_player_and_other_players with: ', player_id, defending_ids)
+    def distance_between_player_and_other_players(player_id, player_loc, event_df):
+        group = event_df[event_df.player_id!=player_id].groupby("player_id")[["x_loc", "y_loc", "index"]]
+
+        return group.apply(FeatureUtil.distance_between_players_with_moment, player_b=(player_loc))
+
+    @staticmethod
+    def distance_between_player_and_defensive_players(player_id, defending_ids, moments_df):
+        print('inside distance_between_player_and_defensive_players with: ', player_id, defending_ids)
         print(moments_df[moments_df.player_id.isin(defending_ids)])
         group = moments_df[moments_df.player_id.isin(defending_ids)].groupby("player_id")[["x_loc", "y_loc"]]
     
