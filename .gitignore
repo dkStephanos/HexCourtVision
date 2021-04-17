@@ -20,6 +20,7 @@
 /.env.production.local
 __pycache__/
 *.pyc
+data/preprocessing/utilities/__pycache__/
 
 npm-debug.log*
 yarn-debug.log*
@@ -31,7 +32,7 @@ yarn-error.log*
 /static/data/game_raw_data/
 /static/data/test/
 static/data/notes/~$CandidateSummaries.xlsx
-static/data/hexmaps/
+/static/data/hexmaps/
 
 # frontend build files
 /frontend/static/frontend/
