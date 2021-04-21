@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics.pairwise import kernel_metrics
 
 def run():
-    n_clusters = 8
+    n_clusters = 5
     image_dim = (480, 640, 3)
     hex_dir = 'C:\\Users\\Stephanos\\Documents\\Dev\\NBAThesis\\NBA_Thesis\\static\\data\\hexmaps'
     directory = os.fsencode(hex_dir)
@@ -30,14 +30,15 @@ def run():
     hexmaps = pca.fit_transform(hexmaps)
     np.save("static/data/test/hexmaps", hexmaps)
     print(hexmaps[0].shape)
+    
     '''
-
     print("Loading hexmap representations from file ----------------\n\n")
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         image = cv2.imread(hex_dir + '\\' + filename)
         images.append(image)
     hexmaps = np.load("static/data/test/hexmaps.npy")
+    print(hexmaps)
 
     '''
     print("Get elbow plot for hexmap clusters ----------------\n\n")
@@ -58,7 +59,7 @@ def run():
     plt.xlabel('Number of clusters')
     plt.ylabel('Distortion')
     plt.show()
-    '''
+    
     print("Get the silhouette coefficients for clusters ----------------\n\n")
     # A list holds the silhouette coefficients for each k
     silhouette_coefficients = []
@@ -75,17 +76,17 @@ def run():
     plt.xlabel("Number of Clusters")
     plt.ylabel("Silhouette Coefficient")
     plt.show()
-    
+    '''
     print("Running the KMeans clustering model -----------\n\n")
     kmeans = KMeans(n_clusters=n_clusters,init='random')
     kmeans.fit(hexmaps)
-    Z = kmeans.predict(hexmaps)
 
     print("Get the samples closest to the centroids")
     for cluster in range(0,n_clusters):
         print(f"\nThe closest samples to cluster {cluster}")
         d = kmeans.transform(hexmaps)[:, cluster]
-        ind = np.argsort(d)[::-1][:3]
+        print("Cluster ", d, len(d), type(d))
+        ind = np.argsort(d)[::-1][:5]
         
         for i in list(ind):
             cv2.imshow('dst_rt', images[i])
