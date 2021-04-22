@@ -76,11 +76,11 @@ def generate_trajectory_image(target_event, target_candidate):
 
     # Draw the court and the hexbins
     ax = GraphUtil.draw_court()	    
-    cutter_hexbin = ax.hexbin(x=cutter_df['x_loc'], y=cutter_df['y_loc'], cmap=cmapGreens, mincnt=1, gridsize=50, extent=(0,94,-50,0))
-    screener_hexbin = ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=cmapBlues, mincnt=1, gridsize=50, extent=(0,94,-50,0))
-    ball_hexbin = ax.hexbin(x=ball_df['x_loc'], y=ball_df['y_loc'], cmap=cmapReds, mincnt=1, gridsize=50, extent=(0,94,-50,0))
+    cutter_hexbin = ax.hexbin(x=cutter_df['x_loc'], y=cutter_df['y_loc'], cmap=cmapGreens, mincnt=1, gridsize=30, extent=(0,94,-50,0))
+    screener_hexbin = ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=cmapBlues, mincnt=1, gridsize=30, extent=(0,94,-50,0))
+    ball_hexbin = ax.hexbin(x=ball_df['x_loc'], y=ball_df['y_loc'], cmap=cmapReds, mincnt=1, gridsize=30, extent=(0,94,-50,0))
 
-    GraphUtil.save_half_court(f"static/data/hexmaps/{target_candidate['candidate_id']}-hexmap.png")
+    GraphUtil.save_half_court(f"static/data/hexmaps30/{target_candidate['candidate_id']}-hexmap.png")
 
 def run():
     games = Game.objects.all()

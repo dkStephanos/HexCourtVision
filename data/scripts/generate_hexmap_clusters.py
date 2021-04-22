@@ -9,13 +9,12 @@ import matplotlib.pyplot as plt
 from sklearn.metrics.pairwise import kernel_metrics
 
 def run():
-    n_clusters = 5
+    n_clusters = 10
     image_dim = (480, 640, 3)
-    hex_dir = 'C:\\Users\\Stephanos\\Documents\\Dev\\NBAThesis\\NBA_Thesis\\static\\data\\hexmaps'
+    hex_dir = 'C:\\Users\\Stephanos\\Documents\\Dev\\NBAThesis\\NBA_Thesis\\static\\data\\hexmaps30'
     directory = os.fsencode(hex_dir)
     images = []
     hexmaps = []
-
     '''
     print("Creating feature vectors from hexmaps -----------\n\n")
     for file in os.listdir(directory):
@@ -30,16 +29,14 @@ def run():
     hexmaps = pca.fit_transform(hexmaps)
     np.save("static/data/test/hexmaps", hexmaps)
     print(hexmaps[0].shape)
-    
     '''
     print("Loading hexmap representations from file ----------------\n\n")
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         image = cv2.imread(hex_dir + '\\' + filename)
         images.append(image)
-    hexmaps = np.load("static/data/test/hexmaps.npy")
+    hexmaps = np.load("static/data/test/hexmaps30.npy")
     print(hexmaps)
-
     '''
     print("Get elbow plot for hexmap clusters ----------------\n\n")
     distortions = []
@@ -79,16 +76,21 @@ def run():
     '''
     print("Running the KMeans clustering model -----------\n\n")
     kmeans = KMeans(n_clusters=n_clusters,init='random')
-    kmeans.fit(hexmaps)
+    y_km = kmeans.fit_predict(hexmaps)
+    distortion = ((hexmaps - kmeans.cluster_centers_[y_km])**2.0).sum(axis=1)
+
+    labels = pd.DataFrame({'cluster':kmeans.labels_, 'distortion':distortion})
+    print(labels['cluster'].value_counts())
 
     print("Get the samples closest to the centroids")
     for cluster in range(0,n_clusters):
         print(f"\nThe closest samples to cluster {cluster}")
         d = kmeans.transform(hexmaps)[:, cluster]
-        print("Cluster ", d, len(d), type(d))
-        ind = np.argsort(d)[::-1][:5]
+        print(labels.loc[labels['cluster'] == cluster, 'distortion'].sum())
+        ind = np.argsort(d)[::-1][:3]
         
         for i in list(ind):
             cv2.imshow('dst_rt', images[i])
             cv2.waitKey(0)
             cv2.destroyAllWindows()
+    
