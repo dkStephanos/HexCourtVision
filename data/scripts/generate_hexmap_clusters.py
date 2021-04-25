@@ -13,6 +13,7 @@ def run():
     image_dim = (480, 640, 3)
     hex_dir = 'C:\\Users\\Stephanos\\Documents\\Dev\\NBAThesis\\NBA_Thesis\\static\\data\\hexmaps30'
     directory = os.fsencode(hex_dir)
+    image_names = []
     images = []
     hexmaps = []
     '''
@@ -34,6 +35,7 @@ def run():
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         image = cv2.imread(hex_dir + '\\' + filename)
+        image_names.append(filename)
         images.append(image)
     hexmaps = np.load("static/data/test/hexmaps30.npy")
     print(hexmaps)
@@ -73,7 +75,7 @@ def run():
     plt.xlabel("Number of Clusters")
     plt.ylabel("Silhouette Coefficient")
     plt.show()
-    '''
+    
     print("Running the KMeans clustering model -----------\n\n")
     kmeans = KMeans(n_clusters=n_clusters,init='random')
     y_km = kmeans.fit_predict(hexmaps)
@@ -90,7 +92,14 @@ def run():
         ind = np.argsort(d)[::-1][:3]
         
         for i in list(ind):
+            print(i)
             cv2.imshow('dst_rt', images[i])
             cv2.waitKey(0)
             cv2.destroyAllWindows()
+    '''
+    for i in [416,452,355,24,75,329]:
+        print(image_names[i])
+        cv2.imshow('dst_rt', images[i])
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
     
