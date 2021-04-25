@@ -36,3 +36,4 @@ static/data/notes/~$CandidateSummaries.xlsx
 
 # frontend build files
 /frontend/static/frontend/
+*.png
