@@ -30,6 +30,7 @@ yarn-error.log*
 
 # data
 /static/data/game_raw_data/
+/static/data/game_raw_data_round2/
 /static/data/test/
 static/data/notes/~$CandidateSummaries.xlsx
 /static/data/hexmaps/
