@@ -39,7 +39,7 @@ def run():
         images.append(image)
     hexmaps = np.load("static/data/test/hexmaps30.npy")
     print(hexmaps)
-    '''
+    
     print("Get elbow plot for hexmap clusters ----------------\n\n")
     distortions = []
     for i in range(1, 31):
@@ -96,7 +96,7 @@ def run():
             cv2.imshow('dst_rt', images[i])
             cv2.waitKey(0)
             cv2.destroyAllWindows()
-    '''
+    
     for i in [416,452,355,24,75,329]:
         print(image_names[i])
         cv2.imshow('dst_rt', images[i])
