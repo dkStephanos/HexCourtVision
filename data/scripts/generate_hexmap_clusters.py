@@ -9,9 +9,9 @@ import matplotlib.pyplot as plt
 from sklearn.metrics.pairwise import kernel_metrics
 
 def run():
-    n_clusters = 10
+    n_clusters = 8
     image_dim = (480, 640, 3)
-    hex_dir = 'C:\\Users\\Stephanos\\Documents\\Dev\\NBAThesis\\NBA_Thesis\\static\\data\\hexmaps30'
+    hex_dir = 'C:\\Users\\Stephanos\\Documents\\Dev\\NBAThesis\\NBA_Thesis\\static\\data\\hexmaps'
     directory = os.fsencode(hex_dir)
     image_names = []
     images = []
@@ -89,17 +89,25 @@ def run():
         print(f"\nThe closest samples to cluster {cluster}")
         d = kmeans.transform(hexmaps)[:, cluster]
         print(labels.loc[labels['cluster'] == cluster, 'distortion'].sum())
-        ind = np.argsort(d)[::-1][:3]
+        ind = np.argsort(d)[::][:10]
         
+        selected_samples = []
+        selected = 0
         for i in list(ind):
-            print(i)
-            cv2.imshow('dst_rt', images[i])
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
+            if selected == 3:
+                selected = 0
+                break
+            elif i not in selected_samples:
+                print(i)
+                selected_samples.append(i)
+                selected = selected + 1
+                cv2.imshow('dst_rt', images[i])
+                cv2.waitKey(0)
+                cv2.destroyAllWindows()
     
-    for i in [416,452,355,24,75,329]:
-        print(image_names[i])
-        cv2.imshow('dst_rt', images[i])
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+    # for i in [416,452,355,24,75,329]:
+    #     print(image_names[i])
+    #     cv2.imshow('dst_rt', images[i])
+    #     cv2.waitKey(0)
+    #     cv2.destroyAllWindows()
     
