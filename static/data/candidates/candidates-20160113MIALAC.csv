@@ -1,0 +1,125 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500586-005-1,21500586-005,dribble-hand-off,FALSE,1,11:30,16.1,101108,Chris Paul,200755,JJ Redick,
+1,21500586-005-2,21500586-005,dribble-hand-off,TRUE,1,11:29,15.56,200755,JJ Redick,101108,Chris Paul,
+2,21500586-010-1,21500586-010,dribble-hand-off,FALSE,1,10:54,14.42,2757,Beno Udrih,2736,Luol Deng,
+3,21500586-010-2,21500586-010,dribble-hand-off,TRUE,1,10:53,13.51,2736,Luol Deng,2757,Beno Udrih,FAKE
+4,21500586-010-3,21500586-010,dribble-hand-off,FALSE,1,10:52,13.27,2757,Beno Udrih,2736,Luol Deng,FAKE
+5,21500586-010-4,21500586-010,dribble-hand-off,TRUE,1,10:50,11.24,2736,Luol Deng,2548,Dwyane Wade,
+6,21500586-010-5,21500586-010,dribble-hand-off,FALSE,1,10:47,7.74,2548,Dwyane Wade,2547,Chris Bosh,
+7,21500586-016-1,21500586-016,dribble-hand-off,FALSE,1,10:12,16.53,202332,Cole Aldrich,101108,Chris Paul,"screen, no pass"
+8,21500586-016-2,21500586-016,dribble-hand-off,FALSE,1,10:08,12.8,101108,Chris Paul,202332,Cole Aldrich,pocket pass
+9,21500586-024-1,21500586-024,dribble-hand-off,FALSE,1,9:28,21.66,2757,Beno Udrih,2547,Chris Bosh,
+10,21500586-024-2,21500586-024,dribble-hand-off,FALSE,1,9:17,21.33,1626159,Justise Winslow,2757,Beno Udrih,
+11,21500586-030-1,21500586-030,dribble-hand-off,FALSE,1,8:27,10,2757,Beno Udrih,1626159,Justise Winslow,
+12,21500586-033-1,21500586-033,dribble-hand-off,FALSE,1,7:27,13.89,101108,Chris Paul,1718,Paul Pierce,
+13,21500586-034-1,21500586-034,dribble-hand-off,FALSE,1,7:11,16.92,2548,Dwyane Wade,2547,Chris Bosh,loose ball
+14,21500586-035-1,21500586-035,dribble-hand-off,FALSE,1,6:53,17.45,200755,JJ Redick,1718,Paul Pierce,
+15,21500586-050-1,21500586-050,dribble-hand-off,FALSE,1,6:12,14.06,101108,Chris Paul,1718,Paul Pierce,
+16,21500586-058-1,21500586-058,dribble-hand-off,FALSE,1,5:50,10.54,201601,Luc Mbah a Moute,101108,Chris Paul,"screen, no pass"
+17,21500586-062-1,21500586-062,dribble-hand-off,TRUE,1,5:24,19.99,2757,Beno Udrih,204020,Tyler Johnson,
+18,21500586-062-2,21500586-062,dribble-hand-off,FALSE,1,5:23,18.31,204020,Tyler Johnson,2757,Beno Udrih,
+19,21500586-066-1,21500586-066,dribble-hand-off,TRUE,1,4:53,9.92,2547,Chris Bosh,101123,Gerald Green,
+20,21500586-069-1,21500586-069,dribble-hand-off,FALSE,1,4:36,11.84,101108,Chris Paul,201601,Luc Mbah a Moute,
+21,21500586-070-1,21500586-070,dribble-hand-off,FALSE,1,4:12,16.16,1626159,Justise Winslow,2547,Chris Bosh,post entry pass
+22,21500586-104-1,21500586-104,dribble-hand-off,TRUE,1,2:03,14.47,203143,Pablo Prigioni,2746,Josh Smith,
+23,21500586-104-2,21500586-104,dribble-hand-off,TRUE,1,2:01,12.42,2746,Josh Smith,203085,Austin Rivers,
+24,21500586-107-1,21500586-107,dribble-hand-off,TRUE,1,1:31,16.31,2746,Josh Smith,2037,Jamal Crawford,
+25,21500586-107-2,21500586-107,dribble-hand-off,FALSE,1,1:26,10.85,2746,Josh Smith,2037,Jamal Crawford,
+26,21500586-113-1,21500586-113,dribble-hand-off,FALSE,1,0:51,13.62,204020,Tyler Johnson,2548,Dwyane Wade,
+27,21500586-114-1,21500586-114,dribble-hand-off,FALSE,1,0:33,10.69,203143,Pablo Prigioni,202325,Wesley Johnson,
+28,21500586-117-1,21500586-117,dribble-hand-off,FALSE,1,0:21,15.06,2548,Dwyane Wade,202355,Hassan Whiteside,"screen, no pass"
+29,21500586-117-2,21500586-117,dribble-hand-off,FALSE,1,0:21,14.77,202355,Hassan Whiteside,2548,Dwyane Wade,"screen, no pass"
+30,21500586-126-1,21500586-126,dribble-hand-off,TRUE,2,11:43,22.96,203143,Pablo Prigioni,2037,Jamal Crawford,
+31,21500586-128-1,21500586-128,dribble-hand-off,FALSE,2,11:23,11.14,204020,Tyler Johnson,2548,Dwyane Wade,
+32,21500586-152-1,21500586-152,dribble-hand-off,FALSE,2,10:09,21.01,203143,Pablo Prigioni,2037,Jamal Crawford,
+33,21500586-157-1,21500586-157,dribble-hand-off,FALSE,2,9:27,14.54,204020,Tyler Johnson,2548,Dwyane Wade,
+34,21500586-159-1,21500586-159,dribble-hand-off,TRUE,2,9:08,13.95,202332,Cole Aldrich,2037,Jamal Crawford,
+35,21500586-173-1,21500586-173,dribble-hand-off,TRUE,2,8:20,13.63,202332,Cole Aldrich,2037,Jamal Crawford,
+36,21500586-175-1,21500586-175,dribble-hand-off,FALSE,2,8:04,17.08,2757,Beno Udrih,2548,Dwyane Wade,
+37,21500586-177-1,21500586-177,dribble-hand-off,FALSE,2,7:33,9.88,101108,Chris Paul,202332,Cole Aldrich,pass over head
+38,21500586-177-2,21500586-177,dribble-hand-off,FALSE,2,7:32,9.46,202332,Cole Aldrich,200755,JJ Redick,pass over head
+39,21500586-178-1,21500586-178,dribble-hand-off,FALSE,2,7:13,11.58,2736,Luol Deng,2548,Dwyane Wade,"borderline, long pass and shoots before screen"
+40,21500586-179-1,21500586-179,dribble-hand-off,FALSE,2,6:52,9.12,202332,Cole Aldrich,101108,Chris Paul,"screen, no pass"
+41,21500586-185-1,21500586-185,dribble-hand-off,TRUE,2,6:53,9.72,200755,JJ Redick,101108,Chris Paul,
+42,21500586-187-1,21500586-187,dribble-hand-off,TRUE,2,6:37,14.66,2547,Chris Bosh,2757,Beno Udrih,
+43,21500586-187-2,21500586-187,dribble-hand-off,TRUE,2,6:34,10.68,2757,Beno Udrih,101123,Gerald Green,
+44,21500586-190-1,21500586-190,dribble-hand-off,TRUE,2,5:53,11.54,2547,Chris Bosh,2757,Beno Udrih,
+45,21500586-194-1,21500586-194,dribble-hand-off,TRUE,2,5:04,13.58,202332,Cole Aldrich,200755,JJ Redick,
+46,21500586-195-1,21500586-195,dribble-hand-off,FALSE,2,4:50,15.91,2757,Beno Udrih,2547,Chris Bosh,post entry pass
+47,21500586-200-1,21500586-200,dribble-hand-off,FALSE,2,4:13,9.4,2757,Beno Udrih,101123,Gerald Green,
+48,21500586-207-1,21500586-207,dribble-hand-off,FALSE,2,3:18,12.96,2547,Chris Bosh,202355,Hassan Whiteside,
+49,21500586-209-1,21500586-209,dribble-hand-off,FALSE,2,2:46,15.59,2757,Beno Udrih,2547,Chris Bosh,post entry pass
+50,21500586-210-1,21500586-210,dribble-hand-off,TRUE,2,2:36,18.3,1718,Paul Pierce,200755,JJ Redick,
+51,21500586-215-1,21500586-215,dribble-hand-off,TRUE,2,1:59,15.09,201601,Luc Mbah a Moute,101108,Chris Paul,
+52,21500586-221-1,21500586-221,dribble-hand-off,FALSE,2,1:41,0.52,2736,Luol Deng,101123,Gerald Green,pass over head
+53,21500586-231-1,21500586-231,dribble-hand-off,FALSE,2,0:59,11.08,2548,Dwyane Wade,2757,Beno Udrih,pass over head
+54,21500586-259-1,21500586-259,dribble-hand-off,TRUE,3,11:48,9.65,202332,Cole Aldrich,200755,JJ Redick,
+55,21500586-260-1,21500586-260,dribble-hand-off,FALSE,3,11:29,12.44,2736,Luol Deng,2547,Chris Bosh,post entry pass
+56,21500586-260-2,21500586-260,dribble-hand-off,FALSE,3,11:25,8.45,2547,Chris Bosh,2757,Beno Udrih,borderline
+57,21500586-267-1,21500586-267,dribble-hand-off,FALSE,3,10:49,9.12,1626159,Justise Winslow,2736,Luol Deng,
+58,21500586-267-2,21500586-267,dribble-hand-off,FALSE,3,10:42,6.82,1626159,Justise Winslow,2548,Dwyane Wade,shot attempt
+59,21500586-270-1,21500586-270,dribble-hand-off,TRUE,3,10:15,10.12,1626159,Justise Winslow,2736,Luol Deng,
+60,21500586-279-1,21500586-279,dribble-hand-off,FALSE,3,9:41,13.01,2757,Beno Udrih,2547,Chris Bosh,
+61,21500586-282-1,21500586-282,dribble-hand-off,FALSE,3,9:21,15.94,101108,Chris Paul,1718,Paul Pierce,
+62,21500586-282-2,21500586-282,dribble-hand-off,FALSE,3,9:19,13.83,1718,Paul Pierce,201601,Luc Mbah a Moute,
+63,21500586-291-1,21500586-291,dribble-hand-off,TRUE,3,8:17,10.26,202332,Cole Aldrich,200755,JJ Redick,
+64,21500586-292-1,21500586-292,dribble-hand-off,TRUE,3,8:03,15.27,2736,Luol Deng,2757,Beno Udrih,
+65,21500586-293-1,21500586-293,dribble-hand-off,FALSE,3,7:40,11.83,101108,Chris Paul,200755,JJ Redick,bad pass
+66,21500586-293-2,21500586-293,dribble-hand-off,FALSE,3,7:39,11.48,200755,JJ Redick,1718,Paul Pierce,bad pass
+67,21500586-294-1,21500586-294,dribble-hand-off,FALSE,3,7:20,14.74,2757,Beno Udrih,2547,Chris Bosh,pick n' pop
+68,21500586-309-1,21500586-309,dribble-hand-off,FALSE,3,6:37,17,202355,Hassan Whiteside,2548,Dwyane Wade,
+69,21500586-314-1,21500586-314,dribble-hand-off,FALSE,3,6:02,16.16,204020,Tyler Johnson,2547,Chris Bosh,
+70,21500586-314-2,21500586-314,dribble-hand-off,TRUE,3,6:00,14.88,2547,Chris Bosh,204020,Tyler Johnson,
+71,21500586-314-3,21500586-314,dribble-hand-off,FALSE,3,5:59,14.04,204020,Tyler Johnson,101123,Gerald Green,
+72,21500586-319-1,21500586-319,dribble-hand-off,FALSE,3,5:22,10.74,204020,Tyler Johnson,2547,Chris Bosh,
+73,21500586-319-2,21500586-319,dribble-hand-off,TRUE,3,5:18,6.63,2547,Chris Bosh,101123,Gerald Green,late pass
+74,21500586-322-1,21500586-322,dribble-hand-off,TRUE,3,4:57,24,202332,Cole Aldrich,101108,Chris Paul,
+75,21500586-322-2,21500586-322,dribble-hand-off,FALSE,3,4:54,22.1,101108,Chris Paul,202332,Cole Aldrich,pocket pass
+76,21500586-330-1,21500586-330,dribble-hand-off,TRUE,3,4:28,8.88,201601,Luc Mbah a Moute,101108,Chris Paul,
+77,21500586-336-1,21500586-336,dribble-hand-off,FALSE,3,3:55,9.63,101108,Chris Paul,202332,Cole Aldrich,shot attempt
+78,21500586-344-1,21500586-344,dribble-hand-off,FALSE,3,3:42,8.35,101108,Chris Paul,202332,Cole Aldrich,"screen, no pass"
+79,21500586-344-2,21500586-344,dribble-hand-off,FALSE,3,3:42,8.21,202332,Cole Aldrich,101108,Chris Paul,"screen, no pass"
+80,21500586-355-1,21500586-355,dribble-hand-off,FALSE,3,3:03,13.34,204020,Tyler Johnson,2548,Dwyane Wade,post entry pass
+81,21500586-371-1,21500586-371,dribble-hand-off,FALSE,3,2:26,12.78,203085,Austin Rivers,2746,Josh Smith,
+82,21500586-371-2,21500586-371,dribble-hand-off,TRUE,3,2:25,12.38,2746,Josh Smith,2037,Jamal Crawford,
+83,21500586-373-1,21500586-373,dribble-hand-off,TRUE,3,1:58,14.23,2746,Josh Smith,2037,Jamal Crawford,
+84,21500586-378-1,21500586-378,dribble-hand-off,FALSE,3,1:15,18.56,203143,Pablo Prigioni,2746,Josh Smith,pass over head
+85,21500586-387-1,21500586-387,dribble-hand-off,FALSE,3,0:27,22.27,101123,Gerald Green,2548,Dwyane Wade,fastbreak
+86,21500586-399-1,21500586-399,dribble-hand-off,FALSE,4,11:46,10.55,204020,Tyler Johnson,202355,Hassan Whiteside,inbound pass
+87,21500586-399-2,21500586-399,dribble-hand-off,TRUE,4,11:46,14.24,202355,Hassan Whiteside,101123,Gerald Green,
+88,21500586-399-3,21500586-399,dribble-hand-off,FALSE,4,11:46,13.8,204020,Tyler Johnson,202355,Hassan Whiteside,"screen, no pass"
+89,21500586-408-1,21500586-408,dribble-hand-off,FALSE,4,10:43,14.4,101123,Gerald Green,2547,Chris Bosh,
+90,21500586-418-1,21500586-418,dribble-hand-off,FALSE,4,10:17,14.58,2757,Beno Udrih,202355,Hassan Whiteside,
+91,21500586-418-2,21500586-418,dribble-hand-off,TRUE,4,10:16,13.63,202355,Hassan Whiteside,2757,Beno Udrih,
+92,21500586-423-1,21500586-423,dribble-hand-off,TRUE,4,10:05,15.8,203143,Pablo Prigioni,2037,Jamal Crawford,
+93,21500586-423-2,21500586-423,dribble-hand-off,FALSE,4,10:01,12.44,2037,Jamal Crawford,202325,Wesley Johnson,
+94,21500586-423-3,21500586-423,dribble-hand-off,FALSE,4,10:00,11.37,202325,Wesley Johnson,2746,Josh Smith,
+95,21500586-438-1,21500586-438,dribble-hand-off,FALSE,4,9:01,14.74,2757,Beno Udrih,2547,Chris Bosh,
+96,21500586-440-1,21500586-440,dribble-hand-off,TRUE,4,8:44,13.12,2746,Josh Smith,2037,Jamal Crawford,
+97,21500586-461-1,21500586-461,dribble-hand-off,FALSE,4,6:43,15.01,204020,Tyler Johnson,2547,Chris Bosh,
+98,21500586-461-2,21500586-461,dribble-hand-off,TRUE,4,6:39,11.09,2547,Chris Bosh,204020,Tyler Johnson,
+99,21500586-463-1,21500586-463,dribble-hand-off,FALSE,4,6:02,12.13,204020,Tyler Johnson,2757,Beno Udrih,
+100,21500586-470-1,21500586-470,dribble-hand-off,TRUE,4,5:38,9.9,2548,Dwyane Wade,101123,Gerald Green,
+101,21500586-470-2,21500586-470,dribble-hand-off,TRUE,4,5:35,9.63,2547,Chris Bosh,204020,Tyler Johnson,
+102,21500586-470-3,21500586-470,dribble-hand-off,FALSE,4,5:34,9.55,204020,Tyler Johnson,2547,Chris Bosh,
+103,21500586-476-1,21500586-476,dribble-hand-off,TRUE,4,5:20,10.06,202325,Wesley Johnson,203085,Austin Rivers,
+104,21500586-477-1,21500586-477,dribble-hand-off,FALSE,4,5:02,15.75,204020,Tyler Johnson,2547,Chris Bosh,
+105,21500586-477-2,21500586-477,dribble-hand-off,TRUE,4,4:57,10.31,2547,Chris Bosh,204020,Tyler Johnson,
+106,21500586-479-1,21500586-479,dribble-hand-off,FALSE,4,4:37,8.63,2037,Jamal Crawford,2746,Josh Smith,
+107,21500586-479-2,21500586-479,dribble-hand-off,FALSE,4,4:37,8.36,2746,Josh Smith,2037,Jamal Crawford,
+108,21500586-479-3,21500586-479,dribble-hand-off,TRUE,4,4:34,5.5,2746,Josh Smith,101108,Chris Paul,
+109,21500586-489-1,21500586-489,dribble-hand-off,FALSE,4,3:26,16.64,204020,Tyler Johnson,2547,Chris Bosh,
+110,21500586-500-1,21500586-500,dribble-hand-off,FALSE,4,3:09,10.1,202325,Wesley Johnson,203085,Austin Rivers,
+111,21500586-501-1,21500586-501,dribble-hand-off,FALSE,4,2:51,15.33,101123,Gerald Green,2547,Chris Bosh,
+112,21500586-514-1,21500586-514,dribble-hand-off,FALSE,4,2:25,9.7,203085,Austin Rivers,2746,Josh Smith,jump ball
+113,21500586-514-2,21500586-514,dribble-hand-off,FALSE,4,2:25,9.65,2746,Josh Smith,203085,Austin Rivers,jump ball
+114,21500586-514-3,21500586-514,dribble-hand-off,TRUE,4,2:24,9.03,202362,Lance Stephenson,202325,Wesley Johnson,
+115,21500586-517-1,21500586-517,dribble-hand-off,FALSE,4,2:14,16.94,204020,Tyler Johnson,1626196,Josh Richardson,
+116,21500586-517-2,21500586-517,dribble-hand-off,FALSE,4,2:09,11.94,1626196,Josh Richardson,2365,Chris Andersen,pick n' pop
+117,21500586-519-1,21500586-519,dribble-hand-off,TRUE,4,1:53,7.93,202362,Lance Stephenson,203912,CJ Wilcox,
+118,21500586-524-1,21500586-524,dribble-hand-off,TRUE,4,1:28,16.23,2365,Chris Andersen,1626196,Josh Richardson,
+119,21500586-525-1,21500586-525,dribble-hand-off,TRUE,4,1:09,12.34,202325,Wesley Johnson,203912,CJ Wilcox,
+120,21500586-525-2,21500586-525,dribble-hand-off,TRUE,4,1:07,11.06,203912,CJ Wilcox,2746,Josh Smith,
+121,21500586-526-1,21500586-526,dribble-hand-off,FALSE,4,0:39,12.9,1626196,Josh Richardson,2365,Chris Andersen,
+122,21500586-528-2,21500586-528,dribble-hand-off,FALSE,4,0:35,10.02,2617,Udonis Haslem,1626196,Josh Richardson,
+123,21500586-530-1,21500586-530,dribble-hand-off,TRUE,4,0:14,10.66,2746,Josh Smith,203085,Austin Rivers,

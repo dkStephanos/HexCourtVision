@@ -1,0 +1,108 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500458-004-1,21500458-004,dribble-hand-off,FALSE,1,11:14,17.78,203903,Jordan Clarkson,201579,Roy Hibbert,
+1,21500458-022-1,21500458-022,dribble-hand-off,FALSE,1,9:15,11.49,1626204,Larry Nance Jr.,201579,Roy Hibbert,
+2,21500458-022-2,21500458-022,dribble-hand-off,TRUE,1,9:12,8.81,201579,Roy Hibbert,203903,Jordan Clarkson,borderline
+3,21500458-023-1,21500458-023,dribble-hand-off,FALSE,1,8:49,23.95,202689,Kemba Walker,101107,Marvin Williams,
+4,21500458-038-1,21500458-038,dribble-hand-off,TRUE,1,6:31,13.85,203469,Cody Zeller,203798,PJ Hairston,FAKE
+5,21500458-038-2,21500458-038,dribble-hand-off,FALSE,1,6:31,13.78,203798,PJ Hairston,203469,Cody Zeller,FAKE
+6,21500458-040-1,21500458-040,dribble-hand-off,FALSE,1,6:10,19.9,203469,Cody Zeller,203798,PJ Hairston,
+7,21500458-040-2,21500458-040,dribble-hand-off,FALSE,1,6:09,18.87,203798,PJ Hairston,202689,Kemba Walker,
+8,21500458-041-1,21500458-041,dribble-hand-off,TRUE,1,5:47,16.69,203903,Jordan Clarkson,101150,Lou Williams,
+9,21500458-042-1,21500458-042,dribble-hand-off,FALSE,1,5:30,14.34,201587,Nicolas Batum,101107,Marvin Williams,
+10,21500458-042-2,21500458-042,dribble-hand-off,TRUE,1,5:30,13.64,101107,Marvin Williams,202689,Kemba Walker,denies screen
+11,21500458-042-3,21500458-042,dribble-hand-off,FALSE,1,5:27,11.44,202689,Kemba Walker,101107,Marvin Williams,
+12,21500458-042-4,21500458-042,dribble-hand-off,TRUE,1,5:26,11.05,101107,Marvin Williams,202689,Kemba Walker,
+13,21500458-063-1,21500458-063,dribble-hand-off,FALSE,1,4:02,6.65,203903,Jordan Clarkson,977,Kobe Bryant,post entry
+14,21500458-065-1,21500458-065,dribble-hand-off,FALSE,1,3:51,20.65,202689,Kemba Walker,201587,Nicolas Batum,transition
+15,21500458-074-1,21500458-074,dribble-hand-off,FALSE,1,3:31,7.8,1626163,Frank Kaminsky,202391,Jeremy Lin,
+16,21500458-076-1,21500458-076,dribble-hand-off,TRUE,1,3:12,18.84,203944,Julius Randle,203903,Jordan Clarkson,
+17,21500458-080-1,21500458-080,dribble-hand-off,TRUE,1,3:00,16.96,1626163,Frank Kaminsky,202391,Jeremy Lin,
+18,21500458-080-2,21500458-080,dribble-hand-off,FALSE,1,2:58,14.98,203469,Cody Zeller,202689,Kemba Walker,
+19,21500458-089-1,21500458-089,dribble-hand-off,TRUE,1,2:41,4.46,101138,Brandon Bass,203903,Jordan Clarkson,
+20,21500458-089-2,21500458-089,dribble-hand-off,FALSE,1,2:38,4.13,101138,Brandon Bass,201156,Nick Young,borderline
+21,21500458-089-3,21500458-089,dribble-hand-off,FALSE,1,2:36,3.85,201156,Nick Young,101138,Brandon Bass,
+22,21500458-090-1,21500458-090,dribble-hand-off,FALSE,1,2:13,22.83,1626163,Frank Kaminsky,202689,Kemba Walker,"transition, not in possession "
+23,21500458-095-1,21500458-095,dribble-hand-off,TRUE,1,1:35,9.33,101138,Brandon Bass,203903,Jordan Clarkson,
+24,21500458-095-2,21500458-095,dribble-hand-off,FALSE,1,1:34,8.75,203903,Jordan Clarkson,101138,Brandon Bass,
+25,21500458-097-1,21500458-097,dribble-hand-off,TRUE,1,1:03,13.67,203944,Julius Randle,1626156,D'Angelo Russell,FAKE
+26,21500458-097-2,21500458-097,dribble-hand-off,TRUE,1,1:01,11.87,203944,Julius Randle,1626156,D'Angelo Russell,
+27,21500458-099-1,21500458-099,dribble-hand-off,FALSE,1,0:16,5.28,1626156,D'Angelo Russell,203944,Julius Randle,pass over head
+28,21500458-112-1,21500458-112,dribble-hand-off,FALSE,2,11:53,13.15,203087,Jeremy Lamb,2744,Al Jefferson,post entry
+29,21500458-121-1,21500458-121,dribble-hand-off,FALSE,2,11:00,13.48,1626163,Frank Kaminsky,202391,Jeremy Lin,
+30,21500458-135-1,21500458-135,dribble-hand-off,FALSE,2,10:19,10.22,1626156,D'Angelo Russell,203944,Julius Randle,pass over head
+31,21500458-135-2,21500458-135,dribble-hand-off,FALSE,2,10:19,10.17,203944,Julius Randle,101138,Brandon Bass,pass over head
+32,21500458-138-1,21500458-138,dribble-hand-off,FALSE,2,9:55,14.53,101138,Brandon Bass,101150,Lou Williams,
+33,21500458-148-1,21500458-148,dribble-hand-off,FALSE,2,9:13,16.12,1626156,D'Angelo Russell,977,Kobe Bryant,
+34,21500458-155-1,21500458-155,dribble-hand-off,TRUE,2,8:31,9.64,101138,Brandon Bass,101150,Lou Williams,
+35,21500458-161-1,21500458-161,dribble-hand-off,FALSE,2,8:16,19.66,203087,Jeremy Lamb,203798,PJ Hairston,
+36,21500458-167-1,21500458-167,dribble-hand-off,FALSE,2,7:51,17.61,1626163,Frank Kaminsky,201587,Nicolas Batum,
+37,21500458-170-1,21500458-170,dribble-hand-off,FALSE,2,7:34,15.97,1626156,D'Angelo Russell,101138,Brandon Bass,
+38,21500458-170-2,21500458-170,dribble-hand-off,TRUE,2,7:32,14.96,101138,Brandon Bass,977,Kobe Bryant,
+39,21500458-174-1,21500458-174,dribble-hand-off,FALSE,2,7:06,12.07,1626156,D'Angelo Russell,101150,Lou Williams,
+40,21500458-187-1,21500458-187,dribble-hand-off,TRUE,2,5:56,9.7,1626163,Frank Kaminsky,201587,Nicolas Batum,
+41,21500458-195-1,21500458-195,dribble-hand-off,FALSE,2,5:32,13.85,203903,Jordan Clarkson,201579,Roy Hibbert,"screen, no pass"
+42,21500458-208-1,21500458-208,dribble-hand-off,TRUE,2,3:51,9.95,977,Kobe Bryant,1626204,Larry Nance Jr.,borderline
+43,21500458-214-1,21500458-214,dribble-hand-off,TRUE,2,3:32,13.62,101107,Marvin Williams,202689,Kemba Walker,
+44,21500458-219-1,21500458-219,dribble-hand-off,FALSE,2,3:27,13.79,203903,Jordan Clarkson,101150,Lou Williams,
+45,21500458-223-1,21500458-223,dribble-hand-off,FALSE,2,2:32,11.41,201587,Nicolas Batum,203469,Cody Zeller,pick n' roll
+46,21500458-225-1,21500458-225,dribble-hand-off,FALSE,2,2:02,16.11,202689,Kemba Walker,101107,Marvin Williams,"screen, no pass"
+47,21500458-225-2,21500458-225,dribble-hand-off,FALSE,2,2:02,16,101107,Marvin Williams,202689,Kemba Walker,"screen, no pass"
+48,21500458-225-3,21500458-225,dribble-hand-off,FALSE,2,2:01,15.65,202689,Kemba Walker,101107,Marvin Williams,"screen, no pass"
+49,21500458-225-4,21500458-225,dribble-hand-off,FALSE,2,2:01,15.41,101107,Marvin Williams,202689,Kemba Walker,"screen, no pass"
+50,21500458-228-1,21500458-228,dribble-hand-off,TRUE,2,1:38,14.01,201587,Nicolas Batum,203469,Cody Zeller,
+51,21500458-230-1,21500458-230,dribble-hand-off,FALSE,2,1:05,15.03,202689,Kemba Walker,203469,Cody Zeller,pass over head
+52,21500458-234-1,21500458-234,dribble-hand-off,TRUE,2,0:42,13.33,101107,Marvin Williams,201587,Nicolas Batum,
+53,21500458-258-1,21500458-258,dribble-hand-off,FALSE,3,11:02,24,201579,Roy Hibbert,977,Kobe Bryant,
+54,21500458-267-1,21500458-267,dribble-hand-off,TRUE,3,10:21,13.99,101107,Marvin Williams,202689,Kemba Walker,
+55,21500458-283-1,21500458-283,dribble-hand-off,FALSE,3,8:08,15.64,101150,Lou Williams,977,Kobe Bryant,
+56,21500458-289-1,21500458-289,dribble-hand-off,TRUE,3,7:55,9.98,203469,Cody Zeller,201587,Nicolas Batum,
+57,21500458-289-2,21500458-289,dribble-hand-off,FALSE,3,7:48,7.88,203469,Cody Zeller,201587,Nicolas Batum,
+58,21500458-292-1,21500458-292,dribble-hand-off,FALSE,3,7:17,11.3,202689,Kemba Walker,101107,Marvin Williams,
+59,21500458-292-2,21500458-292,dribble-hand-off,TRUE,3,7:14,8.47,201587,Nicolas Batum,202391,Jeremy Lin,borderline
+60,21500458-299-1,21500458-299,dribble-hand-off,TRUE,3,6:16,17.99,101107,Marvin Williams,202391,Jeremy Lin,
+61,21500458-299-2,21500458-299,dribble-hand-off,FALSE,3,6:09,10.6,101107,Marvin Williams,202391,Jeremy Lin,
+62,21500458-300-1,21500458-300,dribble-hand-off,TRUE,3,5:46,11.83,201579,Roy Hibbert,203903,Jordan Clarkson,
+63,21500458-302-1,21500458-302,dribble-hand-off,FALSE,3,5:32,18.75,202689,Kemba Walker,203469,Cody Zeller,drop off pass
+64,21500458-314-1,21500458-314,dribble-hand-off,FALSE,3,4:45,0.75,202391,Jeremy Lin,101107,Marvin Williams,
+65,21500458-320-1,21500458-320,dribble-hand-off,FALSE,3,4:18,17.86,202391,Jeremy Lin,202689,Kemba Walker,
+66,21500458-321-1,21500458-321,dribble-hand-off,FALSE,3,3:58,16.5,1626156,D'Angelo Russell,203903,Jordan Clarkson,
+67,21500458-322-1,21500458-322,dribble-hand-off,TRUE,3,3:39,16.42,202689,Kemba Walker,201587,Nicolas Batum,
+68,21500458-327-1,21500458-327,dribble-hand-off,TRUE,3,3:17,12.94,1626163,Frank Kaminsky,201587,Nicolas Batum,3pt shot
+69,21500458-329-1,21500458-329,dribble-hand-off,FALSE,3,3:06,16.55,203944,Julius Randle,203903,Jordan Clarkson,
+70,21500458-334-1,21500458-334,dribble-hand-off,FALSE,3,2:59,13.6,202689,Kemba Walker,201587,Nicolas Batum,
+71,21500458-356-1,21500458-356,dribble-hand-off,FALSE,3,1:12,20.69,202689,Kemba Walker,1626163,Frank Kaminsky,
+72,21500458-360-1,21500458-360,dribble-hand-off,FALSE,3,0:51,15.25,1626156,D'Angelo Russell,201156,Nick Young,
+73,21500458-360-2,21500458-360,dribble-hand-off,FALSE,3,0:51,15.05,201156,Nick Young,101138,Brandon Bass,
+74,21500458-360-3,21500458-360,dribble-hand-off,FALSE,3,0:50,14.09,101138,Brandon Bass,203903,Jordan Clarkson,
+75,21500458-370-1,21500458-370,dribble-hand-off,FALSE,4,11:50,12.03,203944,Julius Randle,101150,Lou Williams,
+76,21500458-370-2,21500458-370,dribble-hand-off,FALSE,4,11:48,11.88,101150,Lou Williams,201156,Nick Young,
+77,21500458-373-1,21500458-373,dribble-hand-off,TRUE,4,11:37,17.96,202391,Jeremy Lin,202689,Kemba Walker,
+78,21500458-376-1,21500458-376,dribble-hand-off,TRUE,4,11:04,13.89,1626156,D'Angelo Russell,101150,Lou Williams,
+79,21500458-380-1,21500458-380,dribble-hand-off,FALSE,4,10:52,17.91,203087,Jeremy Lamb,1626163,Frank Kaminsky,
+80,21500458-380-2,21500458-380,dribble-hand-off,TRUE,4,10:49,14.67,2744,Al Jefferson,202689,Kemba Walker,FAKE
+81,21500458-380-3,21500458-380,dribble-hand-off,FALSE,4,10:49,14.47,202689,Kemba Walker,2744,Al Jefferson,FAKE
+82,21500458-382-1,21500458-382,dribble-hand-off,FALSE,4,10:17,1.82,203944,Julius Randle,101138,Brandon Bass,
+83,21500458-387-1,21500458-387,dribble-hand-off,FALSE,4,9:41,19.66,1626156,D'Angelo Russell,203944,Julius Randle,
+84,21500458-388-1,21500458-388,dribble-hand-off,FALSE,4,9:25,16.07,202689,Kemba Walker,202391,Jeremy Lin,
+85,21500458-404-1,21500458-404,dribble-hand-off,TRUE,4,7:55,10.89,101138,Brandon Bass,1626156,D'Angelo Russell,
+86,21500458-404-2,21500458-404,dribble-hand-off,FALSE,4,7:53,9.08,1626156,D'Angelo Russell,101138,Brandon Bass,
+87,21500458-409-2,21500458-409,dribble-hand-off,FALSE,4,7:18,24,1626156,D'Angelo Russell,101150,Lou Williams,
+88,21500458-415-1,21500458-415,dribble-hand-off,FALSE,4,7:08,12.68,201587,Nicolas Batum,202689,Kemba Walker,
+89,21500458-433-1,21500458-433,dribble-hand-off,FALSE,4,5:48,18.75,1626156,D'Angelo Russell,977,Kobe Bryant,
+90,21500458-435-1,21500458-435,dribble-hand-off,TRUE,4,5:24,8.76,1626163,Frank Kaminsky,201587,Nicolas Batum,
+91,21500458-439-1,21500458-439,dribble-hand-off,TRUE,4,5:02,10.69,203469,Cody Zeller,202391,Jeremy Lin,
+92,21500458-441-1,21500458-441,dribble-hand-off,FALSE,4,4:52,16.4,203903,Jordan Clarkson,101150,Lou Williams,
+93,21500458-444-1,21500458-444,dribble-hand-off,FALSE,4,4:39,19.01,202689,Kemba Walker,101107,Marvin Williams,
+94,21500458-444-2,21500458-444,dribble-hand-off,FALSE,4,4:38,18.33,101107,Marvin Williams,202689,Kemba Walker,
+95,21500458-445-1,21500458-445,dribble-hand-off,FALSE,4,4:22,15.6,203903,Jordan Clarkson,201579,Roy Hibbert,
+96,21500458-445-2,21500458-445,dribble-hand-off,FALSE,4,4:16,10.85,201579,Roy Hibbert,977,Kobe Bryant,
+97,21500458-445-3,21500458-445,dribble-hand-off,TRUE,4,4:11,7.1,201579,Roy Hibbert,977,Kobe Bryant,
+98,21500458-458-1,21500458-458,dribble-hand-off,FALSE,4,3:31,16.9,977,Kobe Bryant,201579,Roy Hibbert,
+99,21500458-460-1,21500458-460,dribble-hand-off,TRUE,4,3:21,14.5,202689,Kemba Walker,202391,Jeremy Lin,
+100,21500458-460-2,21500458-460,dribble-hand-off,TRUE,4,3:18,13.23,202391,Jeremy Lin,201587,Nicolas Batum,
+101,21500458-462-1,21500458-462,dribble-hand-off,FALSE,4,3:02,14.27,203903,Jordan Clarkson,1626204,Larry Nance Jr.,
+102,21500458-466-1,21500458-466,dribble-hand-off,TRUE,4,2:37,6.93,201579,Roy Hibbert,977,Kobe Bryant,
+103,21500458-469-1,21500458-469,dribble-hand-off,TRUE,4,2:26,15.63,203469,Cody Zeller,201587,Nicolas Batum,
+104,21500458-471-1,21500458-471,dribble-hand-off,FALSE,4,2:13,13.13,203903,Jordan Clarkson,977,Kobe Bryant,
+105,21500458-480-1,21500458-480,dribble-hand-off,FALSE,4,1:25,10.86,202689,Kemba Walker,101107,Marvin Williams,
+106,21500458-480-2,21500458-480,dribble-hand-off,TRUE,4,1:25,10.22,101107,Marvin Williams,202689,Kemba Walker,

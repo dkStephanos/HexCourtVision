@@ -1,0 +1,93 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500482-002-1,21500482-002,dribble-hand-off,FALSE,1,11:48,14.44,2749,Jameer Nelson,203123,Kostas Papanikolaou,
+1,21500482-019-1,21500482-019,dribble-hand-off,TRUE,1,10:37,8.68,203943,Noah Vonleh,203459,Allen Crabbe,
+2,21500482-031-1,21500482-031,dribble-hand-off,FALSE,1,9:07,23.98,203943,Noah Vonleh,203468,CJ McCollum,
+3,21500482-032-1,21500482-032,dribble-hand-off,TRUE,1,8:47,17.21,203914,Gary Harris,2749,Jameer Nelson,
+4,21500482-035-1,21500482-035,dribble-hand-off,FALSE,1,8:16,13.21,202702,Kenneth Faried,203123,Kostas Papanikolaou,
+5,21500482-045-1,21500482-045,dribble-hand-off,TRUE,1,6:45,18.84,203468,CJ McCollum,202329,Al-Farouq Aminu,
+6,21500482-045-2,21500482-045,dribble-hand-off,TRUE,1,6:43,17.52,202329,Al-Farouq Aminu,203943,Noah Vonleh,
+7,21500482-045-3,21500482-045,dribble-hand-off,FALSE,1,6:43,16.92,203943,Noah Vonleh,203468,CJ McCollum,
+8,21500482-050-1,21500482-050,dribble-hand-off,FALSE,1,6:20,13.64,203468,CJ McCollum,203459,Allen Crabbe,
+9,21500482-062-1,21500482-062,dribble-hand-off,TRUE,1,5:30,7.61,203486,Mason Plumlee,203468,CJ McCollum,
+10,21500482-063-1,21500482-063,dribble-hand-off,FALSE,1,5:07,14.35,2749,Jameer Nelson,203530,Joffrey Lauvergne,pick n' roll
+11,21500482-068-1,21500482-068,dribble-hand-off,FALSE,1,4:23,16.2,203943,Noah Vonleh,203486,Mason Plumlee,
+12,21500482-068-2,21500482-068,dribble-hand-off,FALSE,1,4:23,15.92,203486,Mason Plumlee,203468,CJ McCollum,
+13,21500482-070-1,21500482-070,dribble-hand-off,FALSE,1,3:51,11.29,202329,Al-Farouq Aminu,201945,Gerald Henderson,
+14,21500482-078-1,21500482-078,dribble-hand-off,TRUE,1,3:27,22.52,203914,Gary Harris,203115,Will Barton,
+15,21500482-083-1,21500482-083,dribble-hand-off,FALSE,1,2:39,16.32,203086,Meyers Leonard,202329,Al-Farouq Aminu,
+16,21500482-095-1,21500482-095,dribble-hand-off,FALSE,1,1:02,14.13,202329,Al-Farouq Aminu,203468,CJ McCollum,
+17,21500482-108-1,21500482-108,dribble-hand-off,FALSE,1,0:04,0,203115,Will Barton,201589,Darrell Arthur,
+18,21500482-115-1,21500482-115,dribble-hand-off,FALSE,2,11:25,12.3,200751,Randy Foye,203999,Nikola Jokic,turnover
+19,21500482-117-1,21500482-117,dribble-hand-off,TRUE,2,11:08,14.12,201589,Darrell Arthur,200751,Randy Foye,
+20,21500482-119-1,21500482-119,dribble-hand-off,FALSE,2,10:45,9.01,203086,Meyers Leonard,202334,Ed Davis,pass over head
+21,21500482-119-2,21500482-119,dribble-hand-off,FALSE,2,10:45,8.61,202334,Ed Davis,203090,Maurice Harkless,pass over head
+22,21500482-121-1,21500482-121,dribble-hand-off,FALSE,2,10:21,24,203115,Will Barton,203999,Nikola Jokic,"screen, no pass"
+23,21500482-121-2,21500482-121,dribble-hand-off,FALSE,2,10:20,24,203999,Nikola Jokic,203115,Will Barton,"screen, no pass"
+24,21500482-122-1,21500482-122,dribble-hand-off,TRUE,2,10:06,17.2,201945,Gerald Henderson,204025,Tim Frazier,
+25,21500482-124-1,21500482-124,dribble-hand-off,TRUE,2,9:50,14.42,203999,Nikola Jokic,203115,Will Barton,borderline
+26,21500482-132-1,21500482-132,dribble-hand-off,TRUE,2,9:14,12.24,203086,Meyers Leonard,204025,Tim Frazier,
+27,21500482-156-1,21500482-156,dribble-hand-off,TRUE,2,7:56,21.84,203530,Joffrey Lauvergne,2749,Jameer Nelson,
+28,21500482-159-1,21500482-159,dribble-hand-off,TRUE,2,7:30,12.22,204025,Tim Frazier,203090,Maurice Harkless,
+29,21500482-167-1,21500482-167,dribble-hand-off,FALSE,2,6:33,12.82,2749,Jameer Nelson,203530,Joffrey Lauvergne,pick n' roll
+30,21500482-172-1,21500482-172,dribble-hand-off,FALSE,2,6:23,16.1,204025,Tim Frazier,203459,Allen Crabbe,
+31,21500482-172-2,21500482-172,dribble-hand-off,FALSE,2,6:21,12.23,203459,Allen Crabbe,203086,Meyers Leonard,
+32,21500482-174-1,21500482-174,dribble-hand-off,FALSE,2,5:47,10.57,204025,Tim Frazier,203459,Allen Crabbe,
+33,21500482-176-1,21500482-176,dribble-hand-off,FALSE,2,5:16,14.92,204025,Tim Frazier,203459,Allen Crabbe,
+34,21500482-176-2,21500482-176,dribble-hand-off,TRUE,2,5:15,14.23,203459,Allen Crabbe,204025,Tim Frazier,
+35,21500482-176-3,21500482-176,dribble-hand-off,FALSE,2,5:04,20.59,204025,Tim Frazier,203459,Allen Crabbe,loose ball
+36,21500482-186-1,21500482-186,dribble-hand-off,FALSE,2,4:22,13.98,203090,Maurice Harkless,203086,Meyers Leonard,post entry pass
+37,21500482-188-1,21500482-188,dribble-hand-off,FALSE,2,4:01,17.11,203468,CJ McCollum,203486,Mason Plumlee,post entry pass
+38,21500482-194-1,21500482-194,dribble-hand-off,TRUE,2,3:47,13.91,203530,Joffrey Lauvergne,203115,Will Barton,
+39,21500482-194-2,21500482-194,dribble-hand-off,FALSE,2,3:40,5.19,2749,Jameer Nelson,203530,Joffrey Lauvergne,
+40,21500482-203-1,21500482-203,dribble-hand-off,TRUE,2,3:12,10.99,203486,Mason Plumlee,203468,CJ McCollum,
+41,21500482-206-1,21500482-206,dribble-hand-off,TRUE,2,2:59,12.21,203530,Joffrey Lauvergne,2749,Jameer Nelson,
+42,21500482-222-1,21500482-222,dribble-hand-off,TRUE,2,1:49,17.43,203468,CJ McCollum,203459,Allen Crabbe,
+43,21500482-222-2,21500482-222,dribble-hand-off,FALSE,2,1:47,14.03,203459,Allen Crabbe,203468,CJ McCollum,
+44,21500482-225-1,21500482-225,dribble-hand-off,FALSE,2,1:10,16.91,202702,Kenneth Faried,203115,Will Barton,borderline
+45,21500482-225-2,21500482-225,dribble-hand-off,FALSE,2,1:06,13.67,203115,Will Barton,202702,Kenneth Faried,player collision
+46,21500482-225-3,21500482-225,dribble-hand-off,FALSE,2,1:06,13.43,202702,Kenneth Faried,203115,Will Barton,player collision
+47,21500482-225-4,21500482-225,dribble-hand-off,FALSE,2,1:04,11.55,203115,Will Barton,202702,Kenneth Faried,pass over head
+48,21500482-235-1,21500482-235,dribble-hand-off,FALSE,2,0:38,14.76,203530,Joffrey Lauvergne,2749,Jameer Nelson,
+49,21500482-235-2,21500482-235,dribble-hand-off,FALSE,2,0:38,14.56,2749,Jameer Nelson,203530,Joffrey Lauvergne,"screen, no pass"
+50,21500482-235-3,21500482-235,dribble-hand-off,FALSE,2,0:37,13.72,203530,Joffrey Lauvergne,2749,Jameer Nelson,"screen, no pass"
+51,21500482-238-1,21500482-238,dribble-hand-off,FALSE,2,0:11,6.96,2749,Jameer Nelson,203530,Joffrey Lauvergne,pass over head
+52,21500482-249-1,21500482-249,dribble-hand-off,FALSE,3,10:40,16.75,203486,Mason Plumlee,202329,Al-Farouq Aminu,borderline
+53,21500482-252-1,21500482-252,dribble-hand-off,FALSE,3,10:15,8.54,203914,Gary Harris,203530,Joffrey Lauvergne,pick n' roll
+54,21500482-262-1,21500482-262,dribble-hand-off,TRUE,3,8:59,13.72,202702,Kenneth Faried,203123,Kostas Papanikolaou,3pt shot
+55,21500482-266-1,21500482-266,dribble-hand-off,FALSE,3,8:33,10.27,203123,Kostas Papanikolaou,202702,Kenneth Faried,
+56,21500482-266-2,21500482-266,dribble-hand-off,FALSE,3,8:32,9.01,203914,Gary Harris,203530,Joffrey Lauvergne,
+57,21500482-266-3,21500482-266,dribble-hand-off,TRUE,3,8:30,7.9,203530,Joffrey Lauvergne,203914,Gary Harris,
+58,21500482-267-1,21500482-267,dribble-hand-off,TRUE,3,8:09,8.39,203943,Noah Vonleh,202329,Al-Farouq Aminu,
+59,21500482-277-1,21500482-277,dribble-hand-off,FALSE,3,6:33,15.89,2749,Jameer Nelson,202702,Kenneth Faried,
+60,21500482-278-1,21500482-278,dribble-hand-off,FALSE,3,6:24,18.94,203943,Noah Vonleh,203459,Allen Crabbe,
+61,21500482-282-1,21500482-282,dribble-hand-off,TRUE,3,6:15,15.27,203530,Joffrey Lauvergne,203115,Will Barton,
+62,21500482-282-2,21500482-282,dribble-hand-off,FALSE,3,6:12,13.87,203115,Will Barton,202702,Kenneth Faried,
+63,21500482-287-1,21500482-287,dribble-hand-off,FALSE,3,5:31,13.71,203468,CJ McCollum,202329,Al-Farouq Aminu,
+64,21500482-288-1,21500482-288,dribble-hand-off,TRUE,3,4:48,6.06,203486,Mason Plumlee,203468,CJ McCollum,
+65,21500482-306-1,21500482-306,dribble-hand-off,TRUE,3,3:53,21.69,203486,Mason Plumlee,201945,Gerald Henderson,
+66,21500482-306-2,21500482-306,dribble-hand-off,FALSE,3,3:52,21.13,201945,Gerald Henderson,203486,Mason Plumlee,"screen, no pass"
+67,21500482-306-3,21500482-306,dribble-hand-off,FALSE,3,3:52,20.49,201945,Gerald Henderson,203086,Meyers Leonard,"screen, no pass"
+68,21500482-316-1,21500482-316,dribble-hand-off,TRUE,3,3:09,16.08,203086,Meyers Leonard,203459,Allen Crabbe,
+69,21500482-316-2,21500482-316,dribble-hand-off,FALSE,3,3:07,14.88,203459,Allen Crabbe,203086,Meyers Leonard,
+70,21500482-333-1,21500482-333,dribble-hand-off,FALSE,3,1:44,10.09,204025,Tim Frazier,202334,Ed Davis,
+71,21500482-333-2,21500482-333,dribble-hand-off,TRUE,3,1:42,7.82,202334,Ed Davis,204025,Tim Frazier,
+72,21500482-345-1,21500482-345,dribble-hand-off,FALSE,3,0:46,7.24,2749,Jameer Nelson,203999,Nikola Jokic,pass over head
+73,21500482-345-2,21500482-345,dribble-hand-off,FALSE,3,0:42,5.86,2749,Jameer Nelson,203999,Nikola Jokic,
+74,21500482-371-1,21500482-371,dribble-hand-off,FALSE,4,11:34,14.18,203086,Meyers Leonard,204025,Tim Frazier,
+75,21500482-379-1,21500482-379,dribble-hand-off,FALSE,4,10:16,21.84,203090,Maurice Harkless,203086,Meyers Leonard,
+76,21500482-393-1,21500482-393,dribble-hand-off,FALSE,4,9:24,16.96,203468,CJ McCollum,201945,Gerald Henderson,
+77,21500482-393-2,21500482-393,dribble-hand-off,TRUE,4,9:23,15.6,201945,Gerald Henderson,203468,CJ McCollum,
+78,21500482-395-1,21500482-395,dribble-hand-off,FALSE,4,8:51,20.84,203115,Will Barton,203999,Nikola Jokic,"transition, not in possession"
+79,21500482-408-1,21500482-408,dribble-hand-off,TRUE,4,8:13,17.99,201945,Gerald Henderson,202329,Al-Farouq Aminu,
+80,21500482-418-1,21500482-418,dribble-hand-off,FALSE,4,7:18,16.16,203468,CJ McCollum,203090,Maurice Harkless,
+81,21500482-418-2,21500482-418,dribble-hand-off,TRUE,4,7:10,7.6,203090,Maurice Harkless,203468,CJ McCollum,
+82,21500482-427-1,21500482-427,dribble-hand-off,FALSE,4,6:17,14.19,203468,CJ McCollum,202329,Al-Farouq Aminu,
+83,21500482-427-2,21500482-427,dribble-hand-off,TRUE,4,6:16,13.73,202329,Al-Farouq Aminu,203468,CJ McCollum,
+84,21500482-449-1,21500482-449,dribble-hand-off,TRUE,4,3:07,18.56,203090,Maurice Harkless,203486,Mason Plumlee,
+85,21500482-449-2,21500482-449,dribble-hand-off,TRUE,4,3:06,15.69,203486,Mason Plumlee,203468,CJ McCollum,
+86,21500482-449-3,21500482-449,dribble-hand-off,FALSE,4,3:04,14.78,203468,CJ McCollum,203486,Mason Plumlee,
+87,21500482-458-1,21500482-458,dribble-hand-off,TRUE,4,2:45,12.3,203486,Mason Plumlee,203468,CJ McCollum,
+88,21500482-463-1,21500482-463,dribble-hand-off,TRUE,4,2:04,13.28,203090,Maurice Harkless,203468,CJ McCollum,
+89,21500482-467-1,21500482-467,dribble-hand-off,TRUE,4,1:46,12.72,2034,Mike Miller,203115,Will Barton,
+90,21500482-471-1,21500482-471,dribble-hand-off,FALSE,4,1:09,12.66,203115,Will Barton,202702,Kenneth Faried,"screen, no pass"
+91,21500482-471-2,21500482-471,dribble-hand-off,FALSE,4,1:08,12.59,202702,Kenneth Faried,203115,Will Barton,"screen, no pass"

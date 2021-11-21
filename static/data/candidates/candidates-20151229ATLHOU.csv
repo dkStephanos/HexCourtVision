@@ -1,0 +1,36 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500470-004-1,21500470-004,dribble-hand-off,FALSE,1,10:59,20.04,203991,Clint Capela,201976,Patrick Beverley,
+1,21500470-017-1,21500470-017,dribble-hand-off,FALSE,1,9:59,18.62,200794,Paul Millsap,2594,Kyle Korver,
+2,21500470-024-1,21500470-024,dribble-hand-off,FALSE,1,9:21,19.53,201976,Patrick Beverley,201935,James Harden,
+3,21500470-029-1,21500470-029,dribble-hand-off,FALSE,1,8:44,12.97,201952,Jeff Teague,200794,Paul Millsap,pick n' roll
+4,21500470-082-1,21500470-082,dribble-hand-off,FALSE,1,5:31,20.51,201935,James Harden,2730,Dwight Howard,"screen, no pass"
+5,21500470-082-2,21500470-082,dribble-hand-off,FALSE,1,5:31,20.29,2730,Dwight Howard,201935,James Harden,"screen, no pass"
+6,21500470-099-1,21500470-099,dribble-hand-off,TRUE,1,3:43,16.27,204002,Walter Tavares,201952,Jeff Teague,
+7,21500470-153-1,21500470-153,dribble-hand-off,TRUE,2,10:06,16.45,203118,Mike Scott,202714,Shelvin Mack,
+8,21500470-172-1,21500470-172,dribble-hand-off,FALSE,2,7:54,16.38,202714,Shelvin Mack,201143,Al Horford,
+9,21500470-201-1,21500470-201,dribble-hand-off,FALSE,2,5:08,7.3,201952,Jeff Teague,203145,Kent Bazemore,
+10,21500470-203-1,21500470-203,dribble-hand-off,TRUE,2,5:00,12.01,200794,Paul Millsap,203145,Kent Bazemore,
+11,21500470-226-1,21500470-226,dribble-hand-off,FALSE,2,2:46,14.52,203145,Kent Bazemore,204002,Walter Tavares,
+12,21500470-226-2,21500470-226,dribble-hand-off,FALSE,2,2:45,14.44,204002,Walter Tavares,203145,Kent Bazemore,
+13,21500470-245-1,21500470-245,dribble-hand-off,FALSE,2,1:38,13.38,201952,Jeff Teague,200794,Paul Millsap,pass over head
+14,21500470-265-1,21500470-265,dribble-hand-off,FALSE,2,0:16,0,200757,Thabo Sefolosha,201952,Jeff Teague,
+15,21500470-290-1,21500470-290,dribble-hand-off,FALSE,3,9:39,10.62,201935,James Harden,203991,Clint Capela,pick n' roll
+16,21500470-292-1,21500470-292,dribble-hand-off,FALSE,3,9:18,20.18,201976,Patrick Beverley,2772,Trevor Ariza,
+17,21500470-304-1,21500470-304,dribble-hand-off,FALSE,3,8:36,17.65,203991,Clint Capela,201976,Patrick Beverley,
+18,21500470-304-2,21500470-304,dribble-hand-off,TRUE,3,8:34,15.6,2730,Dwight Howard,201976,Patrick Beverley,FAKE
+19,21500470-304-3,21500470-304,dribble-hand-off,FALSE,3,8:33,15.36,201976,Patrick Beverley,2730,Dwight Howard,FAKE
+20,21500470-305-1,21500470-305,dribble-hand-off,TRUE,3,8:19,16.59,200794,Paul Millsap,201952,Jeff Teague,
+21,21500470-333-1,21500470-333,dribble-hand-off,FALSE,3,5:44,12.16,200757,Thabo Sefolosha,201143,Al Horford,
+22,21500470-333-2,21500470-333,dribble-hand-off,TRUE,3,5:36,4.28,201952,Jeff Teague,203145,Kent Bazemore,
+23,21500470-344-1,21500470-344,dribble-hand-off,TRUE,3,4:35,17.74,200794,Paul Millsap,203145,Kent Bazemore,
+24,21500470-344-2,21500470-344,dribble-hand-off,FALSE,3,4:33,15.82,203145,Kent Bazemore,200794,Paul Millsap,
+25,21500470-414-1,21500470-414,dribble-hand-off,FALSE,3,0:03,0,201147,Corey Brewer,202700,Donatas Motiejunas,
+26,21500470-437-1,21500470-437,dribble-hand-off,TRUE,4,10:20,12.94,203118,Mike Scott,202714,Shelvin Mack,
+27,21500470-447-1,21500470-447,dribble-hand-off,FALSE,4,9:16,20.11,203991,Clint Capela,2730,Dwight Howard,
+28,21500470-447-2,21500470-447,dribble-hand-off,TRUE,4,9:12,15.99,2730,Dwight Howard,201147,Corey Brewer,
+29,21500470-485-1,21500470-485,dribble-hand-off,TRUE,4,7:03,19.17,200794,Paul Millsap,203145,Kent Bazemore,
+30,21500470-486-1,21500470-486,dribble-hand-off,TRUE,4,6:47,15.43,201976,Patrick Beverley,2772,Trevor Ariza,
+31,21500470-494-1,21500470-494,dribble-hand-off,FALSE,4,6:18,24,200757,Thabo Sefolosha,203145,Kent Bazemore,
+32,21500470-502-1,21500470-502,dribble-hand-off,FALSE,4,5:28,4.7,203991,Clint Capela,2772,Trevor Ariza,pass following off reb
+33,21500470-571-1,21500470-571,dribble-hand-off,FALSE,4,2:33,22.41,2594,Kyle Korver,201952,Jeff Teague,
+34,21500470-602-1,21500470-602,dribble-hand-off,FALSE,4,1:25,14.91,201143,Al Horford,201952,Jeff Teague,"pass, followed by pick n' roll"

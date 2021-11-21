@@ -1,0 +1,35 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500585-005-1,21500585-005,dribble-hand-off,TRUE,1,10:49,19.7,200765,Rajon Rondo,200752,Rudy Gay,
+1,21500585-008-1,21500585-008,dribble-hand-off,TRUE,1,10:35,17.4,203076,Anthony Davis,201936,Tyreke Evans,
+2,21500585-017-1,21500585-017,dribble-hand-off,FALSE,1,9:37,15.34,201936,Tyreke Evans,201600,Omer Asik,pass over head
+3,21500585-017-2,21500585-017,dribble-hand-off,FALSE,1,9:37,15.02,201600,Omer Asik,201569,Eric Gordon,pass over head
+4,21500585-026-1,21500585-026,dribble-hand-off,FALSE,1,8:22,13.57,203112,Quincy Acy,200752,Rudy Gay,
+5,21500585-030-1,21500585-030,dribble-hand-off,FALSE,1,7:19,12.12,203463,Ben McLemore,202326,DeMarcus Cousins,pick n' pop
+6,21500585-052-1,21500585-052,dribble-hand-off,FALSE,1,4:43,15.17,200765,Rajon Rondo,201158,Marco Belinelli,
+7,21500585-052-2,21500585-052,dribble-hand-off,FALSE,1,4:42,14.43,201158,Marco Belinelli,201585,Kosta Koufos,
+8,21500585-058-1,21500585-058,dribble-hand-off,TRUE,1,4:01,12.78,203076,Anthony Davis,201950,Jrue Holiday,
+9,21500585-071-1,21500585-071,dribble-hand-off,TRUE,1,2:47,23.01,201600,Omer Asik,201950,Jrue Holiday,
+10,21500585-135-1,21500585-135,dribble-hand-off,FALSE,2,9:40,17.97,201954,Darren Collison,201585,Kosta Koufos,loose ball
+11,21500585-135-2,21500585-135,dribble-hand-off,FALSE,2,9:40,17.82,201585,Kosta Koufos,201956,Omri Casspi,loose ball
+12,21500585-161-1,21500585-161,dribble-hand-off,FALSE,2,7:13,20.03,200765,Rajon Rondo,200752,Rudy Gay,
+13,21500585-161-2,21500585-161,dribble-hand-off,TRUE,2,7:08,14.96,202326,DeMarcus Cousins,201954,Darren Collison,
+14,21500585-170-1,21500585-170,dribble-hand-off,TRUE,2,5:54,17.36,201583,Ryan Anderson,201569,Eric Gordon,
+15,21500585-193-1,21500585-193,dribble-hand-off,FALSE,2,4:12,18.18,202708,Norris Cole,203076,Anthony Davis,pick n' roll
+16,21500585-234-1,21500585-234,dribble-hand-off,FALSE,2,0:40,13.28,202708,Norris Cole,203076,Anthony Davis,
+17,21500585-234-2,21500585-234,dribble-hand-off,TRUE,2,0:38,12.12,203076,Anthony Davis,201569,Eric Gordon,
+18,21500585-250-1,21500585-250,dribble-hand-off,TRUE,3,11:03,9.83,203076,Anthony Davis,202708,Norris Cole,
+19,21500585-251-1,21500585-251,dribble-hand-off,FALSE,3,10:38,15.45,203076,Anthony Davis,201600,Omer Asik,borderline
+20,21500585-251-2,21500585-251,dribble-hand-off,FALSE,3,10:38,15.2,201600,Omer Asik,202708,Norris Cole,pass over head
+21,21500585-257-1,21500585-257,dribble-hand-off,FALSE,3,9:56,14.44,201967,Dante Cunningham,202708,Norris Cole,inbound pass
+22,21500585-266-1,21500585-266,dribble-hand-off,FALSE,3,8:46,20.22,200752,Rudy Gay,201585,Kosta Koufos,"fastbreak, lob pass"
+23,21500585-278-1,21500585-278,dribble-hand-off,FALSE,3,7:10,15.63,201600,Omer Asik,201569,Eric Gordon,borderline
+24,21500585-292-1,21500585-292,dribble-hand-off,TRUE,3,5:59,17.61,202326,DeMarcus Cousins,200765,Rajon Rondo,lazy
+25,21500585-310-1,21500585-310,dribble-hand-off,FALSE,3,4:49,17.4,201569,Eric Gordon,201582,Alexis Ajinca,"screen, no pass"
+26,21500585-310-2,21500585-310,dribble-hand-off,FALSE,3,4:49,17.17,201582,Alexis Ajinca,201569,Eric Gordon,"screen, no pass"
+27,21500585-354-1,21500585-354,dribble-hand-off,TRUE,3,1:12,18.49,201950,Jrue Holiday,201569,Eric Gordon,
+28,21500585-392-1,21500585-392,dribble-hand-off,FALSE,4,9:35,14,203552,Seth Curry,201954,Darren Collison,inbound pass
+29,21500585-434-1,21500585-434,dribble-hand-off,TRUE,4,5:56,16.14,201950,Jrue Holiday,202708,Norris Cole,
+30,21500585-434-2,21500585-434,dribble-hand-off,TRUE,4,5:51,11.03,203076,Anthony Davis,201950,Jrue Holiday,
+31,21500585-438-1,21500585-438,dribble-hand-off,FALSE,4,5:33,20.87,201569,Eric Gordon,202708,Norris Cole,
+32,21500585-451-1,21500585-451,dribble-hand-off,FALSE,4,4:55,6.13,202708,Norris Cole,201600,Omer Asik,"screen, no pass"
+33,21500585-455-1,21500585-455,dribble-hand-off,FALSE,4,4:18,22.5,203076,Anthony Davis,201569,Eric Gordon,fastbreak

@@ -1,0 +1,50 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500481-030-1,21500481-030,dribble-hand-off,FALSE,1,8:59,19.29,202688,Brandon Knight,202720,Jon Leuer,
+1,21500481-033-1,21500481-033,dribble-hand-off,TRUE,1,8:39,12.6,201980,Danny Green,202695,Kawhi Leonard,
+2,21500481-033-2,21500481-033,dribble-hand-off,TRUE,1,8:37,10.72,202695,Kawhi Leonard,2225,Tony Parker,
+3,21500481-042-1,21500481-042,dribble-hand-off,FALSE,1,7:30,17.15,202688,Brandon Knight,202693,Markieff Morris,
+4,21500481-042-2,21500481-042,dribble-hand-off,TRUE,1,7:28,15.98,202693,Markieff Morris,202688,Brandon Knight,"FAKE, denies screen"
+5,21500481-044-1,21500481-044,dribble-hand-off,FALSE,1,7:12,12.89,2225,Tony Parker,200746,LaMarcus Aldridge,pick n' pop
+6,21500481-055-1,21500481-055,dribble-hand-off,FALSE,1,6:20,12.23,2225,Tony Parker,2561,David West,pick n' pop
+7,21500481-057-1,21500481-057,dribble-hand-off,TRUE,1,6:07,17.34,2199,Tyson Chandler,201603,Sonny Weems,FAKE
+8,21500481-057-2,21500481-057,dribble-hand-off,TRUE,1,6:07,17.22,201603,Sonny Weems,202688,Brandon Knight,
+9,21500481-060-1,21500481-060,dribble-hand-off,FALSE,1,5:23,16.53,202688,Brandon Knight,202693,Markieff Morris,pick n' roll
+10,21500481-062-1,21500481-062,dribble-hand-off,TRUE,1,4:57,12.1,202693,Markieff Morris,201603,Sonny Weems,3pt shot
+11,21500481-100-1,21500481-100,dribble-hand-off,TRUE,1,1:39,18.54,203955,Bryce Cotton,202693,Markieff Morris,
+12,21500481-104-1,21500481-104,dribble-hand-off,TRUE,1,1:03,14.42,203458,Alex Len,203955,Bryce Cotton,
+13,21500481-106-1,21500481-106,dribble-hand-off,FALSE,1,0:48,13.67,203458,Alex Len,202693,Markieff Morris,
+14,21500481-106-2,21500481-106,dribble-hand-off,TRUE,1,0:46,12.23,202693,Markieff Morris,201603,Sonny Weems,
+15,21500481-126-1,21500481-126,dribble-hand-off,FALSE,2,10:57,12.97,203955,Bryce Cotton,203933,TJ Warren,
+16,21500481-131-1,21500481-131,dribble-hand-off,FALSE,2,10:30,16.77,203933,TJ Warren,203928,Cory Jefferson,pick n' pop
+17,21500481-135-1,21500481-135,dribble-hand-off,FALSE,2,10:06,17.2,201988,Patty Mills,1938,Manu Ginobili,
+18,21500481-136-1,21500481-136,dribble-hand-off,TRUE,2,9:51,19.35,203141,Mirza Teletovic,1626164,Devin Booker,borderline
+19,21500481-165-1,21500481-165,dribble-hand-off,FALSE,2,8:02,15.15,203933,TJ Warren,202720,Jon Leuer,
+20,21500481-169-1,21500481-169,dribble-hand-off,FALSE,2,7:10,18.64,2225,Tony Parker,2564,Boris Diaw,
+21,21500481-176-1,21500481-176,dribble-hand-off,FALSE,2,6:40,15.97,2225,Tony Parker,2564,Boris Diaw,
+22,21500481-177-1,21500481-177,dribble-hand-off,FALSE,2,6:25,13.22,1626164,Devin Booker,203933,TJ Warren,
+23,21500481-204-1,21500481-204,dribble-hand-off,FALSE,2,4:05,8.81,202695,Kawhi Leonard,2225,Tony Parker,
+24,21500481-205-1,21500481-205,dribble-hand-off,FALSE,2,3:45,15.25,2199,Tyson Chandler,202720,Jon Leuer,
+25,21500481-221-1,21500481-221,dribble-hand-off,FALSE,2,1:50,14.83,2225,Tony Parker,200746,LaMarcus Aldridge,"screen, no pass"
+26,21500481-221-2,21500481-221,dribble-hand-off,FALSE,2,1:49,14.55,200746,LaMarcus Aldridge,2225,Tony Parker,"screen, no pass"
+27,21500481-226-1,21500481-226,dribble-hand-off,FALSE,2,1:00,20.08,202688,Brandon Knight,202720,Jon Leuer,
+28,21500481-226-2,21500481-226,dribble-hand-off,TRUE,2,0:56,16.28,202720,Jon Leuer,202688,Brandon Knight,
+29,21500481-247-1,21500481-247,dribble-hand-off,TRUE,3,11:14,17.68,202688,Brandon Knight,200782,PJ Tucker,
+30,21500481-250-1,21500481-250,dribble-hand-off,TRUE,3,10:36,22.19,202688,Brandon Knight,200782,PJ Tucker,
+31,21500481-250-2,21500481-250,dribble-hand-off,TRUE,3,10:33,19.15,2199,Tyson Chandler,202688,Brandon Knight,immediate shot
+32,21500481-293-1,21500481-293,dribble-hand-off,TRUE,3,6:24,14.72,1626164,Devin Booker,200782,PJ Tucker,
+33,21500481-293-2,21500481-293,dribble-hand-off,TRUE,3,6:22,11.94,2199,Tyson Chandler,1626164,Devin Booker,
+34,21500481-294-1,21500481-294,dribble-hand-off,TRUE,3,6:07,13.85,200746,LaMarcus Aldridge,2225,Tony Parker,early pass
+35,21500481-304-1,21500481-304,dribble-hand-off,FALSE,3,5:42,0,2199,Tyson Chandler,1626164,Devin Booker,break in play
+36,21500481-349-1,21500481-349,dribble-hand-off,FALSE,3,1:42,16.3,202695,Kawhi Leonard,2564,Boris Diaw,
+37,21500481-350-1,21500481-350,dribble-hand-off,FALSE,3,1:15,8.2,1626164,Devin Booker,202693,Markieff Morris,
+38,21500481-350-2,21500481-350,dribble-hand-off,TRUE,3,1:15,7.88,202693,Markieff Morris,1626164,Devin Booker,
+39,21500481-372-1,21500481-372,dribble-hand-off,FALSE,4,10:54,5.89,201988,Patty Mills,1938,Manu Ginobili,pass over head
+40,21500481-379-1,21500481-379,dribble-hand-off,FALSE,4,10:01,12.45,203613,Jonathon Simmons,2588,Matt Bonner,"screen, no pass"
+41,21500481-379-2,21500481-379,dribble-hand-off,FALSE,4,9:59,10.17,203613,Jonathon Simmons,2588,Matt Bonner,"screen, no pass"
+42,21500481-411-1,21500481-411,dribble-hand-off,TRUE,4,7:46,18.4,203933,TJ Warren,203462,Archie Goodwin,
+43,21500481-415-1,21500481-415,dribble-hand-off,FALSE,4,7:18,17.25,202720,Jon Leuer,203933,TJ Warren,
+44,21500481-452-1,21500481-452,dribble-hand-off,TRUE,4,3:44,8.07,2588,Matt Bonner,203613,Jonathon Simmons,
+45,21500481-459-2,21500481-459,dribble-hand-off,FALSE,4,2:59,17,203955,Bryce Cotton,201603,Sonny Weems,
+46,21500481-459-3,21500481-459,dribble-hand-off,TRUE,4,2:57,13.93,203928,Cory Jefferson,201603,Sonny Weems,
+47,21500481-466-1,21500481-466,dribble-hand-off,FALSE,4,2:34,24,203937,Kyle Anderson,1626246,Boban Marjanovic,dump off pass
+48,21500481-485-1,21500481-485,dribble-hand-off,TRUE,4,0:42,17.6,203458,Alex Len,203462,Archie Goodwin,

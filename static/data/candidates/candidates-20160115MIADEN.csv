@@ -1,0 +1,39 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500600-011-1,21500600-011,dribble-hand-off,FALSE,1,10:14,15,201568,Danilo Gallinari,2749,Jameer Nelson,
+1,21500600-017-1,21500600-017,dribble-hand-off,TRUE,1,9:22,14,202355,Hassan Whiteside,2757,Beno Udrih,
+2,21500600-019-1,21500600-019,dribble-hand-off,TRUE,1,9:04,12.43,202702,Kenneth Faried,2749,Jameer Nelson,
+3,21500600-024-1,21500600-024,dribble-hand-off,FALSE,1,8:32,19,2757,Beno Udrih,202355,Hassan Whiteside,
+4,21500600-024-2,21500600-024,dribble-hand-off,TRUE,1,8:31,18,202355,Hassan Whiteside,2757,Beno Udrih,
+5,21500600-030-1,21500600-030,dribble-hand-off,TRUE,1,7:56,10.73,2547,Chris Bosh,101123,Gerald Green,
+6,21500600-032-1,21500600-032,dribble-hand-off,TRUE,1,7:13,9.11,2547,Chris Bosh,2757,Beno Udrih,"borderline, denies screen"
+7,21500600-032-2,21500600-032,dribble-hand-off,FALSE,1,7:11,7.38,2757,Beno Udrih,2547,Chris Bosh,pocket pass
+8,21500600-085-1,21500600-085,dribble-hand-off,TRUE,1,1:59,11.02,2736,Luol Deng,204020,Tyler Johnson,
+9,21500600-090-1,21500600-090,dribble-hand-off,FALSE,1,1:10,20.25,1626159,Justise Winslow,1626196,Josh Richardson,transition
+10,21500600-090-2,21500600-090,dribble-hand-off,TRUE,1,1:06,15.61,2547,Chris Bosh,1626196,Josh Richardson,
+11,21500600-108-1,21500600-108,dribble-hand-off,FALSE,2,11:19,15.7,203999,Nikola Jokic,201589,Darrell Arthur,
+12,21500600-109-1,21500600-109,dribble-hand-off,TRUE,2,10:59,10.39,2547,Chris Bosh,204020,Tyler Johnson,
+13,21500600-128-1,21500600-128,dribble-hand-off,TRUE,2,9:27,8.42,203999,Nikola Jokic,200751,Randy Foye,
+14,21500600-135-1,21500600-135,dribble-hand-off,TRUE,2,8:00,18.92,200751,Randy Foye,1626144,Emmanuel Mudiay,
+15,21500600-154-1,21500600-154,dribble-hand-off,FALSE,2,7:21,10,1626196,Josh Richardson,101123,Gerald Green,
+16,21500600-154-2,21500600-154,dribble-hand-off,FALSE,2,7:14,8.59,101123,Gerald Green,2736,Luol Deng,
+17,21500600-208-1,21500600-208,dribble-hand-off,FALSE,2,3:15,10.39,2757,Beno Udrih,2547,Chris Bosh,
+18,21500600-242-1,21500600-242,dribble-hand-off,FALSE,2,1:19,10.94,2749,Jameer Nelson,203115,Will Barton,
+19,21500600-250-1,21500600-250,dribble-hand-off,FALSE,2,0:59,15.48,2547,Chris Bosh,2736,Luol Deng,
+20,21500600-250-2,21500600-250,dribble-hand-off,FALSE,2,0:58,13.67,202355,Hassan Whiteside,1626196,Josh Richardson,pass over head
+21,21500600-250-3,21500600-250,dribble-hand-off,FALSE,2,0:55,10.86,1626196,Josh Richardson,2736,Luol Deng,
+22,21500600-291-1,21500600-291,dribble-hand-off,TRUE,3,9:15,16.75,202702,Kenneth Faried,203914,Gary Harris,
+23,21500600-294-1,21500600-294,dribble-hand-off,FALSE,3,9:09,11.21,201589,Darrell Arthur,2749,Jameer Nelson,
+24,21500600-317-1,21500600-317,dribble-hand-off,FALSE,3,6:53,13.74,202702,Kenneth Faried,201568,Danilo Gallinari,
+25,21500600-328-1,21500600-328,dribble-hand-off,FALSE,3,6:08,5.25,2757,Beno Udrih,101123,Gerald Green,
+26,21500600-391-1,21500600-391,dribble-hand-off,FALSE,3,0:58,18.71,1626144,Emmanuel Mudiay,201568,Danilo Gallinari,
+27,21500600-399-1,21500600-399,dribble-hand-off,FALSE,3,0:12,7.93,202355,Hassan Whiteside,204020,Tyler Johnson,"borderline, denies screen"
+28,21500600-399-2,21500600-399,dribble-hand-off,TRUE,3,0:11,6.49,204020,Tyler Johnson,2757,Beno Udrih,
+29,21500600-408-1,21500600-408,dribble-hand-off,TRUE,4,11:12,9,202355,Hassan Whiteside,2736,Luol Deng,immediate jump shot
+30,21500600-412-1,21500600-412,dribble-hand-off,FALSE,4,10:13,10.79,1626144,Emmanuel Mudiay,203115,Will Barton,
+31,21500600-415-1,21500600-415,dribble-hand-off,FALSE,4,9:32,11.7,1626144,Emmanuel Mudiay,203914,Gary Harris,"screen, no pass"
+32,21500600-415-2,21500600-415,dribble-hand-off,FALSE,4,9:32,11.58,203914,Gary Harris,1626144,Emmanuel Mudiay,"screen, no pass"
+33,21500600-435-1,21500600-435,dribble-hand-off,TRUE,4,8:11,11.3,1626159,Justise Winslow,2736,Luol Deng,
+34,21500600-438-1,21500600-438,dribble-hand-off,FALSE,4,7:20,5.56,204020,Tyler Johnson,2736,Luol Deng,
+35,21500600-475-1,21500600-475,dribble-hand-off,TRUE,4,4:12,8.01,1626159,Justise Winslow,2757,Beno Udrih,
+36,21500600-490-1,21500600-490,dribble-hand-off,TRUE,4,2:25,18.86,2757,Beno Udrih,204020,Tyler Johnson,
+37,21500600-493-1,21500600-493,dribble-hand-off,FALSE,4,2:17,14,2736,Luol Deng,2757,Beno Udrih,inbound pass

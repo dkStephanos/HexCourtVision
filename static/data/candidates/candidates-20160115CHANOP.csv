@@ -1,0 +1,51 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500598-005-1,21500598-005,dribble-hand-off,FALSE,1,10:54,24,201587,Nicolas Batum,203469,Cody Zeller,pocket pass
+1,21500598-006-1,21500598-006,dribble-hand-off,TRUE,1,10:39,17.69,203076,Anthony Davis,201936,Tyreke Evans,
+2,21500598-011-1,21500598-011,dribble-hand-off,FALSE,1,9:55,16.66,202689,Kemba Walker,201587,Nicolas Batum,
+3,21500598-013-1,21500598-013,dribble-hand-off,FALSE,1,9:44,17.45,201936,Tyreke Evans,203076,Anthony Davis,
+4,21500598-013-2,21500598-013,dribble-hand-off,TRUE,1,9:42,15.26,203076,Anthony Davis,201936,Tyreke Evans,"borderline, long pass"
+5,21500598-015-1,21500598-015,dribble-hand-off,TRUE,1,9:23,13.94,203469,Cody Zeller,201587,Nicolas Batum,3pt shot
+6,21500598-019-1,21500598-019,dribble-hand-off,TRUE,1,8:52,16.7,202689,Kemba Walker,201587,Nicolas Batum,
+7,21500598-031-1,21500598-031,dribble-hand-off,TRUE,1,7:59,10.45,201967,Dante Cunningham,201936,Tyreke Evans,
+8,21500598-032-1,21500598-032,dribble-hand-off,FALSE,1,7:26,16.99,201936,Tyreke Evans,203076,Anthony Davis,
+9,21500598-042-1,21500598-042,dribble-hand-off,TRUE,1,6:44,11.26,203076,Anthony Davis,201936,Tyreke Evans,
+10,21500598-051-1,21500598-051,dribble-hand-off,FALSE,1,5:47,13.97,201600,Omer Asik,201936,Tyreke Evans,
+11,21500598-077-1,21500598-077,dribble-hand-off,FALSE,1,3:31,3.87,201950,Jrue Holiday,201583,Ryan Anderson,
+12,21500598-080-1,21500598-080,dribble-hand-off,TRUE,1,2:18,16.07,101107,Marvin Williams,202689,Kemba Walker,
+13,21500598-081-1,21500598-081,dribble-hand-off,FALSE,1,2:05,16.21,201569,Eric Gordon,203076,Anthony Davis,
+14,21500598-090-1,21500598-090,dribble-hand-off,TRUE,1,1:23,10.47,201150,Spencer Hawes,202689,Kemba Walker,
+15,21500598-114-1,21500598-114,dribble-hand-off,FALSE,2,10:39,19.58,202087,Alonzo Gee,201950,Jrue Holiday,
+16,21500598-116-1,21500598-116,dribble-hand-off,FALSE,2,10:17,14.95,201587,Nicolas Batum,201150,Spencer Hawes,
+17,21500598-116-2,21500598-116,dribble-hand-off,TRUE,2,10:17,14.48,201150,Spencer Hawes,201587,Nicolas Batum,
+18,21500598-118-1,21500598-118,dribble-hand-off,FALSE,2,10:07,8.65,1626163,Frank Kaminsky,203584,Troy Daniels,
+19,21500598-119-1,21500598-119,dribble-hand-off,TRUE,2,9:41,15.33,201150,Spencer Hawes,201587,Nicolas Batum,3pt shot
+20,21500598-124-1,21500598-124,dribble-hand-off,TRUE,2,9:11,18,201587,Nicolas Batum,203584,Troy Daniels,
+21,21500598-124-2,21500598-124,dribble-hand-off,TRUE,2,9:07,14.02,201150,Spencer Hawes,201587,Nicolas Batum,
+22,21500598-125-1,21500598-125,dribble-hand-off,FALSE,2,8:55,16.4,201582,Alexis Ajinca,201950,Jrue Holiday,
+23,21500598-143-1,21500598-143,dribble-hand-off,TRUE,2,6:38,12.15,201150,Spencer Hawes,201587,Nicolas Batum,FAKE
+24,21500598-143-2,21500598-143,dribble-hand-off,FALSE,2,6:37,11.91,201587,Nicolas Batum,201150,Spencer Hawes,FAKE
+25,21500598-143-3,21500598-143,dribble-hand-off,TRUE,2,6:35,9.78,201150,Spencer Hawes,202391,Jeremy Lin,
+26,21500598-144-1,21500598-144,dribble-hand-off,TRUE,2,6:23,16.21,202708,Norris Cole,201582,Alexis Ajinca,"borderline, long pass"
+27,21500598-163-1,21500598-163,dribble-hand-off,TRUE,2,5:09,19.58,202689,Kemba Walker,203798,PJ Hairston,
+28,21500598-163-2,21500598-163,dribble-hand-off,TRUE,2,5:06,16.84,201150,Spencer Hawes,202689,Kemba Walker,
+29,21500598-163-3,21500598-163,dribble-hand-off,FALSE,2,5:03,14.12,202689,Kemba Walker,202391,Jeremy Lin,
+30,21500598-163-4,21500598-163,dribble-hand-off,FALSE,2,5:01,11.84,101107,Marvin Williams,203798,PJ Hairston,"screen, no pass"
+31,21500598-163-5,21500598-163,dribble-hand-off,FALSE,2,5:01,11.45,203798,PJ Hairston,101107,Marvin Williams,"screen, no pass"
+32,21500598-197-1,21500598-197,dribble-hand-off,FALSE,2,1:27,4.68,202087,Alonzo Gee,201583,Ryan Anderson,
+33,21500598-233-1,21500598-233,dribble-hand-off,TRUE,3,10:32,14.82,202689,Kemba Walker,201587,Nicolas Batum,
+34,21500598-235-1,21500598-235,dribble-hand-off,FALSE,3,10:02,17.43,201587,Nicolas Batum,203469,Cody Zeller,
+35,21500598-245-1,21500598-245,dribble-hand-off,TRUE,3,8:42,16.24,203076,Anthony Davis,201936,Tyreke Evans,
+36,21500598-247-1,21500598-247,dribble-hand-off,TRUE,3,8:26,16.07,101107,Marvin Williams,201587,Nicolas Batum,3pt shot
+37,21500598-248-1,21500598-248,dribble-hand-off,FALSE,3,8:15,17.71,201936,Tyreke Evans,203076,Anthony Davis,
+38,21500598-248-2,21500598-248,dribble-hand-off,TRUE,3,8:11,14.65,203076,Anthony Davis,201936,Tyreke Evans,
+39,21500598-288-1,21500598-288,dribble-hand-off,FALSE,3,4:27,19.6,202087,Alonzo Gee,201950,Jrue Holiday,
+40,21500598-288-2,21500598-288,dribble-hand-off,TRUE,3,4:19,9.27,203076,Anthony Davis,201950,Jrue Holiday,
+41,21500598-333-1,21500598-333,dribble-hand-off,FALSE,3,1:01,14.4,201587,Nicolas Batum,203469,Cody Zeller,"screen, no pass"
+42,21500598-353-1,21500598-353,dribble-hand-off,FALSE,4,11:29,19.45,202708,Norris Cole,201950,Jrue Holiday,borderline
+43,21500598-369-1,21500598-369,dribble-hand-off,FALSE,4,9:38,12.94,201950,Jrue Holiday,202087,Alonzo Gee,
+44,21500598-369-2,21500598-369,dribble-hand-off,TRUE,4,9:35,10.76,202708,Norris Cole,201950,Jrue Holiday,layup
+45,21500598-371-1,21500598-371,dribble-hand-off,TRUE,4,9:00,17.93,201950,Jrue Holiday,202708,Norris Cole,
+46,21500598-395-1,21500598-395,dribble-hand-off,TRUE,4,6:38,18.39,201587,Nicolas Batum,1626163,Frank Kaminsky,
+47,21500598-395-2,21500598-395,dribble-hand-off,TRUE,4,6:37,17.62,1626163,Frank Kaminsky,202689,Kemba Walker,
+48,21500598-399-1,21500598-399,dribble-hand-off,FALSE,4,6:01,12.78,201587,Nicolas Batum,1626163,Frank Kaminsky,
+49,21500598-438-1,21500598-438,dribble-hand-off,TRUE,4,1:54,15.09,203076,Anthony Davis,201950,Jrue Holiday,

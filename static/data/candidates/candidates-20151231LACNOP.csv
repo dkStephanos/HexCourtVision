@@ -1,0 +1,36 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500487-016-1,21500487-016,dribble-hand-off,FALSE,1,9:34,20,201569,Eric Gordon,201936,Tyreke Evans,
+1,21500487-037-1,21500487-037,dribble-hand-off,FALSE,1,7:23,11.47,101108,Chris Paul,202325,Wesley Johnson,
+2,21500487-037-2,21500487-037,dribble-hand-off,FALSE,1,7:20,9.48,101108,Chris Paul,201599,DeAndre Jordan,pass over head
+3,21500487-041-1,21500487-041,dribble-hand-off,FALSE,1,6:43,13.85,201936,Tyreke Evans,203076,Anthony Davis,
+4,21500487-041-2,21500487-041,dribble-hand-off,TRUE,1,6:43,13.38,203076,Anthony Davis,201936,Tyreke Evans,
+5,21500487-068-1,21500487-068,dribble-hand-off,FALSE,1,4:42,5.17,101108,Chris Paul,201601,Luc Mbah a Moute,pick n' roll
+6,21500487-084-1,21500487-084,dribble-hand-off,TRUE,1,3:19,20.81,201569,Eric Gordon,202708,Norris Cole,
+7,21500487-107-1,21500487-107,dribble-hand-off,TRUE,1,1:18,20.49,201950,Jrue Holiday,201583,Ryan Anderson,bad pass
+8,21500487-109-1,21500487-109,dribble-hand-off,FALSE,1,0:50,16.06,201950,Jrue Holiday,201569,Eric Gordon,
+9,21500487-117-1,21500487-117,dribble-hand-off,FALSE,1,0:01,0,2037,Jamal Crawford,202325,Wesley Johnson,inbound pass
+10,21500487-124-1,21500487-124,dribble-hand-off,FALSE,2,11:20,19.07,2037,Jamal Crawford,203085,Austin Rivers,
+11,21500487-129-1,21500487-129,dribble-hand-off,TRUE,2,10:31,14.36,203076,Anthony Davis,201950,Jrue Holiday,
+12,21500487-133-1,21500487-133,dribble-hand-off,FALSE,2,9:44,9.06,2037,Jamal Crawford,202332,Cole Aldrich,pick n' roll
+13,21500487-153-1,21500487-153,dribble-hand-off,FALSE,2,8:09,17.32,202708,Norris Cole,201582,Alexis Ajinca,pick n' roll
+14,21500487-158-1,21500487-158,dribble-hand-off,TRUE,2,7:45,4.84,203143,Pablo Prigioni,203085,Austin Rivers,
+15,21500487-158-2,21500487-158,dribble-hand-off,TRUE,2,7:36,21.65,203143,Pablo Prigioni,2037,Jamal Crawford,
+16,21500487-158-3,21500487-158,dribble-hand-off,FALSE,2,7:17,15.79,202332,Cole Aldrich,203143,Pablo Prigioni,
+17,21500487-158-4,21500487-158,dribble-hand-off,TRUE,2,7:16,15.72,203143,Pablo Prigioni,202332,Cole Aldrich,FAKE
+18,21500487-158-5,21500487-158,dribble-hand-off,FALSE,2,7:16,15.44,202332,Cole Aldrich,203143,Pablo Prigioni,FAKE
+19,21500487-160-1,21500487-160,dribble-hand-off,TRUE,2,7:45,4.84,203143,Pablo Prigioni,203085,Austin Rivers,"late pass, following fake"
+20,21500487-221-1,21500487-221,dribble-hand-off,TRUE,2,2:12,18.88,201569,Eric Gordon,201936,Tyreke Evans,
+21,21500487-236-1,21500487-236,dribble-hand-off,FALSE,2,0:32,18.17,101108,Chris Paul,201601,Luc Mbah a Moute,pass over head
+22,21500487-236-2,21500487-236,dribble-hand-off,TRUE,2,0:31,17.14,202325,Wesley Johnson,1718,Paul Pierce,
+23,21500487-264-1,21500487-264,dribble-hand-off,TRUE,3,9:55,10.11,203076,Anthony Davis,201936,Tyreke Evans,
+24,21500487-269-1,21500487-269,dribble-hand-off,TRUE,3,9:16,15.77,201600,Omer Asik,201569,Eric Gordon,
+25,21500487-269-2,21500487-269,dribble-hand-off,FALSE,3,9:16,15.38,201569,Eric Gordon,201600,Omer Asik,
+26,21500487-277-1,21500487-277,dribble-hand-off,TRUE,3,8:17,12.65,1718,Paul Pierce,200755,JJ Redick,
+27,21500487-315-1,21500487-315,dribble-hand-off,TRUE,3,4:27,14.45,201583,Ryan Anderson,201950,Jrue Holiday,
+28,21500487-319-1,21500487-319,dribble-hand-off,FALSE,3,4:26,14,201950,Jrue Holiday,202708,Norris Cole,post entry pass
+29,21500487-329-1,21500487-329,dribble-hand-off,FALSE,3,3:07,24,202708,Norris Cole,203076,Anthony Davis,pick n' pop
+30,21500487-350-1,21500487-350,dribble-hand-off,FALSE,3,1:45,7.16,203143,Pablo Prigioni,2037,Jamal Crawford,
+31,21500487-416-1,21500487-416,dribble-hand-off,FALSE,4,6:49,15.75,201599,DeAndre Jordan,2037,Jamal Crawford,
+32,21500487-418-1,21500487-418,dribble-hand-off,TRUE,4,6:38,19.26,201950,Jrue Holiday,201583,Ryan Anderson,behind the back pass
+33,21500487-435-1,21500487-435,dribble-hand-off,TRUE,4,4:52,10.25,203076,Anthony Davis,201936,Tyreke Evans,FAKE
+34,21500487-435-2,21500487-435,dribble-hand-off,FALSE,4,4:52,10.18,201936,Tyreke Evans,203076,Anthony Davis,FAKE

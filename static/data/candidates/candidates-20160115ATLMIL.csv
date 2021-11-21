@@ -1,0 +1,51 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500599-015-1,21500599-015,dribble-hand-off,FALSE,1,8:38,0,201952,Jeff Teague,201143,Al Horford,"screen, no pass"
+1,21500599-015-2,21500599-015,dribble-hand-off,FALSE,1,8:37,0,201952,Jeff Teague,201143,Al Horford,"screen, no pass"
+2,21500599-055-1,21500599-055,dribble-hand-off,FALSE,1,5:16,0,201952,Jeff Teague,200757,Thabo Sefolosha,
+3,21500599-055-2,21500599-055,dribble-hand-off,FALSE,1,5:11,0,2594,Kyle Korver,201952,Jeff Teague,
+4,21500599-065-1,21500599-065,dribble-hand-off,FALSE,1,4:42,0,201952,Jeff Teague,200757,Thabo Sefolosha,transition
+5,21500599-082-1,21500599-082,dribble-hand-off,FALSE,1,3:39,0,203114,Khris Middleton,203089,John Henson,
+6,21500599-082-3,21500599-082,dribble-hand-off,FALSE,1,3:35,0,203948,Johnny O'Bryant,203089,John Henson,
+7,21500599-082-6,21500599-082,dribble-hand-off,TRUE,1,3:34,0,203089,John Henson,203948,Johnny O'Bryant,
+8,21500599-082-7,21500599-082,dribble-hand-off,FALSE,1,3:31,0,203948,Johnny O'Bryant,203089,John Henson,
+9,21500599-101-1,21500599-101,dribble-hand-off,FALSE,1,2:25,0,203953,Jabari Parker,203114,Khris Middleton,transition
+10,21500599-106-1,21500599-106,dribble-hand-off,FALSE,1,1:59,0,200757,Thabo Sefolosha,201143,Al Horford,
+11,21500599-106-2,21500599-106,dribble-hand-off,TRUE,1,1:54,0,200757,Thabo Sefolosha,203471,Dennis Schroder,"borderline, off reb"
+12,21500599-119-1,21500599-119,dribble-hand-off,TRUE,1,0:53,0,203948,Johnny O'Bryant,203114,Khris Middleton,
+13,21500599-119-2,21500599-119,dribble-hand-off,FALSE,1,0:34,0,203898,Tyler Ennis,203089,John Henson,
+14,21500599-119-3,21500599-119,dribble-hand-off,TRUE,1,0:32,0,203089,John Henson,203507,Giannis Antetokounmpo,
+15,21500599-119-4,21500599-119,dribble-hand-off,FALSE,1,0:31,0,203507,Giannis Antetokounmpo,203114,Khris Middleton,
+16,21500599-119-5,21500599-119,dribble-hand-off,FALSE,1,0:24,0,203507,Giannis Antetokounmpo,203089,John Henson,post entry pass
+17,21500599-139-1,21500599-139,dribble-hand-off,FALSE,2,10:59,0,203471,Dennis Schroder,201143,Al Horford,"screen, no pass"
+18,21500599-143-1,21500599-143,dribble-hand-off,FALSE,2,10:38,0,1626173,Rashad Vaughn,202328,Greg Monroe,
+19,21500599-148-1,21500599-148,dribble-hand-off,FALSE,2,9:33,0,203898,Tyler Ennis,202328,Greg Monroe,
+20,21500599-154-1,21500599-154,dribble-hand-off,FALSE,2,8:43,0,203145,Kent Bazemore,203501,Tim Hardaway Jr.,
+21,21500599-154-2,21500599-154,dribble-hand-off,FALSE,2,8:40,0,203501,Tim Hardaway Jr.,203118,Mike Scott,
+22,21500599-172-1,21500599-172,dribble-hand-off,FALSE,2,7:25,0,201168,Tiago Splitter,201952,Jeff Teague,
+23,21500599-237-1,21500599-237,dribble-hand-off,FALSE,2,2:25,0,2594,Kyle Korver,201952,Jeff Teague,"borderline, transition"
+24,21500599-250-1,21500599-250,dribble-hand-off,FALSE,2,1:13,0,201952,Jeff Teague,201143,Al Horford,pick n' roll
+25,21500599-294-1,21500599-294,dribble-hand-off,FALSE,3,10:33,0,203487,Michael Carter-Williams,203114,Khris Middleton,
+26,21500599-300-1,21500599-300,dribble-hand-off,FALSE,3,9:54,0,203507,Giannis Antetokounmpo,203114,Khris Middleton,
+27,21500599-301-2,21500599-301,dribble-hand-off,FALSE,3,9:41,0,203145,Kent Bazemore,200794,Paul Millsap,
+28,21500599-318-1,21500599-318,dribble-hand-off,FALSE,3,8:00,0,201952,Jeff Teague,201143,Al Horford,pass by
+29,21500599-320-1,21500599-320,dribble-hand-off,FALSE,3,7:40,0,203507,Giannis Antetokounmpo,203953,Jabari Parker,
+30,21500599-326-1,21500599-326,dribble-hand-off,FALSE,3,7:20,0,200757,Thabo Sefolosha,201952,Jeff Teague,transition
+31,21500599-350-1,21500599-350,dribble-hand-off,FALSE,3,4:24,0,203507,Giannis Antetokounmpo,203948,Johnny O'Bryant,
+32,21500599-427-1,21500599-427,dribble-hand-off,FALSE,4,11:03,0,203948,Johnny O'Bryant,203507,Giannis Antetokounmpo,
+33,21500599-427-2,21500599-427,dribble-hand-off,FALSE,4,10:56,0,202328,Greg Monroe,203948,Johnny O'Bryant,
+34,21500599-428-1,21500599-428,dribble-hand-off,TRUE,4,10:43,0,203118,Mike Scott,200757,Thabo Sefolosha,
+35,21500599-432-1,21500599-432,dribble-hand-off,TRUE,4,10:32,0,203948,Johnny O'Bryant,203114,Khris Middleton,
+36,21500599-432-2,21500599-432,dribble-hand-off,FALSE,4,10:26,0,203114,Khris Middleton,202328,Greg Monroe,"screen, no pass"
+37,21500599-435-1,21500599-435,dribble-hand-off,FALSE,4,9:41,0,203145,Kent Bazemore,201143,Al Horford,
+38,21500599-437-1,21500599-437,dribble-hand-off,FALSE,4,9:12,0,203114,Khris Middleton,1626173,Rashad Vaughn,
+39,21500599-439-1,21500599-439,dribble-hand-off,FALSE,4,9:01,0,203471,Dennis Schroder,2594,Kyle Korver,
+40,21500599-439-2,21500599-439,dribble-hand-off,FALSE,4,8:58,0,201143,Al Horford,203145,Kent Bazemore,
+41,21500599-442-1,21500599-442,dribble-hand-off,FALSE,4,8:35,0,203507,Giannis Antetokounmpo,202328,Greg Monroe,
+42,21500599-450-1,21500599-450,dribble-hand-off,TRUE,4,7:34,0,203507,Giannis Antetokounmpo,1626173,Rashad Vaughn,
+43,21500599-506-1,21500599-506,dribble-hand-off,FALSE,4,4:13,0,2594,Kyle Korver,201952,Jeff Teague,
+44,21500599-533-1,21500599-533,dribble-hand-off,TRUE,4,1:29,0,200794,Paul Millsap,201952,Jeff Teague,
+45,21500599-533-3,21500599-533,dribble-hand-off,FALSE,4,1:17,0,200794,Paul Millsap,201143,Al Horford,loose ball
+46,21500599-583-1,21500599-583,dribble-hand-off,FALSE,5,3:34,0,201952,Jeff Teague,200757,Thabo Sefolosha,
+47,21500599-605-1,21500599-605,dribble-hand-off,FALSE,5,1:04,0,201952,Jeff Teague,201143,Al Horford,
+48,21500599-605-2,21500599-605,dribble-hand-off,FALSE,5,1:03,0,201143,Al Horford,201952,Jeff Teague,"screen, no pass"
+49,21500599-605-3,21500599-605,dribble-hand-off,FALSE,5,1:02,0,201952,Jeff Teague,201143,Al Horford,"screen, no pass"

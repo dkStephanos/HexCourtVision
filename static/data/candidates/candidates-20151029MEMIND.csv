@@ -1,0 +1,87 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500018-010-1,21500018-010,dribble-hand-off,TRUE,1,10:44,13.92,201188,Marc Gasol,201584,Courtney Lee,
+1,21500018-030-1,21500018-030,dribble-hand-off,FALSE,1,8:42,15.12,201588,George Hill,202331,Paul George,
+2,21500018-030-2,21500018-030,dribble-hand-off,FALSE,1,8:40,13.49,202331,Paul George,201941,Jordan Hill,
+3,21500018-051-1,21500018-051,dribble-hand-off,FALSE,1,7:12,11.47,202331,Paul George,101133,Ian Mahinmi,pocket pass
+4,21500018-059-1,21500018-059,dribble-hand-off,FALSE,1,6:39,8.99,202331,Paul George,201941,Jordan Hill,"turnover, backcourt pass"
+5,21500018-063-1,21500018-063,dribble-hand-off,TRUE,1,6:13,7.27,201941,Jordan Hill,101145,Monta Ellis,
+6,21500018-066-1,21500018-066,dribble-hand-off,TRUE,1,5:54,10.91,201941,Jordan Hill,101145,Monta Ellis,
+7,21500018-066-2,21500018-066,dribble-hand-off,FALSE,1,5:51,7.75,201588,George Hill,101145,Monta Ellis,
+8,21500018-066-3,21500018-066,dribble-hand-off,FALSE,1,5:51,7.55,101145,Monta Ellis,202331,Paul George,
+9,21500018-068-1,21500018-068,dribble-hand-off,FALSE,1,5:33,12.09,201188,Marc Gasol,2216,Zach Randolph,
+10,21500018-068-2,21500018-068,dribble-hand-off,TRUE,1,5:23,1.55,201188,Marc Gasol,201584,Courtney Lee,
+11,21500018-076-1,21500018-076,dribble-hand-off,FALSE,1,4:07,16.49,201588,George Hill,101133,Ian Mahinmi,
+12,21500018-079-1,21500018-079,dribble-hand-off,TRUE,1,4:04,14.01,101133,Ian Mahinmi,201588,George Hill,
+13,21500018-081-1,21500018-081,dribble-hand-off,FALSE,1,3:39,22.53,2757,Beno Udrih,2440,Matt Barnes,
+14,21500018-081-2,21500018-081,dribble-hand-off,TRUE,1,3:39,22.01,2440,Matt Barnes,2757,Beno Udrih,
+15,21500018-098-1,21500018-098,dribble-hand-off,TRUE,1,3:05,14.55,201978,Chase Budinger,101145,Monta Ellis,
+16,21500018-115-1,21500018-115,dribble-hand-off,FALSE,1,1:53,12.64,2757,Beno Udrih,201145,Jeff Green,
+17,21500018-118-1,21500018-118,dribble-hand-off,FALSE,1,1:31,19.02,2757,Beno Udrih,201145,Jeff Green,
+18,21500018-133-1,21500018-133,dribble-hand-off,FALSE,1,0:30,12.79,2757,Beno Udrih,203210,JaMychal Green,
+19,21500018-145-1,21500018-145,dribble-hand-off,TRUE,2,11:20,7.86,203210,JaMychal Green,2440,Matt Barnes,
+20,21500018-148-1,21500018-148,dribble-hand-off,TRUE,2,10:48,15.26,201144,Mike Conley,201145,Jeff Green,
+21,21500018-149-1,21500018-149,dribble-hand-off,FALSE,2,10:33,10.09,201155,Rodney Stuckey,101139,CJ Miles,
+22,21500018-153-1,21500018-153,dribble-hand-off,FALSE,2,9:39,20.19,201144,Mike Conley,201148,Brandan Wright,pick n' roll
+23,21500018-173-1,21500018-173,dribble-hand-off,FALSE,2,8:33,6.78,2440,Matt Barnes,203210,JaMychal Green,bad pass
+24,21500018-179-1,21500018-179,dribble-hand-off,FALSE,2,7:11,13.97,201978,Chase Budinger,101139,CJ Miles,
+25,21500018-197-1,21500018-197,dribble-hand-off,FALSE,2,6:00,22.65,101133,Ian Mahinmi,202331,Paul George,off rebound outlet
+26,21500018-200-1,21500018-200,dribble-hand-off,TRUE,2,5:24,13.28,101133,Ian Mahinmi,201155,Rodney Stuckey,
+27,21500018-200-2,21500018-200,dribble-hand-off,TRUE,2,5:06,15.9,201941,Jordan Hill,202331,Paul George,FAKE
+28,21500018-202-1,21500018-202,dribble-hand-off,FALSE,2,5:00,11.31,201588,George Hill,201155,Rodney Stuckey,
+29,21500018-203-1,21500018-203,dribble-hand-off,FALSE,2,4:37,10.26,201584,Courtney Lee,2216,Zach Randolph,post entry pass
+30,21500018-209-1,21500018-209,dribble-hand-off,FALSE,2,3:54,21.71,2754,Tony Allen,201584,Courtney Lee,transition pass
+31,21500018-227-1,21500018-227,dribble-hand-off,FALSE,2,2:41,11.65,201941,Jordan Hill,201588,George Hill,
+32,21500018-228-1,21500018-228,dribble-hand-off,FALSE,2,2:15,13.55,2757,Beno Udrih,201188,Marc Gasol,
+33,21500018-228-2,21500018-228,dribble-hand-off,FALSE,2,2:10,8.62,2754,Tony Allen,2216,Zach Randolph,post entry pass
+34,21500018-233-1,21500018-233,dribble-hand-off,FALSE,2,1:31,13.65,201588,George Hill,101133,Ian Mahinmi,drive and kick
+35,21500018-235-1,21500018-235,dribble-hand-off,TRUE,2,1:13,11.31,201188,Marc Gasol,2757,Beno Udrih,
+36,21500018-235-2,21500018-235,dribble-hand-off,FALSE,2,1:13,11.2,2757,Beno Udrih,201188,Marc Gasol,fumbles pass
+37,21500018-244-1,21500018-244,dribble-hand-off,FALSE,2,0:27,6.32,202331,Paul George,201941,Jordan Hill,
+38,21500018-251-1,21500018-251,dribble-hand-off,FALSE,3,11:45,9.92,201588,George Hill,202331,Paul George,
+39,21500018-254-1,21500018-254,dribble-hand-off,FALSE,3,11:25,13.77,201144,Mike Conley,201188,Marc Gasol,pick n' pop
+40,21500018-260-1,21500018-260,dribble-hand-off,TRUE,3,11:08,11.97,101133,Ian Mahinmi,202331,Paul George,
+41,21500018-266-1,21500018-266,dribble-hand-off,FALSE,3,10:43,15.18,201588,George Hill,101133,Ian Mahinmi,post entry pass
+42,21500018-278-1,21500018-278,dribble-hand-off,TRUE,3,9:21,22.36,2216,Zach Randolph,201144,Mike Conley,
+43,21500018-286-1,21500018-286,dribble-hand-off,TRUE,3,9:00,14.89,101133,Ian Mahinmi,201588,George Hill,
+44,21500018-286-2,21500018-286,dribble-hand-off,FALSE,3,8:57,12.09,201588,George Hill,201941,Jordan Hill,pass to 
+45,21500018-287-1,21500018-287,dribble-hand-off,TRUE,3,8:41,13.05,201188,Marc Gasol,201144,Mike Conley,
+46,21500018-287-2,21500018-287,dribble-hand-off,TRUE,3,8:37,9.87,201188,Marc Gasol,201144,Mike Conley,
+47,21500018-287-3,21500018-287,dribble-hand-off,FALSE,3,8:35,8.08,201144,Mike Conley,201188,Marc Gasol,
+48,21500018-287-4,21500018-287,dribble-hand-off,TRUE,3,8:34,7.28,201188,Marc Gasol,201144,Mike Conley,
+49,21500018-287-5,21500018-287,dribble-hand-off,FALSE,3,8:33,6.49,201188,Marc Gasol,201144,Mike Conley,fumbles pass
+50,21500018-287-6,21500018-287,dribble-hand-off,FALSE,3,8:25,22.33,201584,Courtney Lee,2754,Tony Allen,
+51,21500018-292-1,21500018-292,dribble-hand-off,TRUE,3,7:51,11.55,101133,Ian Mahinmi,101145,Monta Ellis,
+52,21500018-292-2,21500018-292,dribble-hand-off,FALSE,3,7:47,7.87,101145,Monta Ellis,101133,Ian Mahinmi,pass by
+53,21500018-292-3,21500018-292,dribble-hand-off,FALSE,3,7:46,7.55,101133,Ian Mahinmi,202331,Paul George,pass by
+54,21500018-300-1,21500018-300,dribble-hand-off,FALSE,3,6:57,21.68,201584,Courtney Lee,201144,Mike Conley,
+55,21500018-314-1,21500018-314,dribble-hand-off,TRUE,3,6:31,14.94,101133,Ian Mahinmi,201588,George Hill,
+56,21500018-314-2,21500018-314,dribble-hand-off,FALSE,3,6:23,20.6,202331,Paul George,101133,Ian Mahinmi,loose ball
+57,21500018-314-3,21500018-314,dribble-hand-off,FALSE,3,6:22,19.98,101133,Ian Mahinmi,202331,Paul George,loose ball
+58,21500018-315-1,21500018-315,dribble-hand-off,FALSE,3,5:54,6.97,201188,Marc Gasol,2216,Zach Randolph,post entry pass
+59,21500018-318-1,21500018-318,dribble-hand-off,TRUE,3,5:26,14.31,201188,Marc Gasol,2757,Beno Udrih,FAKE
+60,21500018-318-2,21500018-318,dribble-hand-off,FALSE,3,5:26,14.07,2757,Beno Udrih,201188,Marc Gasol,FAKE
+61,21500018-318-3,21500018-318,dribble-hand-off,FALSE,3,5:22,9.75,201188,Marc Gasol,2757,Beno Udrih,
+62,21500018-336-1,21500018-336,dribble-hand-off,FALSE,3,4:07,17.26,201588,George Hill,201155,Rodney Stuckey,
+63,21500018-337-1,21500018-337,dribble-hand-off,FALSE,3,3:48,14.07,2757,Beno Udrih,201584,Courtney Lee,
+64,21500018-343-1,21500018-343,dribble-hand-off,FALSE,3,3:15,12.95,2757,Beno Udrih,201188,Marc Gasol,
+65,21500018-343-2,21500018-343,dribble-hand-off,FALSE,3,3:15,12.83,201188,Marc Gasol,2757,Beno Udrih,
+66,21500018-346-1,21500018-346,dribble-hand-off,FALSE,3,2:44,6.86,2757,Beno Udrih,201188,Marc Gasol,pick n' roll
+67,21500018-349-1,21500018-349,dribble-hand-off,FALSE,3,2:27,17.75,201588,George Hill,201155,Rodney Stuckey,
+68,21500018-349-2,21500018-349,dribble-hand-off,TRUE,3,2:26,16.87,201155,Rodney Stuckey,201588,George Hill,
+69,21500018-349-3,21500018-349,dribble-hand-off,FALSE,3,2:24,15.35,201588,George Hill,201155,Rodney Stuckey,
+70,21500018-369-1,21500018-369,dribble-hand-off,FALSE,3,1:33,12.18,2757,Beno Udrih,201188,Marc Gasol,
+71,21500018-400-1,21500018-400,dribble-hand-off,TRUE,4,11:11,13.76,1626167,Myles Turner,101139,CJ Miles,FAKE
+72,21500018-400-2,21500018-400,dribble-hand-off,FALSE,4,11:11,13.48,101139,CJ Miles,1626167,Myles Turner,fake
+73,21500018-400-3,21500018-400,dribble-hand-off,TRUE,4,11:11,13.28,1626167,Myles Turner,101139,CJ Miles,
+74,21500018-407-1,21500018-407,dribble-hand-off,FALSE,4,10:04,19.86,2757,Beno Udrih,2440,Matt Barnes,
+75,21500018-422-1,21500018-422,dribble-hand-off,FALSE,4,8:55,10.8,203210,JaMychal Green,201148,Brandan Wright,
+76,21500018-422-2,21500018-422,dribble-hand-off,FALSE,4,8:51,7.06,201145,Jeff Green,201148,Brandan Wright,
+77,21500018-422-3,21500018-422,dribble-hand-off,FALSE,4,8:51,6.92,201148,Brandan Wright,201145,Jeff Green,
+78,21500018-441-1,21500018-441,dribble-hand-off,FALSE,4,7:12,13.33,201588,George Hill,101145,Monta Ellis,
+79,21500018-441-2,21500018-441,dribble-hand-off,FALSE,4,7:08,9.4,101145,Monta Ellis,101139,CJ Miles,
+80,21500018-463-1,21500018-463,dribble-hand-off,TRUE,4,4:59,7.18,201188,Marc Gasol,201144,Mike Conley,
+81,21500018-484-1,21500018-484,dribble-hand-off,TRUE,4,3:35,10.78,101133,Ian Mahinmi,202331,Paul George,
+82,21500018-491-1,21500018-491,dribble-hand-off,FALSE,4,2:50,10.68,201144,Mike Conley,201188,Marc Gasol,pick n' roll
+83,21500018-492-1,21500018-492,dribble-hand-off,FALSE,4,2:34,10.82,101133,Ian Mahinmi,202730,Lavoy Allen,
+84,21500018-493-1,21500018-493,dribble-hand-off,FALSE,4,2:13,9.66,201144,Mike Conley,201188,Marc Gasol,pick n' pop
+85,21500018-518-1,21500018-518,dribble-hand-off,FALSE,4,0:41,17.5,201584,Courtney Lee,201144,Mike Conley,

@@ -1,0 +1,36 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500663-003-1,21500663-003,dribble-hand-off,FALSE,1,11:20,10.34,200765,Rajon Rondo,1626161,Willie Cauley-Stein,
+1,21500663-043-1,21500663-043,dribble-hand-off,FALSE,1,7:59,10.13,202331,Paul George,1626167,Myles Turner,
+2,21500663-048-1,21500663-048,dribble-hand-off,FALSE,1,7:09,16.57,202331,Paul George,201941,Jordan Hill,"screen, no pass"
+3,21500663-061-1,21500663-061,dribble-hand-off,TRUE,1,6:09,19.47,200765,Rajon Rondo,202326,DeMarcus Cousins,3pt shot
+4,21500663-081-1,21500663-081,dribble-hand-off,FALSE,1,4:23,7.52,201588,George Hill,201941,Jordan Hill,
+5,21500663-081-2,21500663-081,dribble-hand-off,TRUE,1,4:21,7.32,201941,Jordan Hill,201588,George Hill,
+6,21500663-081-3,21500663-081,dribble-hand-off,FALSE,1,4:11,7.84,101145,Monta Ellis,201941,Jordan Hill,entry pass
+7,21500663-082-1,21500663-082,dribble-hand-off,TRUE,1,4:10,7.1,201941,Jordan Hill,101145,Monta Ellis,FAKE
+8,21500663-082-2,21500663-082,dribble-hand-off,FALSE,1,4:10,6.87,101145,Monta Ellis,201941,Jordan Hill,FAKE
+9,21500663-098-1,21500663-098,dribble-hand-off,FALSE,1,1:38,6.22,202341,James Anderson,201585,Kosta Koufos,
+10,21500663-099-1,21500663-099,dribble-hand-off,FALSE,1,1:29,18.62,1626202,Joe Young,1626167,Myles Turner,
+11,21500663-129-1,21500663-129,dribble-hand-off,TRUE,2,9:55,13.11,202326,DeMarcus Cousins,201158,Marco Belinelli,
+12,21500663-151-1,21500663-151,dribble-hand-off,TRUE,2,8:02,19.55,1626202,Joe Young,101139,CJ Miles,
+13,21500663-164-1,21500663-164,dribble-hand-off,TRUE,2,6:44,20.93,101139,CJ Miles,1626202,Joe Young,borderline
+14,21500663-166-1,21500663-166,dribble-hand-off,FALSE,2,6:28,22.23,201158,Marco Belinelli,201954,Darren Collison,"transition, pass over head"
+15,21500663-228-1,21500663-228,dribble-hand-off,FALSE,2,0:11,8.13,203463,Ben McLemore,1626161,Willie Cauley-Stein,"screen, no pass"
+16,21500663-228-2,21500663-228,dribble-hand-off,FALSE,2,0:10,7.37,1626161,Willie Cauley-Stein,203463,Ben McLemore,"screen, no pass"
+17,21500663-244-1,21500663-244,dribble-hand-off,FALSE,3,11:15,12.56,101145,Monta Ellis,202730,Lavoy Allen,pocket pass
+18,21500663-251-1,21500663-251,dribble-hand-off,TRUE,3,10:44,10.26,201941,Jordan Hill,101145,Monta Ellis,
+19,21500663-251-2,21500663-251,dribble-hand-off,FALSE,3,10:43,9.94,101145,Monta Ellis,201941,Jordan Hill,"screen, no pass"
+20,21500663-251-3,21500663-251,dribble-hand-off,FALSE,3,10:43,9.5,201941,Jordan Hill,101145,Monta Ellis,"screen, no pass"
+21,21500663-257-1,21500663-257,dribble-hand-off,FALSE,3,10:06,17.73,201956,Omri Casspi,1626161,Willie Cauley-Stein,pass over head
+22,21500663-274-1,21500663-274,dribble-hand-off,TRUE,3,8:19,17.89,202331,Paul George,101145,Monta Ellis,
+23,21500663-274-2,21500663-274,dribble-hand-off,FALSE,3,8:08,8.36,203922,Glenn Robinson,201941,Jordan Hill,
+24,21500663-284-1,21500663-284,dribble-hand-off,TRUE,3,7:30,16.21,202326,DeMarcus Cousins,200765,Rajon Rondo,
+25,21500663-305-1,21500663-305,dribble-hand-off,TRUE,3,5:56,17.17,201588,George Hill,101145,Monta Ellis,
+26,21500663-314-1,21500663-314,dribble-hand-off,FALSE,3,5:14,17.83,202326,DeMarcus Cousins,200765,Rajon Rondo,
+27,21500663-314-2,21500663-314,dribble-hand-off,FALSE,3,5:10,13.71,200765,Rajon Rondo,202326,DeMarcus Cousins,post entry pass
+28,21500663-385-1,21500663-385,dribble-hand-off,FALSE,3,0:31,18.45,202341,James Anderson,201954,Darren Collison,
+29,21500663-420-1,21500663-420,dribble-hand-off,FALSE,4,9:35,11.09,201956,Omri Casspi,201954,Darren Collison,
+30,21500663-445-1,21500663-445,dribble-hand-off,FALSE,4,7:24,19.28,1626202,Joe Young,1626167,Myles Turner,transition
+31,21500663-469-1,21500663-469,dribble-hand-off,FALSE,4,5:47,8.34,200765,Rajon Rondo,202326,DeMarcus Cousins,
+32,21500663-473-1,21500663-473,dribble-hand-off,FALSE,4,5:31,11.61,202331,Paul George,202730,Lavoy Allen,
+33,21500663-473-2,21500663-473,dribble-hand-off,TRUE,4,5:27,9.16,202730,Lavoy Allen,202331,Paul George,
+34,21500663-474-1,21500663-474,dribble-hand-off,FALSE,4,4:58,18.32,101145,Monta Ellis,202730,Lavoy Allen,pocket pass

@@ -1,0 +1,64 @@
+,candidate_id,event_id,classification_type,notes,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,manual_label
+0,21500648-002-1,21500648-002,dribble-hand-off,,1,11:50,9.22,101181,Jose Calderon,204001,Kristaps Porzingis,FALSE
+1,21500648-022-1,21500648-022,dribble-hand-off,,1,8:44,10.1,2546,Carmelo Anthony,204001,Kristaps Porzingis,FALSE
+2,21500648-025-1,21500648-025,dribble-hand-off,,1,8:10,23.29,201577,Robin Lopez,2546,Carmelo Anthony,TRUE
+3,21500648-032-1,21500648-032,dribble-hand-off,,1,7:41,19.65,101181,Jose Calderon,201167,Arron Afflalo,FALSE
+4,21500648-035-1,21500648-035,dribble-hand-off,,1,7:26,19.22,200755,JJ Redick,1718,Paul Pierce,FALSE
+5,21500648-038-2,21500648-038,dribble-hand-off,,1,7:03,24,201577,Robin Lopez,2546,Carmelo Anthony,FALSE
+6,21500648-054-1,21500648-054,dribble-hand-off,,1,5:34,11.53,201577,Robin Lopez,201167,Arron Afflalo,FALSE
+7,21500648-059-1,21500648-059,dribble-hand-off,,1,5:13,16.43,202682,Derrick Williams,2546,Carmelo Anthony,FALSE
+8,21500648-066-1,21500648-066,dribble-hand-off,,1,4:39,19.38,101108,Chris Paul,200755,JJ Redick,TRUE
+9,21500648-070-1,21500648-070,dribble-hand-off,,1,4:22,22.06,202325,Wesley Johnson,101108,Chris Paul,FALSE
+10,21500648-075-1,21500648-075,dribble-hand-off,,1,3:31,15.92,101108,Chris Paul,201599,DeAndre Jordan,FALSE
+11,21500648-094-1,21500648-094,dribble-hand-off,,1,1:34,18.01,204038,Langston Galloway,2546,Carmelo Anthony,FALSE
+12,21500648-096-1,21500648-096,dribble-hand-off,"screen, no pass",1,1:20,16.68,201599,DeAndre Jordan,101108,Chris Paul,FALSE
+13,21500648-104-1,21500648-104,dribble-hand-off,,1,0:52,13.31,201599,DeAndre Jordan,101108,Chris Paul,FALSE
+14,21500648-116-1,21500648-116,dribble-hand-off,,2,11:49,9.39,202325,Wesley Johnson,203085,Austin Rivers,TRUE
+15,21500648-122-1,21500648-122,dribble-hand-off,,2,11:01,13.61,1626170,Jerian Grant,203124,Kyle O'Quinn,FALSE
+16,21500648-125-1,21500648-125,dribble-hand-off,,2,10:37,24,1626170,Jerian Grant,203124,Kyle O'Quinn,FALSE
+17,21500648-130-1,21500648-130,dribble-hand-off,,2,9:50,24,202325,Wesley Johnson,203085,Austin Rivers,TRUE
+18,21500648-133-1,21500648-133,dribble-hand-off,"screen, no pass",2,9:21,17.86,2037,Jamal Crawford,202325,Wesley Johnson,FALSE
+19,21500648-143-1,21500648-143,dribble-hand-off,,2,8:40,17.65,202682,Derrick Williams,201167,Arron Afflalo,TRUE
+20,21500648-173-1,21500648-173,dribble-hand-off,,2,5:39,8.41,101181,Jose Calderon,204038,Langston Galloway,FALSE
+21,21500648-189-1,21500648-189,dribble-hand-off,,2,3:25,22.65,1718,Paul Pierce,201599,DeAndre Jordan,FALSE
+22,21500648-203-1,21500648-203,dribble-hand-off,,2,2:06,11.59,1718,Paul Pierce,101108,Chris Paul,TRUE
+23,21500648-205-1,21500648-205,dribble-hand-off,transition,2,1:37,20.94,201601,Luc Mbah a Moute,101108,Chris Paul,FALSE
+24,21500648-205-2,21500648-205,dribble-hand-off,"screen, no pass",2,1:32,15.28,101108,Chris Paul,201599,DeAndre Jordan,FALSE
+25,21500648-209-1,21500648-209,dribble-hand-off,,2,1:23,19.52,101108,Chris Paul,1718,Paul Pierce,FALSE
+26,21500648-242-1,21500648-242,dribble-hand-off,post entry pass,3,11:28,14.51,2546,Carmelo Anthony,201577,Robin Lopez,FALSE
+27,21500648-245-1,21500648-245,dribble-hand-off,pass by,3,11:02,8.94,200755,JJ Redick,201601,Luc Mbah a Moute,FALSE
+28,21500648-245-2,21500648-245,dribble-hand-off,pass by,3,11:02,8.77,201601,Luc Mbah a Moute,1718,Paul Pierce,FALSE
+29,21500648-252-1,21500648-252,dribble-hand-off,,3,10:13,3.75,101181,Jose Calderon,201577,Robin Lopez,FALSE
+30,21500648-257-1,21500648-257,dribble-hand-off,,3,9:55,16.46,1718,Paul Pierce,200755,JJ Redick,TRUE
+31,21500648-257-2,21500648-257,dribble-hand-off,,3,9:54,15.12,200755,JJ Redick,1718,Paul Pierce,FALSE
+32,21500648-265-1,21500648-265,dribble-hand-off,,3,9:29,18.53,101108,Chris Paul,200755,JJ Redick,FALSE
+33,21500648-265-2,21500648-265,dribble-hand-off,,3,9:24,13.57,201599,DeAndre Jordan,101108,Chris Paul,TRUE
+34,21500648-268-1,21500648-268,dribble-hand-off,,3,9:07,15.51,204001,Kristaps Porzingis,101181,Jose Calderon,TRUE
+35,21500648-284-1,21500648-284,dribble-hand-off,,3,7:24,11.49,101181,Jose Calderon,201167,Arron Afflalo,FALSE
+36,21500648-287-1,21500648-287,dribble-hand-off,,3,6:48,17.45,2546,Carmelo Anthony,201577,Robin Lopez,FALSE
+37,21500648-336-1,21500648-336,dribble-hand-off,bad pass,3,4:06,5.85,1626170,Jerian Grant,204001,Kristaps Porzingis,FALSE
+38,21500648-336-2,21500648-336,dribble-hand-off,bad pass,3,4:06,5.39,204001,Kristaps Porzingis,1626170,Jerian Grant,FALSE
+39,21500648-346-1,21500648-346,dribble-hand-off,,3,3:32,18.49,101108,Chris Paul,201601,Luc Mbah a Moute,FALSE
+40,21500648-346-2,21500648-346,dribble-hand-off,,3,3:31,17.54,201601,Luc Mbah a Moute,101108,Chris Paul,TRUE
+41,21500648-406-1,21500648-406,dribble-hand-off,,4,11:11,15.18,203143,Pablo Prigioni,202332,Cole Aldrich,FALSE
+42,21500648-411-1,21500648-411,dribble-hand-off,,4,10:57,16.23,202682,Derrick Williams,1626170,Jerian Grant,TRUE
+43,21500648-416-1,21500648-416,dribble-hand-off,,4,10:48,10.98,203085,Austin Rivers,203143,Pablo Prigioni,FALSE
+44,21500648-416-2,21500648-416,dribble-hand-off,,4,10:43,9.29,202325,Wesley Johnson,2037,Jamal Crawford,TRUE
+45,21500648-422-1,21500648-422,dribble-hand-off,,4,9:25,12.16,203085,Austin Rivers,202332,Cole Aldrich,FALSE
+46,21500648-431-1,21500648-431,dribble-hand-off,transition,4,8:52,19.38,203143,Pablo Prigioni,202325,Wesley Johnson,FALSE
+47,21500648-431-2,21500648-431,dribble-hand-off,,4,8:45,12.75,203143,Pablo Prigioni,202332,Cole Aldrich,FALSE
+48,21500648-431-3,21500648-431,dribble-hand-off,,4,8:44,11.76,202332,Cole Aldrich,203143,Pablo Prigioni,FALSE
+49,21500648-431-4,21500648-431,dribble-hand-off,,4,8:43,11.04,203143,Pablo Prigioni,203085,Austin Rivers,FALSE
+50,21500648-440-1,21500648-440,dribble-hand-off,,4,8:01,11.89,203085,Austin Rivers,202332,Cole Aldrich,FALSE
+51,21500648-442-1,21500648-442,dribble-hand-off,,4,7:39,16.88,201167,Arron Afflalo,202338,Kevin Seraphin,FALSE
+52,21500648-443-1,21500648-443,dribble-hand-off,,4,7:19,8.87,203085,Austin Rivers,202332,Cole Aldrich,FALSE
+53,21500648-471-1,21500648-471,dribble-hand-off,,4,5:27,8.1,203143,Pablo Prigioni,203085,Austin Rivers,FALSE
+54,21500648-471-2,21500648-471,dribble-hand-off,,4,5:25,7.92,203085,Austin Rivers,202332,Cole Aldrich,TRUE
+55,21500648-476-1,21500648-476,dribble-hand-off,,4,4:23,16.85,202338,Kevin Seraphin,2756,Sasha Vujacic,TRUE
+56,21500648-489-1,21500648-489,dribble-hand-off,,4,3:32,9.98,203912,CJ Wilcox,203085,Austin Rivers,FALSE
+57,21500648-506-1,21500648-506,dribble-hand-off,"screen, no pass",4,2:22,7.67,203085,Austin Rivers,202332,Cole Aldrich,FALSE
+58,21500648-506-2,21500648-506,dribble-hand-off,"screen, no pass",4,2:22,7.45,202332,Cole Aldrich,203085,Austin Rivers,FALSE
+59,21500648-512-1,21500648-512,dribble-hand-off,,4,2:04,10.88,200811,Lou Amundson,202338,Kevin Seraphin,FALSE
+60,21500648-517-1,21500648-517,dribble-hand-off,,4,1:38,9.35,202332,Cole Aldrich,203912,CJ Wilcox,TRUE
+61,21500648-525-1,21500648-525,dribble-hand-off,,4,0:15,0,200811,Lou Amundson,2756,Sasha Vujacic,FALSE
+62,21500648-525-2,21500648-525,dribble-hand-off,,4,0:14,0,2756,Sasha Vujacic,200811,Lou Amundson,FALSE

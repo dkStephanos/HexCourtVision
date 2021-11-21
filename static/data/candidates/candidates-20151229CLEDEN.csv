@@ -1,0 +1,51 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500473-009-1,21500473-009,dribble-hand-off,FALSE,1,10:55,19.29,203914,Gary Harris,203530,Joffrey Lauvergne,
+1,21500473-014-1,21500473-014,dribble-hand-off,TRUE,1,10:37,11.83,201567,Kevin Love,2544,LeBron James,results in layup
+2,21500473-019-1,21500473-019,dribble-hand-off,TRUE,1,9:36,12.24,203530,Joffrey Lauvergne,2749,Jameer Nelson,
+3,21500473-032-1,21500473-032,dribble-hand-off,FALSE,1,7:54,22.44,203123,Kostas Papanikolaou,2749,Jameer Nelson,
+4,21500473-084-1,21500473-084,dribble-hand-off,TRUE,1,2:06,12.82,201589,Darrell Arthur,203914,Gary Harris,
+5,21500473-089-1,21500473-089,dribble-hand-off,FALSE,1,1:07,13.04,203115,Will Barton,2749,Jameer Nelson,
+6,21500473-116-1,21500473-116,dribble-hand-off,FALSE,2,10:30,8.5,2210,Richard Jefferson,202697,Iman Shumpert,pass folowed by pick n' roll
+7,21500473-131-1,21500473-131,dribble-hand-off,FALSE,2,8:36,13.37,203115,Will Barton,203999,Nikola Jokic,post entry pass
+8,21500473-132-1,21500473-132,dribble-hand-off,TRUE,2,8:16,13.34,203521,Matthew Dellavedova,202697,Iman Shumpert,
+9,21500473-132-2,21500473-132,dribble-hand-off,FALSE,2,8:11,7.94,202697,Iman Shumpert,202389,Timofey Mozgov,pass over head
+10,21500473-141-1,21500473-141,dribble-hand-off,FALSE,2,7:24,14.75,200751,Randy Foye,203530,Joffrey Lauvergne,pick n' roll
+11,21500473-147-1,21500473-147,dribble-hand-off,FALSE,2,6:58,23.24,203530,Joffrey Lauvergne,203115,Will Barton,outlet following off reb
+12,21500473-153-1,21500473-153,dribble-hand-off,FALSE,2,6:28,13.49,203115,Will Barton,200751,Randy Foye,
+13,21500473-156-1,21500473-156,dribble-hand-off,TRUE,2,5:53,14.4,203530,Joffrey Lauvergne,203115,Will Barton,
+14,21500473-163-1,21500473-163,dribble-hand-off,TRUE,2,5:01,10.16,203530,Joffrey Lauvergne,2749,Jameer Nelson,
+15,21500473-172-1,21500473-172,dribble-hand-off,TRUE,2,4:21,10.48,203530,Joffrey Lauvergne,203115,Will Barton,
+16,21500473-230-1,21500473-230,dribble-hand-off,FALSE,3,11:25,8.23,203123,Kostas Papanikolaou,2749,Jameer Nelson,
+17,21500473-230-2,21500473-230,dribble-hand-off,FALSE,3,11:23,7.21,2749,Jameer Nelson,203530,Joffrey Lauvergne,post entry pass
+18,21500473-231-1,21500473-231,dribble-hand-off,TRUE,3,11:01,13.32,201567,Kevin Love,203521,Matthew Dellavedova,
+19,21500473-232-1,21500473-232,dribble-hand-off,FALSE,3,10:38,15.73,2544,LeBron James,201567,Kevin Love,pass to re-establish dribble
+20,21500473-232-2,21500473-232,dribble-hand-off,FALSE,3,10:37,15.16,201567,Kevin Love,2544,LeBron James,pass to re-establish dribble
+21,21500473-237-1,21500473-237,dribble-hand-off,FALSE,3,10:15,11.45,203530,Joffrey Lauvergne,202702,Kenneth Faried,
+22,21500473-237-2,21500473-237,dribble-hand-off,TRUE,3,10:10,6.52,202702,Kenneth Faried,2749,Jameer Nelson,
+23,21500473-237-3,21500473-237,dribble-hand-off,FALSE,3,10:07,3.94,2749,Jameer Nelson,203530,Joffrey Lauvergne,
+24,21500473-237-4,21500473-237,dribble-hand-off,FALSE,3,10:07,3.66,203530,Joffrey Lauvergne,203914,Gary Harris,loose ball
+25,21500473-237-5,21500473-237,dribble-hand-off,FALSE,3,10:05,2.31,203914,Gary Harris,203530,Joffrey Lauvergne,loose ball
+26,21500473-256-1,21500473-256,dribble-hand-off,FALSE,3,8:01,16.62,203914,Gary Harris,203530,Joffrey Lauvergne,pick n' roll
+27,21500473-259-1,21500473-259,dribble-hand-off,FALSE,3,7:54,20.14,2544,LeBron James,2747,J.R. Smith,
+28,21500473-282-1,21500473-282,dribble-hand-off,TRUE,3,5:45,13.86,2747,J.R. Smith,2590,Mo Williams,borderline
+29,21500473-303-1,21500473-303,dribble-hand-off,FALSE,3,3:50,8.23,2590,Mo Williams,202684,Tristan Thompson,pick n' roll
+30,21500473-307-1,21500473-307,dribble-hand-off,FALSE,3,3:23,5.04,203115,Will Barton,203999,Nikola Jokic,"screen, no pass"
+31,21500473-307-2,21500473-307,dribble-hand-off,FALSE,3,3:22,4.84,203999,Nikola Jokic,203115,Will Barton,"screen, no pass"
+32,21500473-339-1,21500473-339,dribble-hand-off,FALSE,3,0:20,9.54,2590,Mo Williams,202389,Timofey Mozgov,"screen, no pass"
+33,21500473-339-2,21500473-339,dribble-hand-off,FALSE,3,0:20,9.17,202389,Timofey Mozgov,2590,Mo Williams,"screen, no pass"
+34,21500473-340-1,21500473-340,dribble-hand-off,TRUE,3,0:03,0,203115,Will Barton,200751,Randy Foye,
+35,21500473-354-1,21500473-354,dribble-hand-off,TRUE,4,11:14,10,201567,Kevin Love,2590,Mo Williams,
+36,21500473-369-1,21500473-369,dribble-hand-off,FALSE,4,10:11,12.75,201567,Kevin Love,202697,Iman Shumpert,
+37,21500473-379-1,21500473-379,dribble-hand-off,TRUE,4,9:30,13.1,203999,Nikola Jokic,2034,Mike Miller,
+38,21500473-387-1,21500473-387,dribble-hand-off,FALSE,4,9:08,22.02,203115,Will Barton,200751,Randy Foye,
+39,21500473-387-2,21500473-387,dribble-hand-off,FALSE,4,9:02,16.75,200751,Randy Foye,203999,Nikola Jokic,pass over head
+40,21500473-387-3,21500473-387,dribble-hand-off,FALSE,4,9:02,16.54,203999,Nikola Jokic,201589,Darrell Arthur,pass over head
+41,21500473-391-1,21500473-391,dribble-hand-off,FALSE,4,8:23,8.74,200751,Randy Foye,203115,Will Barton,
+42,21500473-394-1,21500473-394,dribble-hand-off,FALSE,4,8:14,3,200751,Randy Foye,203115,Will Barton,
+43,21500473-409-1,21500473-409,dribble-hand-off,FALSE,4,7:16,12.14,202684,Tristan Thompson,203521,Matthew Dellavedova,
+44,21500473-417-1,21500473-417,dribble-hand-off,FALSE,4,6:46,9.86,2034,Mike Miller,203115,Will Barton,
+45,21500473-417-2,21500473-417,dribble-hand-off,FALSE,4,6:19,17.75,200751,Randy Foye,201589,Darrell Arthur,
+46,21500473-467-1,21500473-467,dribble-hand-off,TRUE,4,2:54,7.31,200751,Randy Foye,203115,Will Barton,
+47,21500473-501-1,21500473-501,dribble-hand-off,FALSE,4,1:20,16.74,201567,Kevin Love,203521,Matthew Dellavedova,
+48,21500473-514-1,21500473-514,dribble-hand-off,FALSE,4,0:59,16.07,200751,Randy Foye,203115,Will Barton,
+49,21500473-518-1,21500473-518,dribble-hand-off,TRUE,4,0:14,6.54,203521,Matthew Dellavedova,2747,J.R. Smith,

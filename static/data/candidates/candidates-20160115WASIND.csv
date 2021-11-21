@@ -1,0 +1,52 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500593-021-1,21500593-021,dribble-hand-off,FALSE,1,9:53,11.51,1626162,Kelly Oubre,201162,Jared Dudley,
+1,21500593-032-1,21500593-032,dribble-hand-off,FALSE,1,8:46,12.47,202322,John Wall,2403,Nene Hilario,"screen, no pass"
+2,21500593-032-2,21500593-032,dribble-hand-off,FALSE,1,8:46,12.35,2403,Nene Hilario,202322,John Wall,"screen, no pass"
+3,21500593-034-1,21500593-034,dribble-hand-off,TRUE,1,9:10,11.93,101133,Ian Mahinmi,202331,Paul George,FAKE
+4,21500593-034-2,21500593-034,dribble-hand-off,FALSE,1,9:10,11.89,202331,Paul George,101133,Ian Mahinmi,FAKE
+5,21500593-034-3,21500593-034,dribble-hand-off,FALSE,1,9:09,11.77,101133,Ian Mahinmi,202331,Paul George,
+6,21500593-034-4,21500593-034,dribble-hand-off,FALSE,1,9:09,11.69,202331,Paul George,101133,Ian Mahinmi,
+7,21500593-035-1,21500593-035,dribble-hand-off,FALSE,1,8:23,6.22,202331,Paul George,101133,Ian Mahinmi,
+8,21500593-037-1,21500593-037,dribble-hand-off,FALSE,1,7:46,17.23,201588,George Hill,101133,Ian Mahinmi,
+9,21500593-042-1,21500593-042,dribble-hand-off,FALSE,1,7:39,10.19,101145,Monta Ellis,101133,Ian Mahinmi,pick n' roll
+10,21500593-046-1,21500593-046,dribble-hand-off,TRUE,1,7:07,14.62,2403,Nene Hilario,202322,John Wall,
+11,21500593-048-1,21500593-048,dribble-hand-off,FALSE,1,6:55,2.55,202066,Garrett Temple,1626162,Kelly Oubre,
+12,21500593-051-1,21500593-051,dribble-hand-off,FALSE,1,6:41,11.53,202322,John Wall,201162,Jared Dudley,loose ball
+13,21500593-051-2,21500593-051,dribble-hand-off,TRUE,1,6:36,9.57,201162,Jared Dudley,202066,Garrett Temple,
+14,21500593-073-1,21500593-073,dribble-hand-off,TRUE,1,5:00,15.85,2400,Drew Gooden,202066,Garrett Temple,"borderline, denies screen"
+15,21500593-073-2,21500593-073,dribble-hand-off,FALSE,1,4:55,11.6,202322,John Wall,1626162,Kelly Oubre,drive n' kick
+16,21500593-101-1,21500593-101,dribble-hand-off,TRUE,1,2:40,13.15,202730,Lavoy Allen,201978,Chase Budinger,
+17,21500593-103-1,21500593-103,dribble-hand-off,FALSE,1,2:17,16.59,101145,Monta Ellis,202730,Lavoy Allen,pick n' roll
+18,21500593-129-1,21500593-129,dribble-hand-off,TRUE,1,0:21,10.81,2400,Drew Gooden,202390,Gary Neal,
+19,21500593-140-1,21500593-140,dribble-hand-off,FALSE,2,11:14,13.1,201196,Ramon Sessions,2400,Drew Gooden,
+20,21500593-140-2,21500593-140,dribble-hand-off,FALSE,2,11:09,7.9,202390,Gary Neal,2400,Drew Gooden,
+21,21500593-141-1,21500593-141,dribble-hand-off,FALSE,2,10:53,18.18,201588,George Hill,203922,Glenn Robinson,
+22,21500593-146-1,21500593-146,dribble-hand-off,FALSE,2,10:18,17.08,203078,Bradley Beal,2400,Drew Gooden,
+23,21500593-146-2,21500593-146,dribble-hand-off,TRUE,2,10:16,14.36,2400,Drew Gooden,202390,Gary Neal,
+24,21500593-156-1,21500593-156,dribble-hand-off,FALSE,2,9:26,16.04,201588,George Hill,1626167,Myles Turner,pick n' pop
+25,21500593-202-1,21500593-202,dribble-hand-off,FALSE,2,5:21,17.77,202390,Gary Neal,201162,Jared Dudley,loose ball
+26,21500593-202-2,21500593-202,dribble-hand-off,FALSE,2,5:20,17.05,201162,Jared Dudley,201196,Ramon Sessions,
+27,21500593-202-3,21500593-202,dribble-hand-off,TRUE,2,5:16,12.98,2403,Nene Hilario,202390,Gary Neal,bounce pass
+28,21500593-205-1,21500593-205,dribble-hand-off,FALSE,2,5:04,18.76,201588,George Hill,201941,Jordan Hill,
+29,21500593-207-1,21500593-207,dribble-hand-off,TRUE,2,4:48,16.58,2403,Nene Hilario,201196,Ramon Sessions,
+30,21500593-243-1,21500593-243,dribble-hand-off,FALSE,2,2:29,18.47,202066,Garrett Temple,201971,DeJuan Blair,pick n' roll
+31,21500593-248-1,21500593-248,dribble-hand-off,FALSE,2,1:52,20.62,202331,Paul George,101145,Monta Ellis,
+32,21500593-291-1,21500593-291,dribble-hand-off,TRUE,3,10:38,8.37,202331,Paul George,101145,Monta Ellis,
+33,21500593-292-1,21500593-292,dribble-hand-off,FALSE,3,10:29,12.23,101133,Ian Mahinmi,101139,CJ Miles,
+34,21500593-309-1,21500593-309,dribble-hand-off,FALSE,3,8:40,18.72,202066,Garrett Temple,2403,Nene Hilario,pass over head
+35,21500593-311-1,21500593-311,dribble-hand-off,FALSE,3,8:09,13.02,202066,Garrett Temple,2403,Nene Hilario,post entry pass
+36,21500593-311-2,21500593-311,dribble-hand-off,TRUE,3,8:08,12.24,2403,Nene Hilario,202066,Garrett Temple,layup
+37,21500593-312-1,21500593-312,dribble-hand-off,FALSE,3,7:57,17.22,101133,Ian Mahinmi,101145,Monta Ellis,
+38,21500593-341-1,21500593-341,dribble-hand-off,FALSE,3,5:31,13.36,202322,John Wall,1626162,Kelly Oubre,re-establish dribble
+39,21500593-341-2,21500593-341,dribble-hand-off,FALSE,3,5:31,12.69,1626162,Kelly Oubre,202322,John Wall,re-establish dribble
+40,21500593-355-1,21500593-355,dribble-hand-off,TRUE,3,4:02,17.66,101133,Ian Mahinmi,101145,Monta Ellis,
+41,21500593-358-1,21500593-358,dribble-hand-off,FALSE,3,3:36,14.95,101139,CJ Miles,101145,Monta Ellis,
+42,21500593-378-1,21500593-378,dribble-hand-off,TRUE,3,2:19,14.62,1626167,Myles Turner,101145,Monta Ellis,
+43,21500593-406-1,21500593-406,dribble-hand-off,TRUE,3,0:23,16.05,203078,Bradley Beal,201196,Ramon Sessions,lazy
+44,21500593-418-1,21500593-418,dribble-hand-off,TRUE,4,10:53,18,201588,George Hill,202331,Paul George,
+45,21500593-418-2,21500593-418,dribble-hand-off,FALSE,4,10:51,15.86,202331,Paul George,202730,Lavoy Allen,pick n' roll
+46,21500593-451-1,21500593-451,dribble-hand-off,TRUE,4,7:46,18.96,201588,George Hill,201978,Chase Budinger,
+47,21500593-451-2,21500593-451,dribble-hand-off,TRUE,4,7:43,15.61,201978,Chase Budinger,201588,George Hill,
+48,21500593-464-1,21500593-464,dribble-hand-off,FALSE,4,6:15,17.41,201588,George Hill,101145,Monta Ellis,
+49,21500593-484-1,21500593-484,dribble-hand-off,TRUE,4,4:32,9.04,2403,Nene Hilario,202322,John Wall,
+50,21500593-485-1,21500593-485,dribble-hand-off,FALSE,4,4:19,20.39,202331,Paul George,101139,CJ Miles,

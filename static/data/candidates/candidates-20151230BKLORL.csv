@@ -1,0 +1,55 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,,notes
+0,21500475-004-1,21500475-004,dribble-hand-off,FALSE,1,11:00,16.01,101127,Jarrett Jack,2207,Joe Johnson,,
+1,21500475-004-2,21500475-004,dribble-hand-off,FALSE,1,10:58,14,2207,Joe Johnson,202711,Bojan Bogdanovic,,
+2,21500475-004-3,21500475-004,dribble-hand-off,TRUE,1,10:55,10.7,202711,Bojan Bogdanovic,101127,Jarrett Jack,,
+3,21500475-004-4,21500475-004,dribble-hand-off,FALSE,1,10:52,7.28,2207,Joe Johnson,201572,Brook Lopez,,"screen, no pass"
+4,21500475-010-1,21500475-010,dribble-hand-off,TRUE,1,9:51,17.09,202696,Nikola Vucevic,202699,Tobias Harris,,
+5,21500475-012-1,21500475-012,dribble-hand-off,FALSE,1,9:34,18.09,201572,Brook Lopez,2207,Joe Johnson,,borderline
+6,21500475-021-1,21500475-021,dribble-hand-off,FALSE,1,8:16,21.16,101127,Jarrett Jack,201152,Thaddeus Young,,transition
+7,21500475-061-1,21500475-061,dribble-hand-off,FALSE,1,5:05,24,101127,Jarrett Jack,201572,Brook Lopez,,
+8,21500475-068-1,21500475-068,dribble-hand-off,FALSE,1,3:46,17.68,203499,Shane Larkin,201152,Thaddeus Young,,
+9,21500475-077-1,21500475-077,dribble-hand-off,FALSE,1,2:59,13.99,203894,Shabazz Napier,202699,Tobias Harris,,
+10,21500475-079-1,21500475-079,dribble-hand-off,FALSE,1,3:15,14.56,203080,Thomas Robinson,201572,Brook Lopez,,
+11,21500475-115-1,21500475-115,dribble-hand-off,FALSE,1,0:35,14.72,203499,Shane Larkin,203080,Thomas Robinson,,
+12,21500475-134-1,21500475-134,dribble-hand-off,FALSE,2,11:33,7.19,203506,Victor Oladipo,1626209,Mario Hezonja,,
+13,21500475-163-1,21500475-163,dribble-hand-off,FALSE,2,8:45,17.64,1626209,Mario Hezonja,101112,Channing Frye,,
+14,21500475-163-2,21500475-163,dribble-hand-off,TRUE,2,8:43,16.24,101112,Channing Frye,203473,Dewayne Dedmon,,
+15,21500475-166-1,21500475-166,dribble-hand-off,FALSE,2,8:30,18.42,201961,Wayne Ellington,202711,Bojan Bogdanovic,,post entry pass
+16,21500475-180-1,21500475-180,dribble-hand-off,FALSE,2,7:11,19.83,203499,Shane Larkin,200745,Andrea Bargnani,,pass over head
+17,21500475-183-1,21500475-183,dribble-hand-off,FALSE,2,6:32,15.88,203499,Shane Larkin,201572,Brook Lopez,,pass over head
+18,21500475-185-1,21500475-185,dribble-hand-off,TRUE,2,6:11,10.43,203473,Dewayne Dedmon,203095,Evan Fournier,,
+19,21500475-185-2,21500475-185,dribble-hand-off,FALSE,2,6:09,8.33,203095,Evan Fournier,101112,Channing Frye,,
+20,21500475-185-3,21500475-185,dribble-hand-off,FALSE,2,6:08,7.61,101112,Channing Frye,203506,Victor Oladipo,,
+21,21500475-186-1,21500475-186,dribble-hand-off,FALSE,2,5:46,20.2,101127,Jarrett Jack,202711,Bojan Bogdanovic,,
+22,21500475-203-1,21500475-203,dribble-hand-off,FALSE,2,5:00,10.45,101127,Jarrett Jack,201572,Brook Lopez,,pick n' roll
+23,21500475-205-1,21500475-205,dribble-hand-off,TRUE,2,4:18,16.33,202696,Nikola Vucevic,203894,Shabazz Napier,,
+24,21500475-213-1,21500475-213,dribble-hand-off,TRUE,2,3:02,11.57,101112,Channing Frye,203095,Evan Fournier,,
+25,21500475-261-1,21500475-261,dribble-hand-off,FALSE,3,11:16,19.59,203894,Shabazz Napier,101112,Channing Frye,,
+26,21500475-261-2,21500475-261,dribble-hand-off,TRUE,3,11:14,17.45,101112,Channing Frye,203095,Evan Fournier,,
+27,21500475-261-3,21500475-261,dribble-hand-off,TRUE,3,11:11,14.98,203894,Shabazz Napier,202699,Tobias Harris,,
+28,21500475-261-4,21500475-261,dribble-hand-off,FALSE,3,11:00,4.55,202699,Tobias Harris,203095,Evan Fournier,,
+29,21500475-263-1,21500475-263,dribble-hand-off,FALSE,3,10:24,17.64,101112,Channing Frye,203095,Evan Fournier,,
+30,21500475-265-1,21500475-265,dribble-hand-off,FALSE,3,9:43,16.81,203095,Evan Fournier,202699,Tobias Harris,,
+31,21500475-268-1,21500475-268,dribble-hand-off,FALSE,3,9:08,16.83,101127,Jarrett Jack,201152,Thaddeus Young,,post entry pass
+32,21500475-277-1,21500475-277,dribble-hand-off,FALSE,3,8:15,13.64,203894,Shabazz Napier,202699,Tobias Harris,,
+33,21500475-291-1,21500475-291,dribble-hand-off,FALSE,3,6:00,11.35,203894,Shabazz Napier,101112,Channing Frye,,
+34,21500475-306-1,21500475-306,dribble-hand-off,FALSE,3,4:57,14.63,202699,Tobias Harris,203095,Evan Fournier,,
+35,21500475-306-2,21500475-306,dribble-hand-off,FALSE,3,4:54,11.86,203932,Aaron Gordon,203506,Victor Oladipo,,
+36,21500475-306-3,21500475-306,dribble-hand-off,FALSE,3,4:51,9.13,203506,Victor Oladipo,202696,Nikola Vucevic,,
+37,21500475-343-1,21500475-343,dribble-hand-off,FALSE,3,1:45,17.17,203506,Victor Oladipo,202699,Tobias Harris,,backcourt
+38,21500475-343-2,21500475-343,dribble-hand-off,TRUE,3,1:43,15.39,202699,Tobias Harris,203095,Evan Fournier,,
+39,21500475-345-1,21500475-345,dribble-hand-off,FALSE,3,1:02,10.18,203506,Victor Oladipo,202699,Tobias Harris,,
+40,21500475-350-1,21500475-350,dribble-hand-off,TRUE,3,0:12,0,203499,Shane Larkin,201961,Wayne Ellington,,fastbreak
+41,21500475-365-1,21500475-365,dribble-hand-off,FALSE,4,11:07,14.21,203499,Shane Larkin,200745,Andrea Bargnani,,bad pass
+42,21500475-367-1,21500475-367,dribble-hand-off,FALSE,4,10:56,12.52,201160,Jason Smith,203095,Evan Fournier,,
+43,21500475-374-1,21500475-374,dribble-hand-off,FALSE,4,10:12,24,203095,Evan Fournier,201160,Jason Smith,,
+44,21500475-382-1,21500475-382,dribble-hand-off,FALSE,4,9:25,13.14,203499,Shane Larkin,201572,Brook Lopez,,
+45,21500475-382-2,21500475-382,dribble-hand-off,TRUE,4,9:22,10.66,201572,Brook Lopez,202711,Bojan Bogdanovic,,
+46,21500475-405-1,21500475-405,dribble-hand-off,FALSE,4,7:35,16.95,101127,Jarrett Jack,200745,Andrea Bargnani,,pass to re-establish dribble
+47,21500475-405-2,21500475-405,dribble-hand-off,FALSE,4,7:34,16.21,200745,Andrea Bargnani,101127,Jarrett Jack,,pass to re-establish dribble
+48,21500475-438-1,21500475-438,dribble-hand-off,FALSE,4,5:13,12.11,202699,Tobias Harris,203506,Victor Oladipo,,
+49,21500475-447-1,21500475-447,dribble-hand-off,FALSE,4,4:01,8.77,203506,Victor Oladipo,202696,Nikola Vucevic,,post entry pass
+50,21500475-449-1,21500475-449,dribble-hand-off,FALSE,4,3:32,14.81,203506,Victor Oladipo,203932,Aaron Gordon,,
+51,21500475-449-2,21500475-449,dribble-hand-off,TRUE,4,3:31,14.25,203932,Aaron Gordon,203506,Victor Oladipo,,
+52,21500475-483-1,21500475-483,dribble-hand-off,FALSE,4,0:31,9.08,101127,Jarrett Jack,201572,Brook Lopez,,
+53,21500475-483-2,21500475-483,dribble-hand-off,TRUE,4,0:29,7.41,201572,Brook Lopez,101127,Jarrett Jack,,

@@ -1,0 +1,38 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500579-004-1,21500579-004,dribble-hand-off,FALSE,1,11:01,14.02,101181,Jose Calderon,201577,Robin Lopez,
+1,21500579-012-1,21500579-012,dribble-hand-off,FALSE,1,9:57,17.25,201152,Thaddeus Young,202388,Donald Sloan,
+2,21500579-020-1,21500579-020,dribble-hand-off,FALSE,1,8:42,18.87,202388,Donald Sloan,201152,Thaddeus Young,
+3,21500579-032-1,21500579-032,dribble-hand-off,TRUE,1,7:27,16.48,201577,Robin Lopez,202498,Lance Thomas,bad pass
+4,21500579-034-1,21500579-034,dribble-hand-off,FALSE,1,6:54,6.75,204001,Kristaps Porzingis,202498,Lance Thomas,
+5,21500579-034-2,21500579-034,dribble-hand-off,FALSE,1,6:51,3.45,202498,Lance Thomas,101181,Jose Calderon,
+6,21500579-037-1,21500579-037,dribble-hand-off,TRUE,1,6:39,18.24,202388,Donald Sloan,201961,Wayne Ellington,
+7,21500579-046-1,21500579-046,dribble-hand-off,FALSE,1,5:35,16.69,202388,Donald Sloan,201152,Thaddeus Young,
+8,21500579-046-2,21500579-046,dribble-hand-off,TRUE,1,5:33,14.82,201152,Thaddeus Young,201961,Wayne Ellington,
+9,21500579-079-1,21500579-079,dribble-hand-off,FALSE,1,2:07,17.71,203186,Willie Reed,201152,Thaddeus Young,dump off pass
+10,21500579-079-2,21500579-079,dribble-hand-off,FALSE,1,2:05,16,203186,Willie Reed,201152,Thaddeus Young,
+11,21500579-079-3,21500579-079,dribble-hand-off,FALSE,1,2:01,12.38,201152,Thaddeus Young,203186,Willie Reed,
+12,21500579-082-1,21500579-082,dribble-hand-off,FALSE,1,1:31,19.98,203499,Shane Larkin,201152,Thaddeus Young,
+13,21500579-131-1,21500579-131,dribble-hand-off,FALSE,2,9:35,21.06,204038,Langston Galloway,202682,Derrick Williams,"fastbreak, alley-oop"
+14,21500579-141-1,21500579-141,dribble-hand-off,FALSE,2,8:45,14.93,203499,Shane Larkin,202711,Bojan Bogdanovic,
+15,21500579-156-1,21500579-156,dribble-hand-off,FALSE,2,8:15,24,201577,Robin Lopez,1626170,Jerian Grant,
+16,21500579-207-1,21500579-207,dribble-hand-off,FALSE,2,4:28,19.78,201152,Thaddeus Young,2207,Joe Johnson,
+17,21500579-224-1,21500579-224,dribble-hand-off,FALSE,2,2:21,11.54,202498,Lance Thomas,204038,Langston Galloway,
+18,21500579-224-2,21500579-224,dribble-hand-off,FALSE,2,2:15,5.69,201167,Arron Afflalo,202498,Lance Thomas,
+19,21500579-262-1,21500579-262,dribble-hand-off,FALSE,3,10:35,15.1,201167,Arron Afflalo,202498,Lance Thomas,
+20,21500579-264-1,21500579-264,dribble-hand-off,FALSE,3,10:22,17.66,202388,Donald Sloan,201152,Thaddeus Young,
+21,21500579-264-2,21500579-264,dribble-hand-off,FALSE,3,10:21,16.58,201152,Thaddeus Young,201961,Wayne Ellington,
+22,21500579-278-1,21500579-278,dribble-hand-off,FALSE,3,7:27,16.67,2207,Joe Johnson,201152,Thaddeus Young,post entry pass
+23,21500579-283-1,21500579-283,dribble-hand-off,FALSE,3,7:08,9.51,101181,Jose Calderon,201577,Robin Lopez,pick n' roll
+24,21500579-296-1,21500579-296,dribble-hand-off,FALSE,3,5:13,14.32,101181,Jose Calderon,202682,Derrick Williams,
+25,21500579-305-1,21500579-305,dribble-hand-off,FALSE,3,4:28,19.28,201961,Wayne Ellington,2207,Joe Johnson,fastbreak
+26,21500579-306-1,21500579-306,dribble-hand-off,TRUE,3,4:11,13.57,201577,Robin Lopez,101181,Jose Calderon,
+27,21500579-309-1,21500579-309,dribble-hand-off,FALSE,3,3:48,11.41,204001,Kristaps Porzingis,202682,Derrick Williams,
+28,21500579-319-1,21500579-319,dribble-hand-off,FALSE,3,2:45,13.59,202388,Donald Sloan,201572,Brook Lopez,
+29,21500579-322-1,21500579-322,dribble-hand-off,FALSE,3,2:17,13.18,202388,Donald Sloan,201572,Brook Lopez,
+30,21500579-337-1,21500579-337,dribble-hand-off,TRUE,3,0:36,17.56,202711,Bojan Bogdanovic,203499,Shane Larkin,
+31,21500579-384-1,21500579-384,dribble-hand-off,FALSE,4,8:32,12.04,201152,Thaddeus Young,2207,Joe Johnson,
+32,21500579-389-1,21500579-389,dribble-hand-off,FALSE,4,7:47,8.5,204038,Langston Galloway,202682,Derrick Williams,
+33,21500579-395-1,21500579-395,dribble-hand-off,FALSE,4,7:05,16.92,203499,Shane Larkin,2207,Joe Johnson,
+34,21500579-399-1,21500579-399,dribble-hand-off,FALSE,4,6:59,13.6,201152,Thaddeus Young,203499,Shane Larkin,
+35,21500579-400-1,21500579-400,dribble-hand-off,FALSE,4,6:22,15.1,203499,Shane Larkin,2207,Joe Johnson,
+36,21500579-416-1,21500579-416,dribble-hand-off,TRUE,4,4:23,11.36,201577,Robin Lopez,1626170,Jerian Grant,

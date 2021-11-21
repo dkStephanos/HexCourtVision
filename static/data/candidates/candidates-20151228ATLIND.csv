@@ -1,0 +1,51 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500459-006-1,21500459-006,dribble-hand-off,TRUE,1,11:08,11.31,201588,George Hill,202331,Paul George,very quick
+1,21500459-017-1,21500459-017,dribble-hand-off,FALSE,1,9:59,8.44,101145,Monta Ellis,202730,Lavoy Allen,pick n' pop
+2,21500459-033-1,21500459-033,dribble-hand-off,FALSE,1,7:33,21.31,201952,Jeff Teague,2594,Kyle Korver,transition
+3,21500459-033-2,21500459-033,dribble-hand-off,TRUE,1,7:29,16.87,201143,Al Horford,203145,Kent Bazemore,borderline
+4,21500459-033-3,21500459-033,dribble-hand-off,FALSE,1,7:27,14.61,203145,Kent Bazemore,201143,Al Horford,pick n' roll
+5,21500459-035-1,21500459-035,dribble-hand-off,FALSE,1,7:16,18.66,201588,George Hill,101133,Ian Mahinmi,
+6,21500459-046-1,21500459-046,dribble-hand-off,TRUE,1,6:27,16.11,202730,Lavoy Allen,101145,Monta Ellis,
+7,21500459-058-1,21500459-058,dribble-hand-off,TRUE,1,5:48,7.66,101133,Ian Mahinmi,201588,George Hill,borderline
+8,21500459-058-2,21500459-058,dribble-hand-off,FALSE,1,5:47,6.14,101133,Ian Mahinmi,201588,George Hill,"screen, no pass"
+9,21500459-072-1,21500459-072,dribble-hand-off,FALSE,1,4:48,11.77,101145,Monta Ellis,202331,Paul George,
+10,21500459-077-1,21500459-077,dribble-hand-off,FALSE,1,4:12,17.05,202331,Paul George,101145,Monta Ellis,
+11,21500459-078-1,21500459-078,dribble-hand-off,FALSE,1,4:01,18.08,203471,Dennis Schroder,200794,Paul Millsap,
+12,21500459-081-1,21500459-081,dribble-hand-off,FALSE,1,3:55,21.42,203471,Dennis Schroder,200794,Paul Millsap,pick n' roll
+13,21500459-087-1,21500459-087,dribble-hand-off,FALSE,1,3:23,18.08,201155,Rodney Stuckey,202331,Paul George,
+14,21500459-104-1,21500459-104,dribble-hand-off,TRUE,1,1:30,14.58,203524,Solomon Hill,202331,Paul George,
+15,21500459-104-2,21500459-104,dribble-hand-off,FALSE,1,1:29,14.06,202331,Paul George,203524,Solomon Hill,"screen, no pass"
+16,21500459-116-1,21500459-116,dribble-hand-off,FALSE,1,0:11,6.02,203471,Dennis Schroder,201143,Al Horford,
+17,21500459-124-1,21500459-124,dribble-hand-off,FALSE,2,11:16,4.33,203934,Lamar Patterson,203471,Dennis Schroder,
+18,21500459-126-1,21500459-126,dribble-hand-off,FALSE,2,10:54,12.65,2594,Kyle Korver,203471,Dennis Schroder,
+19,21500459-126-2,21500459-126,dribble-hand-off,FALSE,2,10:53,11.72,203471,Dennis Schroder,201143,Al Horford,
+20,21500459-126-3,21500459-126,dribble-hand-off,FALSE,2,10:48,8.18,203471,Dennis Schroder,201143,Al Horford,pick n' roll
+21,21500459-152-1,21500459-152,dribble-hand-off,TRUE,2,9:29,13.9,201941,Jordan Hill,201155,Rodney Stuckey,
+22,21500459-152-2,21500459-152,dribble-hand-off,TRUE,2,9:24,11.86,201941,Jordan Hill,201155,Rodney Stuckey,
+23,21500459-160-1,21500459-160,dribble-hand-off,FALSE,2,8:18,19.73,201588,George Hill,201941,Jordan Hill,
+24,21500459-172-1,21500459-172,dribble-hand-off,FALSE,2,6:54,13.01,2594,Kyle Korver,200794,Paul Millsap,
+25,21500459-177-1,21500459-177,dribble-hand-off,TRUE,2,6:13,18.13,200794,Paul Millsap,2594,Kyle Korver,
+26,21500459-194-1,21500459-194,dribble-hand-off,TRUE,2,4:32,10.74,202730,Lavoy Allen,201978,Chase Budinger,
+27,21500459-207-1,21500459-207,dribble-hand-off,FALSE,2,2:38,13.59,200794,Paul Millsap,203145,Kent Bazemore,
+28,21500459-241-1,21500459-241,dribble-hand-off,FALSE,2,0:42,22.46,201588,George Hill,202331,Paul George,
+29,21500459-267-1,21500459-267,dribble-hand-off,FALSE,3,9:14,14.82,201588,George Hill,101145,Monta Ellis,
+30,21500459-269-1,21500459-269,dribble-hand-off,FALSE,3,9:02,17.77,201952,Jeff Teague,200794,Paul Millsap,
+31,21500459-270-1,21500459-270,dribble-hand-off,TRUE,3,8:49,17.58,101145,Monta Ellis,202331,Paul George,
+32,21500459-277-1,21500459-277,dribble-hand-off,FALSE,3,8:15,16.61,201952,Jeff Teague,2594,Kyle Korver,
+33,21500459-277-2,21500459-277,dribble-hand-off,FALSE,3,8:15,16.46,2594,Kyle Korver,201143,Al Horford,
+34,21500459-294-1,21500459-294,dribble-hand-off,FALSE,3,7:01,2.89,202331,Paul George,202730,Lavoy Allen,pick n' roll
+35,21500459-294-2,21500459-294,dribble-hand-off,FALSE,3,6:59,3.1,202331,Paul George,202730,Lavoy Allen,inbound pass
+36,21500459-294-3,21500459-294,dribble-hand-off,FALSE,3,6:58,2.14,202730,Lavoy Allen,202331,Paul George,"turnover, bad pass"
+37,21500459-315-1,21500459-315,dribble-hand-off,TRUE,3,5:45,17.81,101133,Ian Mahinmi,202331,Paul George,borderline
+38,21500459-317-1,21500459-317,dribble-hand-off,FALSE,3,5:24,18.38,201143,Al Horford,201952,Jeff Teague,
+39,21500459-317-2,21500459-317,dribble-hand-off,FALSE,3,5:23,17.18,201952,Jeff Teague,201143,Al Horford,
+40,21500459-317-3,21500459-317,dribble-hand-off,FALSE,3,5:22,16.54,201143,Al Horford,201952,Jeff Teague,
+41,21500459-356-1,21500459-356,dribble-hand-off,FALSE,3,1:03,15.04,203471,Dennis Schroder,200794,Paul Millsap,pick n' roll
+42,21500459-358-1,21500459-358,dribble-hand-off,FALSE,3,0:57,20.87,201155,Rodney Stuckey,202331,Paul George,transition
+43,21500459-381-1,21500459-381,dribble-hand-off,TRUE,4,10:37,11.16,201143,Al Horford,203934,Lamar Patterson,borderline
+44,21500459-383-1,21500459-383,dribble-hand-off,TRUE,4,10:19,14.42,201588,George Hill,201155,Rodney Stuckey,
+45,21500459-394-1,21500459-394,dribble-hand-off,TRUE,4,8:49,10.3,203118,Mike Scott,200757,Thabo Sefolosha,
+46,21500459-416-1,21500459-416,dribble-hand-off,FALSE,4,6:46,17.12,200794,Paul Millsap,203145,Kent Bazemore,
+47,21500459-429-1,21500459-429,dribble-hand-off,FALSE,4,5:59,17.99,201952,Jeff Teague,200794,Paul Millsap,"screen, no pass"
+48,21500459-458-1,21500459-458,dribble-hand-off,TRUE,4,3:29,15.66,203524,Solomon Hill,101145,Monta Ellis,FAKE
+49,21500459-458-2,21500459-458,dribble-hand-off,FALSE,4,3:29,15.55,101145,Monta Ellis,203524,Solomon Hill,FAKE

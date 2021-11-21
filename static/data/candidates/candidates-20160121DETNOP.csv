@@ -1,0 +1,33 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500641-033-1,21500641-033,dribble-hand-off,FALSE,1,8:09,18.76,101141,Ersan Ilyasova,202694,Marcus Morris,
+1,21500641-035-1,21500641-035,dribble-hand-off,TRUE,1,7:48,23.24,203076,Anthony Davis,202708,Norris Cole,
+2,21500641-040-1,21500641-040,dribble-hand-off,FALSE,1,6:53,17.38,202708,Norris Cole,203076,Anthony Davis,
+3,21500641-044-1,21500641-044,dribble-hand-off,FALSE,1,6:20,17.99,101141,Ersan Ilyasova,202704,Reggie Jackson,
+4,21500641-061-1,21500641-061,dribble-hand-off,FALSE,1,4:28,6.04,201936,Tyreke Evans,203076,Anthony Davis,post entry pass
+5,21500641-092-1,21500641-092,dribble-hand-off,FALSE,1,1:47,17.44,202708,Norris Cole,201583,Ryan Anderson,
+6,21500641-092-2,21500641-092,dribble-hand-off,TRUE,1,1:46,16.58,201583,Ryan Anderson,202708,Norris Cole,FAKE
+7,21500641-095-1,21500641-095,dribble-hand-off,FALSE,1,1:44,0,201582,Alexis Ajinca,201583,Ryan Anderson,"foul, loose ball"
+8,21500641-105-1,21500641-105,dribble-hand-off,FALSE,1,0:46,11.3,101141,Ersan Ilyasova,1626169,Stanley Johnson,
+9,21500641-108-1,21500641-108,dribble-hand-off,TRUE,1,0:09,5.11,201943,Brandon Jennings,203484,Kentavious Caldwell-Pope,
+10,21500641-110-1,21500641-110,dribble-hand-off,FALSE,1,0:03,0,202708,Norris Cole,202087,Alonzo Gee,transition
+11,21500641-130-1,21500641-130,dribble-hand-off,TRUE,2,9:40,16.56,201583,Ryan Anderson,201950,Jrue Holiday,
+12,21500641-147-1,21500641-147,dribble-hand-off,FALSE,2,7:37,15.99,201229,Anthony Tolliver,201943,Brandon Jennings,
+13,21500641-148-1,21500641-148,dribble-hand-off,FALSE,2,7:20,14.79,201950,Jrue Holiday,203076,Anthony Davis,
+14,21500641-189-1,21500641-189,dribble-hand-off,FALSE,2,4:50,7.4,202704,Reggie Jackson,202694,Marcus Morris,
+15,21500641-189-2,21500641-189,dribble-hand-off,FALSE,2,4:46,4.53,203484,Kentavious Caldwell-Pope,101141,Ersan Ilyasova,
+16,21500641-252-1,21500641-252,dribble-hand-off,TRUE,3,11:23,10.87,203076,Anthony Davis,201936,Tyreke Evans,
+17,21500641-254-1,21500641-254,dribble-hand-off,FALSE,3,10:58,12.22,202704,Reggie Jackson,203484,Kentavious Caldwell-Pope,re-establish dribble
+18,21500641-254-2,21500641-254,dribble-hand-off,FALSE,3,10:58,11.76,203484,Kentavious Caldwell-Pope,202704,Reggie Jackson,re-establish dribble
+19,21500641-257-1,21500641-257,dribble-hand-off,FALSE,3,10:24,15.92,203484,Kentavious Caldwell-Pope,202694,Marcus Morris,
+20,21500641-275-1,21500641-275,dribble-hand-off,TRUE,3,9:12,14.6,201600,Omer Asik,201967,Dante Cunningham,
+21,21500641-280-1,21500641-280,dribble-hand-off,TRUE,3,8:53,8.96,201967,Dante Cunningham,202708,Norris Cole,
+22,21500641-325-1,21500641-325,dribble-hand-off,TRUE,3,3:57,14.59,202708,Norris Cole,201950,Jrue Holiday,
+23,21500641-330-1,21500641-330,dribble-hand-off,FALSE,3,3:25,16.72,203076,Anthony Davis,202708,Norris Cole,"borderline, long pass"
+24,21500641-348-1,21500641-348,dribble-hand-off,FALSE,3,2:00,14.76,203484,Kentavious Caldwell-Pope,203083,Andre Drummond,post entry pass
+25,21500641-348-2,21500641-348,dribble-hand-off,TRUE,3,1:56,10.81,203083,Andre Drummond,201943,Brandon Jennings,
+26,21500641-348-3,21500641-348,dribble-hand-off,FALSE,3,1:53,8.49,101141,Ersan Ilyasova,203484,Kentavious Caldwell-Pope,
+27,21500641-405-1,21500641-405,dribble-hand-off,FALSE,4,9:08,11.89,203484,Kentavious Caldwell-Pope,201229,Anthony Tolliver,
+28,21500641-420-1,21500641-420,dribble-hand-off,TRUE,4,7:57,9.24,203382,Aron Baynes,203484,Kentavious Caldwell-Pope,
+29,21500641-425-1,21500641-425,dribble-hand-off,FALSE,4,7:30,6.04,201936,Tyreke Evans,203076,Anthony Davis,pick n' pop
+30,21500641-463-1,21500641-463,dribble-hand-off,TRUE,4,4:36,18.27,201936,Tyreke Evans,201950,Jrue Holiday,
+31,21500641-483-1,21500641-483,dribble-hand-off,FALSE,4,2:23,21.2,201943,Brandon Jennings,101141,Ersan Ilyasova,transition

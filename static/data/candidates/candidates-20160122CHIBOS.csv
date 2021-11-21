@@ -1,0 +1,89 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500646-011-1,21500646-011,dribble-hand-off,FALSE,1,10:42,0,203503,Tony Snell,2200,Pau Gasol,
+1,21500646-016-1,21500646-016,dribble-hand-off,FALSE,1,9:52,0,203503,Tony Snell,2200,Pau Gasol,
+2,21500646-016-2,21500646-016,dribble-hand-off,TRUE,1,9:50,0,2200,Pau Gasol,201565,Derrick Rose,
+3,21500646-016-3,21500646-016,dribble-hand-off,TRUE,1,9:46,0,202710,Jimmy Butler,2200,Pau Gasol,
+4,21500646-016-4,21500646-016,dribble-hand-off,TRUE,1,9:27,0,201959,Taj Gibson,201565,Derrick Rose,"borderline, denies screen"
+5,21500646-021-1,21500646-021,dribble-hand-off,TRUE,1,9:11,0,203096,Jared Sullinger,202340,Avery Bradley,
+6,21500646-022-2,21500646-022,dribble-hand-off,FALSE,1,8:53,0,201959,Taj Gibson,2200,Pau Gasol,
+7,21500646-038-1,21500646-038,dribble-hand-off,FALSE,1,7:50,0,203503,Tony Snell,201959,Taj Gibson,screen
+8,21500646-038-2,21500646-038,dribble-hand-off,FALSE,1,7:49,0,203503,Tony Snell,201959,Taj Gibson,pick n' roll
+9,21500646-040-1,21500646-040,dribble-hand-off,TRUE,1,7:41,0,202340,Avery Bradley,203482,Kelly Olynyk,"borderline, transition"
+10,21500646-061-1,21500646-061,dribble-hand-off,FALSE,1,6:16,0,203096,Jared Sullinger,202738,Isaiah Thomas,
+11,21500646-063-1,21500646-063,dribble-hand-off,FALSE,1,5:46,0,201959,Taj Gibson,202710,Jimmy Butler,"screen, no pass"
+12,21500646-063-2,21500646-063,dribble-hand-off,FALSE,1,5:45,0,202710,Jimmy Butler,2200,Pau Gasol,
+13,21500646-074-1,21500646-074,dribble-hand-off,TRUE,1,5:22,0,202340,Avery Bradley,202738,Isaiah Thomas,
+14,21500646-094-1,21500646-094,dribble-hand-off,FALSE,1,3:27,0,202340,Avery Bradley,201973,Jonas Jerebko,pocket pass
+15,21500646-101-1,21500646-101,dribble-hand-off,FALSE,1,2:52,0,2200,Pau Gasol,203926,Doug McDermott,
+16,21500646-102-1,21500646-102,dribble-hand-off,FALSE,1,3:03,0,202340,Avery Bradley,203935,Marcus Smart,
+17,21500646-102-6,21500646-102,dribble-hand-off,FALSE,1,3:04,0,203935,Marcus Smart,202323,Evan Turner,
+18,21500646-102-8,21500646-102,dribble-hand-off,FALSE,1,3:02,0,203096,Jared Sullinger,203935,Marcus Smart,
+19,21500646-125-1,21500646-125,dribble-hand-off,TRUE,1,1:21,0,203092,Tyler Zeller,202340,Avery Bradley,
+20,21500646-132-1,21500646-132,dribble-hand-off,TRUE,1,0:53,0,203092,Tyler Zeller,202323,Evan Turner,denies screen
+21,21500646-133-1,21500646-133,dribble-hand-off,FALSE,1,0:36,0,2200,Pau Gasol,202734,E'Twaun Moore,
+22,21500646-136-1,21500646-136,dribble-hand-off,FALSE,1,0:00,0,202703,Nikola Mirotic,202710,Jimmy Butler,
+23,21500646-147-1,21500646-147,dribble-hand-off,FALSE,2,10:40,0,203092,Tyler Zeller,202323,Evan Turner,
+24,21500646-152-1,21500646-152,dribble-hand-off,TRUE,2,10:24,0,1626171,Bobby Portis,202703,Nikola Mirotic,
+25,21500646-152-2,21500646-152,dribble-hand-off,FALSE,2,10:06,0,202734,E'Twaun Moore,202710,Jimmy Butler,
+26,21500646-172-3,21500646-172,dribble-hand-off,TRUE,2,8:44,0,203092,Tyler Zeller,203482,Kelly Olynyk,
+27,21500646-175-2,21500646-175,dribble-hand-off,FALSE,2,8:18,0,203092,Tyler Zeller,202323,Evan Turner,
+28,21500646-182-2,21500646-182,dribble-hand-off,FALSE,2,7:25,0,203092,Tyler Zeller,202323,Evan Turner,loose ball rebound
+29,21500646-183-1,21500646-183,dribble-hand-off,FALSE,2,7:10,0,202710,Jimmy Butler,201959,Taj Gibson,
+30,21500646-183-4,21500646-183,dribble-hand-off,FALSE,2,7:09,0,201959,Taj Gibson,202710,Jimmy Butler,
+31,21500646-183-5,21500646-183,dribble-hand-off,FALSE,2,7:07,0,202710,Jimmy Butler,201959,Taj Gibson,
+32,21500646-183-6,21500646-183,dribble-hand-off,FALSE,2,7:06,0,201959,Taj Gibson,202710,Jimmy Butler,
+33,21500646-198-1,21500646-198,dribble-hand-off,FALSE,2,5:51,0,202734,E'Twaun Moore,203926,Doug McDermott,
+34,21500646-221-1,21500646-221,dribble-hand-off,TRUE,2,5:14,0,203096,Jared Sullinger,202340,Avery Bradley,
+35,21500646-225-1,21500646-225,dribble-hand-off,FALSE,2,4:50,0,202738,Isaiah Thomas,203096,Jared Sullinger,
+36,21500646-225-2,21500646-225,dribble-hand-off,FALSE,2,4:43,0,203096,Jared Sullinger,202340,Avery Bradley,
+37,21500646-225-3,21500646-225,dribble-hand-off,FALSE,2,4:42,0,202340,Avery Bradley,203096,Jared Sullinger,
+38,21500646-244-1,21500646-244,dribble-hand-off,TRUE,2,3:13,0,2200,Pau Gasol,201565,Derrick Rose,
+39,21500646-252-1,21500646-252,dribble-hand-off,FALSE,2,2:48,0,201565,Derrick Rose,201959,Taj Gibson,
+40,21500646-276-1,21500646-276,dribble-hand-off,FALSE,2,0:51,0,203096,Jared Sullinger,203935,Marcus Smart,
+41,21500646-279-1,21500646-279,dribble-hand-off,FALSE,2,0:41,0,202710,Jimmy Butler,2200,Pau Gasol,
+42,21500646-292-1,21500646-292,dribble-hand-off,FALSE,2,0:07,0,202710,Jimmy Butler,201565,Derrick Rose,
+43,21500646-302-1,21500646-302,dribble-hand-off,FALSE,3,11:19,0,202738,Isaiah Thomas,202340,Avery Bradley,
+44,21500646-307-1,21500646-307,dribble-hand-off,FALSE,3,10:17,0,201565,Derrick Rose,201959,Taj Gibson,
+45,21500646-319-1,21500646-319,dribble-hand-off,TRUE,3,9:38,0,203503,Tony Snell,202710,Jimmy Butler,"borderline, long pass"
+46,21500646-324-1,21500646-324,dribble-hand-off,FALSE,3,9:14,0,203096,Jared Sullinger,203109,Jae Crowder,
+47,21500646-330-1,21500646-330,dribble-hand-off,FALSE,3,8:51,0,202738,Isaiah Thomas,203096,Jared Sullinger,pocket pass
+48,21500646-336-1,21500646-336,dribble-hand-off,FALSE,3,8:28,0,203482,Kelly Olynyk,202738,Isaiah Thomas,
+49,21500646-336-2,21500646-336,dribble-hand-off,FALSE,3,8:22,0,203109,Jae Crowder,203482,Kelly Olynyk,
+50,21500646-339-1,21500646-339,dribble-hand-off,TRUE,3,7:59,0,202710,Jimmy Butler,201565,Derrick Rose,
+51,21500646-348-1,21500646-348,dribble-hand-off,FALSE,3,7:04,0,202710,Jimmy Butler,2200,Pau Gasol,post entry pass
+52,21500646-366-1,21500646-366,dribble-hand-off,TRUE,3,5:50,0,203096,Jared Sullinger,202738,Isaiah Thomas,"borderline, long pass"
+53,21500646-394-1,21500646-394,dribble-hand-off,FALSE,3,3:22,0,202323,Evan Turner,203935,Marcus Smart,
+54,21500646-401-1,21500646-401,dribble-hand-off,TRUE,3,2:54,0,203092,Tyler Zeller,202340,Avery Bradley,pass in front
+55,21500646-401-2,21500646-401,dribble-hand-off,FALSE,3,2:35,0,202323,Evan Turner,203092,Tyler Zeller,bad pocket pass
+56,21500646-418-1,21500646-418,dribble-hand-off,FALSE,3,1:35,0,202323,Evan Turner,201973,Jonas Jerebko,
+57,21500646-426-1,21500646-426,dribble-hand-off,FALSE,3,0:54,0,201973,Jonas Jerebko,203092,Tyler Zeller,
+58,21500646-427-1,21500646-427,dribble-hand-off,FALSE,3,0:34,0,201166,Aaron Brooks,1626171,Bobby Portis,
+59,21500646-444-1,21500646-444,dribble-hand-off,FALSE,4,10:58,0,202710,Jimmy Butler,201166,Aaron Brooks,
+60,21500646-452-1,21500646-452,dribble-hand-off,FALSE,4,10:37,0,202710,Jimmy Butler,1626171,Bobby Portis,pick n' pop
+61,21500646-465-1,21500646-465,dribble-hand-off,FALSE,4,9:53,0,203482,Kelly Olynyk,203109,Jae Crowder,
+62,21500646-474-1,21500646-474,dribble-hand-off,FALSE,4,9:17,0,202323,Evan Turner,203092,Tyler Zeller,
+63,21500646-479-1,21500646-479,dribble-hand-off,FALSE,4,8:46,0,203092,Tyler Zeller,203109,Jae Crowder,
+64,21500646-479-2,21500646-479,dribble-hand-off,TRUE,4,8:43,0,203109,Jae Crowder,202323,Evan Turner,"borderline, lazy"
+65,21500646-485-1,21500646-485,dribble-hand-off,FALSE,4,8:23,0,202710,Jimmy Butler,2200,Pau Gasol,
+66,21500646-486-1,21500646-486,dribble-hand-off,FALSE,4,7:57,0,202323,Evan Turner,203092,Tyler Zeller,pick n' pop
+67,21500646-503-1,21500646-503,dribble-hand-off,TRUE,4,6:31,0,203109,Jae Crowder,202738,Isaiah Thomas,
+68,21500646-503-2,21500646-503,dribble-hand-off,TRUE,4,6:27,0,203109,Jae Crowder,203935,Marcus Smart,
+69,21500646-505-1,21500646-505,dribble-hand-off,FALSE,4,6:10,0,2200,Pau Gasol,202710,Jimmy Butler,
+70,21500646-510-1,21500646-510,dribble-hand-off,FALSE,4,5:28,0,202738,Isaiah Thomas,203096,Jared Sullinger,
+71,21500646-513-1,21500646-513,dribble-hand-off,FALSE,4,5:07,0,202710,Jimmy Butler,2200,Pau Gasol,
+72,21500646-523-2,21500646-523,dribble-hand-off,FALSE,4,4:49,0,203096,Jared Sullinger,202738,Isaiah Thomas,"screen, no pass"
+73,21500646-523-3,21500646-523,dribble-hand-off,FALSE,4,4:47,0,202738,Isaiah Thomas,203096,Jared Sullinger,pick n' pop
+74,21500646-525-1,21500646-525,dribble-hand-off,FALSE,4,4:39,0,2200,Pau Gasol,201166,Aaron Brooks,transition
+75,21500646-527-1,21500646-527,dribble-hand-off,TRUE,4,4:14,0,2200,Pau Gasol,202710,Jimmy Butler,
+76,21500646-529-1,21500646-529,dribble-hand-off,FALSE,4,3:54,0,202738,Isaiah Thomas,203096,Jared Sullinger,"screen, no pass, shot"
+77,21500646-537-1,21500646-537,dribble-hand-off,FALSE,4,3:10,0,2200,Pau Gasol,202710,Jimmy Butler,
+78,21500646-541-1,21500646-541,dribble-hand-off,TRUE,4,2:41,0,203096,Jared Sullinger,202340,Avery Bradley,
+79,21500646-541-3,21500646-541,dribble-hand-off,FALSE,4,2:38,0,203482,Kelly Olynyk,202738,Isaiah Thomas,
+80,21500646-546-1,21500646-546,dribble-hand-off,FALSE,4,1:59,0,202340,Avery Bradley,203096,Jared Sullinger,"screen, no pass"
+81,21500646-549-1,21500646-549,dribble-hand-off,FALSE,4,1:50,0,201565,Derrick Rose,2200,Pau Gasol,
+82,21500646-558-1,21500646-558,dribble-hand-off,TRUE,4,1:30,0,202738,Isaiah Thomas,202340,Avery Bradley,
+83,21500646-558-2,21500646-558,dribble-hand-off,TRUE,4,1:29,0,202340,Avery Bradley,202738,Isaiah Thomas,
+84,21500646-558-3,21500646-558,dribble-hand-off,TRUE,4,1:23,0,203096,Jared Sullinger,202738,Isaiah Thomas,
+85,21500646-563-1,21500646-563,dribble-hand-off,TRUE,4,0:57,0,203482,Kelly Olynyk,202738,Isaiah Thomas,
+86,21500646-574-1,21500646-574,dribble-hand-off,FALSE,4,0:39,0,202710,Jimmy Butler,201166,Aaron Brooks,inbound pass
+87,21500646-586-1,21500646-586,dribble-hand-off,FALSE,4,0:22,0,201565,Derrick Rose,202710,Jimmy Butler,

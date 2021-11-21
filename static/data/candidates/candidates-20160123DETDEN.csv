@@ -1,0 +1,58 @@
+,candidate_id,event_id,classification_type,manual_label,period,game_clock,shot_clock,player_a,player_a_name,player_b,player_b_name,notes
+0,21500661-005-1,21500661-005,dribble-hand-off,TRUE,1,10:25,13.24,201589,Darrell Arthur,203914,Gary Harris,
+1,21500661-008-1,21500661-008,dribble-hand-off,FALSE,1,9:51,11.73,1626144,Emmanuel Mudiay,203999,Nikola Jokic,
+2,21500661-008-2,21500661-008,dribble-hand-off,FALSE,1,9:50,11.53,203999,Nikola Jokic,1626144,Emmanuel Mudiay,
+3,21500661-008-3,21500661-008,dribble-hand-off,FALSE,1,9:49,10.11,203999,Nikola Jokic,201568,Danilo Gallinari,
+4,21500661-023-1,21500661-023,dribble-hand-off,FALSE,1,9:09,16.7,202704,Reggie Jackson,101141,Ersan Ilyasova,
+5,21500661-023-2,21500661-023,dribble-hand-off,FALSE,1,8:59,8.03,203484,Kentavious Caldwell-Pope,202704,Reggie Jackson,turnover
+6,21500661-026-1,21500661-026,dribble-hand-off,TRUE,1,8:31,15.53,201589,Darrell Arthur,203914,Gary Harris,
+7,21500661-073-1,21500661-073,dribble-hand-off,FALSE,1,5:10,15.85,1626144,Emmanuel Mudiay,201589,Darrell Arthur,
+8,21500661-279-1,21500661-279,dribble-hand-off,FALSE,1,2:25,12.36,1626144,Emmanuel Mudiay,203115,Will Barton,borderline
+9,21500661-108-1,21500661-108,dribble-hand-off,FALSE,1,1:50,20.76,1626144,Emmanuel Mudiay,201568,Danilo Gallinari,
+10,21500661-108-2,21500661-108,dribble-hand-off,FALSE,1,1:43,14.44,201568,Danilo Gallinari,203999,Nikola Jokic,pick n' roll
+11,21500661-116-1,21500661-116,dribble-hand-off,FALSE,1,1:09,18.5,200751,Randy Foye,203530,Joffrey Lauvergne,
+12,21500661-116-2,21500661-116,dribble-hand-off,TRUE,1,1:05,14.08,203530,Joffrey Lauvergne,203115,Will Barton,
+13,21500661-127-1,21500661-127,dribble-hand-off,FALSE,1,0:06,0,201943,Brandon Jennings,1626169,Stanley Johnson,
+14,21500661-140-1,21500661-140,dribble-hand-off,FALSE,2,11:20,17.7,200751,Randy Foye,203530,Joffrey Lauvergne,
+15,21500661-142-1,21500661-142,dribble-hand-off,FALSE,2,11:10,19.56,201943,Brandon Jennings,203382,Aron Baynes,
+16,21500661-142-2,21500661-142,dribble-hand-off,FALSE,2,11:10,19.36,203382,Aron Baynes,201229,Anthony Tolliver,
+17,21500661-142-3,21500661-142,dribble-hand-off,TRUE,2,11:09,17.82,201229,Anthony Tolliver,1626199,Darrun Hilliard,
+18,21500661-144-1,21500661-144,dribble-hand-off,TRUE,2,10:48,11.05,2034,Mike Miller,203115,Will Barton,
+19,21500661-161-1,21500661-161,dribble-hand-off,FALSE,2,9:25,12.24,201943,Brandon Jennings,203382,Aron Baynes,
+20,21500661-161-2,21500661-161,dribble-hand-off,TRUE,2,9:21,8.07,203382,Aron Baynes,1626199,Darrun Hilliard,
+21,21500661-163-1,21500661-163,dribble-hand-off,TRUE,2,8:26,9.63,2034,Mike Miller,203115,Will Barton,
+22,21500661-178-1,21500661-178,dribble-hand-off,TRUE,2,7:09,16.36,203999,Nikola Jokic,203115,Will Barton,
+23,21500661-178-2,21500661-178,dribble-hand-off,FALSE,2,7:08,16,203115,Will Barton,203999,Nikola Jokic,screen
+24,21500661-178-3,21500661-178,dribble-hand-off,FALSE,2,7:08,15.92,203999,Nikola Jokic,203115,Will Barton,screen
+25,21500661-178-4,21500661-178,dribble-hand-off,FALSE,2,7:08,15.84,203115,Will Barton,203999,Nikola Jokic,screen
+26,21500661-181-1,21500661-181,dribble-hand-off,TRUE,2,6:40,17.4,2034,Mike Miller,200751,Randy Foye,
+27,21500661-206-1,21500661-206,dribble-hand-off,FALSE,2,5:04,16.79,202704,Reggie Jackson,203083,Andre Drummond,pick n' roll
+28,21500661-215-1,21500661-215,dribble-hand-off,TRUE,2,4:34,20.2,101141,Ersan Ilyasova,202694,Marcus Morris,
+29,21500661-217-1,21500661-217,dribble-hand-off,TRUE,2,4:23,19.27,203999,Nikola Jokic,201568,Danilo Gallinari,
+30,21500661-224-1,21500661-224,dribble-hand-off,TRUE,2,3:53,17.98,201589,Darrell Arthur,203914,Gary Harris,
+31,21500661-228-1,21500661-228,dribble-hand-off,TRUE,2,3:11,11.85,203999,Nikola Jokic,1626144,Emmanuel Mudiay,
+32,21500661-229-1,21500661-229,dribble-hand-off,FALSE,2,2:34,16.09,1626144,Emmanuel Mudiay,201589,Darrell Arthur,
+33,21500661-282-1,21500661-282,dribble-hand-off,FALSE,3,11:24,18.33,201568,Danilo Gallinari,203999,Nikola Jokic,
+34,21500661-320-1,21500661-320,dribble-hand-off,TRUE,3,6:11,10.29,101141,Ersan Ilyasova,202694,Marcus Morris,
+35,21500661-322-1,21500661-322,dribble-hand-off,TRUE,3,5:36,15.87,203484,Kentavious Caldwell-Pope,202704,Reggie Jackson,
+36,21500661-323-1,21500661-323,dribble-hand-off,FALSE,3,5:23,18.43,203914,Gary Harris,1626144,Emmanuel Mudiay,
+37,21500661-328-1,21500661-328,dribble-hand-off,FALSE,3,4:31,15.9,101141,Ersan Ilyasova,202694,Marcus Morris,
+38,21500661-330-1,21500661-330,dribble-hand-off,FALSE,3,4:18,8.29,202704,Reggie Jackson,203083,Andre Drummond,"screen, no pass"
+39,21500661-330-2,21500661-330,dribble-hand-off,FALSE,3,4:18,8.18,203083,Andre Drummond,202704,Reggie Jackson,"screen, no pass"
+40,21500661-336-1,21500661-336,dribble-hand-off,FALSE,3,3:48,20.94,203914,Gary Harris,1626144,Emmanuel Mudiay,transition
+41,21500661-336-2,21500661-336,dribble-hand-off,FALSE,3,3:44,17.72,203999,Nikola Jokic,201589,Darrell Arthur,
+42,21500661-337-1,21500661-337,dribble-hand-off,FALSE,3,3:33,14.71,101141,Ersan Ilyasova,203484,Kentavious Caldwell-Pope,
+43,21500661-357-1,21500661-357,dribble-hand-off,TRUE,3,2:26,13.85,201589,Darrell Arthur,203115,Will Barton,
+44,21500661-367-1,21500661-367,dribble-hand-off,FALSE,3,1:29,15.11,201943,Brandon Jennings,203484,Kentavious Caldwell-Pope,
+45,21500661-372-1,21500661-372,dribble-hand-off,TRUE,3,1:19,7.91,203382,Aron Baynes,201943,Brandon Jennings,
+46,21500661-375-1,21500661-375,dribble-hand-off,FALSE,3,0:53,15.25,1626169,Stanley Johnson,201229,Anthony Tolliver,
+47,21500661-399-1,21500661-399,dribble-hand-off,FALSE,4,11:31,19.11,201943,Brandon Jennings,1626169,Stanley Johnson,
+48,21500661-402-1,21500661-402,dribble-hand-off,FALSE,4,10:46,18.56,201943,Brandon Jennings,1626169,Stanley Johnson,
+49,21500661-420-1,21500661-420,dribble-hand-off,FALSE,4,9:32,13.49,200751,Randy Foye,2034,Mike Miller,
+50,21500661-420-2,21500661-420,dribble-hand-off,TRUE,4,9:30,11.37,2034,Mike Miller,203115,Will Barton,
+51,21500661-421-1,21500661-421,dribble-hand-off,TRUE,4,9:19,17.26,202694,Marcus Morris,201943,Brandon Jennings,
+52,21500661-460-1,21500661-460,dribble-hand-off,FALSE,4,5:59,9.05,1626144,Emmanuel Mudiay,203999,Nikola Jokic,"screen, no pass"
+53,21500661-460-2,21500661-460,dribble-hand-off,FALSE,4,5:58,8.56,1626144,Emmanuel Mudiay,203999,Nikola Jokic,"screen, no pass"
+54,21500661-480-1,21500661-480,dribble-hand-off,FALSE,4,3:24,12.42,202704,Reggie Jackson,202694,Marcus Morris,
+55,21500661-501-1,21500661-501,dribble-hand-off,TRUE,4,1:48,6.02,203999,Nikola Jokic,201568,Danilo Gallinari,foul
+56,21500661-510-1,21500661-510,dribble-hand-off,TRUE,4,1:21,18.03,203382,Aron Baynes,203484,Kentavious Caldwell-Pope,
