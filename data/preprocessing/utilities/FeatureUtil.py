@@ -30,6 +30,8 @@ class FeatureUtil:
                 possession.append(row['PLAYER1_TEAM_ID'])
             elif row['EVENTMSGTYPE'] == 6:
                 possession.append(row['PLAYER2_TEAM_ID'])
+            else:
+                possession.append(np.NAN) # If it isn't any of the above cases, we aren't interested in possesion for that event
         
         # Add the list of team_ids to the dataframe as the possession col
         annotation_df['possession'] = possession
@@ -388,4 +390,4 @@ class FeatureUtil:
                 return event_pass['pass_moment'], event_pass['receive_moment']
 
         # If this fails, just return NaN
-        return np.NaN
+        return np.NaN, np.NaN
