@@ -221,7 +221,7 @@ class DataUtil:
                  "team_id": home['teamid'],
                  "first_name": player['firstname'],
                  "last_name": player['lastname'],
-                 "jersey_number": player['jersey'],
+                 "jersey_number": player['jersey'] if player['jersey'] else 99,
                  "position": player['position']
                  })
         for player in visitor["players"]:	 
