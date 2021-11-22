@@ -51,7 +51,7 @@ class KerasNN:
         return self.model.evaluate(X_test, y_test)
 
     def get_accuracy_stats(self, X_test, y_test):
-        predictions = self.model.predict_classes(X_test)[:, 0]
+        predictions=(self.model.predict(X_test) > 0.5).astype("int32")
 
         # accuracy: (tp + tn) / (p + n)
         accuracy = metrics.accuracy_score(y_test, predictions)
@@ -108,8 +108,9 @@ class KerasNN:
         plt.show()
 
     def plot_roc_curve(self):
-        y_val_cat_prob = self.model.predict_proba(self.X)
-        fpr , tpr , thresholds = metrics.roc_curve( self.y , y_val_cat_prob)
+        
+        predict_prob = self.model.predict(self.X)
+        fpr , tpr , thresholds = metrics.roc_curve( self.y , predict_prob)
 
         roc_auc = metrics.auc(fpr, tpr)
 
