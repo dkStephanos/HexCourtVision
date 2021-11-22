@@ -1,4 +1,5 @@
 from django.db import models	
+from django.contrib.postgres.fields import ArrayField
 
 class Team(models.Model):
     team_id = models.CharField(primary_key=True, max_length=15)
@@ -138,3 +139,9 @@ class CandidateFeatureVector(models.Model):
     pass_duration = models.IntegerField() 
     num_players_past_half_court = models.IntegerField() 
     is_inbounds_pass = models.BooleanField()
+
+class CandidateHexmap(models.Model):
+    candidate = models.ForeignKey(Candidate, on_delete=models.SET_NULL, null=True)
+    hexmap = ArrayField(models.CharField(max_length=10, blank=True))
+    cluster = models.IntegerField()
+    
