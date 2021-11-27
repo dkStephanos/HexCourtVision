@@ -36,20 +36,33 @@ def run():
     #     print(Counter(teams).items())
     #     teams = []
 
-    print('Breakdown by Screener:')
-    screeners = []
+    print('Breakdown for team:')
+    team = 'GSW'
+    counts = {}
     for key, cluster in clusters.items():
         for action in cluster:
-            screeners.append(action[3]['position'])
-        print(f'Screener archetype totals for cluster: {key}')
-        print(Counter(screeners).items())
-        screeners = []
+            if (action[2]['abreviation'] == team):
+                if (key in counts):
+                    counts[key] += 1
+                else:
+                    counts[key] = 1
+    print(f'Cluster totals for team:')
+    print(counts)
 
-    print('Breakdown by Cutter:')
-    screeners = []
-    for key, cluster in clusters.items():
-        for action in cluster:
-            screeners.append(action[4]['position'])
-        print(f'Cutter archetype totals for cluster: {key}')
-        print(Counter(screeners).items())
-        screeners = []
+    # print('Breakdown by Screener:')
+    # screeners = []
+    # for key, cluster in clusters.items():
+    #     for action in cluster:
+    #         screeners.append(action[3]['position'])
+    #     print(f'Screener archetype totals for cluster: {key}')
+    #     print(Counter(screeners).items())
+    #     screeners = []
+
+    # print('Breakdown by Cutter:')
+    # screeners = []
+    # for key, cluster in clusters.items():
+    #     for action in cluster:
+    #         screeners.append(action[4]['position'])
+    #     print(f'Cutter archetype totals for cluster: {key}')
+    #     print(Counter(screeners).items())
+    #     screeners = []
