@@ -36,18 +36,18 @@ def run():
     #     print(Counter(teams).items())
     #     teams = []
 
-    print('Breakdown for team:')
-    team = 'GSW'
-    counts = {}
-    for key, cluster in clusters.items():
-        for action in cluster:
-            if (action[2]['abreviation'] == team):
-                if (key in counts):
-                    counts[key] += 1
-                else:
-                    counts[key] = 1
-    print(f'Cluster totals for team:')
-    print(counts)
+    # print('Breakdown for team:')
+    # team = 'GSW'
+    # counts = {}
+    # for key, cluster in clusters.items():
+    #     for action in cluster:
+    #         if (action[2]['abreviation'] == team):
+    #             if (key in counts):
+    #                 counts[key] += 1
+    #             else:
+    #                 counts[key] = 1
+    # print(f'Cluster totals for team:')
+    # print(counts)
 
     # print('Breakdown by Screener:')
     # screeners = []
@@ -66,3 +66,63 @@ def run():
     #     print(f'Cutter archetype totals for cluster: {key}')
     #     print(Counter(screeners).items())
     #     screeners = []
+
+    print('Breakdown for player:')
+    player = 'Stephen Curry'
+    screener_counts = {}
+    cutter_counts = {}
+    for key, cluster in clusters.items():
+        for action in cluster:
+            if (action[1]['player_a_name'] == player):
+                if (key in screener_counts):
+                    screener_counts[key] += 1
+                else:
+                    screener_counts[key] = 1
+            if (action[1]['player_b_name'] == player):
+                if (key in cutter_counts):
+                    cutter_counts[key] += 1
+                else:
+                    cutter_counts[key] = 1
+    print(f'Cluster totals for player:')
+    print(screener_counts)
+    print(cutter_counts)
+
+    print('Breakdown for player:')
+    player = 'Kobe Bryant'
+    screener_counts = {}
+    cutter_counts = {}
+    for key, cluster in clusters.items():
+        for action in cluster:
+            if (action[1]['player_a_name'] == player):
+                if (key in screener_counts):
+                    screener_counts[key] += 1
+                else:
+                    screener_counts[key] = 1
+            if (action[1]['player_b_name'] == player):
+                if (key in cutter_counts):
+                    cutter_counts[key] += 1
+                else:
+                    cutter_counts[key] = 1
+    print(f'Cluster totals for player:')
+    print(screener_counts)
+    print(cutter_counts)
+
+    print('Breakdown for player:')
+    player = 'Chris Bosh'
+    screener_counts = {}
+    cutter_counts = {}
+    for key, cluster in clusters.items():
+        for action in cluster:
+            if (action[1]['player_a_name'] == player):
+                if (key in screener_counts):
+                    screener_counts[key] += 1
+                else:
+                    screener_counts[key] = 1
+            if (action[1]['player_b_name'] == player):
+                if (key in cutter_counts):
+                    cutter_counts[key] += 1
+                else:
+                    cutter_counts[key] = 1
+    print(f'Cluster totals for player:')
+    print(screener_counts)
+    print(cutter_counts)
