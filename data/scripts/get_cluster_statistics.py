@@ -23,17 +23,33 @@ def run():
         team = Team.objects.filter(team_id=screener['team_id']).values()[0]
         clusters[str(map['cluster'])].append((map, candidate, team, screener, cutter))
 
-    print('Cluster populations:')
-    for key, value in clusters.items():
-        print(f'Cluster {key} size: {len(value)}')
+    # print('Cluster populations:')
+    # for key, value in clusters.items():
+    #     print(f'Cluster {key} size: {len(value)}')
 
-    print('Breakdown by team:')
-    teams = []
+    # print('Breakdown by team:')
+    # teams = []
+    # for key, cluster in clusters.items():
+    #     for action in cluster:
+    #         teams.append(action[2]['abreviation'])
+    #     print(f'Team totals for cluster: {key}')
+    #     print(Counter(teams).items())
+    #     teams = []
+
+    print('Breakdown by Screener:')
+    screeners = []
     for key, cluster in clusters.items():
         for action in cluster:
-            teams.append(action[2]['abreviation'])
-        print(f'Team totals for cluster: {key}')
-        print(Counter(teams).items())
-        teams = []
+            screeners.append(action[3]['position'])
+        print(f'Screener archetype totals for cluster: {key}')
+        print(Counter(screeners).items())
+        screeners = []
 
-        
+    print('Breakdown by Cutter:')
+    screeners = []
+    for key, cluster in clusters.items():
+        for action in cluster:
+            screeners.append(action[4]['position'])
+        print(f'Cutter archetype totals for cluster: {key}')
+        print(Counter(screeners).items())
+        screeners = []
