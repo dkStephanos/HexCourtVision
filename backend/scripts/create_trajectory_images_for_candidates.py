@@ -80,10 +80,10 @@ def generate_trajectory_image(target_event, target_candidate):
     screener_hexbin = ax.hexbin(x=screener_df['x_loc'], y=screener_df['y_loc'], cmap=cmapBlues, mincnt=1, gridsize=42, extent=(0,94,-50,0))
     ball_hexbin = ax.hexbin(x=ball_df['x_loc'], y=ball_df['y_loc'], cmap=cmapReds, mincnt=1, gridsize=42, extent=(0,94,-50,0))
 
-    GraphUtil.save_half_court(f"static/data/hexmaps/{target_candidate['candidate_id']}-hexmap.png")
+    GraphUtil.save_half_court(f"static/backend/hexmaps/{target_candidate['candidate_id']}-hexmap.png")
 
 def run():
-    files = os.listdir("static/data/hexmaps30")
+    files = os.listdir("static/backend/hexmaps30")
     dont_render = False
     games = Game.objects.all()
     for game in games:

@@ -63,13 +63,13 @@ class SklearnClf:
 
         return [round(precision,3), round(recall,3), round(f1_score, 3), round(support, 3), confusion_matrix]
 
-    def run_genetic_optimization_on_model(self,params_to_optimize,num_generations=20,pop_size=25,mutation_rate=0.85,display_rate=1,rand_selection=False,plot_dir='static/data/test/'):
+    def run_genetic_optimization_on_model(self,params_to_optimize,num_generations=20,pop_size=25,mutation_rate=0.85,display_rate=1,rand_selection=False,plot_dir='static/backend/test/'):
         gen_optimizer = GeneticOptimizer(params_to_optimize,num_generations, pop_size, mutation_rate, display_rate, rand_selection)
         gen_optimizer.set_model(self)
         gen_optimizer.run_ga()
         gen_optimizer.plot_ga(plot_dir)
 
-    def run_genetic_optimization_on_features(self,num_generations=20,pop_size=25,mutation_rate=0.25,display_rate=2,rand_selection=False,plot_dir='static/data/test/'):
+    def run_genetic_optimization_on_features(self,num_generations=20,pop_size=25,mutation_rate=0.25,display_rate=2,rand_selection=False,plot_dir='static/backend/test/'):
         gen_optimizer = GeneticOptimizer({},num_generations, pop_size, mutation_rate, display_rate, rand_selection)
         gen_optimizer.set_model(self)
         gen_optimizer.run_ga_features()

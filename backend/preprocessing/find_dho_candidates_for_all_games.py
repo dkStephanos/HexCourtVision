@@ -131,10 +131,10 @@ for game in ConstantsUtil.games:
 
 
         candidate_df = pd.DataFrame(final_candidates)
-        candidate_df.to_csv(f'static/data/test/candidates-{game}.csv')
+        candidate_df.to_csv(f'static/backend/test/candidates-{game}.csv')
         print("Saving to csv...\n")
 
 print("Writing all results to txt...")
-text_file = open("static/data/notes/all_results.txt", "w")
+text_file = open("static/backend/notes/all_results.txt", "w")
 n = text_file.write(all_results)
 text_file.close()

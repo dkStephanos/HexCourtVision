@@ -256,7 +256,7 @@ def run():
 
         output = f"Total successful candidates: {num_successful_candidates}\nTotal failed candidates: {num_failed_candidates}" 
         print(output)
-        text_file = open("static/data/test/feature_gen_results_round2.txt", "w")
+        text_file = open("static/backend/test/feature_gen_results_round2.txt", "w")
         text_file.write(output)
         text_file.close()
     

@@ -11,7 +11,7 @@ from sklearn.metrics.pairwise import kernel_metrics
 def run():
     n_clusters = 8
     image_dim = (480, 640, 3)
-    hex_dir = 'C:\\Users\\Stephanos\\Documents\\Dev\\NBAThesis\\NBA_Thesis\\static\\data\\hexmaps'
+    hex_dir = 'C:\\Users\\Stephanos\\Documents\\Dev\\NBAThesis\\NBA_Thesis\\static\\backend\\hexmaps'
     directory = os.fsencode(hex_dir)
     image_names = []
     images = []
@@ -28,7 +28,7 @@ def run():
     print(hexmaps[0].shape)
     pca = PCA()
     hexmaps = pca.fit_transform(hexmaps)
-    np.save("static/data/test/hexmaps", hexmaps)
+    np.save("static/backend/test/hexmaps", hexmaps)
     print(hexmaps[0].shape)
     '''
     print("Loading hexmap representations from file ----------------\n\n")
@@ -37,7 +37,7 @@ def run():
         image = cv2.imread(hex_dir + '\\' + filename)
         image_names.append(filename)
         images.append(image)
-    hexmaps = np.load("static/data/test/hexmaps30.npy")
+    hexmaps = np.load("static/backend/test/hexmaps30.npy")
     print(hexmaps)
     
     print("Get elbow plot for hexmap clusters ----------------\n\n")

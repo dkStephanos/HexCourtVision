@@ -14,11 +14,11 @@ from utilities.DataUtil import DataUtil
 from utilities.ConstantsUtil import ConstantsUtil
 
 # Load game with GUI
-#game_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/", title="Select a game file")
+#game_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/backend/game_raw_data/", title="Select a game file")
 #game_df = DataUtil.load_game_df(game_path)
 
 #easygui.msgbox("Next select corresponding annotation file")
-#annotation_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/event_annotations/", title="Select an annotation file")
+#annotation_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/backend/event_annotations/", title="Select an annotation file")
 #annotation_df = DataUtil.load_annotation_df(annotation_path)
 
 game = "20151228SACGSW"
@@ -44,13 +44,13 @@ combined_event_df = DataUtil.trim_moments_by_directionality(combined_event_df)
 
 
 print(combined_event_df.head())
-#combined_event_df.to_csv("static/data/test/events.csv")
+#combined_event_df.to_csv("static/backend/test/events.csv")
 
 
 sample_event = DataUtil.load_combined_event_by_num(combined_event_df, 427)
 print(sample_event) 
 moments_df = DataUtil.get_moments_from_event(sample_event)
-#moments_df.to_csv("static/data/test/test.csv")
+#moments_df.to_csv("static/backend/test/test.csv")
 if len(moments_df) > 0:
     event_passes = FeatureUtil.get_passess_for_event(moments_df, sample_event["possession"], players_data)
     print(event_passes)
@@ -85,5 +85,5 @@ final_candidates = DataUtil.remove_duplicate_candidates(all_candidates)
 print("\nNumber of candidates parsed: " + str(len(final_candidates)) + "\nSuccessful events: " + str(succesful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(round(succesful/(failed + succesful), 2)))
 
 candidate_df = pd.DataFrame(final_candidates)
-candidate_df.to_csv(f'static/data/test/candidates.csv')
+candidate_df.to_csv(f'static/backend/test/candidates.csv')
 """

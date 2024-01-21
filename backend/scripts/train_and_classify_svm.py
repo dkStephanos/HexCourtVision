@@ -34,7 +34,7 @@ def run():
     optimized_configuration = svm.run_genetic_optimization_on_model(svm.PARAMS_TO_OPTIMIZE, num_generations=20,pop_size=10,display_rate=2)
     optimized_features = svm.run_genetic_optimization_on_features(num_generations=20,pop_size=10,display_rate=2)
 
-    text_file = open("static/data/test/genetic_algorithm_test.txt", "w")
+    text_file = open("static/backend/test/genetic_algorithm_test.txt", "w")
     text_file.write(f'Ideal configuration found:\n{optimized_configuration}\n\nIdeal Feature Set found:\n{optimized_features}')
     text_file.close()
     '''

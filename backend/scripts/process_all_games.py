@@ -36,7 +36,7 @@ def run():
         print("\n\n-------------------------------------\n\nLoading data files for " + game)
         annotation_df = DataUtil.load_annotation_df(ConstantsUtil.games[game]['events'])
         game_df = DataUtil.load_game_df(ConstantsUtil.games[game]['raw_data'])
-        candidate_df = pd.read_csv(f"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/labled_data/candidates-{game}.csv", index_col=0)
+        candidate_df = pd.read_csv(f"C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/backend/labled_data/candidates-{game}.csv", index_col=0)
         
         print("Processing Data Files")
         game_data = DataUtil.get_game_data(game_df, annotation_df)

@@ -2,7 +2,7 @@ from Game import Game
 import easygui
 
 while True:
-    game_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/data/game_raw_data/", title="Select a game file")
+    game_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/backend/game_raw_data/", title="Select a game file")
 
     while True:
         print('\nEnter the event (or exit to return to game select): ')

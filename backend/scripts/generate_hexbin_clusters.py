@@ -54,7 +54,7 @@ def get_hexbins(target_candidate):
 
 def run():
     n_clusters = 9
-    hex_dir = 'C:\\Users\\Stephanos\\Documents\\Dev\\NBAThesis\\NBA_Thesis\\static\\data\\hexmaps'
+    hex_dir = 'C:\\Users\\Stephanos\\Documents\\Dev\\NBAThesis\\NBA_Thesis\\static\\backend\\hexmaps'
     directory = os.fsencode(hex_dir)
     images = []
     candidates_hexbins = []

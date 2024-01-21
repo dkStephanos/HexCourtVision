@@ -8,7 +8,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('data', '0002_candidatefeaturevector'),
+        ('backend', '0002_candidatefeaturevector'),
     ]
 
     operations = [
