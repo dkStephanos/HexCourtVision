@@ -81,14 +81,15 @@ WSGI_APPLICATION = 'NBA_Thesis.wsgi.application'
 
 DATABASES = {
     'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'NBA_Thesis',
-    'USER': 'postgres',
-    'PASSWORD': 'postgres',
-    'HOST': 'localhost',
-    'PORT': '5433',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'NBA_Thesis',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',  # Use the service name defined in docker-compose.yml
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
+
 
 
 # Password validation

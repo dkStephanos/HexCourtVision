@@ -4,8 +4,19 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
     ports:
       - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_NAME=NBA_Thesis
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+
   frontend:
     build:
       context: .
@@ -19,3 +30,17 @@ services:
       - NODE_ENV=development
     depends_on:
       - backend
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: NBA_Thesis
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
