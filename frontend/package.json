@@ -6,12 +6,11 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production",
     "lint": "eslint ./src",
-    "start": "node scripts/start.js",
-    "dev": "webpack --mode development ./src/index.js --output ./static/frontend/main.js",
-    "build": "webpack --mode production ./src/index.js --output ./static/frontend/main.js",
     "test": "node scripts/test.js"
-  },
+  },  
   "browserslist": {
     "production": [
       ">0.2%",
