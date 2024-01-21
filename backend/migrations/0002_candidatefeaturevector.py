@@ -74,7 +74,7 @@ class Migration(migrations.Migration):
                 ('pass_duration', models.IntegerField()),
                 ('num_players_past_half_court', models.IntegerField()),
                 ('is_inbounds_pass', models.BooleanField()),
-                ('candidate', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='data.candidate')),
+                ('candidate', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='backend.candidate')),
             ],
         ),
     ]

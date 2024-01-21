@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('hexmap', django.contrib.postgres.fields.ArrayField(base_field=models.CharField(blank=True, max_length=10), size=None)),
                 ('cluster', models.IntegerField()),
-                ('candidate', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='data.candidate')),
+                ('candidate', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='backend.candidate')),
             ],
         ),
     ]

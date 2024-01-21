@@ -33,10 +33,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'app',
-    'data',
-    'rest_framework',
+    'backend',
     'frontend',
-    # Add your apps here to enable them
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
