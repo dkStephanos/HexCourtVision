@@ -87,7 +87,7 @@
     "jss": "^10.1.1",
     "jss-rtl": "^0.3.0",
     "jwt-decode": "^2.2.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "mini-css-extract-plugin": "0.9.0",
     "moment": "^2.24.0",
     "notistack": "^0.9.9",
