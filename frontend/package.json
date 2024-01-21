@@ -109,7 +109,7 @@
     "react-chartjs-2": "^2.9.0",
     "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
-    "react-draft-wysiwyg": "^1.14.4",
+    "react-draft-wysiwyg": "^1.14.6",
     "react-dropzone": "^10.2.2",
     "react-feather": "^2.0.3",
     "react-helmet": "^5.2.1",
