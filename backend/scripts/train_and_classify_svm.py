@@ -1,11 +1,11 @@
 import pandas as pd
 
-from data.classification.utilities.EncodingUtil import EncodingUtil
-from data.classification.utilities.ConstantsUtil import ConstantsUtil
-from data.classification.utilities.DataUtil import DataUtil
-from data.classification.ML.SVM import SVM
+from backend.classification.utilities.EncodingUtil import EncodingUtil
+from backend.classification.utilities.ConstantsUtil import ConstantsUtil
+from backend.classification.utilities.DataUtil import DataUtil
+from backend.classification.ML.SVM import SVM
 
-from data.models import CandidateFeatureVector
+from backend.models import CandidateFeatureVector
 
 
 def run():

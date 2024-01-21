@@ -3,10 +3,10 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 import matplotlib.pyplot  as plt
 
-from data.classification.utilities.EncodingUtil import EncodingUtil
-from data.classification.utilities.ConstantsUtil import ConstantsUtil
+from backend.classification.utilities.EncodingUtil import EncodingUtil
+from backend.classification.utilities.ConstantsUtil import ConstantsUtil
 
-from data.models import CandidateFeatureVector\
+from backend.models import CandidateFeatureVector\
 
 def run():
     feat_importances = []

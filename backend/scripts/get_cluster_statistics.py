@@ -1,4 +1,4 @@
-from data.models import Candidate, Team, Player, CandidateHexmap
+from backend.models import Candidate, Team, Player, CandidateHexmap
 from collections import Counter
 
 def run():

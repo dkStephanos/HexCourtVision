@@ -5,16 +5,16 @@ import numpy as np
 import math, sys, os, traceback
 from django.forms.models import model_to_dict
 
-from data.preprocessing.utilities.DataUtil import DataUtil
-from data.preprocessing.utilities.FeatureUtil import FeatureUtil
-from data.preprocessing.utilities.ConstantsUtil import ConstantsUtil
-from data.preprocessing.utilities.GraphUtil import GraphUtil
+from backend.preprocessing.utilities.DataUtil import DataUtil
+from backend.preprocessing.utilities.FeatureUtil import FeatureUtil
+from backend.preprocessing.utilities.ConstantsUtil import ConstantsUtil
+from backend.preprocessing.utilities.GraphUtil import GraphUtil
 
-from data.models import Game
-from data.models import Player
-from data.models import Event
-from data.models import Moment
-from data.models import Candidate
+from backend.models import Game
+from backend.models import Player
+from backend.models import Event
+from backend.models import Moment
+from backend.models import Candidate
 
 def generate_trajectory_image(target_event, target_candidate):
     target_event = model_to_dict(target_event)

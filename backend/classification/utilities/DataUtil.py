@@ -1,7 +1,7 @@
 import pandas as pd
-from data.classification.utilities.EncodingUtil import EncodingUtil
-from data.classification.utilities.ConstantsUtil import ConstantsUtil
-from data.models import Candidate
+from backend.classification.utilities.EncodingUtil import EncodingUtil
+from backend.classification.utilities.ConstantsUtil import ConstantsUtil
+from backend.models import Candidate
 
 class DataUtil:
     @staticmethod

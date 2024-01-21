@@ -5,17 +5,17 @@ import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 import matplotlib.pyplot as plt
-from data.models import Game
-from data.models import Player
-from data.models import Event
-from data.models import Moment
-from data.models import Candidate
+from backend.models import Game
+from backend.models import Player
+from backend.models import Event
+from backend.models import Moment
+from backend.models import Candidate
 import matplotlib.pyplot as plt
 import math, os
 
-from data.preprocessing.utilities.DataUtil import DataUtil
-from data.preprocessing.utilities.FeatureUtil import FeatureUtil
-from data.preprocessing.utilities.GraphUtil import GraphUtil
+from backend.preprocessing.utilities.DataUtil import DataUtil
+from backend.preprocessing.utilities.FeatureUtil import FeatureUtil
+from backend.preprocessing.utilities.GraphUtil import GraphUtil
 
 def get_hexbins(target_candidate):
     # Collects moments for single candidate
