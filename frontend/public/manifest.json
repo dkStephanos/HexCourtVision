@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "NBA Action Classifier",
+  "name": "Extracts, classifies, and clusters NBA player actions",
   "icons": [
     {
       "src": "favicon.ico",
