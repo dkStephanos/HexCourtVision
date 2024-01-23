@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'app',
     'backend',
     'frontend',
     'rest_framework',
@@ -60,7 +59,7 @@ ROOT_URLCONF = 'NBA_Thesis.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend' )],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
