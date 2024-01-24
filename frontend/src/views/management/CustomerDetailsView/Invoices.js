@@ -24,10 +24,10 @@ import {
   makeStyles
 } from '@material-ui/core';
 import { ArrowRight as ArrowRightIcon } from 'react-feather';
-import axios from 'src/utils/axios';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
-import Label from 'src/components/Label';
-import GenericMoreButton from 'src/components/GenericMoreButton';
+import axios from '../../../utils/axios';
+import useIsMountedRef from '../../../hooks/useIsMountedRef';
+import Label from '../../../components/Label';
+import GenericMoreButton from '../../../components/GenericMoreButton';
 
 const statusColors = {
   paid: 'success',

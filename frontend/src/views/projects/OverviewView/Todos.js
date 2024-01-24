@@ -22,9 +22,9 @@ import {
   makeStyles
 } from '@material-ui/core';
 import ArchiveIcon from '@material-ui/icons/ArchiveOutlined';
-import axios from 'src/utils/axios';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
-import Label from 'src/components/Label';
+import axios from '../../../utils/axios';
+import useIsMountedRef from '../../../hooks/useIsMountedRef';
+import Label from '../../../components/Label';
 
 const getLabel = (todo) => {
   if (todo.done) {

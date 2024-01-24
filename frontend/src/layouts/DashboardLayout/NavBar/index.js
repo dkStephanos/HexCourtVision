@@ -41,7 +41,7 @@ import {
   Share2 as ShareIcon,
   Users as UsersIcon
 } from 'react-feather';
-import Logo from 'src/components/Logo';
+import Logo from '../../../components/Logo';
 import NavItem from './NavItem';
 
 const navConfig = [

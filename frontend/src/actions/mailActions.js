@@ -1,4 +1,4 @@
-import axios from 'src/utils/axios';
+import axios from '../utils/axios';
 
 export const GET_LABELS = '@mail/get-labels';
 export const GET_MAILS = '@mail/get-mails';

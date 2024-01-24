@@ -18,7 +18,7 @@ import {
 } from '@material-ui/lab';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ProjectCard from 'src/components/ProjectCard';
+import ProjectCard from '../../../components/ProjectCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

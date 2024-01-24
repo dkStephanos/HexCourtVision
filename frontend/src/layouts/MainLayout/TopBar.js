@@ -13,8 +13,8 @@ import {
   Link,
   makeStyles
 } from '@material-ui/core';
-import { APP_VERSION } from 'src/config';
-import Logo from 'src/components/Logo';
+import { APP_VERSION } from '../../config';
+import Logo from '../../components/Logo';
 
 const useStyles = makeStyles((theme) => ({
   root: {

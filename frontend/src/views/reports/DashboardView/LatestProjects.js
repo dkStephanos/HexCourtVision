@@ -25,10 +25,10 @@ import {
   makeStyles
 } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import axios from 'src/utils/axios';
-import getInitials from 'src/utils/getInitials';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
-import GenericMoreButton from 'src/components/GenericMoreButton';
+import axios from '../../../utils/axios';
+import getInitials from '../../../utils/getInitials';
+import useIsMountedRef from '../../../hooks/useIsMountedRef';
+import GenericMoreButton from '../../../components/GenericMoreButton';
 
 const technologyMap = {
   'html-css': '/static/images/technologies/html.svg',

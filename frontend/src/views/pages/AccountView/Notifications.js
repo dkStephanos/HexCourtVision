@@ -14,7 +14,7 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import wait from 'src/utils/wait';
+import wait from '../../../utils/wait';
 
 const useStyles = makeStyles(() => ({
   root: {}

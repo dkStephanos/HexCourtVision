@@ -14,7 +14,7 @@ import {
   Link,
   makeStyles
 } from '@material-ui/core';
-import { register } from 'src/actions/accountActions';
+import { register } from '../../../actions/accountActions';
 
 const useStyles = makeStyles(() => ({
   root: {}

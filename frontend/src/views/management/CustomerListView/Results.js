@@ -32,7 +32,7 @@ import {
   ArrowRight as ArrowRightIcon,
   Search as SearchIcon
 } from 'react-feather';
-import getInitials from 'src/utils/getInitials';
+import getInitials from '../../../utils/getInitials';
 
 const tabs = [
   {

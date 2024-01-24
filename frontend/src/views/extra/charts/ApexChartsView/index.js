@@ -10,7 +10,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import Page from 'src/components/Page';
+import Page from '../../../../components/Page';
 import AreaChart from './AreaChart';
 import LineChart from './LineChart';
 import RadialChart from './RadialChart';

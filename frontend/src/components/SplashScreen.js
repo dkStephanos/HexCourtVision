@@ -4,7 +4,7 @@ import {
   CircularProgress,
   makeStyles
 } from '@material-ui/core';
-import Logo from 'src/components/Logo';
+import Logo from './Logo';
 
 const useStyles = makeStyles((theme) => ({
   root: {

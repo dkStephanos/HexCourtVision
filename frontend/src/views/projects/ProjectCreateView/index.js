@@ -29,7 +29,7 @@ import {
   Briefcase as BriefcaseIcon,
   File as FileIcon
 } from 'react-feather';
-import Page from 'src/components/Page';
+import Page from '../../../components/Page';
 import UserDetails from './UserDetails';
 import ProjectDetails from './ProjectDetails';
 import ProjectDescription from './ProjectDescription';

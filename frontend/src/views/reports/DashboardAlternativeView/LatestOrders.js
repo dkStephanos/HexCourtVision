@@ -24,10 +24,10 @@ import {
   makeStyles
 } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import Label from 'src/components/Label';
-import GenericMoreButton from 'src/components/GenericMoreButton';
-import axios from 'src/utils/axios';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
+import Label from '../../../components/Label';
+import GenericMoreButton from '../../../components/GenericMoreButton';
+import axios from '../../../utils/axios';
+import useIsMountedRef from '../../../hooks/useIsMountedRef';
 
 const labelColors = {
   complete: 'success',

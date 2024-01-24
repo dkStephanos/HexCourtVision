@@ -20,7 +20,7 @@ import {
   Search as SearchIcon,
   XCircle as XIcon
 } from 'react-feather';
-import axios from 'src/utils/axios';
+import axios from '../../../utils/axios';
 
 const useStyles = makeStyles(() => ({
   drawer: {

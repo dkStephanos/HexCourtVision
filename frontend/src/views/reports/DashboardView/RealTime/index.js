@@ -14,7 +14,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
+import useIsMountedRef from '../../../../hooks/useIsMountedRef';
 import Chart from './Chart';
 
 const useStyles = makeStyles((theme) => ({

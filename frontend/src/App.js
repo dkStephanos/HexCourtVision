@@ -13,19 +13,20 @@ import {
   ThemeProvider
 } from '@material-ui/core';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import Auth from 'src/components/Auth';
-import CookiesNotification from 'src/components/CookiesNotification';
-import SettingsNotification from 'src/components/SettingsNotification';
-import GoogleAnalytics from 'src/components/GoogleAnalytics';
-import ScrollReset from 'src/components/ScrollReset';
-import useSettings from 'src/hooks/useSettings';
-import { createTheme } from 'src/theme';
-import Routes from 'src/Routes';
+import Auth from './components/Auth';
+import CookiesNotification from './components/CookiesNotification';
+import SettingsNotification from './components/SettingsNotification';
+import GoogleAnalytics from './components/GoogleAnalytics';
+import ScrollReset from './components/ScrollReset';
+import useSettings from './hooks/useSettings';
+import { createTheme } from './theme';
+import Routes from './Routes';
 
 const history = createBrowserHistory();
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
 const useStyles = makeStyles(() => createStyles({
+
   '@global': {
     '*': {
       boxSizing: 'border-box',

@@ -9,7 +9,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import FolderOpenIcon from '@material-ui/icons/FolderOpenOutlined';
-import Label from 'src/components/Label';
+import Label from '../../../components/Label';
 
 const useStyles = makeStyles((theme) => ({
   root: {

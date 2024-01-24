@@ -5,7 +5,7 @@ import React, {
 import { Helmet } from 'react-helmet';
 import { useLocation } from 'react-router';
 import PropTypes from 'prop-types';
-import track from 'src/utils/analytics';
+import track from '../utils/analytics';
 
 const Page = forwardRef(({
   title,

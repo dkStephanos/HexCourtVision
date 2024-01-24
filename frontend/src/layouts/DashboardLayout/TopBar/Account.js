@@ -16,7 +16,7 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import { logout } from 'src/actions/accountActions';
+import { logout } from '../../../actions/accountActions';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {

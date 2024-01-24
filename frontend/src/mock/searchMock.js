@@ -1,4 +1,4 @@
-import mock from 'src/utils/mock';
+import mock from '../utils/mock';
 
 mock.onGet('/api/search').reply(() => new Promise(((resolve) => {
   setTimeout(() => {

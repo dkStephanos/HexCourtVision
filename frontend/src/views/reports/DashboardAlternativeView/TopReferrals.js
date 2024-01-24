@@ -17,9 +17,9 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import GenericMoreButton from 'src/components/GenericMoreButton';
-import axios from 'src/utils/axios';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
+import GenericMoreButton from '../../../components/GenericMoreButton';
+import axios from '../../../utils/axios';
+import useIsMountedRef from '../../../hooks/useIsMountedRef';
 
 const useStyles = makeStyles((theme) => ({
   root: {

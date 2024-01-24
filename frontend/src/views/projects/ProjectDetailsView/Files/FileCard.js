@@ -24,7 +24,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/DeleteOutlined';
 import ArchiveIcon from '@material-ui/icons/ArchiveOutlined';
 import EditIcon from '@material-ui/icons/Edit';
-import bytesToSize from 'src/utils/bytesToSize';
+import bytesToSize from '../../../../utils/bytesToSize';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

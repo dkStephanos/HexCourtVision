@@ -9,7 +9,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import Label from 'src/components/Label';
+import Label from '../../../components/Label';
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
-import mock from 'src/utils/mock';
+import mock from '../utils/mock';
 
 mock.onGet('/api/management/customers').reply(200, {
   customers: [

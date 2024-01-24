@@ -16,7 +16,7 @@ import {
 } from '@material-ui/core';
 import LockOpenIcon from '@material-ui/icons/LockOpenOutlined';
 import PersonIcon from '@material-ui/icons/PersonOutline';
-import Label from 'src/components/Label';
+import Label from '../../../../components/Label';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

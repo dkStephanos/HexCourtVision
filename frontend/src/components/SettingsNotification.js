@@ -11,8 +11,8 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import useSettings from 'src/hooks/useSettings';
-import { THEMES } from 'src/constants';
+import useSettings from '../hooks/useSettings';
+import { THEMES } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
   root: {

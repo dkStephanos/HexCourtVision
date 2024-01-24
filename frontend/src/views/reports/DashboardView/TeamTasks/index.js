@@ -14,9 +14,9 @@ import {
   List,
   makeStyles
 } from '@material-ui/core';
-import axios from 'src/utils/axios';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
-import GenericMoreButton from 'src/components/GenericMoreButton';
+import axios from '../../../../utils/axios';
+import useIsMountedRef from '../../../../hooks/useIsMountedRef';
+import GenericMoreButton from '../../../../components/GenericMoreButton';
 import TaskItem from './TaskItem';
 
 const useStyles = makeStyles(() => ({

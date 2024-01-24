@@ -7,7 +7,7 @@ import {
   LOGOUT,
   SILENT_LOGIN,
   UPDATE_PROFILE
-} from 'src/actions/accountActions';
+} from '../actions/accountActions';
 
 const initialState = {
   user: null

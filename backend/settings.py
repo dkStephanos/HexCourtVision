@@ -32,8 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'backend',
-    'frontend',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -54,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'NBA_Thesis.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {
@@ -72,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'NBA_Thesis.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 
 # Database

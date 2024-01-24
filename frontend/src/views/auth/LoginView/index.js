@@ -17,8 +17,8 @@ import {
 } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import LockIcon from '@material-ui/icons/Lock';
-import Page from 'src/components/Page';
-import Logo from 'src/components/Logo';
+import Page from '../../../components/Page';
+import Logo from '../../../components/Logo';
 import LoginForm from './LoginForm';
 
 const useStyles = makeStyles((theme) => ({

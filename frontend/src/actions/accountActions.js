@@ -1,5 +1,5 @@
-import axios from 'src/utils/axios';
-import authService from 'src/services/authService';
+import axios from '../utils/axios';
+import authService from '../services/authService';
 
 export const LOGIN_REQUEST = '@account/login-request';
 export const LOGIN_SUCCESS = '@account/login-success';

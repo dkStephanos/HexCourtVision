@@ -7,7 +7,7 @@ import {
   Grid,
   makeStyles
 } from '@material-ui/core';
-import FilesDropzone from 'src/components/FilesDropzone';
+import FilesDropzone from '../../../../components/FilesDropzone';
 import FileCard from './FileCard';
 
 const useStyles = makeStyles(() => ({

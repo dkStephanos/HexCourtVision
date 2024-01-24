@@ -5,8 +5,8 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { THEMES } from 'src/constants';
-import { storeSettings } from 'src/utils/settings';
+import { THEMES } from '../constants';
+import { storeSettings } from '../utils/settings';
 
 const SettingsContext = createContext();
 

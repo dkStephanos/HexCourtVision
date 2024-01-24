@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import jwt from 'jsonwebtoken';
-import mock from 'src/utils/mock';
+import mock from '../utils/mock';
 
 const JWT_SECRET = 'devias-top-secret-key';
 const JWT_EXPIRES_IN = '2 days';

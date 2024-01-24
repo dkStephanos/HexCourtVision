@@ -9,12 +9,12 @@ import {
   Redirect,
   Route
 } from 'react-router-dom';
-import DashboardLayout from 'src/layouts/DashboardLayout';
-import MainLayout from 'src/layouts/MainLayout';
-import HomeView from 'src/views/pages/HomeView';
-import LoadingScreen from 'src/components/LoadingScreen';
-import AuthGuard from 'src/components/AuthGuard';
-import GuestGuard from 'src/components/GuestGuard';
+import DashboardLayout from './layouts/DashboardLayout';
+import MainLayout from './layouts/MainLayout';
+import HomeView from './views/pages/HomeView';
+import LoadingScreen from './components/LoadingScreen';
+import AuthGuard from './components/AuthGuard';
+import GuestGuard from './components/GuestGuard';
 
 const routesConfig = [
   {
@@ -25,29 +25,29 @@ const routesConfig = [
   {
     exact: true,
     path: '/404',
-    component: lazy(() => import('src/views/pages/Error404View'))
+    component: lazy(() => import('./views/pages/Error404View'))
   },
   {
     exact: true,
     guard: GuestGuard,
     path: '/login',
-    component: lazy(() => import('src/views/auth/LoginView'))
+    component: lazy(() => import('./views/auth/LoginView'))
   },
   {
     exact: true,
     path: '/login-unprotected',
-    component: lazy(() => import('src/views/auth/LoginView'))
+    component: lazy(() => import('./views/auth/LoginView'))
   },
   {
     exact: true,
     guard: GuestGuard,
     path: '/register',
-    component: lazy(() => import('src/views/auth/RegisterView'))
+    component: lazy(() => import('./views/auth/RegisterView'))
   },
   {
     exact: true,
     path: '/register-unprotected',
-    component: lazy(() => import('src/views/auth/RegisterView'))
+    component: lazy(() => import('./views/auth/RegisterView'))
   },
   {
     path: '/app',
@@ -62,17 +62,17 @@ const routesConfig = [
       {
         exact: true,
         path: '/app/account',
-        component: lazy(() => import('src/views/pages/AccountView'))
+        component: lazy(() => import('./views/pages/AccountView'))
       },
       {
         exact: true,
         path: '/app/reports/dashboard',
-        component: lazy(() => import('src/views/reports/DashboardView'))
+        component: lazy(() => import('./views/reports/DashboardView'))
       },
       {
         exact: true,
         path: '/app/reports/dashboard-alternative',
-        component: lazy(() => import('src/views/reports/DashboardAlternativeView'))
+        component: lazy(() => import('./views/reports/DashboardAlternativeView'))
       },
       {
         exact: true,
@@ -82,17 +82,17 @@ const routesConfig = [
       {
         exact: true,
         path: '/app/management/customers',
-        component: lazy(() => import('src/views/management/CustomerListView'))
+        component: lazy(() => import('./views/management/CustomerListView'))
       },
       {
         exact: true,
         path: '/app/management/customers/:customerId',
-        component: lazy(() => import('src/views/management/CustomerDetailsView'))
+        component: lazy(() => import('./views/management/CustomerDetailsView'))
       },
       {
         exact: true,
         path: '/app/management/customers/:customerId/edit',
-        component: lazy(() => import('src/views/management/CustomerEditView'))
+        component: lazy(() => import('./views/management/CustomerEditView'))
       },
       {
         exact: true,
@@ -102,22 +102,22 @@ const routesConfig = [
       {
         exact: true,
         path: '/app/projects/overview',
-        component: lazy(() => import('src/views/projects/OverviewView'))
+        component: lazy(() => import('./views/projects/OverviewView'))
       },
       {
         exact: true,
         path: '/app/projects/browse',
-        component: lazy(() => import('src/views/projects/ProjectBrowseView'))
+        component: lazy(() => import('./views/projects/ProjectBrowseView'))
       },
       {
         exact: true,
         path: '/app/projects/create',
-        component: lazy(() => import('src/views/projects/ProjectCreateView'))
+        component: lazy(() => import('./views/projects/ProjectCreateView'))
       },
       {
         exact: true,
         path: '/app/projects/:id',
-        component: lazy(() => import('src/views/projects/ProjectDetailsView'))
+        component: lazy(() => import('./views/projects/ProjectDetailsView'))
       },
       {
         exact: true,
@@ -127,7 +127,7 @@ const routesConfig = [
       {
         exact: true,
         path: '/app/extra/charts/apex',
-        component: lazy(() => import('src/views/extra/charts/ApexChartsView'))
+        component: lazy(() => import('./views/extra/charts/ApexChartsView'))
       },
       {
         component: () => <Redirect to="/404" />

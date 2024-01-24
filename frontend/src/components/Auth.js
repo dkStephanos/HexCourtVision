@@ -4,9 +4,9 @@ import React, {
 } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import SplashScreen from 'src/components/SplashScreen';
-import { setUserData, logout } from 'src/actions/accountActions';
-import authService from 'src/services/authService';
+import SplashScreen from './SplashScreen';
+import { setUserData, logout } from '../actions/accountActions';
+import authService from '../services/authService';
 
 function Auth({ children }) {
   const dispatch = useDispatch();

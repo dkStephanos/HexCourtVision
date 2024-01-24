@@ -10,7 +10,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
-import StackAvatars from 'src/components/StackAvatars';
+import StackAvatars from '../../../../components/StackAvatars';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

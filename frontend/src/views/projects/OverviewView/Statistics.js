@@ -12,9 +12,9 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import axios from 'src/utils/axios';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
-import Label from 'src/components/Label';
+import axios from '../../../utils/axios';
+import useIsMountedRef from '../../../hooks/useIsMountedRef';
+import Label from '../../../components/Label';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

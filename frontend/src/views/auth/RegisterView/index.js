@@ -12,8 +12,8 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import Page from 'src/components/Page';
-import Logo from 'src/components/Logo';
+import Page from '../../../components/Page';
+import Logo from '../../../components/Logo';
 import RegisterForm from './RegisterForm';
 
 const useStyles = makeStyles((theme) => ({

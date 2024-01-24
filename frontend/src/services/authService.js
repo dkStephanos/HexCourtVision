@@ -1,5 +1,5 @@
 import jwtDecode from 'jwt-decode';
-import axios from 'src/utils/axios';
+import axios from '../utils/axios';
 
 class AuthService {
   setAxiosInterceptors = ({ onLogout }) => {

@@ -21,8 +21,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 import MaiIcon from '@material-ui/icons/MailOutline';
-import axios from 'src/utils/axios';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
+import axios from '../../../../utils/axios';
+import useIsMountedRef from '../../../../hooks/useIsMountedRef';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

@@ -4,7 +4,7 @@ import {
   Grid,
   makeStyles
 } from '@material-ui/core';
-import Page from 'src/components/Page';
+import Page from '../../../components/Page';
 import CustomerActivity from './CustomerActivity';
 import EarningsSegmentation from './EarningsSegmentation';
 import FinancialStats from './FinancialStats';

@@ -4,8 +4,8 @@ const webpack = require('webpack');
 module.exports = {
   entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "./static/frontend"),
-    filename: "[name].main.js"
+    path: path.resolve(__dirname, "./dist"),
+    filename: "main.js"
   },
   resolve: {
     modules: [path.resolve(__dirname, './'), 'node_modules'],
@@ -16,16 +16,15 @@ module.exports = {
       "util": require.resolve("util/")
     }
   },
-  watch: true,
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules\/(?!htmlparser2)/, // Exclude node_modules except htmlparser2
+        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env'] // Ensure you have this preset installed
+            presets: ['@babel/preset-env']
           }
         }
       },
@@ -42,10 +41,5 @@ module.exports = {
         ],
       },
     ]
-  },
-  plugins: [
-    new webpack.optimize.LimitChunkCountPlugin({
-      maxChunks: 8
-    })
-  ]
+  }
 };

@@ -9,7 +9,7 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import QuillEditor from 'src/components/QuillEditor';
+import QuillEditor from '../../../components/QuillEditor';
 
 const useStyles = makeStyles(() => ({
   root: {},

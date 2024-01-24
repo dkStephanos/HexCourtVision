@@ -19,7 +19,7 @@ import {
 } from '@material-ui/core';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import bytesToSize from 'src/utils/bytesToSize';
+import bytesToSize from '../utils/bytesToSize';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

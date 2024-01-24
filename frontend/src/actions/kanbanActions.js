@@ -1,4 +1,4 @@
-import axios from 'src/utils/axios';
+import axios from '../utils/axios';
 
 export const GET_BOARD = '@kanban/get-board';
 export const CREATE_LIST = '@kanban/create-list';

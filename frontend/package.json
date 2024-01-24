@@ -6,11 +6,11 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production",
-    "lint": "eslint ./src",
-    "test": "node scripts/test.js"
-  },
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },  
   "browserslist": {
     "production": [
       ">0.2%",
@@ -116,6 +116,7 @@
     "react-redux": "^7.2.4",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "react-scripts": "^5.0.1",
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-form": "^8.3.7",

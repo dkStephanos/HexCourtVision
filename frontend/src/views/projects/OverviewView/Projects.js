@@ -13,9 +13,9 @@ import {
   makeStyles
 } from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import axios from 'src/utils/axios';
-import useIsMountedRef from 'src/hooks/useIsMountedRef';
-import ProjectCard from 'src/components/ProjectCard';
+import axios from '../../../utils/axios';
+import useIsMountedRef from '../../../hooks/useIsMountedRef';
+import ProjectCard from '../../../components/ProjectCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

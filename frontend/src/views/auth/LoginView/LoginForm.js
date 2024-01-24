@@ -11,7 +11,7 @@ import {
   FormHelperText,
   makeStyles
 } from '@material-ui/core';
-import { login } from 'src/actions/accountActions';
+import { login } from '../../../actions/accountActions';
 
 const useStyles = makeStyles(() => ({
   root: {}
