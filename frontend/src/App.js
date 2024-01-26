@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ThemeProvider, StyledEngineProvider, createTheme } from '@mui/material/styles';
+import { SnackbarProvider } from 'notistack';
+import Auth from './components/Auth';
+import CookiesNotification from './components/CookiesNotification';
+import SettingsNotification from './components/SettingsNotification';
+import GoogleAnalytics from './components/GoogleAnalytics';
+import ScrollReset from './components/ScrollReset';
+import useSettings from './hooks/useSettings';
+import Routes from './Routes';
 
-function App() {
+const App = () => {
+  const { settings } = useSettings();
+  const theme = createTheme(settings);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+          <SnackbarProvider maxSnack={1}>
+            <Router>
+              <Auth>
+                <ScrollReset />
+                <GoogleAnalytics />
+                <CookiesNotification />
+                <SettingsNotification />
+                <Routes />
+              </Auth>
+            </Router>
+          </SnackbarProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
-}
+};
 
 export default App;
