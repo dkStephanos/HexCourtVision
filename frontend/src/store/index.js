@@ -1,7 +1,5 @@
-/* eslint-disable import/prefer-default-export */
-import { applyMiddleware, createStore, compose } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
 import { ENABLE_REDUX_LOGGER } from '../config';
@@ -15,14 +13,14 @@ export function configureStore(preloadedState = {}) {
     middlewares.push(loggerMiddleware);
   }
 
-  const middlewareEnhancer = composeWithDevTools(
-    applyMiddleware(...middlewares)
-  );
-
-  const enhancers = [middlewareEnhancer];
-  const composedEnhancers = compose(...enhancers);
-
-  const store = createStore(rootReducer, preloadedState, composedEnhancers);
+  const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => 
+      getDefaultMiddleware().concat(middlewares),
+    preloadedState,
+    devTools: process.env.NODE_ENV !== 'production', // Optional: DevTools setup
+  });
 
   return store;
 }
+
