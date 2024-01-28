@@ -10,6 +10,12 @@ import ScrollReset from './components/ScrollReset';
 import useSettings from './hooks/useSettings';
 import Routes from './Routes';
 
+import 'crypto-browserify';
+import 'stream-browserify';
+import 'buffer';
+import 'util';
+
+
 const App = () => {
   const { settings } = useSettings();
   const theme = createTheme(settings);
