@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Copy the package.json (and package-lock.json, if available) from your React app
 COPY frontend/package*.json /app/
+COPY frontend/config-overrides.js /app/
 
 # Install dependencies
 RUN npm install
