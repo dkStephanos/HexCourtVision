@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit';
-import thunkMiddleware from 'redux-thunk';
+import { configureStore as configureToolkitStore } from '@reduxjs/toolkit';
+import { thunk } from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
 import { ENABLE_REDUX_LOGGER } from '../config';
@@ -7,13 +7,13 @@ import { ENABLE_REDUX_LOGGER } from '../config';
 const loggerMiddleware = createLogger();
 
 export function configureStore(preloadedState = {}) {
-  const middlewares = [thunkMiddleware];
+  const middlewares = [thunk];
 
   if (ENABLE_REDUX_LOGGER) {
     middlewares.push(loggerMiddleware);
   }
 
-  const store = configureStore({
+  const store = configureToolkitStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) => 
       getDefaultMiddleware().concat(middlewares),
