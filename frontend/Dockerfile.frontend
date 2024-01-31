@@ -1,15 +1,14 @@
 # Use the appropriate Node.js base image
-FROM node:16 as build
+FROM node:18 as build
 
 # Set the working directory in the Docker image
 WORKDIR /app
 
 # Copy the package.json (and package-lock.json, if available) from your React app
 COPY frontend/package*.json /app/
-COPY frontend/config-overrides.js /app/
 
 # Install dependencies
-RUN npm install --legacy-peer-deps
+RUN npm install
 
 # Copy the rest of your React app
 COPY frontend/ /app/
@@ -18,4 +17,4 @@ COPY frontend/ /app/
 EXPOSE 3000
 
 # The command to start your app (e.g., start a development server)
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
