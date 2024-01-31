@@ -2,12 +2,18 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
 class Team(models.Model):
+    class Meta:
+        app_label = 'backend'
+        
     team_id = models.CharField(primary_key=True, max_length=15)
     color = models.CharField(max_length=7)
     name = models.CharField(max_length=25)
     abreviation = models.CharField(max_length=3)
 
 class Player(models.Model):
+    class Meta:
+        app_label = 'backend'
+        
     team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
     player_id = models.CharField(primary_key=True, max_length=15)
     last_name = models.CharField(max_length=20)
@@ -16,6 +22,9 @@ class Player(models.Model):
     position = models.CharField(max_length=5)
 
 class Game(models.Model):
+    class Meta:
+        app_label = 'backend'
+        
     game_id = models.CharField(primary_key=True, max_length=15)
     home_team = models.ForeignKey(Team, related_name="home_team", on_delete=models.SET_NULL, null=True)
     visitor_team = models.ForeignKey(Team, related_name="visitor_team", on_delete=models.SET_NULL, null=True)
@@ -23,6 +32,9 @@ class Game(models.Model):
     final_score = models.CharField(max_length=9)
 
 class Event(models.Model):
+    class Meta:
+        app_label = 'backend'
+        
     event_id = models.CharField(primary_key=True, max_length=15)
     game = models.ForeignKey(Game, related_name="events", on_delete=models.SET_NULL, null=True)
     possesion_team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
@@ -40,6 +52,9 @@ class Event(models.Model):
     directionality = models.CharField(max_length=5)
 
 class Moment(models.Model):
+    class Meta:
+        app_label = 'backend'
+        
     team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
     player = models.ForeignKey(Player, on_delete=models.SET_NULL, null=True)
     event = models.ForeignKey(Event, on_delete=models.SET_NULL, null=True)
@@ -51,6 +66,9 @@ class Moment(models.Model):
     shot_clock = models.FloatField()
 
 class Candidate(models.Model):
+    class Meta:
+        app_label = 'backend'
+        
     candidate_id = models.CharField(primary_key=True, max_length=15)
     event = models.ForeignKey(Event, on_delete=models.SET_NULL, null=True)
     classification_type = models.CharField(max_length=20)
@@ -65,6 +83,9 @@ class Candidate(models.Model):
     notes = models.CharField(max_length=100)
 
 class CandidateFeatureVector(models.Model):
+    class Meta:
+        app_label = 'backend'
+        
     candidate = models.ForeignKey(Candidate, on_delete=models.SET_NULL, null=True)
     classification = models.BooleanField()
     
@@ -141,6 +162,9 @@ class CandidateFeatureVector(models.Model):
     is_inbounds_pass = models.BooleanField()
 
 class CandidateHexmap(models.Model):
+    class Meta:
+        app_label = 'backend'
+        
     candidate = models.ForeignKey(Candidate, on_delete=models.SET_NULL, null=True)
     hexmap = ArrayField(models.CharField(max_length=10, blank=True))
     cluster = models.IntegerField()
