@@ -6,8 +6,8 @@ import {
   Box,
   Card,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import FolderOpenIcon from '@mui/icons-material/FolderOpenOutlined';
 import Label from '../../../components/Label';
 

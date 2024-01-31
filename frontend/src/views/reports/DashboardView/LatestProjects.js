@@ -22,8 +22,8 @@ import {
   TableRow,
   TableSortLabel,
   Tooltip,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import axios from '../../../utils/axios';
 import getInitials from '../../../utils/getInitials';

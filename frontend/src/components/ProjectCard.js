@@ -16,8 +16,8 @@ import {
   Tooltip,
   Typography,
   colors,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { Rating } from '@mui/lab';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';

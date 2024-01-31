@@ -10,8 +10,8 @@ import {
   Box,
   Button,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import axios from '../../../utils/axios';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';

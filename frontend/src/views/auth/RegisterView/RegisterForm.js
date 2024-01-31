@@ -12,8 +12,8 @@ import {
   TextField,
   Typography,
   Link,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { register } from '../../../actions/accountActions';
 
 const useStyles = makeStyles(() => ({

@@ -12,8 +12,8 @@ import {
   List,
   ListItem,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import getInitials from '../../../../utils/getInitials';
 
 const useStyles = makeStyles((theme) => ({

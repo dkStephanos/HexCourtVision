@@ -9,8 +9,8 @@ import {
   Button,
   Divider,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import NotInterestedIcon from '@mui/icons-material/NotInterested';
 import GetAppIcon from '@mui/icons-material/GetApp';
 import DeleteIcon from '@mui/icons-material/DeleteOutline';

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { Grid, makeStyles } from '@mui/material';
+import { Grid } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import SubscriberCard from './SubscriberCard';
 
 const useStyles = makeStyles(() => ({

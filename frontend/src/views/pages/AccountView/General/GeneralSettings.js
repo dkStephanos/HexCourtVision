@@ -17,8 +17,8 @@ import {
   Switch,
   TextField,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { updateProfile } from '../../../../actions/accountActions';
 
 const stateOptions = ['Alabama', 'New York', 'San Francisco'];

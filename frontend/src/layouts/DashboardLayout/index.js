@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import NavBar from './NavBar';
 import TopBar from './TopBar';
 

@@ -14,9 +14,9 @@ import {
   SvgIcon,
   TextField,
   Typography,
-  makeStyles
 } from '@mui/material';
-import { KeyboardDatePicker } from '@mui/lab';
+import { makeStyles } from '@mui/styles';
+import { DatePicker } from '@mui/lab';
 import { Plus as PlusIcon } from 'react-feather';
 
 const useStyles = makeStyles((theme) => ({
@@ -175,7 +175,7 @@ function ProjectDetails({
               </Box>
             )}
             <Box mt={4}>
-              <KeyboardDatePicker
+              <DatePicker
                 className={classes.datePicker}
                 label="Start Date"
                 format="MM/DD/YYYY"
@@ -187,7 +187,7 @@ function ProjectDetails({
                 onAccept={() => setFieldTouched('startDate')}
                 onChange={(date) => setFieldValue('startDate', date)}
               />
-              <KeyboardDatePicker
+              <DatePicker
                 className={classes.datePicker}
                 label="End Date"
                 format="MM/DD/YYYY"

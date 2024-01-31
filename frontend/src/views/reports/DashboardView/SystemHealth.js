@@ -6,8 +6,8 @@ import {
   Card,
   LinearProgress,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {

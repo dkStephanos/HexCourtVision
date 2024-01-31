@@ -5,8 +5,8 @@ import {
   Card,
   Grid,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import Label from '../../../components/Label';
 
 const useStyles = makeStyles((theme) => ({

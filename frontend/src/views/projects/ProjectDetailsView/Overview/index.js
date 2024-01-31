@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import {
   Box,
   Grid,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import Brief from './Brief';
 import Holder from './Holder';
 import Members from './Members';

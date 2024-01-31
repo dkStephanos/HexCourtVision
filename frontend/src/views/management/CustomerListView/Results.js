@@ -25,8 +25,8 @@ import {
   Tabs,
   TextField,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import {
   Edit as EditIcon,
   ArrowRight as ArrowRightIcon,

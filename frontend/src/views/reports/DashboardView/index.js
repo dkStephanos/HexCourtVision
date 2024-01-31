@@ -2,8 +2,8 @@ import React from 'react';
 import {
   Container,
   Grid,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import Page from '../../../components/Page';
 import Header from './Header';
 import LatestProjects from './LatestProjects';

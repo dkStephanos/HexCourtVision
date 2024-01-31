@@ -11,8 +11,8 @@ import {
   ListItemText,
   Tooltip,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import SendIcon from '@mui/icons-material/Send';
 import NavigateNextIcon from '@mui/icons-material/NavigateNextOutlined';
 import PaymentIcon from '@mui/icons-material/PaymentOutlined';

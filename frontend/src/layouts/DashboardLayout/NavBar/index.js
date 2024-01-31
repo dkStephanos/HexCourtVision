@@ -16,8 +16,8 @@ import {
   List,
   ListSubheader,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import {
   Briefcase as BriefcaseIcon,
   BarChart as BarChartIcon,

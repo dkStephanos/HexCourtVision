@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import {
-  fade,
-  makeStyles
-} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { alpha } from '@mui/material/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,23 +25,23 @@ const useStyles = makeStyles((theme) => ({
   },
   primary: {
     color: theme.palette.primary.main,
-    backgroundColor: fade(theme.palette.primary.main, 0.08)
+    backgroundColor: alpha(theme.palette.primary.main, 0.08)
   },
   secondary: {
     color: theme.palette.secondary.main,
-    backgroundColor: fade(theme.palette.secondary.main, 0.08)
+    backgroundColor: alpha(theme.palette.secondary.main, 0.08)
   },
   error: {
     color: theme.palette.error.main,
-    backgroundColor: fade(theme.palette.error.main, 0.08)
+    backgroundColor: alpha(theme.palette.error.main, 0.08)
   },
   success: {
     color: theme.palette.success.main,
-    backgroundColor: fade(theme.palette.success.main, 0.08)
+    backgroundColor: alpha(theme.palette.success.main, 0.08)
   },
   warning: {
     color: theme.palette.warning.main,
-    backgroundColor: fade(theme.palette.warning.main, 0.08)
+    backgroundColor: alpha(theme.palette.warning.main, 0.08)
   }
 }));
 

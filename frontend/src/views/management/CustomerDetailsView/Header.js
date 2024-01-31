@@ -9,8 +9,8 @@ import {
   Link,
   SvgIcon,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { Edit as EditIcon } from 'react-feather';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 

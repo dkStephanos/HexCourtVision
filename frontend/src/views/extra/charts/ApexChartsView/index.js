@@ -7,8 +7,8 @@ import {
   Grid,
   Link,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Page from '../../../../components/Page';
 import AreaChart from './AreaChart';

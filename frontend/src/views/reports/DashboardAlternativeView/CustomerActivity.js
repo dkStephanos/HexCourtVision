@@ -19,8 +19,8 @@ import {
   ListItemAvatar,
   ListItemText,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import axios from '../../../utils/axios';
 import getInitials from '../../../utils/getInitials';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';

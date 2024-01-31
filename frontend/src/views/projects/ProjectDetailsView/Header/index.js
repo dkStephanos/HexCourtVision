@@ -8,8 +8,8 @@ import {
   Grid,
   SvgIcon,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import {
   Share2 as ShareIcon,
   Check as CheckIcon,

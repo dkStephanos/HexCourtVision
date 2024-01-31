@@ -7,8 +7,8 @@ import {
   ListItemText,
   IconButton,
   Tooltip,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import StackAvatars from '../../../../components/StackAvatars';
 

@@ -9,8 +9,8 @@ import {
   Link,
   SvgIcon,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { PlusCircle as PlusIcon } from 'react-feather';
 

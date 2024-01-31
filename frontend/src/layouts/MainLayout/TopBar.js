@@ -11,8 +11,8 @@ import {
   Hidden,
   Typography,
   Link,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { APP_VERSION } from '../../config';
 import Logo from '../../components/Logo';
 

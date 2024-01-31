@@ -8,8 +8,8 @@ import {
   Typography,
   Radio,
   Button,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 const typeOptions = [
   {

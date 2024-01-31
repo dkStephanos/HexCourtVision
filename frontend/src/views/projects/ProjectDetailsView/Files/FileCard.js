@@ -16,8 +16,8 @@ import {
   Tooltip,
   Typography,
   colors,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFileOutlined';
 import GetAppIcon from '@mui/icons-material/GetApp';
 import MoreIcon from '@mui/icons-material/MoreVert';

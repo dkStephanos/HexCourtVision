@@ -5,8 +5,8 @@ import {
   Divider,
   Tab,
   Tabs,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import Page from '../../../components/Page';
 import Header from './Header';
 import General from './General';

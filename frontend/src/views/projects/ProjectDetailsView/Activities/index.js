@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import clsx from 'clsx';
-import { Typography, makeStyles } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Typography } from '@mui/material';
 import Activity from './Activity';
 
 const useStyles = makeStyles((theme) => ({

@@ -19,8 +19,8 @@ import {
   TableRow,
   Typography,
   colors,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import axios from '../../../../utils/axios';
 import useIsMountedRef from '../../../../hooks/useIsMountedRef';

@@ -6,8 +6,8 @@ import {
   Box,
   Card,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import Label from '../../../components/Label';
 

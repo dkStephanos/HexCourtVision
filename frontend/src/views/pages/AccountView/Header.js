@@ -6,8 +6,8 @@ import {
   Typography,
   Breadcrumbs,
   Link,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 const useStyles = makeStyles(() => ({

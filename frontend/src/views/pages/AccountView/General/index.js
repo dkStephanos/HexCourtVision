@@ -2,7 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { Grid, makeStyles } from '@mui/material';
+import { Grid } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import ProfileDetails from './ProfileDetails';
 import GeneralSettings from './GeneralSettings';
 

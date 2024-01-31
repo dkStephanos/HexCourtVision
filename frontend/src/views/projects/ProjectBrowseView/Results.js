@@ -9,8 +9,8 @@ import {
   Menu,
   MenuItem,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import {
   ToggleButtonGroup,
   ToggleButton,

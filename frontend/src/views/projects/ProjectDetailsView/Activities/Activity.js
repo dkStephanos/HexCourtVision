@@ -8,9 +8,9 @@ import {
   Card,
   Typography,
   Link,
-  makeStyles,
   colors
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import GetAppIcon from '@mui/icons-material/GetApp';
 import PersonAddIcon from '@mui/icons-material/PersonAddOutlined';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';

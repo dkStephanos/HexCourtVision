@@ -12,8 +12,8 @@ import {
   TableCell,
   TableRow,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import ReceiptIcon from '@mui/icons-material/ReceiptOutlined';
 

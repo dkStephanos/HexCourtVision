@@ -15,8 +15,8 @@ import {
   ListItemText,
   Tooltip,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import bytesToSize from '../utils/bytesToSize';

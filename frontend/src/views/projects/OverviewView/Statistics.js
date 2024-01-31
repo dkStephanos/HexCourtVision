@@ -10,8 +10,8 @@ import {
   Card,
   Grid,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import axios from '../../../utils/axios';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';
 import Label from '../../../components/Label';

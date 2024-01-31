@@ -9,8 +9,8 @@ import {
   Divider,
   Tab,
   Tabs,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import Page from '../../../components/Page';
 import axios from '../../../utils/axios';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';

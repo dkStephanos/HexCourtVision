@@ -13,8 +13,8 @@ import {
   Link,
   Typography,
   colors,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { Alert } from '@mui/lab';
 import LockIcon from '@mui/icons-material/Lock';
 import Page from '../../../components/Page';

@@ -14,8 +14,8 @@ import {
   Divider,
   Link,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import Reactions from './Reactions';
 import Comment from './Comment';

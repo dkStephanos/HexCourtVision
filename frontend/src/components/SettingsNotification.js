@@ -9,8 +9,8 @@ import {
   Paper,
   Portal,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import useSettings from '../hooks/useSettings';
 import { THEMES } from '../constants';
 

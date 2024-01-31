@@ -12,8 +12,8 @@ import {
   TableCell,
   TableRow,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import LockOpenIcon from '@mui/icons-material/LockOpenOutlined';
 import PersonIcon from '@mui/icons-material/PersonOutline';
 import Label from '../../../../components/Label';

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, makeStyles } from '@mui/material';
+import { Container } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import Page from '../../../components/Page';
 import Header from './Header';
 import CustomerCreateForm from './CustomerCreateForm';

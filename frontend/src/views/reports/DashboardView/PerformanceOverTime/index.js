@@ -8,8 +8,8 @@ import {
   CardHeader,
   CardContent,
   Divider,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import GenericMoreButton from '../../../../components/GenericMoreButton';
 import Chart from './Chart';
 

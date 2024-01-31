@@ -6,8 +6,8 @@ import {
   Button,
   Collapse,
   ListItem,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 

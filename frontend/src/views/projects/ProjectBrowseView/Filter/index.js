@@ -9,8 +9,8 @@ import {
   Divider,
   FormControlLabel,
   Input,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import MultiSelect from './MultiSelect';
 

@@ -18,10 +18,10 @@ import {
   StepLabel,
   Stepper,
   Typography,
-  makeStyles,
   withStyles,
   colors
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import {
   User as UserIcon,

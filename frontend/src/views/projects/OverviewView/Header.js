@@ -8,8 +8,8 @@ import {
   Grid,
   Hidden,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import BarChartIcon from '@mui/icons-material/BarChart';
 
 const useStyles = makeStyles((theme) => ({

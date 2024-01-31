@@ -21,8 +21,8 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { ArrowRight as ArrowRightIcon } from 'react-feather';
 import axios from '../../../utils/axios';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';

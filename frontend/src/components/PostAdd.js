@@ -11,8 +11,8 @@ import {
   Input,
   Paper,
   Tooltip,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import SendIcon from '@mui/icons-material/Send';
 import AddPhotoIcon from '@mui/icons-material/AddPhotoAlternate';
 import AttachFileIcon from '@mui/icons-material/AttachFile';

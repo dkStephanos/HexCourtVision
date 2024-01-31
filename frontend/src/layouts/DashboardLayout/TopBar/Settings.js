@@ -12,8 +12,8 @@ import {
   TextField,
   Tooltip,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { Settings as SettingsIcon } from 'react-feather';
 import useSettings from '../../../hooks/useSettings';
 import { THEMES } from '../../../constants';

@@ -9,8 +9,8 @@ import {
   Button,
   TextField,
   FormHelperText,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { login } from '../../../actions/accountActions';
 
 const useStyles = makeStyles(() => ({

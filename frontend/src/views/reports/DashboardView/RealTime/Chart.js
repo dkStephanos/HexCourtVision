@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { Bar } from 'react-chartjs-2';
-import { makeStyles, useTheme } from '@mui/material';
+import { makeStyles, useTheme } from '@mui/styles';
 
 const useStyles = makeStyles(() => ({
   root: {

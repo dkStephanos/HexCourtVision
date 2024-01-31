@@ -6,8 +6,8 @@ import React, {
 import {
   Box,
   Container,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import axios from '../../../utils/axios';
 import Page from '../../../components/Page';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';

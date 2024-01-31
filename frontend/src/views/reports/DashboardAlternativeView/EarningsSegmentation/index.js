@@ -11,8 +11,8 @@ import {
   CardHeader,
   Divider,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import GenericMoreButton from '../../../../components/GenericMoreButton';
 import axios from '../../../../utils/axios';
 import useIsMountedRef from '../../../../hooks/useIsMountedRef';

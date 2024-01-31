@@ -8,18 +8,11 @@ import {
   CardContent,
   Grid,
   Typography,
-  makeStyles
 } from '@mui/material';
-import Markdown from 'react-markdown/with-html';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
-  markdown: {
-    fontFamily: theme.typography.fontFamily,
-    '& p': {
-      marginBottom: theme.spacing(2)
-    }
-  }
 }));
 
 function Brief({ project, className, ...rest }) {
@@ -78,10 +71,7 @@ function Brief({ project, className, ...rest }) {
           >
             Description
           </Typography>
-          <Markdown
-            source={project.brief}
-            className={classes.markdown}
-          />
+          {project.brief}
         </Box>
       </CardContent>
     </Card>

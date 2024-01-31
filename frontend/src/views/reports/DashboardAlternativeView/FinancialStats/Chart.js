@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { Bar } from 'react-chartjs-2';
+import { alpha } from '@mui/material/styles';
 import {
-  fade,
   makeStyles,
   useTheme
-} from '@mui/material';
+} from '@mui/styles';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -36,7 +36,7 @@ function Chart({
       },
       {
         label: 'Last year',
-        backgroundColor: fade(theme.palette.secondary.main, 0.25),
+        backgroundColor: alpha(theme.palette.secondary.main, 0.25),
         data: dataProp.lastYear,
         barThickness: 12,
         maxBarThickness: 10,

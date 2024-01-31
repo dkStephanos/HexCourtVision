@@ -7,8 +7,8 @@ import {
   FormHelperText,
   Paper,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import QuillEditor from '../../../components/QuillEditor';
 
 const useStyles = makeStyles(() => ({

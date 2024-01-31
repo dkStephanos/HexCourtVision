@@ -13,8 +13,8 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import getInitials from '../../../../utils/getInitials';
 
 const useStyles = makeStyles(() => ({

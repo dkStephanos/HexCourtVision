@@ -14,8 +14,8 @@ import {
   TextField,
   Tooltip,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import {
   Search as SearchIcon,
   XCircle as XIcon

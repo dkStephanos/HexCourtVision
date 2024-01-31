@@ -11,8 +11,8 @@ import {
   ListItem,
   ListItemText,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import useIsMountedRef from '../../../../hooks/useIsMountedRef';
 import Chart from './Chart';

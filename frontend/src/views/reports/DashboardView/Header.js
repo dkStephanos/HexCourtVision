@@ -11,8 +11,8 @@ import {
   MenuItem,
   SvgIcon,
   Typography,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Calendar as CalendarIcon } from 'react-feather';
 

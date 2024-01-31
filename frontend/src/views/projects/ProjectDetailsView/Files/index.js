@@ -5,8 +5,8 @@ import {
   Card,
   CardContent,
   Grid,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import FilesDropzone from '../../../../components/FilesDropzone';
 import FileCard from './FileCard';
 

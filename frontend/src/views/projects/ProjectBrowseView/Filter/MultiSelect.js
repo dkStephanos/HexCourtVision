@@ -6,8 +6,8 @@ import {
   FormControlLabel,
   Menu,
   MenuItem,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const useStyles = makeStyles((theme) => ({

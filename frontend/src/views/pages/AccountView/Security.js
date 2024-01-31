@@ -14,8 +14,8 @@ import {
   FormHelperText,
   Grid,
   TextField,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import wait from '../../../utils/wait';
 
 const useStyles = makeStyles(() => ({

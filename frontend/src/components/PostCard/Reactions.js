@@ -7,8 +7,8 @@ import {
   Tooltip,
   Typography,
   colors,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';

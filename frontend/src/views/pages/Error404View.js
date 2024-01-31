@@ -7,8 +7,8 @@ import {
   Typography,
   useTheme,
   useMediaQuery,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import Page from '../../components/Page';
 
 const useStyles = makeStyles((theme) => ({

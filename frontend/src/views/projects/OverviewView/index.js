@@ -2,8 +2,8 @@ import React from 'react';
 import {
   Box,
   Container,
-  makeStyles
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import Page from '../../../components/Page';
 import Header from './Header';
 import Statistics from './Statistics';
