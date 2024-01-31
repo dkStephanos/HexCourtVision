@@ -9,7 +9,7 @@ COPY frontend/package*.json /app/
 COPY frontend/config-overrides.js /app/
 
 # Install dependencies
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Copy the rest of your React app
 COPY frontend/ /app/
