@@ -3,26 +3,24 @@ import React, {
   Suspense
 } from 'react';
 import {
-  Switch,
-  Redirect,
+  Routes,
+  Navigate,
   Route
 } from 'react-router-dom';
 import DashboardLayout from './layouts/DashboardLayout';
-import DocsLayout from './layouts/DocsLayout';
 import MainLayout from './layouts/MainLayout';
 import HomeView from './views/pages/HomeView';
 import LoadingScreen from './components/LoadingScreen';
 import AuthRoute from './components/AuthRoute';
 import GuestRoute from './components/GuestRoute';
 
-function Routes() {
+function AppRoutes() {
   return (
     <Suspense fallback={<LoadingScreen />}>
-      <Switch>
-        <Redirect
-          exact
-          from="/"
-          to="/home"
+      <Routes>
+        <Route
+          path="/"
+          element={<Navigate replace to="/home" />}
         />
         <Route
           exact
@@ -54,8 +52,8 @@ function Routes() {
           render={(props) => (
             <DashboardLayout {...props}>
               <Suspense fallback={<LoadingScreen />}>
-                <Switch>
-                  <Redirect
+                <Routes>
+                  <Navigate
                     exact
                     from="/app"
                     to="/app/reports/dashboard"
@@ -75,7 +73,7 @@ function Routes() {
                     path="/app/reports/dashboard-alternative"
                     component={lazy(() => import('./views/reports/DashboardAlternativeView'))}
                   />
-                  <Redirect
+                  <Navigate
                     exact
                     from="app/reports"
                     to="/app/reports/dashboard"
@@ -94,60 +92,6 @@ function Routes() {
                     exact
                     path="/app/management/customers/:id/edit"
                     component={lazy(() => import('./views/management/CustomerEditView'))}
-                  />
-                  <Route
-                    exact
-                    path="/app/management/products"
-                    component={lazy(() => import('./views/management/ProductListView'))}
-                  />
-                  <Route
-                    exact
-                    path="/app/management/products/create"
-                    component={lazy(() => import('./views/management/ProductCreateView'))}
-                  />
-                  <Route
-                    exact
-                    path="/app/management/orders"
-                    component={lazy(() => import('./views/management/OrderListView'))}
-                  />
-                  <Route
-                    exact
-                    path="/app/management/orders/:id"
-                    component={lazy(() => import('./views/management/OrderDetailsView'))}
-                  />
-                  <Route
-                    exact
-                    path="/app/management/invoices"
-                    component={lazy(() => import('./views/management/InvoiceListView'))}
-                  />
-                  <Route
-                    exact
-                    path="/app/management/invoices/:id"
-                    component={lazy(() => import('./views/management/InvoiceDetailsView'))}
-                  />
-                  <Route
-                    exact
-                    path="/app/calendar"
-                    component={lazy(() => import('./views/calendar/CalendarView'))}
-                  />
-                  <Route
-                    exact
-                    path="/app/kanban"
-                    component={lazy(() => import('./views/kanban/KanbanView'))}
-                  />
-                  <Route
-                    path={[
-                      '/app/chat/new',
-                      '/app/chat/:threadKey'
-                    ]}
-                    component={lazy(() => import('./views/chat/ChatView'))}
-                  />
-                  <Route
-                    path={[
-                      '/app/mail/label/:customLabel/:mailId?',
-                      '/app/mail/:systemLabel/:mailId?'
-                    ]}
-                    component={lazy(() => import('./views/mail/MailView'))}
                   />
                   <Route
                     exact
@@ -171,151 +115,34 @@ function Routes() {
                   />
                   <Route
                     exact
-                    path="/app/social/feed"
-                    component={lazy(() => import('./views/social/FeedView'))}
-                  />
-                  <Route
-                    exact
-                    path="/app/social/profile"
-                    component={lazy(() => import('./views/social/ProfileView'))}
-                  />
-                  <Route
-                    exact
                     path="/app/extra/charts/apex"
                     component={lazy(() => import('./views/extra/charts/ApexChartsView'))}
                   />
-                  <Route
-                    exact
-                    path="/app/extra/forms/formik"
-                    component={lazy(() => import('./views/extra/forms/FormikView'))}
-                  />
-                  <Route
-                    exact
-                    path="/app/extra/forms/redux"
-                    component={lazy(() => import('./views/extra/forms/ReduxFormView'))}
-                  />
-                  <Route
-                    exact
-                    path="/app/extra/editors/draft-js"
-                    component={lazy(() => import('./views/extra/editors/DraftEditorView'))}
-                  />
-                  <Route
-                    exact
-                    path="/app/extra/editors/quill"
-                    component={lazy(() => import('./views/extra/editors/QuillEditorView'))}
-                  />
-                  <Redirect to="/404" />
-                </Switch>
+                  <Navigate to="/404" />
+                </Routes>
               </Suspense>
             </DashboardLayout>
-          )}
-        />
-        <Route
-          path="/docs"
-          render={(props) => (
-            <DocsLayout {...props}>
-              <Suspense fallback={<LoadingScreen />}>
-                <Switch>
-                  <Redirect
-                    exact
-                    from="/docs"
-                    to="/docs/welcome"
-                  />
-                  <Route
-                    exact
-                    path="/docs/welcome"
-                    component={lazy(() => import('./views/docs/WelcomeView'))}
-                  />
-                  <Route
-                    exact
-                    path="/docs/getting-started"
-                    component={lazy(() => import('./views/docs/GettingStartedView'))}
-                  />
-                  <Route
-                    exact
-                    path="/docs/environment-variables"
-                    component={lazy(() => import('./views/docs/EnvironmentVariablesView'))}
-                  />
-                  <Route
-                    exact
-                    path="/docs/deployment"
-                    component={lazy(() => import('./views/docs/DeploymentView'))}
-                  />
-                  <Route
-                    exact
-                    path="/docs/api-calls"
-                    component={lazy(() => import('./views/docs/ApiCallsView'))}
-                  />
-                  <Route
-                    exact
-                    path="/docs/analytics"
-                    component={lazy(() => import('./views/docs/AnalyticsView'))}
-                  />
-                  <Route
-                    exact
-                    path="/docs/authentication"
-                    component={lazy(() => import('./views/docs/AuthenticationView'))}
-                  />
-                  <Route
-                    exact
-                    path="/docs/routing"
-                    component={lazy(() => import('./views/docs/RoutingView'))}
-                  />
-                  <Route
-                    exact
-                    path="/docs/settings"
-                    component={lazy(() => import('./views/docs/SettingsView'))}
-                  />
-                  <Route
-                    exact
-                    path="/docs/state-management"
-                    component={lazy(() => import('./views/docs/StateManagementView'))}
-                  />
-                  <Route
-                    exact
-                    path="/docs/theming"
-                    component={lazy(() => import('./views/docs/ThemingView'))}
-                  />
-                  <Route
-                    exact
-                    path="/docs/support"
-                    component={lazy(() => import('./views/docs/SupportView'))}
-                  />
-                  <Route
-                    exact
-                    path="/docs/changelog"
-                    component={lazy(() => import('./views/docs/ChangelogView'))}
-                  />
-                  <Redirect to="/404" />
-                </Switch>
-              </Suspense>
-            </DocsLayout>
           )}
         />
         <Route
           path="*"
           render={(props) => (
             <MainLayout {...props}>
-              <Switch>
+              <Routes>
                 <Route
                   exact
                   path="/home"
                   component={HomeView}
                 />
-                <Route
-                  exact
-                  path="/pricing"
-                  component={lazy(() => import('./views/pages/PricingView'))}
-                />
-                <Redirect to="/404" />
-              </Switch>
+                <Navigate to="/404" />
+              </Routes>
             </MainLayout>
           )}
         />
-        <Redirect to="/404" />
-      </Switch>
+        <Navigate to="/404" />
+      </Routes>
     </Suspense>
   );
 }
 
-export default Routes;
+export default AppRoutes;
