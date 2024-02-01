@@ -78,14 +78,15 @@ WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'NBA_Thesis',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',  # Use the service name defined in docker-compose.yml
-        'PORT': '5432',  # Default PostgreSQL port
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DATABASE_NAME', 'NBA_Thesis'),
+        'USER': os.environ.get('DATABASE_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'postgres'),
+        'HOST': os.environ.get('DATABASE_HOST', 'db'),
+        'PORT': '5432',
     }
 }
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
