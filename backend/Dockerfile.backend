@@ -1,6 +1,9 @@
 # Use an official Python runtime as a parent image
 FROM python:3.11
 
+# Install PostgreSQL client
+RUN apt-get update && apt-get install -y postgresql-client
+
 # Set the working directory in the container
 WORKDIR /usr/src/app
 
