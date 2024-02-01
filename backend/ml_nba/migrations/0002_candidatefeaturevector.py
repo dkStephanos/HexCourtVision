@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('backend', '0001_initial'),
+        ('ml_nba', '0001_initial'),
     ]
 
     operations = [
@@ -74,7 +74,7 @@ class Migration(migrations.Migration):
                 ('pass_duration', models.IntegerField()),
                 ('num_players_past_half_court', models.IntegerField()),
                 ('is_inbounds_pass', models.BooleanField()),
-                ('candidate', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='backend.candidate')),
+                ('candidate', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='ml_nba.candidate')),
             ],
         ),
     ]

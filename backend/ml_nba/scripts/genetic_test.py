@@ -3,7 +3,7 @@ from backend.classification.utilities.EncodingUtil import EncodingUtil
 from backend.classification.utilities.ConstantsUtil import ConstantsUtil
 from backend.classification.ML.SVM import SVM
 
-from backend.models import CandidateFeatureVector
+from backend.ml_nba.models import CandidateFeatureVector
 
 from genetic_selection import GeneticSelectionCV
 

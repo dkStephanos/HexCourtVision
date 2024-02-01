@@ -5,11 +5,11 @@ import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 import matplotlib.pyplot as plt
-from backend.models import Game
-from backend.models import Player
-from backend.models import Event
-from backend.models import Moment
-from backend.models import Candidate
+from backend.ml_nba.models import Game
+from backend.ml_nba.models import Player
+from backend.ml_nba.models import Event
+from backend.ml_nba.models import Moment
+from backend.ml_nba.models import Candidate
 import matplotlib.pyplot as plt
 import math, os
 

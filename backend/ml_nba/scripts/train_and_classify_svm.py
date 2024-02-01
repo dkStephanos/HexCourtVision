@@ -5,7 +5,7 @@ from backend.classification.utilities.ConstantsUtil import ConstantsUtil
 from backend.classification.utilities.DataUtil import DataUtil
 from backend.classification.ML.SVM import SVM
 
-from backend.models import CandidateFeatureVector
+from backend.ml_nba.models import CandidateFeatureVector
 
 
 def run():

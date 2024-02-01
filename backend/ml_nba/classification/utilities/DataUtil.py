@@ -1,7 +1,7 @@
 import pandas as pd
 from backend.classification.utilities.EncodingUtil import EncodingUtil
 from backend.classification.utilities.ConstantsUtil import ConstantsUtil
-from backend.models import Candidate
+from backend.ml_nba.models import Candidate
 
 class DataUtil:
     @staticmethod

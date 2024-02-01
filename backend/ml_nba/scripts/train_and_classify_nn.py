@@ -5,8 +5,8 @@ from backend.classification.utilities.DataUtil import DataUtil
 from backend.classification.utilities.ConstantsUtil import ConstantsUtil
 from backend.classification.ML.NeuralNetwork import NeuralNetwork
 
-from backend.models import CandidateFeatureVector
-from backend.models import Candidate
+from backend.ml_nba.models import CandidateFeatureVector
+from backend.ml_nba.models import Candidate
 
 def run():
     candidates = CandidateFeatureVector.objects.all().values()

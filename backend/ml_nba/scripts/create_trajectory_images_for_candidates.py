@@ -10,11 +10,11 @@ from backend.preprocessing.utilities.FeatureUtil import FeatureUtil
 from backend.preprocessing.utilities.ConstantsUtil import ConstantsUtil
 from backend.preprocessing.utilities.GraphUtil import GraphUtil
 
-from backend.models import Game
-from backend.models import Player
-from backend.models import Event
-from backend.models import Moment
-from backend.models import Candidate
+from backend.ml_nba.models import Game
+from backend.ml_nba.models import Player
+from backend.ml_nba.models import Event
+from backend.ml_nba.models import Moment
+from backend.ml_nba.models import Candidate
 
 def generate_trajectory_image(target_event, target_candidate):
     target_event = model_to_dict(target_event)

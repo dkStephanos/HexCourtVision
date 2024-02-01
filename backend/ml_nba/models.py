@@ -3,7 +3,7 @@ from django.contrib.postgres.fields import ArrayField
 
 class Team(models.Model):
     class Meta:
-        app_label = 'backend'
+        app_label = 'ml_nba'
         
     team_id = models.CharField(primary_key=True, max_length=15)
     color = models.CharField(max_length=7)
@@ -12,7 +12,7 @@ class Team(models.Model):
 
 class Player(models.Model):
     class Meta:
-        app_label = 'backend'
+        app_label = 'ml_nba'
         
     team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
     player_id = models.CharField(primary_key=True, max_length=15)
@@ -23,7 +23,7 @@ class Player(models.Model):
 
 class Game(models.Model):
     class Meta:
-        app_label = 'backend'
+        app_label = 'ml_nba'
         
     game_id = models.CharField(primary_key=True, max_length=15)
     home_team = models.ForeignKey(Team, related_name="home_team", on_delete=models.SET_NULL, null=True)
@@ -33,7 +33,7 @@ class Game(models.Model):
 
 class Event(models.Model):
     class Meta:
-        app_label = 'backend'
+        app_label = 'ml_nba'
         
     event_id = models.CharField(primary_key=True, max_length=15)
     game = models.ForeignKey(Game, related_name="events", on_delete=models.SET_NULL, null=True)
@@ -53,7 +53,7 @@ class Event(models.Model):
 
 class Moment(models.Model):
     class Meta:
-        app_label = 'backend'
+        app_label = 'ml_nba'
         
     team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
     player = models.ForeignKey(Player, on_delete=models.SET_NULL, null=True)
@@ -67,7 +67,7 @@ class Moment(models.Model):
 
 class Candidate(models.Model):
     class Meta:
-        app_label = 'backend'
+        app_label = 'ml_nba'
         
     candidate_id = models.CharField(primary_key=True, max_length=15)
     event = models.ForeignKey(Event, on_delete=models.SET_NULL, null=True)
@@ -84,7 +84,7 @@ class Candidate(models.Model):
 
 class CandidateFeatureVector(models.Model):
     class Meta:
-        app_label = 'backend'
+        app_label = 'ml_nba'
         
     candidate = models.ForeignKey(Candidate, on_delete=models.SET_NULL, null=True)
     classification = models.BooleanField()
@@ -163,7 +163,7 @@ class CandidateFeatureVector(models.Model):
 
 class CandidateHexmap(models.Model):
     class Meta:
-        app_label = 'backend'
+        app_label = 'ml_nba'
         
     candidate = models.ForeignKey(Candidate, on_delete=models.SET_NULL, null=True)
     hexmap = ArrayField(models.CharField(max_length=10, blank=True))

@@ -8,12 +8,12 @@ from backend.preprocessing.utilities.DataUtil import DataUtil
 from backend.preprocessing.utilities.FeatureUtil import FeatureUtil
 from backend.preprocessing.utilities.GraphUtil import GraphUtil
 
-from backend.models import Game
-from backend.models import Player
-from backend.models import Event
-from backend.models import Moment
-from backend.models import Candidate
-from backend.models import CandidateFeatureVector
+from backend.ml_nba.models import Game
+from backend.ml_nba.models import Player
+from backend.ml_nba.models import Event
+from backend.ml_nba.models import Moment
+from backend.ml_nba.models import Candidate
+from backend.ml_nba.models import CandidateFeatureVector
 
 pd.set_option('mode.chained_assignment', None)
 

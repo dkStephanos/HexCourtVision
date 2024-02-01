@@ -7,7 +7,7 @@ from backend.classification.utilities.EncodingUtil import EncodingUtil
 from backend.classification.utilities.ConstantsUtil import ConstantsUtil
 from backend.classification.ML.DecisionTree import DecisionTree
 
-from backend.models import CandidateFeatureVector\
+from backend.ml_nba.models import CandidateFeatureVector\
 
 def run():
     candidates = CandidateFeatureVector.objects.all().values()

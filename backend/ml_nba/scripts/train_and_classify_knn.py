@@ -11,7 +11,7 @@ from backend.classification.utilities.DataUtil import DataUtil
 from backend.classification.utilities.ConstantsUtil import ConstantsUtil
 from backend.classification.ML.KerasNN import KerasNN
 
-from backend.models import CandidateFeatureVector
+from backend.ml_nba.models import CandidateFeatureVector
 
 def run():
     candidates = CandidateFeatureVector.objects.all().values()
