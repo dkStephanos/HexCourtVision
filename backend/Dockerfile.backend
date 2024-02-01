@@ -10,9 +10,10 @@ COPY . .
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r ./backend/requirements.txt
 
-# Run migrations
-RUN python ./backend/manage.py makemigrations
-RUN python ./backend/manage.py migrate
+# Wait for db to become available and migrate
+COPY ./backend/entrypoint.sh /usr/src/app/
+RUN chmod +x /usr/src/app/entrypoint.sh
+ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
 
 # Make port available to the world outside this container
 EXPOSE 8000
