@@ -13,7 +13,7 @@ services:
       - db
     environment:
       - DATABASE_HOST=db
-      - DATABASE_NAME=NBA_Thesis
+      - DATABASE_NAME=nba_db
       - DATABASE_USER=postgres
       - DATABASE_PASSWORD=postgres
 
@@ -34,7 +34,7 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_DB: NBA_Thesis
+      POSTGRES_DB: nba_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
