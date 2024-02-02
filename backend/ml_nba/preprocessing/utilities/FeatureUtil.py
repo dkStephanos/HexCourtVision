@@ -1,9 +1,12 @@
 import math
 import numpy as np
 import pandas as pd
-from .DataUtil import DataUtil
 from scipy.spatial.distance import euclidean
 from scipy.stats import linregress
+from .AnnotationProcessor import AnnotationProcessor
+from .EventsProcessor import EventsProcessor
+from .DataLoader import DataLoader
+from .PlayerMvmtProcessor import PlayerMvmtProcessor
 
 class FeatureUtil:
 
@@ -49,7 +52,7 @@ class FeatureUtil:
         # Loop through the events, looking for a made field goal in the first half
         for index, row in combined_event_df.iterrows():
             if row['EVENTMSGTYPE'] == 1 and row['PERIOD'] < 3:
-                event_time = DataUtil.convert_timestamp_to_game_clock(row['PCTIMESTRING'])
+                event_time = DataLoader.convert_timestamp_to_game_clock(row['PCTIMESTRING'])
                 # we want to find the end of the play, so we can determine which basket was scored on
                 for moment in row['moments']:
                     if (moment[2] <= event_time + 1) and (moment[2] >= event_time - 1):
@@ -266,8 +269,8 @@ class FeatureUtil:
         # First, calculate the distances between players and the ball, and get a min dist data frame
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
         #moments_df.to_csv("static/backend/test/moments.csv")
-        ball_dist_df = DataUtil.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
-        ball_handler_df = DataUtil.get_labled_mins_from_df(ball_dist_df, "dist_from_ball")
+        ball_dist_df = EventsProcessor.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
+        ball_handler_df = AnnotationProcessor.get_labled_mins_from_df(ball_dist_df, "dist_from_ball")
         # Also eliminate any moment where no player was within 3 feet of the ball
         ball_handler_df.loc[ball_handler_df['dist_from_ball'] > 3.3, 'player_id'] = pd.NA
         
@@ -292,9 +295,9 @@ class FeatureUtil:
         # First, calculate the distances between players and the defensive players, and get a min dist data frame
         ball_distances = FeatureUtil.distance_between_player_and_other_players(str(player_id), defensive_team_ids, moment_df)
         print(ball_distances)
-        ball_dist_df = DataUtil.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
+        ball_dist_df = EventsProcessor.convert_labled_series_to_df('player_id', 'ball_distances', ball_distances)
         print(ball_dist_df)
-        closest_defender_df = DataUtil.get_labled_mins_from_df(ball_dist_df, "dist_from_player")
+        closest_defender_df = AnnotationProcessor.get_labled_mins_from_df(ball_dist_df, "dist_from_player")
 
         closest_defender_df.to_csv("static/backend/test/defender.csv")
         return closest_defender_df
@@ -302,7 +305,7 @@ class FeatureUtil:
     @staticmethod
     def get_passess_for_event(moments_df, possession, players_data):
         # Get the player ids for the team in possession, we wan't to exclude defensive players
-        player_ids = DataUtil.get_possession_team_player_ids(possession, players_data)
+        player_ids = PlayerMvmtProcessor.get_possession_team_player_ids(possession, players_data)
         ball_handler_df = FeatureUtil.get_ball_handler_for_event(moments_df, player_ids)    
         # Next, step through each moment and find the passes
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
@@ -328,7 +331,7 @@ class FeatureUtil:
                     'classification_type': 'dribble-hand-off',
                     'manual_label': pd.NA,
                     'period': event['PERIOD'].values[0],
-                    'game_clock': DataUtil.convert_game_clock_to_timestamp(moment['game_clock']),
+                    'game_clock': DataLoader.convert_game_clock_to_timestamp(moment['game_clock']),
                     'shot_clock': moment['shot_clock'].values[0],
                     'player_a': event_pass['passer'],
                     'player_a_name': players_dict[event_pass['passer']][0],
