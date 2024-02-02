@@ -6,20 +6,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 from IPython.display import IFrame
-import easygui
 
 from utilities.GraphUtil import GraphUtil
 from utilities.FeatureUtil import FeatureUtil
 from utilities.DataLoader import DataLoader  # Updated import
 from utilities.ConstantsUtil import ConstantsUtil
 
-# Load game with GUI
-# game_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/backend/game_raw_data/", title="Select a game file")
-# game_df = DataLoader.load_game_df(game_path)
-
-# easygui.msgbox("Next select the corresponding annotation file")
-# annotation_path = easygui.fileopenbox(default="C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA_Thesis/static/backend/event_annotations/", title="Select an annotation file")
-# annotation_df = DataLoader.load_annotation_df(annotation_path)
 
 game = "20151228SACGSW"
 game_df = DataLoader.load_game_df(ConstantsUtil.games[game]['raw_data'])  # Updated import
