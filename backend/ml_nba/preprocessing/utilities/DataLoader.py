@@ -1,5 +1,6 @@
+import easygui
 import pandas as pd
-from .ConstantsUtil import ConstantsUtil
+from .ConstantsUtil import ConstantsUtil, STATIC_PATH
 
 class DataLoader:
     """
@@ -19,6 +20,27 @@ class DataLoader:
         """
         game_df = pd.read_json(path)
         return game_df
+    
+    @classmethod
+    def load_game_and_annotation_df(cls):
+        # Load game file with GUI
+        game_path = easygui.fileopenbox(default=f"{STATIC_PATH}/game_raw_data/", title="Select a game file")
+        
+        if game_path is None:
+            raise Exception("No game file selected.")
+        
+        # Load annotation file with GUI
+        easygui.msgbox("Next select the corresponding annotation file")
+        annotation_path = easygui.fileopenbox(default=f"{STATIC_PATH}/event_annotations/", title="Select an annotation file")
+        
+        if annotation_path is None:
+            raise Exception("No annotation file selected.")
+        
+        # Load DataFrames
+        game_df = pd.read_csv(game_path)  # You can modify this based on your file format
+        annotation_df = pd.read_csv(annotation_path)  # Modify for your file format
+        
+        return game_df, annotation_df
 
     @staticmethod
     def convert_game_clock_to_timestamp(game_clock):
