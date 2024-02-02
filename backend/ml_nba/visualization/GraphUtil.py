@@ -1,16 +1,24 @@
-import matplotlib.pyplot as plt	
-import seaborn as sns	
+# File: my_library/utils/graph_util.py
 
-from IPython.display import IFrame	
-
-from matplotlib.patches import Circle, Rectangle, Arc	
+import matplotlib.pyplot as plt
+from matplotlib.patches import Circle, Rectangle, Arc
 
 class GraphUtil:
 
     @staticmethod
-    # Function to draw the basketball court lines	
-    def draw_court(ax=None, color="gray", lw=1, zorder=0):	
+    def draw_court(ax=None, color="gray", lw=1, zorder=0):
+        """
+        Draw basketball court lines on a Matplotlib Axes.
 
+        Args:
+            ax (matplotlib.axes.Axes, optional): The Axes to draw on. If None, the current Axes will be used.
+            color (str, optional): Line color. Default is "gray".
+            lw (float, optional): Line width. Default is 1.
+            zorder (int, optional): Z-order for rendering. Default is 0.
+
+        Returns:
+            matplotlib.axes.Axes: The updated Axes.
+        """
         if ax is None:	
             ax = plt.gca()	
 
@@ -93,8 +101,16 @@ class GraphUtil:
         return ax
 
     @staticmethod
-    # Plots a single player's movements for a given action
     def plot_player_movement(player_data):
+        """
+        Plot a single player's movements on the basketball court.
+
+        Args:
+            player_data (pandas.DataFrame): Player's movement data.
+
+        Returns:
+            None
+        """
         # read in the court png file	
         court = plt.imread(r"C:\Users\Stephanos\Documents\Dev\NBAThesis\NBA_Thesis\static\backend\imgs\fullcourt.png")	
 
@@ -114,22 +130,43 @@ class GraphUtil:
         plt.ylim(-50, 0)	
 
         plt.show() 
-    
+
     @staticmethod
     def display_full_court():
-        plt.xlim(0,94)	
+        """
+        Display a full basketball court.
+
+        Returns:
+            None
+        """
+        plt.xlim(0, 94)
         plt.ylim(-50, 0)
         plt.show()
 
     @staticmethod
     def display_half_court():
-        plt.xlim(0,47)	
+        """
+        Display a half basketball court.
+
+        Returns:
+            None
+        """
+        plt.xlim(0, 47)
         plt.ylim(-50, 0)
         plt.show()
 
     @staticmethod
     def save_half_court(filepath):
-        plt.xlim(0,47)	
+        """
+        Save a half basketball court diagram to a file.
+
+        Args:
+            filepath (str): Path to the output file.
+
+        Returns:
+            None
+        """
+        plt.xlim(0, 47)
         plt.ylim(-50, 0)
         plt.savefig(filepath)
         plt.clf()
