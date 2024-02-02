@@ -40,30 +40,22 @@ class PlayerMvmtProcessor:
         Returns:
             list: List of player data dictionaries.
         """
-        home = game_df["events"][0]["home"]
-        visitor = game_df["events"][0]["visitor"]
-        all_players = []
-
-        for player in home["players"]:
-            all_players.append({
+        home_players = game_df["events"][0]["home"]["players"]
+        visitor_players = game_df["events"][0]["visitor"]["players"]
+        all_players = [
+            {
                 "player_id": player['playerid'],
-                "team_id": home['teamid'],
+                "team_id": player['teamid'],
                 "first_name": player['firstname'],
                 "last_name": player['lastname'],
-                "jersey_number": player['jersey'] if player['jersey'] else 99,
+                "jersey_number": player.get('jersey', 99),
                 "position": player['position']
-            })
-        for player in visitor["players"]:
-            all_players.append({
-                "player_id": player['playerid'],
-                "team_id": visitor['teamid'],
-                "first_name": player['firstname'],
-                "last_name": player['lastname'],
-                "jersey_number": player['jersey'],
-                "position": player['position']
-            })
+            }
+            for player in home_players + visitor_players
+        ]
 
         return all_players
+
 
     @staticmethod
     def get_players_dict(game_df):
@@ -76,18 +68,16 @@ class PlayerMvmtProcessor:
         Returns:
             dict: Dictionary containing player names and jersey numbers.
         """
-        home = game_df["events"][0]["home"]
-        visitor = game_df["events"][0]["visitor"]
-        players = home["players"]
-        players.extend(visitor["players"])
-        players_dict = {}
-
-        for player in players:
-            players_dict[player['playerid']] = [player["firstname"] + " " + player["lastname"], player["jersey"]]
-
-        players_dict.update({-1: ['ball', pd.nan]})
-
+        home_players = game_df["events"][0]["home"]["players"]
+        visitor_players = game_df["events"][0]["visitor"]["players"]
+        players_dict = {
+            player['playerid']: [player["firstname"] + " " + player["lastname"], player.get("jersey")]
+            for player in home_players + visitor_players
+        }
+        players_dict[-1] = ['ball', pd.nan]
+        
         return players_dict
+
 
     @staticmethod
     def get_player_data(event_df, player_id):
