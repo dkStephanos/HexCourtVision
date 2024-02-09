@@ -50,31 +50,3 @@ if len(moments_df) > 0:
     # get ball movements for event and graph them
     ball_df = moments_df[moments_df.player_id == -1]
     GraphUtil.plot_player_movement(ball_df)
-
-"""
-all_candidates = []
-successful = 0
-failed = 0
-for index, event in combined_event_df.iterrows():
-    try:
-        moments_df = DataLoader.get_moments_from_event(event)  # Updated import
-        if len(moments_df) > 0:
-            event_passes = FeatureUtil.get_passess_for_event(moments_df, event["possession"], players_data)
-            dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(
-                combined_event_df, moments_df, event_passes, ConstantsUtil.games[game]['moment_range'], players_dict)
-            all_candidates += dribble_handoff_candidates
-        else:
-            print("No moments for event: " + str(event['EVENTNUM']))
-        successful += 1
-    except:
-        print("Issue at index: " + str(event['EVENTNUM']), sys.exc_info())
-        failed += 1
-
-final_candidates = DataLoader.remove_duplicate_candidates(all_candidates)  # Updated import
-print("\nNumber of candidates parsed: " + str(len(final_candidates)) + "\nSuccessful events: " + str(
-    successful) + "\nFailed events: " + str(failed) + "\nPercent Successful: " + str(
-    round(successful / (failed + successful), 2)))
-
-candidate_df = pd.DataFrame(final_candidates)
-candidate_df.to_csv(f'static/backend/test/candidates.csv')
-"""
