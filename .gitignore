@@ -39,3 +39,6 @@ static/data/notes/~$CandidateSummaries.xlsx
 /frontend/static/frontend/
 *.png
 frontend/package-lock.json
+
+# backend jupyter stuff
+/backend/notebooks/.ipynb_checkpoints/
