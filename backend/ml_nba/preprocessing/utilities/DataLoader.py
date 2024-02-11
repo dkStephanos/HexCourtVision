@@ -1,3 +1,5 @@
+import os
+import glob
 import easygui
 import pandas as pd
 from .ConstantsUtil import ConstantsUtil, STATIC_PATH
@@ -7,24 +9,13 @@ class DataLoader:
     A utility class for loading and converting data.
     """
 
-    @staticmethod
-    def load_game_df(path):
-        """
-        Load game data from a JSON file.
-
-        Args:
-            path (str): The path to the JSON file.
-
-        Returns:
-            pd.DataFrame: A DataFrame containing game data.
-        """
-        game_df = pd.read_json(path)
-        return game_df
-    
     @classmethod
-    def load_game_and_annotation_df(cls):
+    def load_game_and_annotation_df_gui(cls):
+        # Note: Game files are located within folders named after the game date and teams, e.g., "01.01.2016.DAL.at.MIA"
+        # The actual game file is a JSON named after the game_id inside the respective folder.
+
         # Load game file with GUI
-        game_path = easygui.fileopenbox(default=f"{STATIC_PATH}/game_raw_data/", title="Select a game file")
+        game_path = easygui.fileopenbox(default=f"{STATIC_PATH}/2016.NBA.Raw.SportVU.Game.Logs/", title="Select a game folder and then the game file")
         
         if game_path is None:
             raise Exception("No game file selected.")
@@ -37,10 +28,43 @@ class DataLoader:
             raise Exception("No annotation file selected.")
         
         # Load DataFrames
-        game_df = pd.read_csv(game_path)  # You can modify this based on your file format
-        annotation_df = pd.read_csv(annotation_path)  # Modify for your file format
+        game_df = pd.read_json(game_path)  # Adjusted to read JSON
+        annotation_df = pd.read_csv(annotation_path)  # Prefix 'events-' is considered in file selection, not in loading
         
         return game_df, annotation_df
+
+    @classmethod
+    def load_game_and_annotation_df_game_key(cls, game_key, static_path):
+        # Derive game folder name from game key
+        # This might require custom logic to convert game_key to folder name format, e.g., "YYYYMMDDAAAHHH" to "DD.MM.YYYY.AAA.at.HHH"
+        game_folder_name = cls.convert_game_key_to_folder_name(game_key)  # Placeholder for actual conversion logic
+        
+        game_folder_path = os.path.join(static_path, "2016.NBA.Raw.SportVU.Game.Logs", game_folder_name)
+        game_file_path = glob.glob(os.path.join(game_folder_path, "*.json"))[0]  # Assuming single JSON file per folder
+        
+        # Construct annotation file path
+        annotation_file_name = f"events-{game_key}.csv"  # Assuming the game_key can directly derive the file name
+        annotation_path = os.path.join(static_path, "event_annotations", annotation_file_name)
+        
+        # Load DataFrames
+        game_df = pd.read_json(game_file_path)
+        annotation_df = pd.read_csv(annotation_path)
+        
+        return game_df, annotation_df
+
+    @staticmethod
+    def convert_game_key_to_folder_name(game_key):
+        # Placeholder for conversion logic
+        # Convert "YYYYMMDDAAAHHH" to expected folder name format, e.g., "DD.MM.YYYY.AAA.at.HHH"
+        # Example: "20160101DALMIA" -> "01.01.2016.DAL.at.MIA"
+        # This is a simplified example and may need adjustment based on actual key structure and naming conventions
+        date = game_key[:8]
+        away_team = game_key[8:11]
+        home_team = game_key[11:14]
+        formatted_date = f"{date[6:8]}.{date[4:6]}.{date[:4]}"
+        folder_name = f"{formatted_date}.{away_team}.at.{home_team}"
+        
+        return folder_name
 
     @staticmethod
     def convert_game_clock_to_timestamp(game_clock):
