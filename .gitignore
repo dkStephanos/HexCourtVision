@@ -43,3 +43,6 @@ frontend/package-lock.json
 # backend jupyter stuff
 /backend/notebooks/.ipynb_checkpoints/
 backend/.env
+
+# Data
+/backend/static/ml_nba/2016.NBA.Raw.SportVU.Game.Logs/
