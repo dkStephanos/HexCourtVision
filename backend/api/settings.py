@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'api',
     'ml_nba',
     'django_extensions',
     'rest_framework',
@@ -93,13 +94,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Jupyter shell related settings
 SHELL_PLUS = "ipython"
 
-SHELL_PLUS_NOTEBOOK_ARGUMENTS = [
+NOTEBOOK_ARGUMENTS  = [
     '--ip', '0.0.0.0',
     "--port", "8888",
     '--allow-root',
     '--no-browser',
-    '--NotebookApp.token=""',
-    '--notebook-dir', '/backend/notebooks',
+    '--NotebookApp.token=',
+    '--notebook-dir', './backend/notebooks',
 ]
 
 IPYTHON_ARGUMENTS = [
