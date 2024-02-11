@@ -7,7 +7,7 @@ services:
       dockerfile: ./backend/Dockerfile.backend
     command: python ./backend/manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/app
+      - ./backend:/app
     ports:
       - "8000:8000" # Django
       - "8888:8888" # Jupyter Notebook
