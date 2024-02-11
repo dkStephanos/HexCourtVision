@@ -100,7 +100,7 @@ NOTEBOOK_ARGUMENTS  = [
     '--allow-root',
     '--no-browser',
     '--NotebookApp.token=',
-    '--notebook-dir', './backend/notebooks',
+    '--notebook-dir', './notebooks',
 ]
 
 IPYTHON_ARGUMENTS = [

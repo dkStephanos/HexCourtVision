@@ -8,11 +8,11 @@ until PGPASSWORD=$DATABASE_PASSWORD psql -h "db" -p "5432" -U "$DATABASE_USER" -
 done
 
 # Apply migrations
-python ./backend/manage.py makemigrations
-python ./backend/manage.py migrate
+python ./manage.py makemigrations
+python ./manage.py migrate
 
 # Start the Django application
-exec python ./backend/manage.py runserver 0.0.0.0:8000 &
+exec python ./manage.py runserver 0.0.0.0:8000 &
 
 # Start Jupyter Notebook using django-extensions shell_plus
-python ./backend/manage.py shell_plus --notebook
+python ./manage.py shell_plus --notebook
