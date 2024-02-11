@@ -36,10 +36,11 @@ class DataLoader:
     @classmethod
     def load_game_and_annotation_df_game_key(cls, game_key):
         # Derive game folder name from game key
-        # This might require custom logic to convert game_key to folder name format, e.g., "YYYYMMDDAAAHHH" to "DD.MM.YYYY.AAA.at.HHH"
+        # This might require custom logic to convert game_key to folder name format, e.g., "YYYYMMDDAAAHHH" to "MM.DD.YYYY.AAA.at.HHH"
         game_folder_name = cls.convert_game_key_to_folder_name(game_key)  # Placeholder for actual conversion logic
         
         game_folder_path = os.path.join(RAW_DATA_PATH, game_folder_name)
+        print(os.path.join(game_folder_path, "*.json"), glob.glob(os.path.join(game_folder_path, "*.json")))
         game_file_path = glob.glob(os.path.join(game_folder_path, "*.json"))[0]  # Assuming single JSON file per folder
         
         # Construct annotation file path
@@ -55,13 +56,13 @@ class DataLoader:
     @staticmethod
     def convert_game_key_to_folder_name(game_key):
         # Placeholder for conversion logic
-        # Convert "YYYYMMDDAAAHHH" to expected folder name format, e.g., "DD.MM.YYYY.AAA.at.HHH"
+        # Convert "YYYYMMDDAAAHHH" to expected folder name format, e.g., "MM.DD.YYYY.AAA.at.HHH"
         # Example: "20160101DALMIA" -> "01.01.2016.DAL.at.MIA"
         # This is a simplified example and may need adjustment based on actual key structure and naming conventions
         date = game_key[:8]
         away_team = game_key[8:11]
         home_team = game_key[11:14]
-        formatted_date = f"{date[6:8]}.{date[4:6]}.{date[:4]}"
+        formatted_date = f"{date[4:6]}.{date[6:8]}.{date[:4]}"
         folder_name = f"{formatted_date}.{away_team}.at.{home_team}"
         
         return folder_name
