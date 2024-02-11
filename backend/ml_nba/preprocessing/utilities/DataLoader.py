@@ -2,7 +2,7 @@ import os
 import glob
 import easygui
 import pandas as pd
-from .ConstantsUtil import ConstantsUtil, STATIC_PATH
+from .ConstantsUtil import ConstantsUtil, EVENT_ANNOTATIONS_PATH, RAW_DATA_PATH
 
 class DataLoader:
     """
@@ -15,14 +15,14 @@ class DataLoader:
         # The actual game file is a JSON named after the game_id inside the respective folder.
 
         # Load game file with GUI
-        game_path = easygui.fileopenbox(default=f"{STATIC_PATH}/2016.NBA.Raw.SportVU.Game.Logs/", title="Select a game folder and then the game file")
+        game_path = easygui.fileopenbox(default=RAW_DATA_PATH, title="Select a game folder and then the game file")
         
         if game_path is None:
             raise Exception("No game file selected.")
         
         # Load annotation file with GUI
         easygui.msgbox("Next select the corresponding annotation file")
-        annotation_path = easygui.fileopenbox(default=f"{STATIC_PATH}/event_annotations/", title="Select an annotation file")
+        annotation_path = easygui.fileopenbox(default=EVENT_ANNOTATIONS_PATH, title="Select an annotation file")
         
         if annotation_path is None:
             raise Exception("No annotation file selected.")
@@ -34,17 +34,17 @@ class DataLoader:
         return game_df, annotation_df
 
     @classmethod
-    def load_game_and_annotation_df_game_key(cls, game_key, static_path):
+    def load_game_and_annotation_df_game_key(cls, game_key):
         # Derive game folder name from game key
         # This might require custom logic to convert game_key to folder name format, e.g., "YYYYMMDDAAAHHH" to "DD.MM.YYYY.AAA.at.HHH"
         game_folder_name = cls.convert_game_key_to_folder_name(game_key)  # Placeholder for actual conversion logic
         
-        game_folder_path = os.path.join(static_path, "2016.NBA.Raw.SportVU.Game.Logs", game_folder_name)
+        game_folder_path = os.path.join(RAW_DATA_PATH, game_folder_name)
         game_file_path = glob.glob(os.path.join(game_folder_path, "*.json"))[0]  # Assuming single JSON file per folder
         
         # Construct annotation file path
         annotation_file_name = f"events-{game_key}.csv"  # Assuming the game_key can directly derive the file name
-        annotation_path = os.path.join(static_path, "event_annotations", annotation_file_name)
+        annotation_path = os.path.join(EVENT_ANNOTATIONS_PATH, annotation_file_name)
         
         # Load DataFrames
         game_df = pd.read_json(game_file_path)
