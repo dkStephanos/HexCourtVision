@@ -1,4 +1,4 @@
-STATIC_PATH = "/app/backend/static/ml_nba"
+STATIC_PATH = "/app/static/ml_nba"
 RAW_DATA_PATH = STATIC_PATH + "/2016.NBA.Raw.SportVU.Game.Logs"
 EVENT_ANNOTATIONS_PATH = STATIC_PATH + "/event_annotations"
 
