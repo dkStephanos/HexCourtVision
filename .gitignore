@@ -46,3 +46,4 @@ backend/.env
 
 # Data
 /backend/static/ml_nba/2016.NBA.Raw.SportVU.Game.Logs/
+/backend/static/ml_nba/event_annotations/
