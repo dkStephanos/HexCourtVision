@@ -42,3 +42,4 @@ frontend/package-lock.json
 
 # backend jupyter stuff
 /backend/notebooks/.ipynb_checkpoints/
+backend/.env

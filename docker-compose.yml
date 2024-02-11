@@ -14,13 +14,8 @@ services:
       - "35729:35729" # Livereload
     depends_on:
       - db
-    environment:
-      - DATABASE_HOST=db
-      - DATABASE_NAME=nba_db
-      - DATABASE_USER=postgres
-      - DATABASE_PASSWORD=postgres
-      - DJANGO_SETTINGS_MODULE=api.settings
-      - PYTHONPATH=/app:$PYTHONPATH
+    env_file:
+      - ./backend/.env
 
   frontend:
     build:
@@ -31,10 +26,10 @@ services:
       - /app/node_modules
     ports:
       - "3000:3000"
-    environment:
-      - NODE_ENV=development
     depends_on:
       - backend
+    env_file:
+      - ./frontend/.env
 
   db:
     image: postgres
