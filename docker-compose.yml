@@ -8,7 +8,8 @@ services:
     volumes:
       - .:/app
     ports:
-      - "8000:8000"
+      - "8000:8000" # Django
+      - "8888:8888" # Jupyter Notebook
     depends_on:
       - db
     environment:

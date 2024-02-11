@@ -14,3 +14,4 @@ djangorestframework-jwt>=1.11.0
 django-extensions
 seaborn>=0.11.1
 easygui>=0.98.1
+jupyter

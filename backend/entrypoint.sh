@@ -12,4 +12,7 @@ python ./backend/manage.py makemigrations
 python ./backend/manage.py migrate
 
 # Start the Django application
-exec python ./backend/manage.py runserver 0.0.0.0:8000
+exec python ./backend/manage.py runserver 0.0.0.0:8000 &
+
+# Start Jupyter Notebook in the foreground
+jupyter notebook --ip=0.0.0.0 --allow-root --NotebookApp.token='' --no-browser --notebook-dir=/backend/notebooks
