@@ -1,2 +1,42 @@
-node_modules
+# Dependency directories
+node_modules/
+venv/
+.env
+
+# Version control
+.git/
+.gitignore
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+*.sublime-project
+*.sublime-workspace
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build outputs
+/dist/
+/build/
+/__pycache__/
+*.pyc
+*.pyo
+
+# Logs
 npm-debug.log
+yarn-error.log
+*.log
+
+# Personal IDE settings
+.settings/
+
+# Docker volumes
+docker_volumes/
+
+# Temporary files
+tmp/
