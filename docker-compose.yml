@@ -17,6 +17,7 @@ services:
       - DATABASE_NAME=nba_db
       - DATABASE_USER=postgres
       - DATABASE_PASSWORD=postgres
+      - DJANGO_SETTINGS_MODULE=api.settings
 
   frontend:
     build:

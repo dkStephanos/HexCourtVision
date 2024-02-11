@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'ml_nba',
+    'django_extensions',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'api.urls'
 
 TEMPLATES = [
     {
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wsgi.application'
+WSGI_APPLICATION = 'api.wsgi.application'
 
 
 # Database
@@ -88,8 +88,27 @@ DATABASES = {
     }
 }
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Jupyter shell related settings
+SHELL_PLUS = "ipython"
+
+SHELL_PLUS_NOTEBOOK_ARGUMENTS = [
+    '--ip', '0.0.0.0',
+    "--port", "8888",
+    '--allow-root',
+    '--no-browser',
+    '--NotebookApp.token=""',
+    '--notebook-dir', '/backend/notebooks',
+]
+
+IPYTHON_ARGUMENTS = [
+    "--ext",
+    "django_extensions.management.notebook_extension",
+    "--debug",
+]
+
+IPYTHON_KERNEL_DISPLAY_NAME = "Django Shell-Plus"
 
 
 # Password validation
