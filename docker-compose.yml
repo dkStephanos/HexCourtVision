@@ -5,12 +5,13 @@ services:
     build:
       context: .
       dockerfile: ./backend/Dockerfile.backend
-    command: python ./backend/manage.py runserver 0.0.0.0:8000
+    command: sh -c "python manage.py livereload & python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend:/app
     ports:
       - "8000:8000" # Django
       - "8888:8888" # Jupyter Notebook
+      - "35729:35729" # Livereload
     depends_on:
       - db
     environment:

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'ml_nba',
     'django_extensions',
     'rest_framework',
+    'livereload',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'livereload.middleware.LiveReloadScript',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
