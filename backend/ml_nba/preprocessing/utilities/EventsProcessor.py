@@ -4,28 +4,6 @@ from .ConstantsUtil import ConstantsUtil
 
 class EventsProcessor:
     @staticmethod
-    def combine_game_and_annotation_events(game_df, annotation_df):
-        """
-        Combine game and annotation events based on event numbers.
-
-        Args:
-            game_df (pd.DataFrame): Game DataFrame.
-            annotation_df (pd.DataFrame): Annotation DataFrame.
-
-        Returns:
-            pd.DataFrame: Combined DataFrame.
-        """
-        moments = []
-        
-        for event in game_df['events']:
-            if np.any(annotation_df['EVENTNUM'] == int(event['eventId'])):
-                moments.append({'EVENTNUM': int(event['eventId']), 'moments': event['moments']})
-
-        moments_df = pd.DataFrame(moments)
-
-        return annotation_df.merge(moments_df, how="inner")
-
-    @staticmethod
     def convert_labeled_series_to_df(label_name, series_name, series_to_convert):
         """
         Convert a labeled series to a DataFrame.

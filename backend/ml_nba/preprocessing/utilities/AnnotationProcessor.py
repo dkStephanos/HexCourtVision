@@ -1,5 +1,5 @@
 import pandas as pd
-
+import numpy as np
 class AnnotationProcessor:
     """
     A utility class for processing annotation data.
@@ -80,24 +80,22 @@ class AnnotationProcessor:
     @staticmethod
     def combine_game_and_annotation_events(game_df, annotation_df):
         """
-        Combine game events with annotation data based on event numbers.
+        Combine game and annotation events based on event numbers.
 
         Args:
-            game_df (pd.DataFrame): DataFrame containing game events.
-            annotation_df (pd.DataFrame): DataFrame containing annotation data.
+            game_df (pd.DataFrame): Game DataFrame.
+            annotation_df (pd.DataFrame): Annotation DataFrame.
 
         Returns:
-            pd.DataFrame: Merged DataFrame with game and annotation events.
+            pd.DataFrame: Combined DataFrame.
         """
-        merged_events = []
-
+        moments = []
+        
         for event in game_df['events']:
-            event_num = int(event['eventId'])
-            if event_num in annotation_df["EVENTNUM"].values:
-                moments = event['moments']
-                merged_events.append({"EVENTNUM": event_num, "moments": moments})
+            if np.any(annotation_df['EVENTNUM'] == int(event['eventId'])):
+                moments.append({'EVENTNUM': int(event['eventId']), 'moments': event['moments']})
 
-        moments_df = pd.DataFrame(merged_events)
+        moments_df = pd.DataFrame(moments)
 
         return annotation_df.merge(moments_df, how="inner")
 
