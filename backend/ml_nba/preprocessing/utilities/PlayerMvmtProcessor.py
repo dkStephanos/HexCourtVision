@@ -40,21 +40,18 @@ class PlayerMvmtProcessor:
         Returns:
             list: List of player data dictionaries.
         """
-        home_players = game_df["events"][0]["home"]["players"]
-        visitor_players = game_df["events"][0]["visitor"]["players"]
-        all_players = [
+        return [
             {
                 "player_id": player['playerid'],
-                "team_id": player['teamid'],
+                "team_id": game_df["events"][0][team]["teamid"],
                 "first_name": player['firstname'],
                 "last_name": player['lastname'],
                 "jersey_number": player.get('jersey', 99),
                 "position": player['position']
             }
-            for player in home_players + visitor_players
+            for team in ["home", "visitor"]
+            for player in game_df["events"][0][team]["players"]
         ]
-
-        return all_players
 
 
     @staticmethod
