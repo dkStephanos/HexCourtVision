@@ -40,7 +40,6 @@ class DataLoader:
         game_folder_name = cls.convert_game_key_to_folder_name(game_key)  # Placeholder for actual conversion logic
         
         game_folder_path = os.path.join(RAW_DATA_PATH, game_folder_name)
-        print(os.path.join(game_folder_path, "*.json"), glob.glob(os.path.join(game_folder_path, "*.json")))
         game_file_path = glob.glob(os.path.join(game_folder_path, "*.json"))[0]  # Assuming single JSON file per folder
         
         # Construct annotation file path
