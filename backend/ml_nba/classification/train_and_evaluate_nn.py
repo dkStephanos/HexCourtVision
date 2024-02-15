@@ -2,7 +2,7 @@ from ml_nba.classification.utilities.DataUtil import DataUtil
 from ml_nba.classification.models.NeuralNetwork import NeuralNetwork
 from ml_nba.models import CandidateFeatureVector
 
-def run_neural_network_analysis(
+def train_and_evaluate_nn(
     test_size=0.85,
     layers=(512, 256, 128, 64, 32, 16),
     activation='relu',

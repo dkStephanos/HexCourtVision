@@ -1,5 +1,3 @@
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report
 from ml_nba.classification.models.SVM import SVM
 from ml_nba.classification.utilities.EncodingUtil import EncodingUtil
 from ml_nba.classification.utilities.ConstantsUtil import ConstantsUtil
@@ -8,7 +6,7 @@ from ml_nba.models import CandidateFeatureVector
 
 def train_and_evaluate_svm(C=0.75, kernel='poly', test_size=0.3, shuffle=True, n_iterations=None):
     """
-    Train and evaluate an SVM classifier on the dataset obtained from CandidateFeatureVector objects, 
+    Train and evaluate an SVM classifier on the dataset obtained from CandidateFeatureVector objects,
     including necessary preprocessing steps such as encoding categorical variables.
     
     Args:
@@ -25,32 +23,25 @@ def train_and_evaluate_svm(C=0.75, kernel='poly', test_size=0.3, shuffle=True, n
     candidates = CandidateFeatureVector.objects.all().values()
     candidates_df = DataUtil.get_candidates_df(candidates)
     
-    # Encode categorical columns if DataUtil.get_candidates_df hasn't already done so
+    # Encode categorical columns
     candidates_df = EncodingUtil.encode_columns(candidates_df, ConstantsUtil.COLS_TO_ENCODE)
 
-    # Assuming DataUtil.get_candidates_df already handles setting index and encoding
-    X = candidates_df.drop(columns=['classification'])
-    y = candidates_df['classification']
+    # Initialize the SVM model
+    svm_model = SVM(C=C, kernel=kernel)
+    svm_model.set_data(candidates_df, 'classification')
+
+    # Use the custom split method from the SVM model
+    X_train, X_test, y_train, y_test = svm_model.split_test_data(test_size, shuffle)
+
+    # Train and predict
+    svm_model.fit_and_predict(X_train, X_test, y_train)
     
-    # Splitting dataset
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, shuffle=shuffle)
-    
-    # Training SVM
-    svm_model = SVM(C=C, kernel=kernel)  # Adjust based on your SVM wrapper's implementation
-    svm_model.fit(X_train, y_train)
-    
-    # Predicting and Evaluating
-    y_pred = svm_model.predict(X_test)
-    classification_rep = classification_report(y_test, y_pred, output_dict=True)
-    
-    results = {
-        "classification_report": classification_rep,
-        # Include ROC curve data, learning curve data, validation curve data as needed
-    }
-    
+    # Evaluation
+    classification_rep = svm_model.get_classification_report(y_test)
+    results = {"classification_report": classification_rep}
+
     # Optionally calculate and return average metrics over n_iterations
     if n_iterations:
-        # Assume svm_model.get_avg_metrics_for_n_iterations is implemented
         avg_metrics = svm_model.get_avg_metrics_for_n_iterations(n_iterations, test_size, shuffle)
         results['avg_metrics'] = avg_metrics
     

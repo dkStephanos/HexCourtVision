@@ -4,7 +4,7 @@ from ml_nba.classification.utilities.ConstantsUtil import ConstantsUtil
 from ml_nba.classification.models.GaussianNB import GaussianNB
 from ml_nba.models import CandidateFeatureVector
 
-def run_gaussian_nb_analysis():
+def train_and_evaluate_gnb():
     """
     Fetches candidate data, preprocesses it, trains a Gaussian Naive Bayes model, and evaluates it.
     
