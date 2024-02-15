@@ -34,19 +34,18 @@ def perform_information_gain(iterations: int = 10):
     X = candidates_df.drop(columns=['candidate_id', 'classification'])
 
     # Preprocess features
-    X_encoded = EncodingUtil.encode_columns(X, ConstantsUtil.COLS_TO_ENCODE)
-    X_encoded_sorted = EncodingUtil.sort_position_cols_and_encode(X_encoded, ConstantsUtil.STRING_TUPLE_ENCODE_COLS)
+    X_encoded = EncodingUtil.basic_label_encode_cols(X, ConstantsUtil.BASIC_ENCODE_COLS)
 
     # Initialize a list to hold the importances from each iteration
     feat_importances = []
 
     # Compute feature importances in each iteration
     for i in range(iterations):
-        importances = mutual_info_classif(X_encoded_sorted.values, y)
+        importances = mutual_info_classif(X_encoded.values, y)
         feat_importances.append(importances)
 
     # Aggregate the importances over all iterations
-    feature_importance_df = pd.DataFrame(feat_importances, columns=X_encoded_sorted.columns)
+    feature_importance_df = pd.DataFrame(feat_importances, columns=X_encoded.columns)
     importance_means = feature_importance_df.mean()
 
     # Plot the mean importances
