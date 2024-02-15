@@ -541,7 +541,7 @@ class FeatureUtil:
         """
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
         ball_dist_df = EventsProcessor.convert_labeled_series_to_df('player_id', 'ball_distances', ball_distances)
-        ball_handler_df = AnnotationProcessor.get_labeled_mins_from_df(ball_dist_df, "dist_from_ball")
+        ball_handler_df = EventsProcessor.get_labeled_mins_from_df(ball_dist_df, "dist_from_ball")
         ball_handler_df.loc[ball_handler_df['dist_from_ball'] > 3.3, 'player_id'] = pd.NA
         
         moment_nums = [int(moments_df.iloc[i * 11]['index']) for i in range(len(ball_handler_df))]
