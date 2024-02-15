@@ -1,5 +1,5 @@
 import pandas as pd
-
+import numpy as np
 class PlayerMvmtProcessor:
     @staticmethod
     def get_players_df(game_event):
@@ -71,7 +71,7 @@ class PlayerMvmtProcessor:
             player['playerid']: [player["firstname"] + " " + player["lastname"], player.get("jersey")]
             for player in home_players + visitor_players
         }
-        players_dict[-1] = ['ball', pd.nan]
+        players_dict[-1] = ['ball', np.nan]
         
         return players_dict
 
