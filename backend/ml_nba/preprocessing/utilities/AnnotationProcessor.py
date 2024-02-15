@@ -97,7 +97,7 @@ class AnnotationProcessor:
 
         moments_df = pd.DataFrame(moments)
 
-        return annotation_df.merge(moments_df, how="inner")
+        return annotation_df.merge(moments_df, how="inner").set_index('EVENTNUM')
 
     @staticmethod
     def _trim_specific_events(annotation_df):
