@@ -1,6 +1,6 @@
 import pandas as pd
-import numpy as np
 from .ConstantsUtil import ConstantsUtil
+from .DataLoader import DataLoader
 
 class EventsProcessor:
     @staticmethod
@@ -73,7 +73,7 @@ class EventsProcessor:
             for moment in moments:
                 if moment[3] is None:
                     moment[3] = 0.0
-                if moment[3] > last_shot_clock and moment[2] < EventsProcessor.convert_timestamp_to_game_clock(event_df['PCTIMESTRING']):
+                if moment[3] > last_shot_clock and moment[2] < DataLoader.convert_timestamp_to_game_clock(event_df['PCTIMESTRING']):
                     reached_end_of_play = True
                 else:
                     last_shot_clock = moment[3]
