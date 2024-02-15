@@ -1,5 +1,5 @@
 class ConstantsUtil:
-    BASIC_ENCODE_COLS = ['cutter_archetype',
+    COLS_TO_ENCODE = ['cutter_archetype',
                         'screener_archetype',
                         'cutter_loc_on_pass',
                         'screener_loc_on_pass',
