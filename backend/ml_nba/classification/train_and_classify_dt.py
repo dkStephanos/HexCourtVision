@@ -46,11 +46,13 @@ def train_and_evaluate_decision_tree(criterion="entropy", test_size=0.3, shuffle
     results = {
         "confusion_matrix": confusion_matrix(y_test, y_pred),
         "classification_report": classification_report(y_test, y_pred, output_dict=True),
-        "avg_metrics": dt_classifier.get_avg_metrics_for_n_iterations(n_iterations, test_size, shuffle)
         
     }
     
+    # Optionally calculate and return average metrics over n_iterations
+    if n_iterations:
+        # Assume svm_model.get_avg_metrics_for_n_iterations is implemented
+        avg_metrics = dt_classifier.get_avg_metrics_for_n_iterations(n_iterations, test_size, shuffle)
+        results['avg_metrics'] = avg_metrics
+    
     return results
-
-    #print(dt.get_avg_metrics_for_n_iterations(10, .3, True))
-
