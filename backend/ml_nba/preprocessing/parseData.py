@@ -30,8 +30,7 @@ def parse_data():
     combined_event_df = EventsProcessor.trim_moments_by_directionality(combined_event_df)
 
     # combined_event_df.to_csv("static/backend/test/events.csv")
-    print(combined_event_df)
-    sample_event = DataLoader.load_combined_event_by_num(combined_event_df, 427)
+    sample_event = combined_event_df.loc[10] # Indexed on EVENTNUM
     moments_df = EventsProcessor.get_moments_from_event(sample_event)
 
     # moments_df.to_csv("static/backend/test/test.csv")
@@ -44,3 +43,4 @@ def parse_data():
         ball_df = moments_df[moments_df.player_id == -1]
 
     print(ball_df)
+    print(dribble_handoff_candidates)
