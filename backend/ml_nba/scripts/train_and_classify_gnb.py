@@ -2,7 +2,7 @@ import pandas as pd
 
 from ml_nba.classification.utilities.EncodingUtil import EncodingUtil
 from ml_nba.classification.utilities.ConstantsUtil import ConstantsUtil
-from ml_nba.classification.ML.GaussianNB import GaussianNB
+from ml_nba.classification.models.GaussianNB import GaussianNB
 
 from ml_nba.models import CandidateFeatureVector
 

@@ -1,7 +1,7 @@
 import pandas as pd
 from ml_nba.classification.utilities.EncodingUtil import EncodingUtil
 from ml_nba.classification.utilities.ConstantsUtil import ConstantsUtil
-from ml_nba.classification.ML.SVM import SVM
+from ml_nba.classification.models.SVM import SVM
 
 from ml_nba.models import CandidateFeatureVector
 

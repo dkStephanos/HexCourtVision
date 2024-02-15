@@ -1,15 +1,8 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.utils import check_matplotlib_support
-import shap
-from keras.datasets import imdb
-from IPython.display import HTML,display
-
 from ml_nba.classification.utilities.EncodingUtil import EncodingUtil
 from ml_nba.classification.utilities.DataUtil import DataUtil
 from ml_nba.classification.utilities.ConstantsUtil import ConstantsUtil
-from ml_nba.classification.ML.KerasNN import KerasNN
+from ml_nba.classification.models.KerasNN import KerasNN
 
 from ml_nba.models import CandidateFeatureVector
 
@@ -35,20 +28,3 @@ def run():
 
     results = knn.test_n_iterations(X,y,120,.3,.2,10)
     print(results)
-
-    '''
-    Feature ranking stuff with shap, not sure if it works, can't render stupid html 
-    # init the JS visualization code
-    shap.initjs()
-
-    # we use the first 100 training examples as our background dataset to integrate over
-    explainer = shap.DeepExplainer(knn.get_model(), X_train[:100])
-
-    # explain the first 10 predictions
-    # explaining each prediction requires 2 * background dataset size runs
-    shap_values = explainer.shap_values(X_test[:10])
-
-    # plot the explanation of the first prediction
-    # Note the model is "multi-output" because it is rank-2 but only has one column
-    shap.force_plot(explainer.expected_value[0], shap_values[0][0,:], X_test[0])
-    '''
