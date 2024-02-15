@@ -29,7 +29,7 @@ class DataLoader:
         
         # Load DataFrames
         game_df = pd.read_json(game_path)  # Adjusted to read JSON
-        annotation_df = pd.read_csv(annotation_path)  # Prefix 'events-' is considered in file selection, not in loading
+        annotation_df = pd.read_csv(annotation_path, index_col=0)  # Prefix 'events-' is considered in file selection, not in loading
         
         return game_df, annotation_df
 
@@ -48,7 +48,7 @@ class DataLoader:
         
         # Load DataFrames
         game_df = pd.read_json(game_file_path)
-        annotation_df = pd.read_csv(annotation_path)
+        annotation_df = pd.read_csv(annotation_path, index_col=0)
         
         return game_df, annotation_df
 
