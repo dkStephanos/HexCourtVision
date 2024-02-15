@@ -29,36 +29,33 @@ class FeatureUtil:
         Returns:
             pd.DataFrame: DataFrame with a new 'possession' column indicating possession for each event.
         """
+        # Static mappings for event types to possession identifiers
         possession_map = {
             1: "PLAYER1_TEAM_ID",
             2: "PLAYER1_TEAM_ID",
-            "Turnover: Shot Clock": "PLAYER1_ID",
-            "Def. 3 Sec": lambda row: (
-                teams_data[1]["team_id"]
-                if row["PLAYER1_TEAM_ID"] == teams_data[0]["team_id"]
-                else teams_data[0]["team_id"]
-            ),
+            "Turnover: Shot Clock": "PLAYER1_ID",  # This seems off, might need adjustment
             "T.Foul": "PLAYER1_TEAM_ID",
             5: "PLAYER1_TEAM_ID",
             6: "PLAYER2_TEAM_ID",
         }
 
+        # Define a separate handling for dynamic possession determination
         def determine_event_possession(row):
             event_type = row["EVENTMSGTYPE"]
-            event_desc = (
-                str(row["HOMEDESCRIPTION"])
-                if event_type in [1, 2]
-                else str(row["VISITORDESCRIPTION"])
-            )
-            return (
-                possession_map[event_type]
-                if event_type in possession_map
-                else possession_map.get(event_desc, np.NaN)
-            )
+            # Handle dynamic cases first
+            if event_type == "Def. 3 Sec":
+                return teams_data[1]["team_id"] if row["PLAYER1_TEAM_ID"] == teams_data[0]["team_id"] else teams_data[0]["team_id"]
+            
+            # Then handle static mappings
+            if event_type in possession_map:
+                # Directly return the mapped value if it's a static mapping
+                return row[possession_map[event_type]]
+            
+            # For descriptions that require lookup in the possession map
+            event_desc = str(row["HOMEDESCRIPTION"]) if event_type in [1, 2] else str(row["VISITORDESCRIPTION"])
+            return row.get(possession_map.get(event_desc, "PLAYER1_TEAM_ID"), np.NaN)  # Adjusted to handle default case
 
-        annotation_df["possession"] = annotation_df.apply(
-            determine_event_possession, axis=1
-        )
+        annotation_df["possession"] = annotation_df.apply(determine_event_possession, axis=1)
 
         return annotation_df
 
