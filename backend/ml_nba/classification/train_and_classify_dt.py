@@ -27,8 +27,7 @@ def train_and_evaluate_decision_tree(criterion="entropy", test_size=0.3, shuffle
 
     # Encoding categorical columns
     # Assuming EncodingUtil and ConstantsUtil are defined and applicable
-    candidates_df = EncodingUtil.basic_label_encode_cols(candidates_df, ConstantsUtil.BASIC_ENCODE_COLS)
-    candidates_df = EncodingUtil.sort_position_cols_and_encode(candidates_df, ConstantsUtil.STRING_TUPLE_ENCODE_COLS)
+    candidates_df = EncodingUtil.encode_columns(candidates_df, ConstantsUtil.COLS_TO_ENCODE)
 
     # Separating features and target
     X = candidates_df.drop(columns=['classification'])

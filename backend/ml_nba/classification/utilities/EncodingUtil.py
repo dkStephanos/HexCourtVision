@@ -1,52 +1,41 @@
-# File: my_library/utils/encoding_util.py
-
-from sklearn import preprocessing
-from ast import literal_eval as make_tuple
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder, OrdinalEncoder
+import pandas as pd
 
 class EncodingUtil:
-
     @staticmethod
-    def basic_label_encode_cols(df, cols):
+    def encode_columns(df, columns, encoding_type='label'):
         """
-        Encode specified columns using basic label encoding.
+        Encode specified columns in the DataFrame according to the specified encoding type.
+        Supports 'label', 'onehot', and 'ordinal' encoding.
 
         Args:
             df (pandas.DataFrame): The DataFrame to be encoded.
-            cols (list): List of column names to be encoded.
+            columns (list): List of column names to be encoded.
+            encoding_type (str): Type of encoding to apply. Options include 'label', 'onehot', and 'ordinal'.
 
         Returns:
-            pandas.DataFrame: The DataFrame with specified columns label encoded.
+            pandas.DataFrame: The DataFrame with specified columns encoded. For 'onehot' encoding, returns
+            original DataFrame with new one-hot encoded columns added.
         """
         df_copy = df.copy()
-        le = preprocessing.LabelEncoder()
-        for col in cols:
-            df_copy[col] = le.fit_transform(df[col])
+
+        if encoding_type == 'label':
+            encoder = LabelEncoder()
+            for col in columns:
+                df_copy[col] = encoder.fit_transform(df_copy[col])
+
+        elif encoding_type == 'onehot':
+            encoder = OneHotEncoder(sparse=False, drop='first')
+            encoded_cols = encoder.fit_transform(df_copy[columns])
+            encoded_col_names = encoder.get_feature_names_out(columns)
+            df_encoded = pd.DataFrame(encoded_cols, columns=encoded_col_names, index=df_copy.index)
+            df_copy = pd.concat([df_copy.drop(columns, axis=1), df_encoded], axis=1)
+
+        elif encoding_type == 'ordinal':
+            encoder = OrdinalEncoder()
+            df_copy[columns] = encoder.fit_transform(df_copy[columns])
+
+        else:
+            raise ValueError(f"Unsupported encoding type: {encoding_type}")
 
         return df_copy
-
-    @staticmethod
-    def sort_position_cols_and_encode(df, cols):
-        """
-        Sort specified columns by a 'sort_val' column and encode them using label encoding.
-
-        Args:
-            df (pandas.DataFrame): The DataFrame to be sorted and encoded.
-            cols (list): List of column names to be sorted and encoded.
-
-        Returns:
-            pandas.DataFrame: The DataFrame with specified columns sorted and label encoded.
-        """
-        df_copy = df.copy()
-        le = preprocessing.LabelEncoder()
-
-        for col in cols:
-            try:
-                # Construct the sort_val col from the position
-                df_copy['sort_val'] = df_copy[col].apply(lambda x: make_tuple(x))
-                df_copy = df_copy.sort_values('sort_val').drop('sort_val', 1)
-                df_copy[col] = le.fit_transform(df_copy[col])
-            except Exception as e:
-                print(f"Issue encoding the following col: {col}")
-                print(e)
-
-        return df_copy.sort_values('id')

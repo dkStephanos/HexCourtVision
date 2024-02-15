@@ -14,8 +14,7 @@ class DataUtil:
         candidates_df.set_index('id', inplace=True)
         candidates_df.drop(columns=['candidate_id'], inplace=True)
 
-        candidates_df = EncodingUtil.basic_label_encode_cols(candidates_df, ConstantsUtil.BASIC_ENCODE_COLS)
-        candidates_df = EncodingUtil.sort_position_cols_and_encode(candidates_df, ConstantsUtil.STRING_TUPLE_ENCODE_COLS)
+        candidates_df = EncodingUtil.encode_columns(candidates_df, ConstantsUtil.COLS_TO_ENCODE)
         if drop_min_features:
             candidates_df.drop(columns=ConstantsUtil.FEATURES_IGNORED_BY_INFORMATION_GAIN, inplace=True)
 
