@@ -6,12 +6,12 @@ import shap
 from keras.datasets import imdb
 from IPython.display import HTML,display
 
-from backend.classification.utilities.EncodingUtil import EncodingUtil
-from backend.classification.utilities.DataUtil import DataUtil
-from backend.classification.utilities.ConstantsUtil import ConstantsUtil
-from backend.classification.ML.KerasNN import KerasNN
+from ml_nba.classification.utilities.EncodingUtil import EncodingUtil
+from ml_nba.classification.utilities.DataUtil import DataUtil
+from ml_nba.classification.utilities.ConstantsUtil import ConstantsUtil
+from ml_nba.classification.ML.KerasNN import KerasNN
 
-from backend.ml_nba.models import CandidateFeatureVector
+from ml_nba.models import CandidateFeatureVector
 
 def run():
     candidates = CandidateFeatureVector.objects.all().values()

@@ -1,12 +1,12 @@
 import pandas as pd
 
-from backend.classification.utilities.EncodingUtil import EncodingUtil
-from backend.classification.utilities.DataUtil import DataUtil
-from backend.classification.utilities.ConstantsUtil import ConstantsUtil
-from backend.classification.ML.NeuralNetwork import NeuralNetwork
+from ml_nba.classification.utilities.EncodingUtil import EncodingUtil
+from ml_nba.classification.utilities.DataUtil import DataUtil
+from ml_nba.classification.utilities.ConstantsUtil import ConstantsUtil
+from ml_nba.classification.ML.NeuralNetwork import NeuralNetwork
 
-from backend.ml_nba.models import CandidateFeatureVector
-from backend.ml_nba.models import Candidate
+from ml_nba.models import CandidateFeatureVector
+from ml_nba.models import Candidate
 
 def run():
     candidates = CandidateFeatureVector.objects.all().values()

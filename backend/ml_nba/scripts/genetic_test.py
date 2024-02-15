@@ -1,9 +1,9 @@
 import pandas as pd
-from backend.classification.utilities.EncodingUtil import EncodingUtil
-from backend.classification.utilities.ConstantsUtil import ConstantsUtil
-from backend.classification.ML.SVM import SVM
+from ml_nba.classification.utilities.EncodingUtil import EncodingUtil
+from ml_nba.classification.utilities.ConstantsUtil import ConstantsUtil
+from ml_nba.classification.ML.SVM import SVM
 
-from backend.ml_nba.models import CandidateFeatureVector
+from ml_nba.models import CandidateFeatureVector
 
 from genetic_selection import GeneticSelectionCV
 
@@ -14,7 +14,6 @@ def run():
     candidates_df.drop(columns=['candidate_id'], inplace=True)
 
     candidates_df = EncodingUtil.encode_columns(candidates_df, ConstantsUtil.COLS_TO_ENCODE)
-    candidates_df = EncodingUtil.sort_position_cols_and_encode(candidates_df, ConstantsUtil.STRING_TUPLE_ENCODE_COLS)
 
     svm = SVM(C=.75, kernel='poly')
     X_train, X_test, y_train, y_test = svm.split_test_data(candidates_df, .3, 'classification', True)

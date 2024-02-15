@@ -1,10 +1,10 @@
 import pandas as pd
 
-from backend.classification.utilities.EncodingUtil import EncodingUtil
-from backend.classification.utilities.ConstantsUtil import ConstantsUtil
-from backend.classification.ML.GaussianNB import GaussianNB
+from ml_nba.classification.utilities.EncodingUtil import EncodingUtil
+from ml_nba.classification.utilities.ConstantsUtil import ConstantsUtil
+from ml_nba.classification.ML.GaussianNB import GaussianNB
 
-from backend.ml_nba.models import CandidateFeatureVector
+from ml_nba.models import CandidateFeatureVector
 
 
 def run():

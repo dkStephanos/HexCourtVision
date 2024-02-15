@@ -4,16 +4,16 @@ import matplotlib.pyplot as plt
 import math, sys, os, traceback
 from django.forms.models import model_to_dict
 
-from backend.preprocessing.utilities.DataUtil import DataUtil
-from backend.preprocessing.utilities.FeatureUtil import FeatureUtil
-from backend.preprocessing.utilities.GraphUtil import GraphUtil
+from ml_nba.preprocessing.utilities.DataUtil import DataUtil
+from ml_nba.preprocessing.utilities.FeatureUtil import FeatureUtil
+from ml_nba.preprocessing.utilities.GraphUtil import GraphUtil
 
-from backend.ml_nba.models import Game
-from backend.ml_nba.models import Player
-from backend.ml_nba.models import Event
-from backend.ml_nba.models import Moment
-from backend.ml_nba.models import Candidate
-from backend.ml_nba.models import CandidateFeatureVector
+from ml_nba.models import Game
+from ml_nba.models import Player
+from ml_nba.models import Event
+from ml_nba.models import Moment
+from ml_nba.models import Candidate
+from ml_nba.models import CandidateFeatureVector
 
 pd.set_option('mode.chained_assignment', None)
 

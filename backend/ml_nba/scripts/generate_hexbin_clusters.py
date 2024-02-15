@@ -5,17 +5,17 @@ import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 import matplotlib.pyplot as plt
-from backend.ml_nba.models import Game
-from backend.ml_nba.models import Player
-from backend.ml_nba.models import Event
-from backend.ml_nba.models import Moment
-from backend.ml_nba.models import Candidate
+from ml_nba.models import Game
+from ml_nba.models import Player
+from ml_nba.models import Event
+from ml_nba.models import Moment
+from ml_nba.models import Candidate
 import matplotlib.pyplot as plt
 import math, os
 
-from backend.preprocessing.utilities.DataUtil import DataUtil
-from backend.preprocessing.utilities.FeatureUtil import FeatureUtil
-from backend.preprocessing.utilities.GraphUtil import GraphUtil
+from ml_nba.preprocessing.utilities.DataUtil import DataUtil
+from ml_nba.preprocessing.utilities.FeatureUtil import FeatureUtil
+from ml_nba.preprocessing.utilities.GraphUtil import GraphUtil
 
 def get_hexbins(target_candidate):
     # Collects moments for single candidate

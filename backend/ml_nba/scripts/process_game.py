@@ -4,16 +4,16 @@ import pandas as pd
 import easygui
 import sys
 
-from backend.preprocessing.utilities.DataUtil import DataUtil
-from backend.preprocessing.utilities.FeatureUtil import FeatureUtil
-from backend.preprocessing.utilities.ConstantsUtil import ConstantsUtil
+from ml_nba.preprocessing.utilities.DataUtil import DataUtil
+from ml_nba.preprocessing.utilities.FeatureUtil import FeatureUtil
+from ml_nba.preprocessing.utilities.ConstantsUtil import ConstantsUtil
 
-from backend.ml_nba.models import Game
-from backend.ml_nba.models import Team
-from backend.ml_nba.models import Player
-from backend.ml_nba.models import Event
-from backend.ml_nba.models import Moment
-from backend.ml_nba.models import Candidate
+from ml_nba.models import Game
+from ml_nba.models import Team
+from ml_nba.models import Player
+from ml_nba.models import Event
+from ml_nba.models import Moment
+from ml_nba.models import Candidate
 
 def run():
     # Load game with GUI

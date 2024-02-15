@@ -1,4 +1,4 @@
-from backend.ml_nba.models import Candidate, Team, Player, CandidateHexmap
+from ml_nba.models import Candidate, Team, Player, CandidateHexmap
 from collections import Counter
 
 def run():
