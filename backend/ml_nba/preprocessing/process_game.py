@@ -5,7 +5,7 @@ from ml_nba.preprocessing.utilities.AnnotationProcessor import AnnotationProcess
 from ml_nba.preprocessing.utilities.EventsProcessor import EventsProcessor
 
 
-def process_game(game_id: str):
+def process_game(game_id: str, save_results=True, save_dir=ConstantsUtil.CLEAN_DATA_PATH):
     # Collect the raw game data and the event data for the game_id
     game_df, annotation_df = DataLoader.load_game_and_annotation_df_game_key(game_id)
     
@@ -31,5 +31,9 @@ def process_game(game_id: str):
     # Get direction for each play and remove moments occurring on the other half of the court
     combined_event_df = FeatureUtil.determine_directionality(combined_event_df)
     combined_event_df = EventsProcessor.trim_moments_by_directionality(combined_event_df)
+    
+    # Save if directed
+    if save_results:
+        combined_event_df.to_csv(f"{save_dir}/{game_id}.csv")
 
     return combined_event_df
