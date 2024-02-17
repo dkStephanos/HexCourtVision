@@ -2,6 +2,7 @@ import os
 import glob
 import easygui
 import pandas as pd
+import numpy as np
 from .ConstantsUtil import ConstantsUtil
 
 class DataLoader:
@@ -144,3 +145,48 @@ class DataLoader:
         }
         return [home_team, visitor_team]
 
+    @staticmethod
+    def get_players_data(event_df):
+        """
+        Get players' data from a game DataFrame.
+
+        Args:
+            event_df (pd.DataFrame): Game DataFrame.
+
+        Returns:
+            list: List of player data dictionaries.
+        """
+        return [
+            {
+                "player_id": player['playerid'],
+                "team_id": event_df["events"][0][team]["teamid"],
+                "first_name": player['firstname'],
+                "last_name": player['lastname'],
+                "jersey_number": player.get('jersey', 99),
+                "position": player['position']
+            }
+            for team in ["home", "visitor"]
+            for player in event_df["events"][0][team]["players"]
+        ]
+
+
+    @staticmethod
+    def get_players_dict(event_df):
+        """
+        Get players' dictionary from a game DataFrame.
+
+        Args:
+            event_df (pd.DataFrame): Game DataFrame.
+
+        Returns:
+            dict: Dictionary containing player names and jersey numbers.
+        """
+        home_players = event_df["events"][0]["home"]["players"]
+        visitor_players = event_df["events"][0]["visitor"]["players"]
+        players_dict = {
+            player['playerid']: [player["firstname"] + " " + player["lastname"], player.get("jersey")]
+            for player in home_players + visitor_players
+        }
+        players_dict[-1] = ['ball', np.nan]
+        
+        return players_dict

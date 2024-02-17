@@ -29,52 +29,6 @@ class PlayerMvmtProcessor:
 
         return players_df.rename(columns={'index': 'player_id'})
 
-    @staticmethod
-    def get_players_data(game_df):
-        """
-        Get players' data from a game DataFrame.
-
-        Args:
-            game_df (pd.DataFrame): Game DataFrame.
-
-        Returns:
-            list: List of player data dictionaries.
-        """
-        return [
-            {
-                "player_id": player['playerid'],
-                "team_id": game_df["events"][0][team]["teamid"],
-                "first_name": player['firstname'],
-                "last_name": player['lastname'],
-                "jersey_number": player.get('jersey', 99),
-                "position": player['position']
-            }
-            for team in ["home", "visitor"]
-            for player in game_df["events"][0][team]["players"]
-        ]
-
-
-    @staticmethod
-    def get_players_dict(game_df):
-        """
-        Get players' dictionary from a game DataFrame.
-
-        Args:
-            game_df (pd.DataFrame): Game DataFrame.
-
-        Returns:
-            dict: Dictionary containing player names and jersey numbers.
-        """
-        home_players = game_df["events"][0]["home"]["players"]
-        visitor_players = game_df["events"][0]["visitor"]["players"]
-        players_dict = {
-            player['playerid']: [player["firstname"] + " " + player["lastname"], player.get("jersey")]
-            for player in home_players + visitor_players
-        }
-        players_dict[-1] = ['ball', np.nan]
-        
-        return players_dict
-
 
     @staticmethod
     def get_player_data(event_df, player_id):
