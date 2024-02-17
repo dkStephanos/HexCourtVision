@@ -51,7 +51,18 @@ class AnnotationProcessor:
             "PLAYER1_TEAM_CITY",
             "PLAYER1_TEAM_NICKNAME",
             "PLAYER1_TEAM_ABBREVIATION",
-            # Add other columns to be removed here
+            "PERSON2TYPE",
+            "PLAYER2_NAME",
+            "PLAYER2_TEAM_ID",
+            "PLAYER2_TEAM_CITY",
+            "PLAYER2_TEAM_NICKNAME",
+            "PLAYER2_TEAM_ABBREVIATION",
+            "PERSON3TYPE",
+            "PLAYER3_NAME",
+            "PLAYER3_TEAM_ID",
+            "PLAYER3_TEAM_CITY",
+            "PLAYER3_TEAM_NICKNAME",
+            "PLAYER3_TEAM_ABBREVIATION",
         ]
         annotation_df.drop(columns=columns_to_remove, axis=1, inplace=True)
 
