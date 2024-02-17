@@ -109,6 +109,24 @@ class AnnotationProcessor:
         moments_df = pd.DataFrame(moments)
 
         return annotation_df.merge(moments_df, how="inner").set_index('EVENTNUM')
+    
+    @staticmethod
+    def organize_columns(game_df):
+        # Define the new column order with a logical grouping
+        new_order = [
+            'GAME_ID', 'EVENTNUM', 'event_id',  # Game Identifiers and Metadata
+            'EVENTMSGTYPE', 'EVENTMSGACTIONTYPE',  # Event Details
+            'PERIOD', 'PCTIMESTRING',  # Temporal Information
+            'HOMEDESCRIPTION', 'VISITORDESCRIPTION',  # Event Descriptions
+            'possession', 'direction', 'SCORE',  # Game State Information
+            'PLAYER1_ID', 'PLAYER2_ID', 'PLAYER3_ID',  # Player Information
+            'moments'  # Raw Data
+        ]
+        
+        # Reorder the DataFrame according to the new column order
+        df_reorganized = game_df[new_order]
+        
+        return df_reorganized
 
     @staticmethod
     def _trim_specific_events(annotation_df):
