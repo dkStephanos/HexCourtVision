@@ -55,7 +55,7 @@ class FeatureUtil:
             event_desc = str(row["HOMEDESCRIPTION"]) if event_type in [1, 2] else str(row["VISITORDESCRIPTION"])
             return row.get(possession_map.get(event_desc, "PLAYER1_TEAM_ID"), np.NaN)  # Adjusted to handle default case
 
-        annotation_df["possession"] = annotation_df.apply(determine_event_possession, axis=1)
+        annotation_df["POSSESSION"] = annotation_df.apply(determine_event_possession, axis=1)
 
         return annotation_df
 
@@ -82,7 +82,7 @@ class FeatureUtil:
                     row["PCTIMESTRING"]
                 )
                 # we want to find the end of the play, so we can determine which basket was scored on
-                for moment in row["moments"]:
+                for moment in row["MOMENTS"]:
                     if (moment[2] <= event_time + 1) and (moment[2] >= event_time - 1):
                         last_event = row
                         last_moment = moment
@@ -92,33 +92,33 @@ class FeatureUtil:
                     break
 
         # Once we have found it, check the x_loc of the ball to determine basket
-        team_basket["team"] = last_event["possession"]
+        team_basket["team"] = last_event["POSSESSION"]
         if last_moment[5][0][2] >= 47.0:
-            team_basket["direction"] = "RIGHT"
+            team_basket["DIRECTION"] = "RIGHT"
         else:
-            team_basket["direction"] = "LEFT"
-        other_direction = "RIGHT" if team_basket["direction"] == "LEFT" else "LEFT"
+            team_basket["DIRECTION"] = "LEFT"
+        other_direction = "RIGHT" if team_basket["DIRECTION"] == "LEFT" else "LEFT"
 
         # Next, set up the conditions and values for directionality, direction flips after the second period
         conditions = [
-            (combined_event_df["possession"] == team_basket["team"])
+            (combined_event_df["POSSESSION"] == team_basket["team"])
             & (combined_event_df["PERIOD"] < 3),
-            (combined_event_df["possession"] != team_basket["team"])
+            (combined_event_df["POSSESSION"] != team_basket["team"])
             & (combined_event_df["PERIOD"] < 3),
-            (combined_event_df["possession"] == team_basket["team"])
+            (combined_event_df["POSSESSION"] == team_basket["team"])
             & (combined_event_df["PERIOD"] >= 3),
-            (combined_event_df["possession"] != team_basket["team"])
+            (combined_event_df["POSSESSION"] != team_basket["team"])
             & (combined_event_df["PERIOD"] >= 3),
         ]
         values = [
-            team_basket["direction"],
+            team_basket["DIRECTION"],
             other_direction,
             other_direction,
-            team_basket["direction"],
+            team_basket["DIRECTION"],
         ]
 
         # Finally, map the direction onto each event and return the combined event dataframe
-        combined_event_df["direction"] = np.select(conditions, values)
+        combined_event_df["DIRECTION"] = np.select(conditions, values)
 
         return combined_event_df
 
@@ -611,12 +611,12 @@ class FeatureUtil:
         for event_pass in event_passes:
             if not FeatureUtil.check_for_paint_pass(moments_df, event_pass) and not FeatureUtil.check_for_inbound_pass(moments_df, event_pass) and event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']:
                 moment = moments_df.loc[(moments_df['index'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
-                event_id = moment['event_id'].values[0]
+                event_id = moment['EVENT_ID'].values[0]
 
                 if offset > 0:
                     event_id = f"{event_id.split('-')[0]}-{int(event_id.split('-')[0]) + offset}"
 
-                event = combined_event_df.loc[(combined_event_df['event_id'] == event_id)]
+                event = combined_event_df.loc[(combined_event_df['EVENT_ID'] == event_id)]
                 candidate_count += 1
 
                 candidates.append({

@@ -45,10 +45,10 @@ class EventsProcessor:
             pd.DataFrame: Trimmed DataFrame.
         """
         for index, event in combined_event_df.iterrows():
-            if event['direction'] == "RIGHT":
-                event['moments'][:] = [x for x in event['moments'] if x[5][0][2] > 45.0]
+            if event['DIRECTION'] == "RIGHT":
+                event['MOMENTS'][:] = [x for x in event['MOMENTS'] if x[5][0][2] > 45.0]
             else:
-                event['moments'][:] = [x for x in event['moments'] if x[5][0][2] < 45.0]
+                event['MOMENTS'][:] = [x for x in event['MOMENTS'] if x[5][0][2] < 45.0]
 
         return combined_event_df
     
@@ -63,7 +63,7 @@ class EventsProcessor:
         Returns:
             pd.DataFrame: Moments DataFrame.
         """
-        moments = event_df["moments"]
+        moments = event_df["MOMENTS"]
         player_moments = []
         last_game_clock = 720
         last_shot_clock = 24
@@ -80,7 +80,7 @@ class EventsProcessor:
                     last_game_clock = moment[2]
                     for player in moment[5]:
                         player_copy = player.copy()
-                        player_copy.extend((moments.index(moment), moment[2], moment[3], event_df["event_id"]))
+                        player_copy.extend((moments.index(moment), moment[2], moment[3], event_df["EVENT_ID"]))
                         player_moments.append(player_copy)
             reached_end_of_play = True
 
@@ -98,9 +98,9 @@ class EventsProcessor:
             pd.DataFrame: Game DataFrame with extended moments.
         """
         for index in range(1, len(game_df['events'])):
-            if not game_df['events'][index - 1]['moments'] is None:
-                moments_copy = game_df['events'][index - 1]['moments'].copy()
-                game_df['events'][index]['moments'] = game_df['events'][index]['moments'] + moments_copy
+            if not game_df['events'][index - 1]['MOMENTS'] is None:
+                moments_copy = game_df['events'][index - 1]['MOMENTS'].copy()
+                game_df['events'][index]['MOMENTS'] = game_df['events'][index]['MOMENTS'] + moments_copy
 
         return game_df
 

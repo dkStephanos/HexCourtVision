@@ -77,14 +77,14 @@ class AnnotationProcessor:
             annotation_df (pd.DataFrame): DataFrame containing annotation data.
 
         Returns:
-            pd.DataFrame: DataFrame with an additional 'event_id' column.
+            pd.DataFrame: DataFrame with an additional 'EVENT_ID' column.
         """
         event_ids = []
 
         for index, row in annotation_df.iterrows():
             event_ids.append(f'{row["GAME_ID"]}-{row["EVENTNUM"]:03}')
 
-        annotation_df["event_id"] = event_ids
+        annotation_df["EVENT_ID"] = event_ids
 
         return annotation_df
 
@@ -101,10 +101,9 @@ class AnnotationProcessor:
             pd.DataFrame: Combined DataFrame.
         """
         moments = []
-        
         for event in game_df['events']:
             if np.any(annotation_df['EVENTNUM'] == int(event['eventId'])):
-                moments.append({'EVENTNUM': int(event['eventId']), 'moments': event['moments']})
+                moments.append({'EVENTNUM': int(event['eventId']), 'MOMENTS': event['moments']})
 
         moments_df = pd.DataFrame(moments)
 
@@ -114,13 +113,13 @@ class AnnotationProcessor:
     def organize_columns(game_df):
         # Define the new column order with a logical grouping
         new_order = [
-            'GAME_ID', 'EVENTNUM', 'event_id',  # Game Identifiers and Metadata
+            'GAME_ID', 'EVENT_ID',  # Game/event Identifiers
             'EVENTMSGTYPE', 'EVENTMSGACTIONTYPE',  # Event Details
             'PERIOD', 'PCTIMESTRING',  # Temporal Information
             'HOMEDESCRIPTION', 'VISITORDESCRIPTION',  # Event Descriptions
-            'possession', 'direction', 'SCORE',  # Game State Information
+            'POSSESSION', 'DIRECTION', 'SCORE',  # Game State Information
             'PLAYER1_ID', 'PLAYER2_ID', 'PLAYER3_ID',  # Player Information
-            'moments'  # Raw Data
+            'MOMENTS'  # Raw Data
         ]
         
         # Reorder the DataFrame according to the new column order
