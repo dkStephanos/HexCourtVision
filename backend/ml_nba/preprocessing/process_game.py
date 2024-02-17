@@ -27,10 +27,13 @@ def process_game(game_id: str, save_results=True, save_dir=ConstantsUtil.CLEAN_D
 
     # Merge the coordinate and event dataframes
     combined_event_df = AnnotationProcessor.combine_game_and_annotation_events(game_df, annotation_df)
-
-    # Get direction for each play and remove moments occurring on the other half of the court
+    
+    # Get direction for each play and remove moments occurring on the other half of the court (requires event data)
     combined_event_df = FeatureUtil.determine_directionality(combined_event_df)
     combined_event_df = EventsProcessor.trim_moments_by_directionality(combined_event_df)
+    
+    # Sort result
+    combined_event_df = AnnotationProcessor.organize_columns(combined_event_df)
     
     # Save if directed
     if save_results:
