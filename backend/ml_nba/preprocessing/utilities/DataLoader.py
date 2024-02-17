@@ -51,6 +51,10 @@ class DataLoader:
         annotation_df = pd.read_csv(annotation_path, index_col=0)
         
         return game_df, annotation_df
+    
+    @classmethod
+    def load_processed_game(cls, game_id):
+        return pd.read_csv(f"{ConstantsUtil.CLEAN_DATA_PATH}/{game_id}.csv")
 
     @staticmethod
     def convert_game_key_to_folder_name(game_key):
