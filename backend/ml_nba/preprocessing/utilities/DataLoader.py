@@ -32,9 +32,9 @@ class DataLoader:
         annotation_df = pd.read_csv(annotation_path, index_col=0)  # Prefix 'events-' is considered in file selection, not in loading
         
         return game_df, annotation_df
-
+    
     @classmethod
-    def load_game_and_annotation_df_game_key(cls, game_key):
+    def load_raw_game(cls, game_key):
         # Derive game folder name from game key
         # This might require custom logic to convert game_key to folder name format, e.g., "YYYYMMDDAAAHHH" to "MM.DD.YYYY.AAA.at.HHH"
         game_folder_name = cls.convert_game_key_to_folder_name(game_key)  # Placeholder for actual conversion logic
@@ -42,15 +42,15 @@ class DataLoader:
         game_folder_path = os.path.join(ConstantsUtil.RAW_DATA_PATH, game_folder_name)
         game_file_path = glob.glob(os.path.join(game_folder_path, "*.json"))[0]  # Assuming single JSON file per folder
         
+        return pd.read_json(game_file_path)
+    
+    @classmethod
+    def load_game_events(cls, game_key):
         # Construct annotation file path
         annotation_file_name = f"events-{game_key}.csv"  # Assuming the game_key can directly derive the file name
         annotation_path = os.path.join(ConstantsUtil.EVENT_ANNOTATIONS_PATH, annotation_file_name)
-        
-        # Load DataFrames
-        game_df = pd.read_json(game_file_path)
-        annotation_df = pd.read_csv(annotation_path, index_col=0)
-        
-        return game_df, annotation_df
+
+        return pd.read_csv(annotation_path, index_col=0)
     
     @classmethod
     def load_processed_game(cls, game_id):
@@ -143,3 +143,4 @@ class DataLoader:
             "color": ConstantsUtil.COLOR_DICT[game_df.iloc[0]["events"]["visitor"]["teamid"]]
         }
         return [home_team, visitor_team]
+

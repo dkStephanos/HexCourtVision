@@ -22,7 +22,8 @@ def process_game(
     """
 
     # Load the raw game data and associated event annotations for the specified game_key
-    game_df, annotation_df = DataLoader.load_game_and_annotation_df_game_key(game_key)
+    game_df = DataLoader.load_raw_game(game_key)
+    annotation_df = DataLoader.load_game_events(game_key)
 
     # Retrieve game-specific notes, including manual indicators of bad events and frame rate information
     game_notes = ConstantsUtil.games[game_key]
