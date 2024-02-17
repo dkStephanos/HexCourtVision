@@ -1,7 +1,7 @@
 class ConstantsUtil:
     STATIC_PATH = "/app/static/ml_nba"
     RAW_DATA_PATH = STATIC_PATH + "/2016.NBA.Raw.SportVU.Game.Logs"
-    CLEAN_DATA_PATH = STATIC_PATH + "/2016.NBA.Raw.SportVU.Game.Logs"
+    CLEAN_DATA_PATH = STATIC_PATH + "/processed_games"
     EVENT_ANNOTATIONS_PATH = STATIC_PATH + "/event_annotations"
 
     HEADERS = [
