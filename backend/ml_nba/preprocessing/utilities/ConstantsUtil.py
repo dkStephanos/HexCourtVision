@@ -3,6 +3,67 @@ class ConstantsUtil:
     RAW_DATA_PATH = STATIC_PATH + "/2016.NBA.Raw.SportVU.Game.Logs"
     CLEAN_DATA_PATH = STATIC_PATH + "/processed_games"
     EVENT_ANNOTATIONS_PATH = STATIC_PATH + "/event_annotations"
+    
+    EVENTMSGTYPE_DICT = {
+        1: "Field Goal Made",
+        2: "Field Goal Missed",
+        3: "Free Throw Attempt",
+        4: "Rebound",
+        5: "Turnover",
+        6: "Foul",
+        7: "Violation",
+        8: "Substitution",
+        9: "Timeout",
+        10: "Jump Ball",
+        11: "Ejection",
+        12: "Start of Period",
+        13: "End of Period",
+        18: "Weird and unknown. Names that do show are those of retired players. Maybe just bugs?"
+    }
+    
+    EVENTMSGACTIONTYPE_DICT = {
+        1: '3PT Jump Shot',
+        79: '3PT Pullup Jump Shot',
+        80: '3PT Step Back Jump Shot',
+        52: 'Alley Oop Dunk',
+        43: 'Alley Oop Layup',
+        108: 'Cutting Dunk Shot',
+        99: 'Cutting Finger Roll Layup Shot',
+        98: 'Cutting Layup Shot',
+        49: 'Driving Dunk',
+        75: 'Driving Finger Roll Layup',
+        42: 'Driving Layup',
+        73: 'Driving Reverse Layup',
+        7: 'Dunk',
+        48: 'Standing Dunk',
+        63: 'Fadeaway Jumper',
+        71: 'Finger Roll Layup',
+        78: 'Floating Jump Shot',
+        67: 'Hook Bank Shot',
+        3: 'Hook Shot',
+        66: 'Jump Bank Shot',
+        5: 'Layup',
+        4: 'Offensive Foul',
+        45: 'Out of Bounds - Bad Pass',
+        27: 'Personal Block Foul',
+        87: 'Putback Dunk',
+        72: 'Putback Layup',
+        44: 'Reverse Layup',
+        50: 'Running Dunk',
+        76: 'Running Finger Roll Layup',
+        2: 'Running Jump Shot',
+        41: 'Running Layup',
+        74: 'Running Reverse Layup',
+        29: 'Shooting Block Foul',
+        11: 'Technical Foul or Turnover',
+        107: 'Tip Dunk Shot',
+        97: 'Tip Layup Shot',
+        86: 'Turnaround Fadeaway',
+        105: 'Turnaround Fadeaway Bank Jump Shot',
+        58: 'Turnaround Hook Shot',
+        47: 'Turnaround Jump Shot',
+        6: 'Violation',
+    }
 
     HEADERS = [
         "team_id",
