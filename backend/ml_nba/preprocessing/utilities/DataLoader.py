@@ -1,4 +1,5 @@
 import os
+import ast
 import glob
 import easygui
 import pandas as pd
@@ -55,7 +56,23 @@ class DataLoader:
     
     @classmethod
     def load_processed_game(cls, game_id):
-        return pd.read_csv(f"{ConstantsUtil.CLEAN_DATA_PATH}/{game_id}.csv")
+        # Ingest data
+        df = pd.read_csv(f"{ConstantsUtil.CLEAN_DATA_PATH}/{game_id}.csv")
+        
+        # Parse the tracking data
+        df['MOMENTS'] = df['MOMENTS'].apply(cls._eval_nested_list)
+        
+        return df
+        
+    @classmethod
+    def _eval_nested_list(cls, row):
+        try:
+            # Convert the string representation of the list into an actual list
+            return ast.literal_eval(row)
+        except ValueError as e:
+            # Handle cases where conversion fails
+            print(f"Error converting row: {e}")
+            return None
 
     @staticmethod
     def convert_game_key_to_folder_name(game_key):
