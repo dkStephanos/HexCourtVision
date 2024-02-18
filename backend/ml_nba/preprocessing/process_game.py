@@ -59,7 +59,7 @@ def process_game(
 
     # If saving results is enabled, write the processed data to a CSV file in the specified directory
     if save_results:
-        combined_event_df.to_csv(f"{save_dir}/{game_id}.csv")
+        combined_event_df.to_csv(f"{save_dir}/{game_key}.csv")
 
     # Return the processed DataFrame
     return combined_event_df
