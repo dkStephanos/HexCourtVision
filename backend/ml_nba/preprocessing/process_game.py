@@ -29,7 +29,7 @@ def process_game(
     game_notes = ConstantsUtil.games[game_key]
 
     # Extract team and player metadata from the raw game data
-    players_data = DataLoader.get_players_data(game_df)
+    teams_data = DataLoader.get_teams_data(game_df)
 
     # Filter out corrupted events from the annotation data based on manual indicators and retain only relevant possessions
     annotation_df = AnnotationProcessor.trim_annotation_rows(
@@ -38,8 +38,10 @@ def process_game(
 
     # Assign unique IDs to each event and identify the possessing team for each event
     annotation_df = AnnotationProcessor.generate_event_ids(annotation_df)
-    annotation_df = FeatureUtil.determine_possession(annotation_df, players_data)
-
+    
+    # Extract possession info
+    annotation_df = FeatureUtil.determine_possession_from_persontype(annotation_df, teams_data)
+    
     # Remove extraneous annotation columns after possession determination, as these columns are used for interim calculations
     annotation_df = AnnotationProcessor.trim_annotation_cols(annotation_df)
 

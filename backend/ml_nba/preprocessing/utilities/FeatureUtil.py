@@ -16,8 +16,26 @@ class FeatureUtil:
     calculating travel distances, player speed, and other basketball-related features.
     """
     
+    def determine_possession_from_persontype(moments_df, teams_data):
+        """
+        Determine possession based on PERSON1TYPE column.
+
+        Args:
+            moments_df (pd.DataFrame): DataFrame containing moment data.
+            home_team_id (int): Identifier for the home team.
+            away_team_id (int): Identifier for the away team.
+
+        Returns:
+            pd.DataFrame: Updated DataFrame with a 'possession' column indicating the team in possession.
+        """
+        # Map PERSON1TYPE to team IDs
+        possession_map = {4.0: teams_data["home_team"]["team_id"], 5.0: teams_data["away_team"]["team_id"]}
+        moments_df['POSSESSION'] = moments_df['PERSON1TYPE'].map(possession_map)
+        
+        return moments_df
+    
     @staticmethod
-    def determine_possession(annotation_df, players_data):
+    def determine_possession_from_eventmsg(annotation_df, players_data):
         """
         Determine possession for each event in the annotation DataFrame,
         with fallback logic to derive team ID from player ID if necessary.
@@ -308,15 +326,32 @@ class FeatureUtil:
         Returns:
             pd.Series: Series containing distances between players and the ball for each player.
         """
-        group = moments_df[moments_df.player_id.isin(player_ids)].groupby("player_id")[
-            ["x_loc", "y_loc"]
-        ]
-
-        ball_distances = group.apply(
-            lambda x: [euclidean(x.iloc[i], x.iloc[-1]) for i in range(len(x))]
-        )
-
-        return ball_distances
+        print(player_ids)
+        # Filter out rows for the ball and players of interest
+        relevant_rows = moments_df[(moments_df['player_id'].isin(player_ids)) | (moments_df['player_id'] == -1)]
+        print("relevant_rows", relevant_rows)
+        # Separate ball positions
+        ball_positions = relevant_rows[relevant_rows['player_id'] == -1][['x_loc', 'y_loc']].values
+        
+        # Initialize DataFrame to hold distances for each player at each tick
+        distances_df = pd.DataFrame(index=moments_df.index.unique())
+        
+        for player_id in player_ids:
+            # Extract player positions
+            player_positions = relevant_rows[relevant_rows['player_id'] == player_id][['x_loc', 'y_loc']].values
+            print(player_id, player_positions)
+            # Calculate distances using broadcasting
+            distances = np.linalg.norm(player_positions - ball_positions, axis=1)
+            
+            distances_df[player_id] = distances
+        
+        # Transpose so columns are player IDs, rows are moments/ticks
+        distances_df = distances_df.transpose()
+        
+        # Identify closest player for each moment/tick
+        closest_player_each_tick = distances_df.idxmin()
+        
+        return closest_player_each_tick
 
     @staticmethod
     def distance_between_player_and_other_players(player_id, player_loc, event_df):
@@ -553,9 +588,21 @@ class FeatureUtil:
         Returns:
             pd.DataFrame: DataFrame containing ball handler moments and player IDs.
         """
+        print(moments_df, player_ids)
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
-        ball_dist_df = EventsProcessor.convert_labeled_series_to_df('player_id', 'ball_distances', ball_distances)
-        ball_handler_df = EventsProcessor.get_labeled_mins_from_df(ball_dist_df, "dist_from_ball")
+
+        print(ball_distances)
+        # Identify the closest player for each tick
+        closest_player_each_tick = ball_distances.idxmin(axis=1)
+        min_distance_each_tick = ball_distances.min(axis=1)
+
+        # Create a new DataFrame to store tick index, closest player, and minimum distance
+        ball_handler_df = pd.DataFrame({
+            'TickIndex': ball_distances.index,
+            'ClosestPlayerID': closest_player_each_tick,
+            'MinDistance': min_distance_each_tick
+        }).reset_index(drop=True)
+        print('3', ball_handler_df)
         ball_handler_df.loc[ball_handler_df['dist_from_ball'] > 3.3, 'player_id'] = pd.NA
         
         moment_nums = [int(moments_df.iloc[i * 11]['index']) for i in range(len(ball_handler_df))]
