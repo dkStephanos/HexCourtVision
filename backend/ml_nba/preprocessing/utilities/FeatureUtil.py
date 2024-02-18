@@ -590,7 +590,7 @@ class FeatureUtil:
         return passes
 
     @staticmethod
-    def get_dribble_handoff_candidates(combined_event_df, moments_df, event_passes, moment_range, players_dict, offset=0):
+    def get_dribble_handoff_candidates(event, moments_df, event_passes, moment_range, players_dict, offset=0):
         """
         Extract potential dribble handoff candidates from event passes.
 
@@ -606,25 +606,22 @@ class FeatureUtil:
             list: List of dribble handoff candidate dictionaries.
         """
         candidates = []
+        event_id = event["EVENT_ID"]
         candidate_count = 0
-
         for event_pass in event_passes:
             if not FeatureUtil.check_for_paint_pass(moments_df, event_pass) and not FeatureUtil.check_for_inbound_pass(moments_df, event_pass) and event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']:
                 moment = moments_df.loc[(moments_df['index'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
-                event_id = moment['EVENT_ID'].values[0]
 
                 if offset > 0:
                     event_id = f"{event_id.split('-')[0]}-{int(event_id.split('-')[0]) + offset}"
 
-                event = combined_event_df.loc[(combined_event_df['EVENT_ID'] == event_id)]
                 candidate_count += 1
-
                 candidates.append({
                     'candidate_id': f"{event_id}-{candidate_count}",
                     'event_id': event_id,
                     'classification_type': 'dribble-hand-off',
                     'manual_label': pd.NA,
-                    'period': event['PERIOD'].values[0],
+                    'period': event['PERIOD'],
                     'game_clock': DataLoader.convert_game_clock_to_timestamp(moment['game_clock']),
                     'shot_clock': moment['shot_clock'].values[0],
                     'player_a': event_pass['passer'],
