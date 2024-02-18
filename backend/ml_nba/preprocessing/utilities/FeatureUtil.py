@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 from scipy.spatial.distance import euclidean
 from scipy.stats import linregress
-from .AnnotationProcessor import AnnotationProcessor
 from .EventsProcessor import EventsProcessor
 from .DataLoader import DataLoader
 from .PlayerMvmtProcessor import PlayerMvmtProcessor
@@ -16,48 +15,62 @@ class FeatureUtil:
     This class provides methods for determining possession and directionality of events, as well as
     calculating travel distances, player speed, and other basketball-related features.
     """
-
+    
     @staticmethod
-    def determine_possession(annotation_df, teams_data):
+    def determine_possession(annotation_df, players_data):
         """
-        Determine possession for each event in the annotation DataFrame.
+        Determine possession for each event in the annotation DataFrame,
+        with fallback logic to derive team ID from player ID if necessary.
 
         Args:
             annotation_df (pd.DataFrame): DataFrame containing event annotations.
-            teams_data (list): List of team data dictionaries.
+            players_data (list): List of dictionaries with player and team data.
 
         Returns:
-            pd.DataFrame: DataFrame with a new 'possession' column indicating possession for each event.
+            pd.DataFrame: DataFrame with a new 'possession' column indicating
+                        the team in possession for each event.
         """
-        # Static mappings for event types to possession identifiers
-        possession_map = {
-            1: "PLAYER1_TEAM_ID",
-            2: "PLAYER1_TEAM_ID",
-            "Turnover: Shot Clock": "PLAYER1_ID",  # This seems off, might need adjustment
-            "T.Foul": "PLAYER1_TEAM_ID",
-            5: "PLAYER1_TEAM_ID",
-            6: "PLAYER2_TEAM_ID",
-        }
-
-        # Define a separate handling for dynamic possession determination
+        # Convert the list of player data dictionaries into a player_id to team_id mapping
+        player_to_team_map = {player['player_id']: player['team_id'] for player in players_data}
+        team_ids = set([player['team_id'] for player in players_data])
+        
         def determine_event_possession(row):
+            # Default to using PLAYER1_TEAM_ID for possession
+            possession_key = "PLAYER1_TEAM_ID"
+            
             event_type = row["EVENTMSGTYPE"]
-            # Handle dynamic cases first
-            if event_type == "Def. 3 Sec":
-                return teams_data[1]["team_id"] if row["PLAYER1_TEAM_ID"] == teams_data[0]["team_id"] else teams_data[0]["team_id"]
-            
-            # Then handle static mappings
-            if event_type in possession_map:
-                # Directly return the mapped value if it's a static mapping
-                return row[possession_map[event_type]]
-            
-            # For descriptions that require lookup in the possession map
-            event_desc = str(row["HOMEDESCRIPTION"]) if event_type in [1, 2] else str(row["VISITORDESCRIPTION"])
-            return row.get(possession_map.get(event_desc, "PLAYER1_TEAM_ID"), np.NaN)  # Adjusted to handle default case
+            # Adjust logic based on the type of event
+            if event_type in [1, 2, 5]:
+                possession_key = "PLAYER1_TEAM_ID"
+            elif event_type == 6:
+                possession_key = "PLAYER2_TEAM_ID"
+            elif "Shot Clock" in str(row["VISITORDESCRIPTION"]):
+                # Assuming turnover gives possession to the other team
+                possession_key = "PLAYER2_TEAM_ID"
+            elif "T.Foul" in str(row["HOMEDESCRIPTION"]):
+                possession_key = "PLAYER1_TEAM_ID"
+
+            # Check if team ID is present; if not, derive from player ID
+            if pd.isna(row.get(possession_key)):
+                # Use PLAYER1_ID or PLAYER2_ID based on the possession key
+                player_id_key = "PLAYER1_ID" if possession_key == "PLAYER1_TEAM_ID" else "PLAYER2_ID"
+                player_id = row.get(player_id_key)
+                
+                # For some events, the player ID actually contains a team ID
+                if player_id in team_ids:
+                    return player_id
+                
+                # In most cases, look up the team ID using the player ID
+                if player_id not in player_to_team_map:
+                    raise Exception(f"Unable to determine possesion for: {row}")
+                return player_to_team_map[player_id]
+            else:
+                return row.get(possession_key)
 
         annotation_df["POSSESSION"] = annotation_df.apply(determine_event_possession, axis=1)
 
         return annotation_df
+
 
     @staticmethod
     def determine_directionality(combined_event_df):
@@ -298,6 +311,7 @@ class FeatureUtil:
         group = moments_df[moments_df.player_id.isin(player_ids)].groupby("player_id")[
             ["x_loc", "y_loc"]
         ]
+
         ball_distances = group.apply(
             lambda x: [euclidean(x.iloc[i], x.iloc[-1]) for i in range(len(x))]
         )
