@@ -1,3 +1,4 @@
+import json
 import pandas as pd
 from .ConstantsUtil import ConstantsUtil
 from .DataLoader import DataLoader
@@ -16,8 +17,18 @@ class EventsProcessor:
         Returns:
             pd.DataFrame: DataFrame with label and series columns.
         """
-        temp_df = pd.DataFrame({label_name: series_to_convert.index, series_name: series_to_convert.values})
-        return pd.DataFrame(temp_df[series_name].tolist(), index=temp_df[label_name])
+        # Initialize an empty list to hold the data
+        data = []
+
+        # Iterate over the series, assuming series_to_convert.index contains labels
+        # and series_to_convert.values contains 1D arrays
+        for label, values in series_to_convert.items():
+            for value in values:  # Assuming 'values' is an iterable; adjust as needed
+                data.append({label_name: label, series_name: value})
+
+        # Convert the list of dictionaries to a DataFrame
+        temp_df = pd.DataFrame(data)
+        return temp_df
 
     @staticmethod
     def get_labeled_mins_from_df(dataframe, min_value_label):
@@ -63,26 +74,24 @@ class EventsProcessor:
         Returns:
             pd.DataFrame: Moments DataFrame.
         """
-        moments = event_df["MOMENTS"]
         player_moments = []
-        last_game_clock = 720
         last_shot_clock = 24
-        reached_end_of_play = False
+        game_clock_at_start = DataLoader.convert_timestamp_to_game_clock(event_df['PCTIMESTRING'])
 
-        while not reached_end_of_play:
-            for moment in moments:
-                if moment[3] is None:
-                    moment[3] = 0.0
-                if moment[3] > last_shot_clock and moment[2] < DataLoader.convert_timestamp_to_game_clock(event_df['PCTIMESTRING']):
-                    reached_end_of_play = True
-                else:
-                    last_shot_clock = moment[3]
-                    last_game_clock = moment[2]
-                    for player in moment[5]:
-                        player_copy = player.copy()
-                        player_copy.extend((moments.index(moment), moment[2], moment[3], event_df["EVENT_ID"]))
-                        player_moments.append(player_copy)
-            reached_end_of_play = True
+        for moment in event_df["MOMENTS"]:
+            # Normalize None shot clock to 0.0
+            shot_clock = 0.0 if moment[3] is None else moment[3]
+
+            # Update shot clock only if it's valid and we're not at the end of the play
+            if shot_clock <= last_shot_clock or moment[2] >= game_clock_at_start:
+                last_shot_clock = shot_clock
+                last_game_clock = moment[2]
+
+                for player in moment[5]:
+                    player_copy = player.copy()
+                    moment_index = event_df["MOMENTS"].index(moment)
+                    player_copy.extend((moment_index, last_game_clock, last_shot_clock, event_df["EVENT_ID"]))
+                    player_moments.append(player_copy)
 
         return pd.DataFrame(player_moments, columns=ConstantsUtil.HEADERS)
 
