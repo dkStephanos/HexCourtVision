@@ -100,7 +100,8 @@ class DataLoader:
             str: The game clock time in timestamp format (e.g., '12:34').
         """
         seconds = int(float(game_clock) / 60)
-        milliseconds = int(float(game_clock) % 60)
+        milliseconds = int(float(game_clock.iloc[0]) % 60)
+
         return f'{seconds}:{milliseconds}'
 
     @staticmethod
