@@ -18,34 +18,34 @@ class DataLoader:
 
         # Load game file with GUI
         game_path = easygui.fileopenbox(default=ConstantsUtil.RAW_DATA_PATH, title="Select a game folder and then the game file")
-        
+
         if game_path is None:
             raise Exception("No game file selected.")
-        
+
         # Load annotation file with GUI
         easygui.msgbox("Next select the corresponding annotation file")
         annotation_path = easygui.fileopenbox(default=ConstantsUtil.EVENT_ANNOTATIONS_PATH, title="Select an annotation file")
-        
+
         if annotation_path is None:
             raise Exception("No annotation file selected.")
-        
+
         # Load DataFrames
         game_df = pd.read_json(game_path)  # Adjusted to read JSON
         annotation_df = pd.read_csv(annotation_path, index_col=0)  # Prefix 'events-' is considered in file selection, not in loading
-        
+
         return game_df, annotation_df
-    
+
     @classmethod
     def load_raw_game(cls, game_key):
         # Derive game folder name from game key
         # This might require custom logic to convert game_key to folder name format, e.g., "YYYYMMDDAAAHHH" to "MM.DD.YYYY.AAA.at.HHH"
         game_folder_name = cls.convert_game_key_to_folder_name(game_key)  # Placeholder for actual conversion logic
-        
+
         game_folder_path = os.path.join(ConstantsUtil.RAW_DATA_PATH, game_folder_name)
         game_file_path = glob.glob(os.path.join(game_folder_path, "*.json"))[0]  # Assuming single JSON file per folder
-        
+
         return pd.read_json(game_file_path)
-    
+
     @classmethod
     def load_game_events(cls, game_key):
         # Construct annotation file path
@@ -53,17 +53,17 @@ class DataLoader:
         annotation_path = os.path.join(ConstantsUtil.EVENT_ANNOTATIONS_PATH, annotation_file_name)
 
         return pd.read_csv(annotation_path, index_col=0)
-    
+
     @classmethod
     def load_processed_game(cls, game_id):
         # Ingest data
         df = pd.read_csv(f"{ConstantsUtil.CLEAN_DATA_PATH}/{game_id}.csv")
-        
+
         # Parse the tracking data
         df['MOMENTS'] = df['MOMENTS'].apply(cls._eval_nested_list)
-        
+
         return df
-        
+
     @classmethod
     def _eval_nested_list(cls, row):
         try:
@@ -85,7 +85,7 @@ class DataLoader:
         home_team = game_key[11:14]
         formatted_date = f"{date[4:6]}.{date[6:8]}.{date[:4]}"
         folder_name = f"{formatted_date}.{away_team}.at.{home_team}"
-        
+
         return folder_name
 
     @staticmethod
@@ -147,21 +147,26 @@ class DataLoader:
             game_df (pd.DataFrame): DataFrame containing game data.
 
         Returns:
-            list: A list of dictionaries containing team data.
+            dict: A dict of dictionaries containing team data.
         """
-        home_team = {
-            "team_id": game_df.iloc[0]["events"]["home"]["teamid"],
-            "name": game_df.iloc[0]["events"]["home"]["name"],
-            "abbreviation": game_df.iloc[0]["events"]["home"]["abbreviation"],
-            "color": ConstantsUtil.COLOR_DICT[game_df.iloc[0]["events"]["home"]["teamid"]]
+        return {
+            "home_team": {
+                "team_id": game_df.iloc[0]["events"]["home"]["teamid"],
+                "name": game_df.iloc[0]["events"]["home"]["name"],
+                "abbreviation": game_df.iloc[0]["events"]["home"]["abbreviation"],
+                "color": ConstantsUtil.COLOR_DICT[
+                    game_df.iloc[0]["events"]["home"]["teamid"]
+                ],
+            },
+            "away_team": {
+                "team_id": game_df.iloc[0]["events"]["visitor"]["teamid"],
+                "name": game_df.iloc[0]["events"]["visitor"]["name"],
+                "abbreviation": game_df.iloc[0]["events"]["visitor"]["abbreviation"],
+                "color": ConstantsUtil.COLOR_DICT[
+                    game_df.iloc[0]["events"]["visitor"]["teamid"]
+                ],
+            },
         }
-        visitor_team = {
-            "team_id": game_df.iloc[0]["events"]["visitor"]["teamid"],
-            "name": game_df.iloc[0]["events"]["visitor"]["name"],
-            "abbreviation": game_df.iloc[0]["events"]["visitor"]["abbreviation"],
-            "color": ConstantsUtil.COLOR_DICT[game_df.iloc[0]["events"]["visitor"]["teamid"]]
-        }
-        return [home_team, visitor_team]
 
     @staticmethod
     def get_players_data(event_df):
@@ -187,7 +192,6 @@ class DataLoader:
             for player in event_df["events"][0][team]["players"]
         ]
 
-
     @staticmethod
     def get_players_dict(event_df):
         """
@@ -206,5 +210,5 @@ class DataLoader:
             for player in home_players + visitor_players
         }
         players_dict[-1] = ['ball', np.nan]
-        
+
         return players_dict
