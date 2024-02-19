@@ -326,23 +326,28 @@ class FeatureUtil:
         Returns:
             pd.Series: Series containing distances between players and the ball for each player.
         """
-        print(player_ids)
+        # Collect unique player IDs present in the moments_df
+        active_player_ids = set(moments_df['player_id'].unique())
+        
+        # Filter the incoming player_ids to keep only those active in moments_df
+        relevant_player_ids = active_player_ids.intersection(player_ids)
+
         # Filter out rows for the ball and players of interest
-        relevant_rows = moments_df[(moments_df['player_id'].isin(player_ids)) | (moments_df['player_id'] == -1)]
-        print("relevant_rows", relevant_rows)
+        relevant_rows = moments_df[(moments_df['player_id'].isin(relevant_player_ids)) | (moments_df['player_id'] == -1)]
+
         # Separate ball positions
-        ball_positions = relevant_rows[relevant_rows['player_id'] == -1][['x_loc', 'y_loc']].values
-        
+        ball_positions_df = relevant_rows[relevant_rows['player_id'] == -1][['x_loc', 'y_loc']]
+        ball_positions = ball_positions_df.values
+
         # Initialize DataFrame to hold distances for each player at each tick
-        distances_df = pd.DataFrame(index=moments_df.index.unique())
-        
-        for player_id in player_ids:
+        distances_df = pd.DataFrame(index=ball_positions_df.index.unique())
+
+        for player_id in relevant_player_ids:
             # Extract player positions
             player_positions = relevant_rows[relevant_rows['player_id'] == player_id][['x_loc', 'y_loc']].values
-            print(player_id, player_positions)
+
             # Calculate distances using broadcasting
             distances = np.linalg.norm(player_positions - ball_positions, axis=1)
-            
             distances_df[player_id] = distances
         
         # Transpose so columns are player IDs, rows are moments/ticks
@@ -588,13 +593,12 @@ class FeatureUtil:
         Returns:
             pd.DataFrame: DataFrame containing ball handler moments and player IDs.
         """
-        print(moments_df, player_ids)
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
 
         print(ball_distances)
         # Identify the closest player for each tick
-        closest_player_each_tick = ball_distances.idxmin(axis=1)
-        min_distance_each_tick = ball_distances.min(axis=1)
+        closest_player_each_tick = ball_distances.idxmin()
+        min_distance_each_tick = ball_distances.min()
 
         # Create a new DataFrame to store tick index, closest player, and minimum distance
         ball_handler_df = pd.DataFrame({
