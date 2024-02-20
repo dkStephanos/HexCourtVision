@@ -325,34 +325,30 @@ class FeatureUtil:
         Returns:
             pd.Series: Series containing distances between players and the ball for each player.
         """
-        # Collect unique player IDs present in the moments_df
-        active_player_ids = set(moments_df["player_id"].unique())
-
-        # Filter the incoming player_ids to keep only those active in moments_df
-        relevant_player_ids = active_player_ids.intersection(player_ids)
-
-        # Filter out rows for the players of interest
-        filtered_df  = moments_df[
-            moments_df["player_id"].isin(list(relevant_player_ids) + [-1])
-        ]
-
+        # Filter to include only relevant player IDs and the ball
+        relevant_df = moments_df[moments_df['player_id'].isin(player_ids + [-1])]
+        
         # Separate ball positions
-        ball_positions_df = filtered_df [filtered_df ["player_id"] == -1][
-            ["x_loc", "y_loc"]
-        ]
-        ball_positions = ball_positions_df.values
+        ball_positions_df = relevant_df[relevant_df['player_id'] == -1][['index', 'player_id', 'x_loc', 'y_loc']]
+        
+        # Remove the ball positions from the relevant_df
+        players_df = relevant_df[relevant_df['player_id'] != -1][['index', 'player_id', 'x_loc', 'y_loc']]
+        
+        # Merge player and ball positions on their common index
+        merged_df = players_df.merge(ball_positions_df, on='index', suffixes=('_player', '_ball'))
+        
+        # Calculate distances using numpy's norm function across rows (axis=1)
+        merged_df['distance'] = np.linalg.norm(
+            merged_df[['x_loc_player', 'y_loc_ball']].values - merged_df[['x_loc_ball', 'y_loc_player']].values, axis=1
+        )
 
-        distances_dict = {}
-        # Calculate distances outside of the loop for each player
-        for player_id in relevant_player_ids:
-            player_positions = filtered_df[filtered_df["player_id"] == player_id][["x_loc", "y_loc"]].values
-            distances = np.linalg.norm(player_positions - ball_positions, axis=1)
-            distances_dict[player_id] = distances
-
-        # Convert distances_dict to DataFrame
-        distances_df = pd.DataFrame(distances_dict, index=filtered_df[filtered_df["player_id"] == -1].index)
-
-        return distances_df
+        # Find the closest player for each tick/index
+        closest_players = merged_df.loc[merged_df.groupby('index')['distance'].idxmin()]
+        
+        # Prepare the final DataFrame to return
+        result_df = closest_players[['index', 'player_id_player', 'distance']].reset_index(drop=True)
+        
+        return result_df
 
     @staticmethod
     def distance_between_player_and_other_players(player_id, player_loc, event_df):
@@ -591,9 +587,11 @@ class FeatureUtil:
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
         print(ball_distances)
         # Identify the closest player for each tick
-        closest_player_each_tick = ball_distances.idxmin()
-        min_distance_each_tick = ball_distances.min()
+        closest_player_each_tick = ball_distances.idxmin(axis=1)
+        min_distance_each_tick = ball_distances.min(axis=1)
 
+        print(closest_player_each_tick)
+        print(min_distance_each_tick)
         # Create a new DataFrame to store tick index, closest player, and minimum distance
         ball_handler_df = pd.DataFrame({
             'index': ball_distances.index,
