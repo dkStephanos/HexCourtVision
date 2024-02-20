@@ -15,7 +15,7 @@ class FeatureUtil:
     This class provides methods for determining possession and directionality of events, as well as
     calculating travel distances, player speed, and other basketball-related features.
     """
-    
+
     def determine_possession_from_persontype(moments_df, teams_data):
         """
         Determine possession based on PERSON1TYPE column.
@@ -31,9 +31,9 @@ class FeatureUtil:
         # Map PERSON1TYPE to team IDs
         possession_map = {4.0: teams_data["home_team"]["team_id"], 5.0: teams_data["away_team"]["team_id"]}
         moments_df['POSSESSION'] = moments_df['PERSON1TYPE'].map(possession_map)
-        
+
         return moments_df
-    
+
     @staticmethod
     def determine_possession_from_eventmsg(annotation_df, players_data):
         """
@@ -51,11 +51,11 @@ class FeatureUtil:
         # Convert the list of player data dictionaries into a player_id to team_id mapping
         player_to_team_map = {player['player_id']: player['team_id'] for player in players_data}
         team_ids = set([player['team_id'] for player in players_data])
-        
+
         def determine_event_possession(row):
             # Default to using PLAYER1_TEAM_ID for possession
             possession_key = "PLAYER1_TEAM_ID"
-            
+
             event_type = row["EVENTMSGTYPE"]
             # Adjust logic based on the type of event
             if event_type in [1, 2, 5]:
@@ -73,11 +73,11 @@ class FeatureUtil:
                 # Use PLAYER1_ID or PLAYER2_ID based on the possession key
                 player_id_key = "PLAYER1_ID" if possession_key == "PLAYER1_TEAM_ID" else "PLAYER2_ID"
                 player_id = row.get(player_id_key)
-                
+
                 # For some events, the player ID actually contains a team ID
                 if player_id in team_ids:
                     return player_id
-                
+
                 # In most cases, look up the team ID using the player ID
                 if player_id not in player_to_team_map:
                     raise Exception(f"Unable to determine possesion for: {row}")
@@ -88,7 +88,6 @@ class FeatureUtil:
         annotation_df["POSSESSION"] = annotation_df.apply(determine_event_possession, axis=1)
 
         return annotation_df
-
 
     @staticmethod
     def determine_directionality(combined_event_df):
@@ -327,36 +326,33 @@ class FeatureUtil:
             pd.Series: Series containing distances between players and the ball for each player.
         """
         # Collect unique player IDs present in the moments_df
-        active_player_ids = set(moments_df['player_id'].unique())
-        
+        active_player_ids = set(moments_df["player_id"].unique())
+
         # Filter the incoming player_ids to keep only those active in moments_df
         relevant_player_ids = active_player_ids.intersection(player_ids)
 
-        # Filter out rows for the ball and players of interest
-        relevant_rows = moments_df[(moments_df['player_id'].isin(relevant_player_ids)) | (moments_df['player_id'] == -1)]
+        # Filter out rows for the players of interest
+        filtered_df  = moments_df[
+            moments_df["player_id"].isin(list(relevant_player_ids) + [-1])
+        ]
 
         # Separate ball positions
-        ball_positions_df = relevant_rows[relevant_rows['player_id'] == -1][['x_loc', 'y_loc']]
+        ball_positions_df = filtered_df [filtered_df ["player_id"] == -1][
+            ["x_loc", "y_loc"]
+        ]
         ball_positions = ball_positions_df.values
 
-        # Initialize DataFrame to hold distances for each player at each tick
-        distances_df = pd.DataFrame(index=ball_positions_df.index.unique())
-
+        distances_dict = {}
+        # Calculate distances outside of the loop for each player
         for player_id in relevant_player_ids:
-            # Extract player positions
-            player_positions = relevant_rows[relevant_rows['player_id'] == player_id][['x_loc', 'y_loc']].values
-
-            # Calculate distances using broadcasting
+            player_positions = filtered_df[filtered_df["player_id"] == player_id][["x_loc", "y_loc"]].values
             distances = np.linalg.norm(player_positions - ball_positions, axis=1)
-            distances_df[player_id] = distances
-        
-        # Transpose so columns are player IDs, rows are moments/ticks
-        distances_df = distances_df.transpose()
-        
-        # Identify closest player for each moment/tick
-        closest_player_each_tick = distances_df.idxmin()
-        
-        return closest_player_each_tick
+            distances_dict[player_id] = distances
+
+        # Convert distances_dict to DataFrame
+        distances_df = pd.DataFrame(distances_dict, index=filtered_df[filtered_df["player_id"] == -1].index)
+
+        return distances_df
 
     @staticmethod
     def distance_between_player_and_other_players(player_id, player_loc, event_df):
@@ -577,9 +573,8 @@ class FeatureUtil:
             bool: True if the pass is an inbound pass, False otherwise.
         """
         start_loc = moments_df.loc[(moments_df['index'] == event_pass['pass_moment']) & (moments_df['player_id'] == -1)]
-        
-        return (((((start_loc['x_loc'] >= 0.0) & (start_loc['x_loc'] <= 5.0)) | ((start_loc['x_loc'] >= 89.0) & (start_loc['x_loc'] <= 94.0))) & ((start_loc['y_loc'] >= 17.0) & (start_loc['y_loc'] <= 33.0))).all())
 
+        return (((((start_loc['x_loc'] >= 0.0) & (start_loc['x_loc'] <= 5.0)) | ((start_loc['x_loc'] >= 89.0) & (start_loc['x_loc'] <= 94.0))) & ((start_loc['y_loc'] >= 17.0) & (start_loc['y_loc'] <= 33.0))).all())
 
     @staticmethod
     def get_ball_handler_for_event(moments_df, player_ids):
@@ -594,7 +589,6 @@ class FeatureUtil:
             pd.DataFrame: DataFrame containing ball handler moments and player IDs.
         """
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
-
         print(ball_distances)
         # Identify the closest player for each tick
         closest_player_each_tick = ball_distances.idxmin()
@@ -602,13 +596,13 @@ class FeatureUtil:
 
         # Create a new DataFrame to store tick index, closest player, and minimum distance
         ball_handler_df = pd.DataFrame({
-            'TickIndex': ball_distances.index,
-            'ClosestPlayerID': closest_player_each_tick,
-            'MinDistance': min_distance_each_tick
+            'index': ball_distances.index,
+            'player_id': closest_player_each_tick,
+            'dist_from_ball': min_distance_each_tick
         }).reset_index(drop=True)
-        print('3', ball_handler_df)
+
         ball_handler_df.loc[ball_handler_df['dist_from_ball'] > 3.3, 'player_id'] = pd.NA
-        
+
         moment_nums = [int(moments_df.iloc[i * 11]['index']) for i in range(len(ball_handler_df))]
         ball_handler_df['index'] = moment_nums
 
@@ -632,7 +626,7 @@ class FeatureUtil:
             pd.DataFrame: DataFrame containing the closest defender moments and their distances.
         """
         group = moment_df[moment_df.player_id != player_id].groupby("player_id")[["x_loc", "y_loc", "index"]]
-        
+
         return group.apply(FeatureUtil.distance_between_players_with_moment, player_b=(moment_df[moment_df.player_id == player_id][["x_loc", "y_loc"]]))
 
     @staticmethod
@@ -650,6 +644,7 @@ class FeatureUtil:
         """
         player_ids = PlayerMvmtProcessor.get_possession_team_player_ids(possession, players_data)
         ball_handler_df = FeatureUtil.get_ball_handler_for_event(moments_df, player_ids)
+        print(ball_handler_df)
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
 
         return passes
