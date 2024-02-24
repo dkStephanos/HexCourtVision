@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 from .ConstantsUtil import ConstantsUtil
 
+
 class DataLoader:
     """
     A utility class for loading and converting data.
@@ -17,21 +18,29 @@ class DataLoader:
         # The actual game file is a JSON named after the game_id inside the respective folder.
 
         # Load game file with GUI
-        game_path = easygui.fileopenbox(default=ConstantsUtil.RAW_DATA_PATH, title="Select a game folder and then the game file")
+        game_path = easygui.fileopenbox(
+            default=ConstantsUtil.RAW_DATA_PATH,
+            title="Select a game folder and then the game file",
+        )
 
         if game_path is None:
             raise Exception("No game file selected.")
 
         # Load annotation file with GUI
         easygui.msgbox("Next select the corresponding annotation file")
-        annotation_path = easygui.fileopenbox(default=ConstantsUtil.EVENT_ANNOTATIONS_PATH, title="Select an annotation file")
+        annotation_path = easygui.fileopenbox(
+            default=ConstantsUtil.EVENT_ANNOTATIONS_PATH,
+            title="Select an annotation file",
+        )
 
         if annotation_path is None:
             raise Exception("No annotation file selected.")
 
         # Load DataFrames
         game_df = pd.read_json(game_path)  # Adjusted to read JSON
-        annotation_df = pd.read_csv(annotation_path, index_col=0)  # Prefix 'events-' is considered in file selection, not in loading
+        annotation_df = pd.read_csv(
+            annotation_path, index_col=0
+        )  # Prefix 'events-' is considered in file selection, not in loading
 
         return game_df, annotation_df
 
@@ -39,10 +48,14 @@ class DataLoader:
     def load_raw_game(cls, game_key):
         # Derive game folder name from game key
         # This might require custom logic to convert game_key to folder name format, e.g., "YYYYMMDDAAAHHH" to "MM.DD.YYYY.AAA.at.HHH"
-        game_folder_name = cls.convert_game_key_to_folder_name(game_key)  # Placeholder for actual conversion logic
+        game_folder_name = cls.convert_game_key_to_folder_name(
+            game_key
+        )  # Placeholder for actual conversion logic
 
         game_folder_path = os.path.join(ConstantsUtil.RAW_DATA_PATH, game_folder_name)
-        game_file_path = glob.glob(os.path.join(game_folder_path, "*.json"))[0]  # Assuming single JSON file per folder
+        game_file_path = glob.glob(os.path.join(game_folder_path, "*.json"))[
+            0
+        ]  # Assuming single JSON file per folder
 
         return pd.read_json(game_file_path)
 
@@ -50,17 +63,19 @@ class DataLoader:
     def load_game_events(cls, game_key):
         # Construct annotation file path
         annotation_file_name = f"events-{game_key}.csv"  # Assuming the game_key can directly derive the file name
-        annotation_path = os.path.join(ConstantsUtil.EVENT_ANNOTATIONS_PATH, annotation_file_name)
+        annotation_path = os.path.join(
+            ConstantsUtil.EVENT_ANNOTATIONS_PATH, annotation_file_name
+        )
 
         return pd.read_csv(annotation_path, index_col=0)
 
     @classmethod
     def load_processed_game(cls, game_id):
         # Ingest data
-        df = pd.read_csv(f"{ConstantsUtil.CLEAN_DATA_PATH}/{game_id}.csv")
+        df = pd.read_csv(f"{ConstantsUtil.CLEAN_DATA_PATH}/{game_id}.csv", index_col=0)
 
         # Parse the tracking data
-        df['MOMENTS'] = df['MOMENTS'].apply(cls._eval_nested_list)
+        df["MOMENTS"] = df["MOMENTS"].apply(cls._eval_nested_list)
 
         return df
 
@@ -89,34 +104,35 @@ class DataLoader:
         return folder_name
 
     @staticmethod
-    def convert_game_clock_to_timestamp(game_clock):
+    def convert_game_clock_to_timestamp(game_clock: float) -> str:
         """
-        Convert game clock time to timestamp format.
+        Convert game clock time from seconds to MM:SS format.
 
         Args:
-            game_clock (float): The game clock time.
+            game_clock (float): The game clock time in seconds.
 
         Returns:
-            str: The game clock time in timestamp format (e.g., '12:34').
+            str: The game clock time in MM:SS format.
         """
-        seconds = int(float(game_clock) / 60)
-        milliseconds = int(float(game_clock.iloc[0]) % 60)
-
-        return f'{seconds}:{milliseconds}'
+        minutes = int(game_clock) // 60
+        seconds = int(game_clock) % 60
+        
+        return f"{minutes:02}:{seconds:02}"
 
     @staticmethod
-    def convert_timestamp_to_game_clock(timestamp):
+    def convert_timestamp_to_game_clock(timestamp: str) -> int:
         """
-        Convert a timestamp to game clock time.
+        Convert a timestamp from MM:SS format to game clock time in seconds.
 
         Args:
-            timestamp (str): The timestamp in the format 'mm:ss'.
+            timestamp (str): The timestamp in MM:SS format.
 
         Returns:
             int: The game clock time in seconds.
         """
-        time = timestamp.split(':')
-        return int(time[0]) * 60 + int(time[1])
+        minutes, seconds = map(int, timestamp.split(":"))
+        
+        return minutes * 60 + seconds
 
     @staticmethod
     def get_game_data(game_df, annotation_df):
@@ -181,12 +197,12 @@ class DataLoader:
         """
         return [
             {
-                "player_id": player['playerid'],
+                "player_id": player["playerid"],
                 "team_id": event_df["events"][0][team]["teamid"],
-                "first_name": player['firstname'],
-                "last_name": player['lastname'],
-                "jersey_number": player.get('jersey', 99),
-                "position": player['position']
+                "first_name": player["firstname"],
+                "last_name": player["lastname"],
+                "jersey_number": player.get("jersey", 99),
+                "position": player["position"],
             }
             for team in ["home", "visitor"]
             for player in event_df["events"][0][team]["players"]
@@ -206,9 +222,12 @@ class DataLoader:
         home_players = event_df["events"][0]["home"]["players"]
         visitor_players = event_df["events"][0]["visitor"]["players"]
         players_dict = {
-            player['playerid']: [player["firstname"] + " " + player["lastname"], player.get("jersey")]
+            player["playerid"]: [
+                player["firstname"] + " " + player["lastname"],
+                player.get("jersey"),
+            ]
             for player in home_players + visitor_players
         }
-        players_dict[-1] = ['ball', np.nan]
+        players_dict[-1] = ["ball", np.nan]
 
         return players_dict
