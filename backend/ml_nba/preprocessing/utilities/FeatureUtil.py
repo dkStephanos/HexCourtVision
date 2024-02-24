@@ -316,37 +316,37 @@ class FeatureUtil:
     @staticmethod
     def distance_between_ball_and_players(moments_df, player_ids):
         """
-        Calculate the distance between players and the ball for each player in the specified list.
+        Calculate distances between players and the ball for each relevant player per tick in a basketball game.
+
+        This function merges player and ball position data to compute distances
 
         Args:
-            moments_df (pd.DataFrame): DataFrame containing moment data.
-            player_ids (list): List of player IDs.
+            moments_df (pd.DataFrame): DataFrame containing moment data for players and the ball.
+            player_ids (List[int]): List of player IDs to include in the distance calculations.
 
         Returns:
-            pd.Series: Series containing distances between players and the ball for each player.
+            pd.DataFrame: A DataFrame with columns ['index', 'player_id', 'dist_from_ball', 'radius'], 
+                        where each row represents a game moment, detailing the player's ID, their distance from the ball, and the ball's radius at that moment.
         """
         # Filter to include only relevant player IDs and the ball
         relevant_df = moments_df[moments_df['player_id'].isin(player_ids + [-1])]
         
         # Separate ball positions
-        ball_positions_df = relevant_df[relevant_df['player_id'] == -1][['index', 'player_id', 'x_loc', 'y_loc']]
+        ball_positions_df = relevant_df[relevant_df['player_id'] == -1][['index', 'player_id', 'x_loc', 'y_loc', 'radius']]
         
         # Remove the ball positions from the relevant_df
         players_df = relevant_df[relevant_df['player_id'] != -1][['index', 'player_id', 'x_loc', 'y_loc']]
         
-        # Merge player and ball positions on their common index
+        # Merge player and ball positions on their common index --> this will allow us to vectorize the calculation
         merged_df = players_df.merge(ball_positions_df, on='index', suffixes=('_player', '_ball'))
         
         # Calculate distances using numpy's norm function across rows (axis=1)
-        merged_df['distance'] = np.linalg.norm(
+        merged_df['dist_from_ball'] = np.linalg.norm(
             merged_df[['x_loc_player', 'y_loc_ball']].values - merged_df[['x_loc_ball', 'y_loc_player']].values, axis=1
         )
 
-        # Find the closest player for each tick/index
-        closest_players = merged_df.loc[merged_df.groupby('index')['distance'].idxmin()]
-        
         # Prepare the final DataFrame to return
-        result_df = closest_players[['index', 'player_id_player', 'distance']].reset_index(drop=True)
+        result_df = merged_df.rename(columns={'player_id_player': 'player_id'})[['index', 'player_id', 'dist_from_ball', 'radius']].reset_index(drop=True)
         
         return result_df
 
@@ -573,41 +573,29 @@ class FeatureUtil:
         return (((((start_loc['x_loc'] >= 0.0) & (start_loc['x_loc'] <= 5.0)) | ((start_loc['x_loc'] >= 89.0) & (start_loc['x_loc'] <= 94.0))) & ((start_loc['y_loc'] >= 17.0) & (start_loc['y_loc'] <= 33.0))).all())
 
     @staticmethod
-    def get_ball_handler_for_event(moments_df, player_ids):
+    def get_ball_handler_for_event(moments_df, player_ids, ball_distance_heuristic=3.3, ball_radius_heuristic=9.0):
         """
-        Extract ball handler moments and their respective players.
+        Extracts and analyzes ball handler moments based on proximity and ball radius.
+
+        This function computes the nearest player to the ball at each recorded moment within a basketball game, considering specified player IDs. It then evaluates whether a shot or pass has occurred by examining if the ball's radius exceeds a set heuristic value, indicating a potential release of the ball.
 
         Args:
-            moments_df (pd.DataFrame): DataFrame representing player locations and ball position at moments.
-            player_ids (list): List of player IDs to consider for ball handling.
+            moments_df (pd.DataFrame): Data on player locations and ball positions.
+            player_ids (List[int]): IDs of players to evaluate as potential ball handlers.
 
         Returns:
-            pd.DataFrame: DataFrame containing ball handler moments and player IDs.
+            pd.DataFrame: Information on moments where each player is handling the ball, excluding moments likely associated with shots or passes.
         """
         ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
-        print(ball_distances)
-        # Identify the closest player for each tick
-        closest_player_each_tick = ball_distances.idxmin(axis=1)
-        min_distance_each_tick = ball_distances.min(axis=1)
+        
+        # Find the closest player for each tick/index
+        closest_players = ball_distances.loc[ball_distances.groupby('index')['dist_from_ball'].idxmin()].drop(columns=['index'])
 
-        print(closest_player_each_tick)
-        print(min_distance_each_tick)
-        # Create a new DataFrame to store tick index, closest player, and minimum distance
-        ball_handler_df = pd.DataFrame({
-            'index': ball_distances.index,
-            'player_id': closest_player_each_tick,
-            'dist_from_ball': min_distance_each_tick
-        }).reset_index(drop=True)
-
-        ball_handler_df.loc[ball_handler_df['dist_from_ball'] > 3.3, 'player_id'] = pd.NA
-
-        moment_nums = [int(moments_df.iloc[i * 11]['index']) for i in range(len(ball_handler_df))]
-        ball_handler_df['index'] = moment_nums
-
-        for i in range(len(ball_handler_df)):
-            if moments_df.iloc[i * 11]['radius'] >= 10.0:
-                ball_handler_df.iat[i, 0] = pd.NA
-
+        closest_players.loc[closest_players['dist_from_ball'] > ball_distance_heuristic, 'player_id'] = pd.NA
+        closest_players.loc[closest_players['radius'] > ball_radius_heuristic, 'player_id'] = pd.NA
+        
+        ball_handler_df = closest_players.drop(columns=['radius'])
+        
         return ball_handler_df
 
     @staticmethod
@@ -642,9 +630,8 @@ class FeatureUtil:
         """
         player_ids = PlayerMvmtProcessor.get_possession_team_player_ids(possession, players_data)
         ball_handler_df = FeatureUtil.get_ball_handler_for_event(moments_df, player_ids)
-        print(ball_handler_df)
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
-
+        print('passes', passes)
         return passes
 
     @staticmethod
@@ -668,11 +655,11 @@ class FeatureUtil:
         candidate_count = 0
         for event_pass in event_passes:
             if not FeatureUtil.check_for_paint_pass(moments_df, event_pass) and not FeatureUtil.check_for_inbound_pass(moments_df, event_pass) and event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']:
-                moment = moments_df.loc[(moments_df['index'] == event_pass['pass_moment']) & (moments_df['player_id'] == event_pass['passer'])]
+                moment = moments_df.loc[moments_df['index'] == event_pass['pass_moment']]
 
                 if offset > 0:
                     event_id = f"{event_id.split('-')[0]}-{int(event_id.split('-')[0]) + offset}"
-
+                print('-----------------', moment, players_dict, event_pass)
                 candidate_count += 1
                 candidates.append({
                     'candidate_id': f"{event_id}-{candidate_count}",
@@ -680,7 +667,7 @@ class FeatureUtil:
                     'classification_type': 'dribble-hand-off',
                     'manual_label': pd.NA,
                     'period': event['PERIOD'],
-                    'game_clock': DataLoader.convert_game_clock_to_timestamp(moment['game_clock']),
+                    'game_clock': DataLoader.convert_game_clock_to_timestamp(moment['game_clock'].values[0]),
                     'shot_clock': moment['shot_clock'].values[0],
                     'player_a': event_pass['passer'],
                     'player_a_name': players_dict[event_pass['passer']][0],
