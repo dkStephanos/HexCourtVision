@@ -468,58 +468,22 @@ class FeatureUtil:
         Returns:
             list: List of pass dictionaries with passer, receiver, and pass moments.
         """
-        passes = []
-        passer = pd.NA
-        pass_moment = 0
-        receiver = pd.NA
-        receive_moment = 0
+        # Detect changes in ball possession
+        ball_handler_df['prev_player_id'] = ball_handler_df['player_id'].shift(1)
+        changes = ball_handler_df['player_id'] != ball_handler_df['prev_player_id']
 
-        for i in range(len(ball_handler_df)):
-            if pd.isna(passer) and not pd.isna(ball_handler_df.iloc[i]["player_id"]):
-                passer = ball_handler_df.iloc[i]["player_id"]
-            elif (
-                not pd.isna(passer)
-                and pass_moment == 0
-                and pd.isna(ball_handler_df.iloc[i]["player_id"])
-            ):
-                pass_moment = ball_handler_df.iloc[i - 1]["index"]
-            elif (
-                not pd.isna(passer)
-                and not pd.isna(ball_handler_df.iloc[i]["player_id"])
-                and passer == ball_handler_df.iloc[i]["player_id"]
-                and pass_moment != 0
-            ):
-                pass_moment = 0
-            elif (
-                not pd.isna(passer)
-                and not pd.isna(ball_handler_df.iloc[i]["player_id"])
-                and ball_handler_df.iloc[i]["player_id"] != passer
-            ):
-                receiver = ball_handler_df.iloc[i]["player_id"]
-                receive_moment = ball_handler_df.iloc[i]["index"]
-                pass_moment = (
-                    ball_handler_df.iloc[i - 1]["index"]
-                    if not pd.isna(ball_handler_df.iloc[i - 1]["player_id"])
-                    else pass_moment
-                )
-                if (
-                    len(passes) == 0
-                    or passes[-1]["passer"] != passer
-                    or pass_moment > passes[-1]["pass_moment"] + 10
-                ):
-                    passes.append(
-                        {
-                            "passer": passer,
-                            "pass_moment": pass_moment,
-                            "receiver": receiver,
-                            "receive_moment": receive_moment,
-                        }
-                    )
-                passer = pd.NA
-                receiver = pd.NA
-                pass_moment = 0
+        # Identify passes
+        passes = ball_handler_df[changes & ball_handler_df['player_id'].notna() & ball_handler_df['prev_player_id'].notna()]
 
-        return passes
+        # Create a DataFrame for passes
+        pass_df = pd.DataFrame({
+            'passer': passes['prev_player_id'].values,
+            'pass_moment': passes.index - 1,
+            'receiver': passes['player_id'].values,
+            'receive_moment': passes.index
+        }).reset_index(drop=True)
+
+        return pass_df
 
     @staticmethod
     def check_for_paint_pass(moments_df, event_pass):
