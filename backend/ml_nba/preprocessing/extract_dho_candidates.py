@@ -38,9 +38,9 @@ def extract_dho_candidates(game_key: str, moment_range: int = None):
     hand_off_detected = 0
 
     print("Starting Candidate Extraction\n")
-    for index, event in game_df.iterrows():
+    for index, event in game_df.iloc[3:].iterrows():
         moments_df = EventsProcessor.get_moments_from_event(event)
-        
+        print(moments_df.shape)
         if not moments_df.empty:
             event_passes = FeatureUtil.get_passes_for_event(
                 moments_df, event["POSSESSION"], players_data
@@ -55,8 +55,13 @@ def extract_dho_candidates(game_key: str, moment_range: int = None):
                 if dribble_handoff_candidates:
                     all_candidates.extend(dribble_handoff_candidates)  # Assuming this is a list
                     hand_off_detected += 1
+                    print(f"Discovered {len(dribble_handoff_candidates)} dho candidates for event: {index}!")
+                else:
+                    print(f"No handoffs detected amoung {len(event_passes)} passes for event: {index}")
+            else:
+                print(f"No event_passes for event: {index}")
         else:
-            print(f"No moments for event: {event['EVENTNUM']}")
+            print(f"No moments for event: {index}")
 
     final_candidates = EventsProcessor.remove_duplicate_candidates(all_candidates)
 
