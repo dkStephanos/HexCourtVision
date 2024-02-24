@@ -460,30 +460,41 @@ class FeatureUtil:
     @staticmethod
     def convert_ball_handler_to_passes(ball_handler_df):
         """
-        Convert ball handler DataFrame into a list of passes with passer, receiver, and pass moments.
+        Transforms a DataFrame detailing ball handler moments into a structured list of passing events.
+
+        This function analyzes the provided ball handler DataFrame to identify sequences where possession changes from one player to another, considering potential in-air ball moments. It consolidates these moments into passing events, each characterized by the initiating passer and the receiving player, along with the respective moments of the pass initiation and reception.
 
         Args:
-            ball_handler_df (pd.DataFrame): DataFrame representing ball handler moments.
+            ball_handler_df (pd.DataFrame): Contains moment-by-moment ball handling data.
 
         Returns:
-            list: List of pass dictionaries with passer, receiver, and pass moments.
+            pd.DataFrame: A DataFrame listing distinct passing events, detailing the passer, receiver, and the moments of passing and receiving.
         """
-        # Detect changes in ball possession
-        ball_handler_df['prev_player_id'] = ball_handler_df['player_id'].shift(1)
-        changes = ball_handler_df['player_id'] != ball_handler_df['prev_player_id']
+        # Add a 'tick' column to maintain the original index if it's not already present
+        ball_handler_df['tick'] = ball_handler_df.index
 
-        # Identify passes
-        passes = ball_handler_df[changes & ball_handler_df['player_id'].notna() & ball_handler_df['prev_player_id'].notna()]
+        # Forward fill player IDs to close small NA gaps, considering possession flickers
+        ball_handler_df['filled_player_id'] = ball_handler_df['player_id'].fillna(method='ffill', limit=3)
 
-        # Create a DataFrame for passes
-        pass_df = pd.DataFrame({
-            'passer': passes['prev_player_id'].values,
-            'pass_moment': passes.index - 1,
-            'receiver': passes['player_id'].values,
-            'receive_moment': passes.index
+        # Detect significant changes in ball possession
+        ball_handler_df['prev_filled_player_id'] = ball_handler_df['filled_player_id'].shift(1)
+        changes = (ball_handler_df['filled_player_id'] != ball_handler_df['prev_filled_player_id']) & ball_handler_df['filled_player_id'].notna()
+
+        # Filter for actual possession changes, ignoring flickers
+        actual_changes = ball_handler_df[changes]
+
+        # Generate the pass events DataFrame
+        pass_events = pd.DataFrame({
+            'passer': actual_changes['prev_filled_player_id'].values,
+            'pass_moment': actual_changes['tick'].values - 1,
+            'receiver': actual_changes['filled_player_id'].values,
+            'receive_moment': actual_changes['tick'].values
         }).reset_index(drop=True)
 
-        return pass_df
+        # Return the DataFrame after filtering out rows where passer or receiver might be NA due to initial fill limits
+        pass_events = pass_events.dropna(subset=['passer', 'receiver'])
+        
+        return pass_events
 
     @staticmethod
     def check_for_paint_pass(moments_df, event_pass):
@@ -595,7 +606,7 @@ class FeatureUtil:
         player_ids = PlayerMvmtProcessor.get_possession_team_player_ids(possession, players_data)
         ball_handler_df = FeatureUtil.get_ball_handler_for_event(moments_df, player_ids)
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
-        print('passes', passes)
+
         return passes
 
     @staticmethod
@@ -617,7 +628,9 @@ class FeatureUtil:
         candidates = []
         event_id = event["EVENT_ID"]
         candidate_count = 0
+        print(event_passes, type(event_passes))
         for event_pass in event_passes:
+            print(event_pass)
             if not FeatureUtil.check_for_paint_pass(moments_df, event_pass) and not FeatureUtil.check_for_inbound_pass(moments_df, event_pass) and event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']:
                 moment = moments_df.loc[moments_df['index'] == event_pass['pass_moment']]
 
