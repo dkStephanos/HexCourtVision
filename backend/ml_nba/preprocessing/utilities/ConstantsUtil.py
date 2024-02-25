@@ -74,6 +74,7 @@ class ConstantsUtil:
         "index",
         "game_clock",
         "shot_clock",
+        "period",
         "event_id",
     ]
 

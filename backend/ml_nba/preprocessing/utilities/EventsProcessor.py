@@ -90,7 +90,7 @@ class EventsProcessor:
                 for player in moment[5]:
                     player_copy = player.copy()
                     moment_index = event_df["MOMENTS"].index(moment)
-                    player_copy.extend((moment_index, last_game_clock, last_shot_clock, event_df["EVENT_ID"]))
+                    player_copy.extend((moment_index, last_game_clock, last_shot_clock, event_df["PERIOD"], event_df["EVENT_ID"]))
                     player_moments.append(player_copy)
 
         return pd.DataFrame(player_moments, columns=ConstantsUtil.HEADERS)
