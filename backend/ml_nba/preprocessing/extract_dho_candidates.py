@@ -1,13 +1,8 @@
-import sys
 import pandas as pd
 from ml_nba.preprocessing.utilities.FeatureUtil import FeatureUtil
 from ml_nba.preprocessing.utilities.DataLoader import DataLoader
 from ml_nba.preprocessing.utilities.ConstantsUtil import ConstantsUtil
 from ml_nba.preprocessing.utilities.EventsProcessor import EventsProcessor
-from ml_nba.preprocessing.utilities.PlayerMvmtProcessor import PlayerMvmtProcessor
-
-
-all_results = "All Results:\n\n"
 
 
 def extract_dho_candidates(game_key: str, moment_range: int = None):
@@ -32,15 +27,14 @@ def extract_dho_candidates(game_key: str, moment_range: int = None):
     print("Extracted team/player data")
 
     all_candidates = []
-    successful = 0
-    failed = 0
     pass_detected = 0
     hand_off_detected = 0
+    all_results = "All Results:\n\n"
 
     print("Starting Candidate Extraction\n")
-    for index, event in game_df.iloc[3:].iterrows():
+    for index, event in game_df.iterrows():
         moments_df = EventsProcessor.get_moments_from_event(event)
-        print(moments_df.shape)
+
         if not moments_df.empty:
             event_passes = FeatureUtil.get_passes_for_event(
                 moments_df, event["POSSESSION"], players_data
@@ -68,13 +62,11 @@ def extract_dho_candidates(game_key: str, moment_range: int = None):
     result = (
         f"\n\n------------------------------\n\nStats for {game_key}\n"
         + f"\nNumber of candidates parsed: {str(len(final_candidates))}"
-        + f"\nSuccessful events: {str(successful)} \nFailed events: {str(failed)}"
-        + f"\nPercent Successful: {str(round(successful / (failed + successful), 2) * 100)}%"
         + f"\nEvents w/ pass detected: "
         + str(pass_detected)
         + "\nEvents w/ hand-off detected: "
         + str(hand_off_detected)
-        + f"\nPercent w/ candidate: {str(round(hand_off_detected / (failed + successful), 2) * 100)}%"
+        + f"\nPercent w/ candidate: {str(round(hand_off_detected / (len(game_df)), 2) * 100)}%"
     )
     all_results += result
     print(result)
