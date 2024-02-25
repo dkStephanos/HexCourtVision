@@ -1,4 +1,4 @@
-![image](https://github.com/dkStephanos/HexCourtVision/backend/static/app/content/readme.webp)
+![image](https://github.com/dkStephanos/HexCourtVision/blob/master/backend/static/app/content/readme.webp)
 
 # HexCourtVision
 
@@ -42,7 +42,7 @@ Generate hexmaps to represent player movements.
 hexmap = generate_trajectory_image(target_event, target_candidate)
 ```
 
-![image](https://github.com/dkStephanos/HexCourtVision/backend/static/app/content/hexmap.png)
+![image](https://github.com/dkStephanos/HexCourtVision/blob/master/backend/static/app/content/hexmap.png)
 
 ## Classification
 Train and evaluate an SVM classifier.
