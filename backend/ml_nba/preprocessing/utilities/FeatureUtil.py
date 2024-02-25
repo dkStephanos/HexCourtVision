@@ -642,9 +642,8 @@ class FeatureUtil:
         """
         player_ids = PlayerMvmtProcessor.get_possession_team_player_ids(possession, players_data)
         ball_handler_df = FeatureUtil.get_ball_handler_for_event(moments_df, player_ids)
-        print(ball_handler_df.shape)
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
-        print(passes)
+
         return passes
 
     @staticmethod
@@ -684,7 +683,7 @@ class FeatureUtil:
                     'event_id': event_id,
                     'classification_type': 'dribble-hand-off',
                     'manual_label': pd.NA,
-                    'period': event_pass['period'],
+                    'period': moment['period'].iloc[0],
                     'game_clock': DataLoader.convert_game_clock_to_timestamp(moment['game_clock'].iloc[0]),
                     'shot_clock': moment['shot_clock'].iloc[0],
                     'player_a': event_pass['passer'],
