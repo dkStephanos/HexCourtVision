@@ -37,7 +37,7 @@ static/data/notes/~$CandidateSummaries.xlsx
 
 # frontend build files
 /frontend/static/frontend/
-*.png
+/frontend/public/**/*.png
 frontend/package-lock.json
 
 # backend jupyter stuff
@@ -48,3 +48,4 @@ backend/.env
 /backend/static/ml_nba/2016.NBA.Raw.SportVU.Game.Logs/
 /backend/static/ml_nba/event_annotations/
 backend/notebooks/sandbox.ipynb
+/backend/static/ml_nba/*/*.png
