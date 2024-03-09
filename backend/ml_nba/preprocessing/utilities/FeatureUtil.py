@@ -594,13 +594,18 @@ class FeatureUtil:
             & (moments_df["player_id"] == -1)
         ]
 
-        return (
-            (
-                ((start_loc["x_loc"] >= 0.0) & (start_loc["x_loc"] <= 5.0))
-                | ((start_loc["x_loc"] >= 89.0) & (start_loc["x_loc"] <= 94.0))
-            )
-            & ((start_loc["y_loc"] >= 17.0) & (start_loc["y_loc"] <= 33.0))
-        ).all()
+        # Check for both baseline and sideline conditions
+        is_baseline_inbound = (
+            (start_loc["x_loc"] <= 0.0) | (start_loc["x_loc"] >= 94.0)
+        ) & (start_loc["y_loc"].between(0.0, 50.0))  # Anywhere between the sidelines
+
+        is_sideline_inbound = (
+            (start_loc["y_loc"] <= 0.0) | (start_loc["y_loc"] >= 50.0)
+        ) & (start_loc["x_loc"].between(0.0, 94.0))  # Anywhere along the length
+
+        # Return True if either condition is met for any of the rows
+        return is_baseline_inbound.any() | is_sideline_inbound.any()
+
 
     @staticmethod
     def get_ball_handler_for_event(
