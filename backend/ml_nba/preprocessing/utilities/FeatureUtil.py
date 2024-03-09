@@ -494,11 +494,21 @@ class FeatureUtil:
         Returns:
             pd.DataFrame: A DataFrame containing columns 'passer', 'receiver', 'pass_moment', and 'receive_moment', detailing each identified passing event.
         """
-        # Identify where a new player gets the ball (changes from NaN or different player ID)
-        ball_handler_df['new_possession'] = ball_handler_df['player_id'].ne(ball_handler_df['player_id'].shift()) & ball_handler_df['player_id'].notna()
+        # Generate shifted versions for comparison
+        shifted_forward = ball_handler_df['player_id'].shift(1)
+        shifted_backward = ball_handler_df['player_id'].shift(-1)
 
-        # Mark the end of a possession (where it changes to a different player or NaN)
-        ball_handler_df['end_possession'] = ball_handler_df['player_id'].ne(ball_handler_df['player_id'].shift(-1)) & ball_handler_df['player_id'].notna()
+        # Detect new possession (NA to ID or ID change)
+        ball_handler_df['new_possession'] = (
+            (ball_handler_df['player_id'].notna() & shifted_forward.isna()) |  # From NA to ID
+            (ball_handler_df['player_id'] != shifted_forward) & ball_handler_df['player_id'].notna()  # From ID to different ID
+        )
+
+        # Detect end of possession (ID to NA or ID change)
+        ball_handler_df['end_possession'] = (
+            (ball_handler_df['player_id'].notna() & shifted_backward.isna()) |  # From ID to NA
+            (ball_handler_df['player_id'] != shifted_backward) & ball_handler_df['player_id'].notna()  # From ID to different ID
+        )     
 
         # Apply fill limit to account for small changes where src data may flicker or fail
         ball_handler_df['player_id'] = ball_handler_df['player_id'].ffill(limit=fill_limit).bfill(limit=fill_limit)
@@ -558,7 +568,7 @@ class FeatureUtil:
         print(event_pass)
         print(start_loc)
         print(end_loc)
-
+        raise Exception('booo')
         return (
             (
                 ((start_loc["x_loc"] >= 0.0) & (start_loc["x_loc"] <= 19.0))
@@ -679,7 +689,6 @@ class FeatureUtil:
             possession, players_data
         )
         ball_handler_df = FeatureUtil.get_ball_handler_for_event(moments_df, player_ids)
-        print("ball_handler_df",ball_handler_df)
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
 
         return passes
@@ -708,8 +717,6 @@ class FeatureUtil:
 
         # Iterate through DataFrame rows
         for index, event_pass in event_passes.iterrows():
-            print(FeatureUtil.check_for_paint_pass(moments_df, event_pass), FeatureUtil.check_for_inbound_pass(moments_df, event_pass), event_pass["pass_moment"] + moment_range
-                >= event_pass["receive_moment"])
             if (
                 not FeatureUtil.check_for_paint_pass(moments_df, event_pass)
                 and not FeatureUtil.check_for_inbound_pass(moments_df, event_pass)
