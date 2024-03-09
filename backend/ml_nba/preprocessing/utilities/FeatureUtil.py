@@ -29,8 +29,11 @@ class FeatureUtil:
             pd.DataFrame: Updated DataFrame with a 'possession' column indicating the team in possession.
         """
         # Map PERSON1TYPE to team IDs
-        possession_map = {4.0: teams_data["home_team"]["team_id"], 5.0: teams_data["away_team"]["team_id"]}
-        moments_df['POSSESSION'] = moments_df['PERSON1TYPE'].map(possession_map)
+        possession_map = {
+            4.0: teams_data["home_team"]["team_id"],
+            5.0: teams_data["away_team"]["team_id"],
+        }
+        moments_df["POSSESSION"] = moments_df["PERSON1TYPE"].map(possession_map)
 
         return moments_df
 
@@ -49,8 +52,10 @@ class FeatureUtil:
                         the team in possession for each event.
         """
         # Convert the list of player data dictionaries into a player_id to team_id mapping
-        player_to_team_map = {player['player_id']: player['team_id'] for player in players_data}
-        team_ids = set([player['team_id'] for player in players_data])
+        player_to_team_map = {
+            player["player_id"]: player["team_id"] for player in players_data
+        }
+        team_ids = set([player["team_id"] for player in players_data])
 
         def determine_event_possession(row):
             # Default to using PLAYER1_TEAM_ID for possession
@@ -71,7 +76,11 @@ class FeatureUtil:
             # Check if team ID is present; if not, derive from player ID
             if pd.isna(row.get(possession_key)):
                 # Use PLAYER1_ID or PLAYER2_ID based on the possession key
-                player_id_key = "PLAYER1_ID" if possession_key == "PLAYER1_TEAM_ID" else "PLAYER2_ID"
+                player_id_key = (
+                    "PLAYER1_ID"
+                    if possession_key == "PLAYER1_TEAM_ID"
+                    else "PLAYER2_ID"
+                )
                 player_id = row.get(player_id_key)
 
                 # For some events, the player ID actually contains a team ID
@@ -85,7 +94,9 @@ class FeatureUtil:
             else:
                 return row.get(possession_key)
 
-        annotation_df["POSSESSION"] = annotation_df.apply(determine_event_possession, axis=1)
+        annotation_df["POSSESSION"] = annotation_df.apply(
+            determine_event_possession, axis=1
+        )
 
         return annotation_df
 
@@ -325,28 +336,38 @@ class FeatureUtil:
             player_ids (List[int]): List of player IDs to include in the distance calculations.
 
         Returns:
-            pd.DataFrame: A DataFrame with columns ['index', 'player_id', 'dist_from_ball', 'radius'], 
+            pd.DataFrame: A DataFrame with columns ['index', 'player_id', 'dist_from_ball', 'radius'],
                         where each row represents a game moment, detailing the player's ID, their distance from the ball, and the ball's radius at that moment.
         """
         # Filter to include only relevant player IDs and the ball
-        relevant_df = moments_df[moments_df['player_id'].isin(player_ids + [-1])]
+        relevant_df = moments_df[moments_df["player_id"].isin(player_ids + [-1])]
 
         # Separate ball positions
-        ball_positions_df = relevant_df[relevant_df['player_id'] == -1][['index', 'player_id', 'x_loc', 'y_loc', 'radius']]
+        ball_positions_df = relevant_df[relevant_df["player_id"] == -1][
+            ["index", "player_id", "x_loc", "y_loc", "radius"]
+        ]
 
         # Remove the ball positions from the relevant_df
-        players_df = relevant_df[relevant_df['player_id'] != -1][['index', 'player_id', 'x_loc', 'y_loc']]
+        players_df = relevant_df[relevant_df["player_id"] != -1][
+            ["index", "player_id", "x_loc", "y_loc"]
+        ]
 
         # Merge player and ball positions on their common index --> this will allow us to vectorize the calculation
-        merged_df = players_df.merge(ball_positions_df, on='index', suffixes=('_player', '_ball'))
+        merged_df = players_df.merge(
+            ball_positions_df, on="index", suffixes=("_player", "_ball")
+        )
 
         # Calculate distances using numpy's norm function across rows (axis=1)
-        merged_df['dist_from_ball'] = np.linalg.norm(
-            merged_df[['x_loc_player', 'y_loc_ball']].values - merged_df[['x_loc_ball', 'y_loc_player']].values, axis=1
+        merged_df["dist_from_ball"] = np.linalg.norm(
+            merged_df[["x_loc_player", "y_loc_ball"]].values
+            - merged_df[["x_loc_ball", "y_loc_player"]].values,
+            axis=1,
         )
 
         # Prepare the final DataFrame to return
-        result_df = merged_df.rename(columns={'player_id_player': 'player_id'})[['index', 'player_id', 'dist_from_ball', 'radius']].reset_index(drop=True)
+        result_df = merged_df.rename(columns={"player_id_player": "player_id"})[
+            ["index", "player_id", "dist_from_ball", "radius"]
+        ].reset_index(drop=True)
 
         return result_df
 
@@ -458,7 +479,9 @@ class FeatureUtil:
         return min(distances, key=lambda x: x[0])[1]
 
     @staticmethod
-    def convert_ball_handler_to_passes(ball_handler_df: pd.DataFrame, window_size: int = 3, fill_limit: int = 2) -> pd.DataFrame:
+    def convert_ball_handler_to_passes(
+        ball_handler_df: pd.DataFrame, window_size: int = 3, fill_limit: int = 2
+    ) -> pd.DataFrame:
         """
         Converts ball handling information into a DataFrame of passing events between players.
 
@@ -473,28 +496,66 @@ class FeatureUtil:
             pd.DataFrame: A DataFrame containing columns 'passer', 'receiver', 'pass_moment', and 'receive_moment', detailing each identified passing event.
         """
         # Ensure there is a 'tick' column
-        ball_handler_df['tick'] = ball_handler_df.index
+        ball_handler_df["tick"] = ball_handler_df.index
 
-        # Detect changes in player_id to identify potential possession changes
-        ball_handler_df['change'] = ball_handler_df['player_id'].diff().ne(0)
+        # Create a new column 'change_marker' that marks 1 for change and 0 otherwise, replacing 'change'
+        ball_handler_df["change_marker"] = (
+            ball_handler_df["player_id"].diff().ne(0).astype(int)
+        )
 
-        # Filter out brief flickers by ensuring changes are sustained over a small window
-        # Here, you can adjust the window size and min_periods based on the data characteristics
-        ball_handler_df['sustained_change'] = ball_handler_df['change'].rolling(window=window_size, min_periods=1).sum() <= 1
+        # To ensure a change is sustained, use 'shift' and 'cumsum' to create groups after each change
+        ball_handler_df["group"] = ball_handler_df["change_marker"].cumsum()
+
+        # Now, for each group, check if it maintains the same player_id for the length of your window
+        # This can be done by checking if the count of unique player_ids in each window per group is 1
+        ball_handler_df["sustained_change"] = (
+            ball_handler_df.groupby("group")["player_id"]
+            .transform(
+                lambda x: x.rolling(window=window_size, min_periods=1)
+                .apply(lambda y: (y.nunique() == 1) and (y.iloc[0] != np.nan))
+                .fillna(0)
+            )
+            .astype(bool)
+        )
+
+        # Finally, you need to update player_ids only where sustained_change has been marked True
+        ball_handler_df["filtered_player_id"] = np.where(
+            ball_handler_df["sustained_change"] == 1,
+            ball_handler_df["player_id"],
+            np.nan,
+        )
+
+        # Apply forward fill and backward fill with limit
+        ball_handler_df["filled_player_id"] = (
+            ball_handler_df["filtered_player_id"]
+            .ffill(limit=fill_limit)
+            .bfill(limit=fill_limit)
+        )
 
         # Apply sustained changes to reduce noise
-        ball_handler_df['filtered_player_id'] = ball_handler_df['player_id'].where(ball_handler_df['sustained_change'], np.nan)
+        ball_handler_df["filtered_player_id"] = ball_handler_df["player_id"].where(
+            ball_handler_df["sustained_change"], np.nan
+        )
 
         # Fill gaps to close small NA segments, retaining sustained possession only
-        ball_handler_df['filled_player_id'] = ball_handler_df['filtered_player_id'].ffill(limit=fill_limit).bfill(limit=fill_limit)
+        ball_handler_df["filled_player_id"] = (
+            ball_handler_df["filtered_player_id"]
+            .ffill(limit=fill_limit)
+            .bfill(limit=fill_limit)
+        )
 
         # Detect significant changes in ball possession
-        ball_handler_df['prev_filled_player_id'] = ball_handler_df['filled_player_id'].shift(1)
-        changes = (ball_handler_df['filled_player_id'] != ball_handler_df['prev_filled_player_id']) & ball_handler_df['filled_player_id'].notna()
+        ball_handler_df["prev_filled_player_id"] = ball_handler_df[
+            "filled_player_id"
+        ].shift(1)
+        changes = (
+            ball_handler_df["filled_player_id"]
+            != ball_handler_df["prev_filled_player_id"]
+        ) & ball_handler_df["filled_player_id"].notna()
 
         # Extract rows where actual possession changes occurred
         actual_changes = ball_handler_df[changes]
-        
+
         # Initialize variables to store the previous receiver and pass moment
         previous_receiver = np.nan
         previous_pass_moment = np.nan
@@ -505,20 +566,20 @@ class FeatureUtil:
         # Iterate through the actual changes to construct pass event details
         for index, row in actual_changes.iterrows():
             # Extract current receiver and receive moment
-            current_receiver = row['filled_player_id']
-            current_receive_moment = row['tick']
-            
+            current_receiver = row["filled_player_id"]
+            current_receive_moment = row["tick"]
+
             # Construct a dictionary for the pass event if previous_receiver is not NaN
             if not np.isnan(previous_receiver):
                 pass_event = {
-                    'passer': previous_receiver,
-                    'pass_moment': previous_pass_moment,
-                    'receiver': current_receiver,
-                    'receive_moment': current_receive_moment
+                    "passer": previous_receiver,
+                    "pass_moment": previous_pass_moment,
+                    "receiver": current_receiver,
+                    "receive_moment": current_receive_moment,
                 }
                 # Append the dictionary to the list of pass events
                 pass_events_data.append(pass_event)
-            
+
             # Update previous_receiver and previous_pass_moment for the next iteration
             previous_receiver = current_receiver
             previous_pass_moment = current_receive_moment
@@ -575,9 +636,18 @@ class FeatureUtil:
         Returns:
             bool: True if the pass is an inbound pass, False otherwise.
         """
-        start_loc = moments_df.loc[(moments_df['index'] == event_pass['pass_moment']) & (moments_df['player_id'] == -1)]
+        start_loc = moments_df.loc[
+            (moments_df["index"] == event_pass["pass_moment"])
+            & (moments_df["player_id"] == -1)
+        ]
 
-        return (((((start_loc['x_loc'] >= 0.0) & (start_loc['x_loc'] <= 5.0)) | ((start_loc['x_loc'] >= 89.0) & (start_loc['x_loc'] <= 94.0))) & ((start_loc['y_loc'] >= 17.0) & (start_loc['y_loc'] <= 33.0))).all())
+        return (
+            (
+                ((start_loc["x_loc"] >= 0.0) & (start_loc["x_loc"] <= 5.0))
+                | ((start_loc["x_loc"] >= 89.0) & (start_loc["x_loc"] <= 94.0))
+            )
+            & ((start_loc["y_loc"] >= 17.0) & (start_loc["y_loc"] <= 33.0))
+        ).all()
 
     @staticmethod
     def get_ball_handler_for_event(
@@ -598,15 +668,23 @@ class FeatureUtil:
         Returns:
             pd.DataFrame: Information on moments where each player is handling the ball, excluding moments likely associated with shots or passes.
         """
-        ball_distances = FeatureUtil.distance_between_ball_and_players(moments_df, player_ids)
+        ball_distances = FeatureUtil.distance_between_ball_and_players(
+            moments_df, player_ids
+        )
 
         # Find the closest player for each tick/index
-        closest_players = ball_distances.loc[ball_distances.groupby('index')['dist_from_ball'].idxmin()].drop(columns=['index'])
+        closest_players = ball_distances.loc[
+            ball_distances.groupby("index")["dist_from_ball"].idxmin()
+        ].drop(columns=["index"])
 
-        closest_players.loc[closest_players['dist_from_ball'] > ball_distance_heuristic, 'player_id'] = pd.NA
-        closest_players.loc[closest_players['radius'] > ball_radius_heuristic, 'player_id'] = pd.NA
+        closest_players.loc[
+            closest_players["dist_from_ball"] > ball_distance_heuristic, "player_id"
+        ] = pd.NA
+        closest_players.loc[
+            closest_players["radius"] > ball_radius_heuristic, "player_id"
+        ] = pd.NA
 
-        ball_handler_df = closest_players.drop(columns=['radius'])
+        ball_handler_df = closest_players.drop(columns=["radius"])
 
         return ball_handler_df.reset_index()
 
@@ -623,9 +701,14 @@ class FeatureUtil:
         Returns:
             pd.DataFrame: DataFrame containing the closest defender moments and their distances.
         """
-        group = moment_df[moment_df.player_id != player_id].groupby("player_id")[["x_loc", "y_loc", "index"]]
+        group = moment_df[moment_df.player_id != player_id].groupby("player_id")[
+            ["x_loc", "y_loc", "index"]
+        ]
 
-        return group.apply(FeatureUtil.distance_between_players_with_moment, player_b=(moment_df[moment_df.player_id == player_id][["x_loc", "y_loc"]]))
+        return group.apply(
+            FeatureUtil.distance_between_players_with_moment,
+            player_b=(moment_df[moment_df.player_id == player_id][["x_loc", "y_loc"]]),
+        )
 
     @staticmethod
     def get_passes_for_event(moments_df, possession, players_data):
@@ -640,14 +723,18 @@ class FeatureUtil:
         Returns:
             list: List of pass dictionaries with passer, receiver, and pass moments.
         """
-        player_ids = PlayerMvmtProcessor.get_possession_team_player_ids(possession, players_data)
+        player_ids = PlayerMvmtProcessor.get_possession_team_player_ids(
+            possession, players_data
+        )
         ball_handler_df = FeatureUtil.get_ball_handler_for_event(moments_df, player_ids)
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
 
         return passes
 
     @staticmethod
-    def get_dribble_handoff_candidates(event, moments_df, event_passes, moment_range, players_dict, offset=0):
+    def get_dribble_handoff_candidates(
+        event, moments_df, event_passes, moment_range, players_dict, offset=0
+    ):
         """
         Extract potential dribble handoff candidates from event passes.
 
@@ -668,29 +755,38 @@ class FeatureUtil:
 
         # Iterate through DataFrame rows
         for index, event_pass in event_passes.iterrows():
-            if (not FeatureUtil.check_for_paint_pass(moments_df, event_pass) and 
-                not FeatureUtil.check_for_inbound_pass(moments_df, event_pass) and 
-                event_pass['pass_moment'] + moment_range >= event_pass['receive_moment']):
+            if (
+                not FeatureUtil.check_for_paint_pass(moments_df, event_pass)
+                and not FeatureUtil.check_for_inbound_pass(moments_df, event_pass)
+                and event_pass["pass_moment"] + moment_range
+                >= event_pass["receive_moment"]
+            ):
 
-                moment = moments_df.loc[moments_df['index'] == event_pass['pass_moment']]
+                moment = moments_df.loc[
+                    moments_df["index"] == event_pass["pass_moment"]
+                ]
 
                 if offset > 0:
                     event_id = f"{event_pass['event_id'].split('-')[0]}-{int(event_pass['event_id'].split('-')[1]) + offset}"
 
                 candidate_count += 1
-                candidates.append({
-                    'candidate_id': f"{event_id}-{candidate_count}",
-                    'event_id': event_id,
-                    'classification_type': 'dribble-hand-off',
-                    'manual_label': pd.NA,
-                    'period': moment['period'].iloc[0],
-                    'game_clock': DataLoader.convert_game_clock_to_timestamp(moment['game_clock'].iloc[0]),
-                    'shot_clock': moment['shot_clock'].iloc[0],
-                    'player_a': event_pass['passer'],
-                    'player_a_name': players_dict[event_pass['passer']][0],
-                    'player_b': event_pass['receiver'],
-                    'player_b_name': players_dict[event_pass['receiver']][0]
-                })
+                candidates.append(
+                    {
+                        "candidate_id": f"{event_id}-{candidate_count}",
+                        "event_id": event_id,
+                        "classification_type": "dribble-hand-off",
+                        "manual_label": pd.NA,
+                        "period": moment["period"].iloc[0],
+                        "game_clock": DataLoader.convert_game_clock_to_timestamp(
+                            moment["game_clock"].iloc[0]
+                        ),
+                        "shot_clock": moment["shot_clock"].iloc[0],
+                        "player_a": event_pass["passer"],
+                        "player_a_name": players_dict[event_pass["passer"]][0],
+                        "player_b": event_pass["receiver"],
+                        "player_b_name": players_dict[event_pass["receiver"]][0],
+                    }
+                )
 
         return candidates
 
@@ -712,7 +808,9 @@ class FeatureUtil:
         closest_vertex = -1
 
         for vertex in vertices:
-            temp_distance = abs(abs(x_loc) - abs(vertex[0])) + abs(abs(y_loc) - abs(vertex[1]))
+            temp_distance = abs(abs(x_loc) - abs(vertex[0])) + abs(
+                abs(y_loc) - abs(vertex[1])
+            )
             if temp_distance < min_distance:
                 min_distance = temp_distance
                 closest_vertex = vertex
@@ -730,7 +828,7 @@ class FeatureUtil:
         Returns:
             scipy.stats.linregress result object: Linear regression results.
         """
-        return linregress(player_trajectory['x_loc'], player_trajectory['y_loc'])
+        return linregress(player_trajectory["x_loc"], player_trajectory["y_loc"])
 
     @staticmethod
     def rotate_coordinates_around_center_court(moments_df):
@@ -743,8 +841,8 @@ class FeatureUtil:
         Returns:
             pd.DataFrame: DataFrame with rotated coordinates.
         """
-        moments_df.loc[:, 'x_loc'] = 47.0 - (moments_df.loc[:, 'x_loc'] - 47.0)
-        moments_df.loc[:, 'y_loc'] = 50.0 - moments_df.loc[:, 'y_loc']
+        moments_df.loc[:, "x_loc"] = 47.0 - (moments_df.loc[:, "x_loc"] - 47.0)
+        moments_df.loc[:, "y_loc"] = 50.0 - moments_df.loc[:, "y_loc"]
 
         return moments_df
 
@@ -783,8 +881,11 @@ class FeatureUtil:
             int or float: Duration of the pass event.
         """
         for event_pass in event_passes:
-            if moments.iloc[11 * event_pass['pass_moment']]['shot_clock'] == target_candidate['shot_clock']:
-                return event_pass['receive_moment'] - event_pass['pass_moment']
+            if (
+                moments.iloc[11 * event_pass["pass_moment"]]["shot_clock"]
+                == target_candidate["shot_clock"]
+            ):
+                return event_pass["receive_moment"] - event_pass["pass_moment"]
 
         return np.NaN
 
@@ -802,7 +903,10 @@ class FeatureUtil:
             Tuple[int, int]: Start and end moments of the pass event.
         """
         for event_pass in event_passes:
-            if moments.iloc[11 * event_pass['pass_moment']]['shot_clock'] == target_candidate['shot_clock']:
-                return event_pass['pass_moment'], event_pass['receive_moment']
+            if (
+                moments.iloc[11 * event_pass["pass_moment"]]["shot_clock"]
+                == target_candidate["shot_clock"]
+            ):
+                return event_pass["pass_moment"], event_pass["receive_moment"]
 
         return np.NaN, np.NaN
