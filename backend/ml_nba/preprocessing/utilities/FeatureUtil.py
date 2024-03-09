@@ -528,9 +528,9 @@ class FeatureUtil:
         # Construct the passes data
         passes_data = {
             'passer': start_possessions['player_id'].values[:-1],  # exclude the last as there's no subsequent receiver
-            'pass_moment': end_possessions['index'].values[:-1],  # moments when possession ends
+            'pass_moment': end_possessions.index.values[:-1],  # moments when possession ends
             'receiver': start_possessions['player_id'].values[1:],  # subsequent player receiving the ball
-            'receive_moment': start_possessions['index'].values[1:]  # moments when new possession starts
+            'receive_moment': start_possessions.index.values[1:]  # moments when new possession starts
         }
 
         # Convert to DataFrame
@@ -562,13 +562,7 @@ class FeatureUtil:
             (moments_df["index"] == event_pass["receive_moment"])
             & (moments_df["player_id"] == -1)
         ]
-        
-        print('\n\n\nChecking for paint pass')
-        print(moments_df)
-        print(event_pass)
-        print(start_loc)
-        print(end_loc)
-        raise Exception('booo')
+
         return (
             (
                 ((start_loc["x_loc"] >= 0.0) & (start_loc["x_loc"] <= 19.0))
@@ -648,7 +642,7 @@ class FeatureUtil:
         ] = pd.NA
 
         # Drop radius, reset index, and return ball_handler_df
-        return closest_players.drop(columns=["radius"]).reset_index()
+        return closest_players.drop(columns=["radius"]).reset_index(drop=True)
 
     @staticmethod
     def get_defender_for_player(moment_df, player_id, defensive_team_ids):
