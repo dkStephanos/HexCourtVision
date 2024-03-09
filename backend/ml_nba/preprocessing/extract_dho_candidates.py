@@ -72,7 +72,7 @@ def extract_dho_candidates(game_key: str, moment_range: int = None):
     print(result)
 
     candidate_df = pd.DataFrame(final_candidates)
-    candidate_df.to_csv(f"static/backend/test/candidates-{game_key}.csv")
+    candidate_df.to_csv(f"{ConstantsUtil.CANDIDATES_PATH}/candidates-{game_key}.csv")
     print("Saving to csv...\n")
 
     print(all_results)

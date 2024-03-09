@@ -3,6 +3,7 @@ class ConstantsUtil:
     RAW_DATA_PATH = STATIC_PATH + "/2016.NBA.Raw.SportVU.Game.Logs"
     CLEAN_DATA_PATH = STATIC_PATH + "/processed_games"
     EVENT_ANNOTATIONS_PATH = STATIC_PATH + "/event_annotations"
+    CANDIDATES_PATH = STATIC_PATH + "/candidates"
     
     EVENTMSGTYPE_DICT = {
         1: "Field Goal Made",
