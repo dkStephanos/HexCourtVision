@@ -495,99 +495,40 @@ class FeatureUtil:
         Returns:
             pd.DataFrame: A DataFrame containing columns 'passer', 'receiver', 'pass_moment', and 'receive_moment', detailing each identified passing event.
         """
-        # Ensure there is a 'tick' column
-        ball_handler_df["tick"] = ball_handler_df.index
+        # Identify where a new player gets the ball (changes from NaN or different player ID)
+        ball_handler_df['new_possession'] = ball_handler_df['player_id'].ne(ball_handler_df['player_id'].shift()) & ball_handler_df['player_id'].notna()
 
-        # Create a new column 'change_marker' that marks 1 for change and 0 otherwise, replacing 'change'
-        ball_handler_df["change_marker"] = (
-            ball_handler_df["player_id"].diff().ne(0).astype(int)
-        )
+        # Mark the end of a possession (where it changes to a different player or NaN)
+        ball_handler_df['end_possession'] = ball_handler_df['player_id'].ne(ball_handler_df['player_id'].shift(-1)) & ball_handler_df['player_id'].notna()
 
-        # To ensure a change is sustained, use 'shift' and 'cumsum' to create groups after each change
-        ball_handler_df["group"] = ball_handler_df["change_marker"].cumsum()
+        # Filter events where there is a change to a new player
+        start_possessions = ball_handler_df[ball_handler_df['new_possession']]
+        end_possessions = ball_handler_df[ball_handler_df['end_possession']]
 
-        # Now, for each group, check if it maintains the same player_id for the length of your window
-        # This can be done by checking if the count of unique player_ids in each window per group is 1
-        ball_handler_df["sustained_change"] = (
-            ball_handler_df.groupby("group")["player_id"]
-            .transform(
-                lambda x: x.rolling(window=window_size, min_periods=1)
-                .apply(lambda y: (y.nunique() == 1) and (y.iloc[0] != np.nan))
-                .fillna(0)
-            )
-            .astype(bool)
-        )
+        # Ensure the start and end possessions dataframes have same length
+        if len(start_possessions) > len(end_possessions):
+            # Add a fake end for the last possession if necessary
+            last_possession = start_possessions.iloc[-1:].copy()
+            last_possession['end_possession'] = True
+            last_possession['index'] = len(ball_handler_df) - 1  # assuming 'index' is your DataFrame index
+            end_possessions = pd.concat([end_possessions, last_possession], ignore_index=True)
 
-        # Finally, you need to update player_ids only where sustained_change has been marked True
-        ball_handler_df["filtered_player_id"] = np.where(
-            ball_handler_df["sustained_change"] == 1,
-            ball_handler_df["player_id"],
-            np.nan,
-        )
+        # Construct the passes data
+        passes_data = {
+            'passer': start_possessions['player_id'].values[:-1],  # exclude the last as there's no subsequent receiver
+            'pass_moment': end_possessions['index'].values[:-1],  # moments when possession ends
+            'receiver': start_possessions['player_id'].values[1:],  # subsequent player receiving the ball
+            'receive_moment': start_possessions['index'].values[1:]  # moments when new possession starts
+        }
 
-        # Apply forward fill and backward fill with limit
-        ball_handler_df["filled_player_id"] = (
-            ball_handler_df["filtered_player_id"]
-            .ffill(limit=fill_limit)
-            .bfill(limit=fill_limit)
-        )
+        # Convert to DataFrame
+        passes_df = pd.DataFrame(passes_data)
 
-        # Apply sustained changes to reduce noise
-        ball_handler_df["filtered_player_id"] = ball_handler_df["player_id"].where(
-            ball_handler_df["sustained_change"], np.nan
-        )
+        # Remove instances where passer and receiver are the same (due to noise or data error)
+        passes_df = passes_df[passes_df['passer'] != passes_df['receiver']]
 
-        # Fill gaps to close small NA segments, retaining sustained possession only
-        ball_handler_df["filled_player_id"] = (
-            ball_handler_df["filtered_player_id"]
-            .ffill(limit=fill_limit)
-            .bfill(limit=fill_limit)
-        )
+        return passes_df
 
-        # Detect significant changes in ball possession
-        ball_handler_df["prev_filled_player_id"] = ball_handler_df[
-            "filled_player_id"
-        ].shift(1)
-        changes = (
-            ball_handler_df["filled_player_id"]
-            != ball_handler_df["prev_filled_player_id"]
-        ) & ball_handler_df["filled_player_id"].notna()
-
-        # Extract rows where actual possession changes occurred
-        actual_changes = ball_handler_df[changes]
-
-        # Initialize variables to store the previous receiver and pass moment
-        previous_receiver = np.nan
-        previous_pass_moment = np.nan
-
-        # Initialize an empty list to store pass event data
-        pass_events_data = []
-
-        # Iterate through the actual changes to construct pass event details
-        for index, row in actual_changes.iterrows():
-            # Extract current receiver and receive moment
-            current_receiver = row["filled_player_id"]
-            current_receive_moment = row["tick"]
-
-            # Construct a dictionary for the pass event if previous_receiver is not NaN
-            if not np.isnan(previous_receiver):
-                pass_event = {
-                    "passer": previous_receiver,
-                    "pass_moment": previous_pass_moment,
-                    "receiver": current_receiver,
-                    "receive_moment": current_receive_moment,
-                }
-                # Append the dictionary to the list of pass events
-                pass_events_data.append(pass_event)
-
-            # Update previous_receiver and previous_pass_moment for the next iteration
-            previous_receiver = current_receiver
-            previous_pass_moment = current_receive_moment
-
-        # Convert the list of dictionaries to a DataFrame
-        pass_events = pd.DataFrame(pass_events_data).reset_index(drop=True)
-
-        return pass_events
 
     @staticmethod
     def check_for_paint_pass(moments_df, event_pass):
