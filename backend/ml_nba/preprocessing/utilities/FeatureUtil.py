@@ -617,7 +617,11 @@ class FeatureUtil:
         closest_players = ball_distances.loc[
             ball_distances.groupby("index")["dist_from_ball"].idxmin()
         ].drop(columns=["index"])
+        
+        # Ensure player_id column is of type nullable int
+        closest_players['player_id'] = closest_players['player_id'].astype('Int64')
 
+        # Null out possesion if ball distance or height heuristic is exceeded
         closest_players.loc[
             closest_players["dist_from_ball"] > ball_distance_heuristic, "player_id"
         ] = pd.NA
@@ -625,9 +629,8 @@ class FeatureUtil:
             closest_players["radius"] > ball_radius_heuristic, "player_id"
         ] = pd.NA
 
-        ball_handler_df = closest_players.drop(columns=["radius"])
-
-        return ball_handler_df.reset_index()
+        # Drop radius, reset index, and return ball_handler_df
+        return closest_players.drop(columns=["radius"]).reset_index()
 
     @staticmethod
     def get_defender_for_player(moment_df, player_id, defensive_team_ids):
