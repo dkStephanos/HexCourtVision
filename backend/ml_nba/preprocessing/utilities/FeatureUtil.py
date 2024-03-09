@@ -480,7 +480,7 @@ class FeatureUtil:
 
     @staticmethod
     def convert_ball_handler_to_passes(
-        ball_handler_df: pd.DataFrame, window_size: int = 3, fill_limit: int = 2
+        ball_handler_df: pd.DataFrame, fill_limit: int = 2
     ) -> pd.DataFrame:
         """
         Converts ball handling information into a DataFrame of passing events between players.
@@ -489,7 +489,6 @@ class FeatureUtil:
 
         Args:
             ball_handler_df (pd.DataFrame): DataFrame with columns 'tick' and 'player_id', indicating the ball's handler at each moment.
-            window_size (int, optional): The size of the rolling window used to filter out brief changes in possession, defaulting to 3 ticks.
             fill_limit (int, optional): The maximum number of consecutive NA values to fill, bridging short gaps where the ball is considered in transit, defaulting to 2.
 
         Returns:
@@ -500,6 +499,9 @@ class FeatureUtil:
 
         # Mark the end of a possession (where it changes to a different player or NaN)
         ball_handler_df['end_possession'] = ball_handler_df['player_id'].ne(ball_handler_df['player_id'].shift(-1)) & ball_handler_df['player_id'].notna()
+
+        # Apply fill limit to account for small changes where src data may flicker or fail
+        ball_handler_df['player_id'] = ball_handler_df['player_id'].ffill(limit=fill_limit).bfill(limit=fill_limit)
 
         # Filter events where there is a change to a new player
         start_possessions = ball_handler_df[ball_handler_df['new_possession']]
@@ -550,6 +552,12 @@ class FeatureUtil:
             (moments_df["index"] == event_pass["receive_moment"])
             & (moments_df["player_id"] == -1)
         ]
+        
+        print('\n\n\nChecking for paint pass')
+        print(moments_df)
+        print(event_pass)
+        print(start_loc)
+        print(end_loc)
 
         return (
             (
@@ -671,6 +679,7 @@ class FeatureUtil:
             possession, players_data
         )
         ball_handler_df = FeatureUtil.get_ball_handler_for_event(moments_df, player_ids)
+        print("ball_handler_df",ball_handler_df)
         passes = FeatureUtil.convert_ball_handler_to_passes(ball_handler_df)
 
         return passes
@@ -699,6 +708,8 @@ class FeatureUtil:
 
         # Iterate through DataFrame rows
         for index, event_pass in event_passes.iterrows():
+            print(FeatureUtil.check_for_paint_pass(moments_df, event_pass), FeatureUtil.check_for_inbound_pass(moments_df, event_pass), event_pass["pass_moment"] + moment_range
+                >= event_pass["receive_moment"])
             if (
                 not FeatureUtil.check_for_paint_pass(moments_df, event_pass)
                 and not FeatureUtil.check_for_inbound_pass(moments_df, event_pass)
