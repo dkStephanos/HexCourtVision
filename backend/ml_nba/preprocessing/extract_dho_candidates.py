@@ -4,14 +4,14 @@ from ml_nba.preprocessing.utilities.DataLoader import DataLoader
 from ml_nba.preprocessing.utilities.ConstantsUtil import ConstantsUtil
 from ml_nba.preprocessing.utilities.EventsProcessor import EventsProcessor
 
-    """
-        MISSED POSITIVE EVENTS, GAME -> 20160122LACNYK:
-        
-        34,21500648-268-1,21500648-268,dribble-hand-off,,3,9:07,15.51,204001,Kristaps Porzingis,101181,Jose Calderon,TRUE
-        42,21500648-411-1,21500648-411,dribble-hand-off,,4,10:57,16.23,202682,Derrick Williams,1626170,Jerian Grant,TRUE
-        54,21500648-471-2,21500648-471,dribble-hand-off,,4,5:25,7.92,203085,Austin Rivers,202332,Cole Aldrich,TRUE
-        60,21500648-517-1,21500648-517,dribble-hand-off,,4,1:38,9.35,202332,Cole Aldrich,203912,CJ Wilcox,TRUE
-    """
+"""
+    MISSED POSITIVE EVENTS, GAME -> 20160122LACNYK:
+    
+    34,21500648-268-1,21500648-268,dribble-hand-off,,3,9:07,15.51,204001,Kristaps Porzingis,101181,Jose Calderon,TRUE
+    42,21500648-411-1,21500648-411,dribble-hand-off,,4,10:57,16.23,202682,Derrick Williams,1626170,Jerian Grant,TRUE
+    54,21500648-471-2,21500648-471,dribble-hand-off,,4,5:25,7.92,203085,Austin Rivers,202332,Cole Aldrich,TRUE
+    60,21500648-517-1,21500648-517,dribble-hand-off,,4,1:38,9.35,202332,Cole Aldrich,203912,CJ Wilcox,TRUE
+"""
 
 def extract_dho_candidates(game_key: str, moment_range: int = None):
     print(f"\n\n------------------------------\n\nStarting {game_key}")
