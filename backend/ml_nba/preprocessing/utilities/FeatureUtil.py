@@ -580,7 +580,7 @@ class FeatureUtil:
     @staticmethod
     def check_for_inbound_pass(moments_df, event_pass):
         """
-        Check if a pass is an inbound pass based on the start location of the ball.
+        Check if a pass is an inbound pass based on the start location of the passer/ball.
 
         Args:
             moments_df (pd.DataFrame): DataFrame representing player locations and ball position at moments.
@@ -589,22 +589,38 @@ class FeatureUtil:
         Returns:
             bool: True if the pass is an inbound pass, False otherwise.
         """
-        start_loc = moments_df.loc[
+        # Extract the locations for the ball at the moment of the pass
+        start_loc_ball = moments_df.loc[
             (moments_df["index"] == event_pass["pass_moment"])
             & (moments_df["player_id"] == -1)
         ]
 
-        # Check for both baseline and sideline conditions
-        is_baseline_inbound = (
-            (start_loc["x_loc"] <= 0.0) | (start_loc["x_loc"] >= 94.0)
-        ) & (start_loc["y_loc"].between(0.0, 50.0))  # Anywhere between the sidelines
+        # Extract the locations for the passer at the moment of the pass
+        start_loc_passer = moments_df.loc[
+            (moments_df["index"] == event_pass["pass_moment"])
+            & (moments_df["player_id"] == event_pass["passer"])
+        ]
 
-        is_sideline_inbound = (
-            (start_loc["y_loc"] <= 0.0) | (start_loc["y_loc"] >= 50.0)
-        ) & (start_loc["x_loc"].between(0.0, 94.0))  # Anywhere along the length
+        # Check baseline inbound conditions for both the ball and the passer
+        is_baseline_inbound_ball = (
+            (start_loc_ball["x_loc"] <= 0.0) | (start_loc_ball["x_loc"] >= 94.0)
+        ) & (start_loc_ball["y_loc"].between(0.0, 50.0))  # Anywhere between the sidelines
 
-        # Return True if either condition is met for any of the rows
-        return is_baseline_inbound.any() | is_sideline_inbound.any()
+        is_baseline_inbound_passer = (
+            (start_loc_passer["x_loc"] <= 0.0) | (start_loc_passer["x_loc"] >= 94.0)
+        ) & (start_loc_passer["y_loc"].between(0.0, 50.0))  # Anywhere between the sidelines
+
+        # Check sideline inbound conditions for both the ball and the passer
+        is_sideline_inbound_ball = (
+            (start_loc_ball["y_loc"] <= 0.0) | (start_loc_ball["y_loc"] >= 50.0)
+        ) & (start_loc_ball["x_loc"].between(0.0, 94.0))  # Anywhere along the length
+
+        is_sideline_inbound_passer = (
+            (start_loc_passer["y_loc"] <= 0.0) | (start_loc_passer["y_loc"] >= 50.0)
+        ) & (start_loc_passer["x_loc"].between(0.0, 94.0))  # Anywhere along the length
+
+        # Return True if either inbound condition is met for both the ball and the passer
+        return (is_baseline_inbound_ball.any() | is_sideline_inbound_ball.any()) & (is_baseline_inbound_passer.any() | is_sideline_inbound_passer.any())
 
 
     @staticmethod
