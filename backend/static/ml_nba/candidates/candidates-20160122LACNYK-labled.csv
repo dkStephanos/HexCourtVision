@@ -24,21 +24,21 @@
 22,21500648-257-2,21500648-257,dribble-hand-off,FALSE,3,09:54,15.12,200755,JJ Redick,1718,Paul Pierce
 23,21500648-265-1,21500648-265,dribble-hand-off,FALSE,3,09:29,18.53,101108,Chris Paul,200755,JJ Redick
 24,21500648-267-1,21500648-267,dribble-hand-off,TRUE,3,09:24,13.57,201599,DeAndre Jordan,101108,Chris Paul
-25,21500648-281-1,21500648-281,dribble-hand-off,?,3,07:44,14.93,200755,JJ Redick,1718,Paul Pierce
-26,21500648-283-1,21500648-283,dribble-hand-off,?,3,07:38,6.73,1718,Paul Pierce,101108,Chris Paul
+25,21500648-281-1,21500648-281,dribble-hand-off,FALSE,3,07:44,14.93,200755,JJ Redick,1718,Paul Pierce
+26,21500648-283-1,21500648-283,dribble-hand-off,TRUE,3,07:38,6.73,1718,Paul Pierce,101108,Chris Paul
 27,21500648-284-1,21500648-284,dribble-hand-off,FALSE,3,07:24,11.49,101181,Jose Calderon,201167,Arron Afflalo
 28,21500648-287-1,21500648-287,dribble-hand-off,FALSE,3,06:48,17.45,2546,Carmelo Anthony,201577,Robin Lopez
-29,21500648-324-1,21500648-324,dribble-hand-off,?,3,04:37,7.52,1626170,Jerian Grant,202682,Derrick Williams
+29,21500648-324-1,21500648-324,dribble-hand-off,FALSE,3,04:37,7.52,1626170,Jerian Grant,202682,Derrick Williams
 30,21500648-336-1,21500648-336,dribble-hand-off,FALSE,3,04:06,5.89,1626170,Jerian Grant,204001,Kristaps Porzingis
 31,21500648-336-2,21500648-336,dribble-hand-off,FALSE,3,04:06,5.39,204001,Kristaps Porzingis,1626170,Jerian Grant
 32,21500648-346-1,21500648-346,dribble-hand-off,FALSE,3,03:32,18.49,101108,Chris Paul,201601,Luc Mbah a Moute
 33,21500648-346-2,21500648-346,dribble-hand-off,TRUE,3,03:31,17.54,201601,Luc Mbah a Moute,101108,Chris Paul
 34,21500648-416-1,21500648-416,dribble-hand-off,TRUE,4,10:43,9.29,202325,Wesley Johnson,2037,Jamal Crawford
 35,21500648-443-1,21500648-443,dribble-hand-off,FALSE,4,07:39,16.88,201167,Arron Afflalo,202338,Kevin Seraphin
-36,21500648-443-2,21500648-443,dribble-hand-off,?,4,07:38,15.35,202338,Kevin Seraphin,201167,Arron Afflalo
+36,21500648-443-2,21500648-443,dribble-hand-off,TRUE,4,07:38,15.35,202338,Kevin Seraphin,201167,Arron Afflalo
 37,21500648-471-1,21500648-471,dribble-hand-off,FALSE,4,05:27,8.1,203143,Pablo Prigioni,203085,Austin Rivers
 38,21500648-476-1,21500648-476,dribble-hand-off,TRUE,4,04:23,16.85,202338,Kevin Seraphin,2756,Sasha Vujacic
-39,21500648-485-1,21500648-485,dribble-hand-off,?,4,03:53,13.32,202362,Lance Stephenson,203143,Pablo Prigioni
+39,21500648-485-1,21500648-485,dribble-hand-off,FALSE,4,03:53,13.32,202362,Lance Stephenson,203143,Pablo Prigioni
 40,21500648-487-1,21500648-487,dribble-hand-off,FALSE,4,03:32,9.98,203912,CJ Wilcox,203085,Austin Rivers
 41,21500648-489-1,21500648-489,dribble-hand-off,FALSE,4,03:32,9.98,203912,CJ Wilcox,203085,Austin Rivers
 42,21500648-525-1,21500648-525,dribble-hand-off,FALSE,4,00:14,0.0,2756,Sasha Vujacic,200811,Lou Amundson
