@@ -16,28 +16,6 @@ class FeatureUtil:
     calculating travel distances, player speed, and other basketball-related features.
     """
 
-    def determine_possession_from_persontype(moments_df, teams_data):
-        """
-        NOTE: Doesn't get all events correct
-        Determine possession based on PERSON1TYPE column.
-
-        Args:
-            moments_df (pd.DataFrame): DataFrame containing moment data.
-            home_team_id (int): Identifier for the home team.
-            away_team_id (int): Identifier for the away team.
-
-        Returns:
-            pd.DataFrame: Updated DataFrame with a 'possession' column indicating the team in possession.
-        """
-        # Map PERSON1TYPE to team IDs
-        possession_map = {
-            4.0: teams_data["home_team"]["team_id"],
-            5.0: teams_data["away_team"]["team_id"],
-        }
-        moments_df["POSSESSION"] = moments_df["PERSON1TYPE"].map(possession_map)
-
-        return moments_df
-
     @staticmethod
     def determine_possession_from_eventmsg(annotation_df, players_data):
         """
