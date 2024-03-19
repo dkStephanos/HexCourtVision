@@ -51,12 +51,10 @@ def process_game(
 
     # Determine the direction of play for each event and filter out moments occurring outside the relevant half of the court
     combined_event_df = FeatureUtil.determine_directionality(combined_event_df)
-    print(combined_event_df.loc[[268]])
     combined_event_df = EventsProcessor.trim_moments_by_directionality(
         combined_event_df
     )
 
-    print(combined_event_df.loc[[16, 268, 273]])
     # Organize columns in the combined DataFrame in a logical order for analysis
     combined_event_df = AnnotationProcessor.organize_columns(combined_event_df)
 
