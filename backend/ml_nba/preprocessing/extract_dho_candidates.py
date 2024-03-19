@@ -13,7 +13,7 @@ from ml_nba.preprocessing.utilities.EventsProcessor import EventsProcessor
     60,21500648-517-1,21500648-517,dribble-hand-off,,4,1:38,9.35,202332,Cole Aldrich,203912,CJ Wilcox,TRUE
 """
 
-def extract_dho_candidates(game_key: str, moment_range: int = None):
+def extract_dho_candidates(game_key: str, moment_range: int = None, events: list = "<all>"):
     print(f"\n\n------------------------------\n\nStarting {game_key}")
 
     # Collect processed game and event data
@@ -33,6 +33,9 @@ def extract_dho_candidates(game_key: str, moment_range: int = None):
     players_data = DataLoader.get_players_data(raw_df)
     players_dict = DataLoader.get_players_dict(raw_df)
     print("Extracted team/player data")
+    print(players_dict)
+    if events != "<all>":
+        game_df = game_df.loc[events]
 
     all_candidates = []
     pass_detected = 0
@@ -41,6 +44,7 @@ def extract_dho_candidates(game_key: str, moment_range: int = None):
 
     print("Starting Candidate Extraction\n")
     for index, event in game_df.iterrows():
+        print(f"processing event: {event}")
         moments_df = EventsProcessor.get_moments_from_event(event)
 
         if not moments_df.empty:
