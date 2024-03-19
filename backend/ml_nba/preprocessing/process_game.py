@@ -28,20 +28,19 @@ def process_game(
     # Retrieve game-specific notes, including manual indicators of bad events and frame rate information
     game_notes = ConstantsUtil.games[game_key]
 
-    # Extract team and player metadata from the raw game data
-    teams_data = DataLoader.get_teams_data(game_df)
+    # Extract player metadata from the raw game data
+    players_data = DataLoader.get_players_data(game_df)
 
     # Filter out corrupted events from the annotation data based on manual indicators and retain only relevant possessions
     annotation_df = AnnotationProcessor.trim_annotation_rows(
         annotation_df, game_notes["bad_events"]
     )
-
     # Assign unique IDs to each event and identify the possessing team for each event
     annotation_df = AnnotationProcessor.generate_event_ids(annotation_df)
     
     # Extract possession info
-    annotation_df = FeatureUtil.determine_possession_from_persontype(annotation_df, teams_data)
-    
+    annotation_df = FeatureUtil.determine_possession_from_eventmsg(annotation_df, players_data)
+
     # Remove extraneous annotation columns after possession determination, as these columns are used for interim calculations
     annotation_df = AnnotationProcessor.trim_annotation_cols(annotation_df)
 
@@ -52,10 +51,12 @@ def process_game(
 
     # Determine the direction of play for each event and filter out moments occurring outside the relevant half of the court
     combined_event_df = FeatureUtil.determine_directionality(combined_event_df)
+    print(combined_event_df.loc[[268]])
     combined_event_df = EventsProcessor.trim_moments_by_directionality(
         combined_event_df
     )
 
+    print(combined_event_df.loc[[16, 268, 273]])
     # Organize columns in the combined DataFrame in a logical order for analysis
     combined_event_df = AnnotationProcessor.organize_columns(combined_event_df)
 
