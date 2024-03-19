@@ -18,6 +18,7 @@ class FeatureUtil:
 
     def determine_possession_from_persontype(moments_df, teams_data):
         """
+        NOTE: Doesn't get all events correct
         Determine possession based on PERSON1TYPE column.
 
         Args:
@@ -40,65 +41,59 @@ class FeatureUtil:
     @staticmethod
     def determine_possession_from_eventmsg(annotation_df, players_data):
         """
-        Determine possession for each event in the annotation DataFrame,
-        with fallback logic to derive team ID from player ID if necessary.
+        Revised method to determine possession for each event in the annotation DataFrame,
+        addressing edge cases and refining logic based on basketball rules.
 
         Args:
             annotation_df (pd.DataFrame): DataFrame containing event annotations.
             players_data (list): List of dictionaries with player and team data.
 
         Returns:
-            pd.DataFrame: DataFrame with a new 'possession' column indicating
+            pd.DataFrame: Updated DataFrame with a new 'possession' column indicating
                         the team in possession for each event.
         """
         # Convert the list of player data dictionaries into a player_id to team_id mapping
-        player_to_team_map = {
-            player["player_id"]: player["team_id"] for player in players_data
-        }
-        team_ids = set([player["team_id"] for player in players_data])
+        player_to_team_map = {player['player_id']: player['team_id'] for player in players_data}
+        # Extract unique team IDs for handling cases where opposite team's ID is needed
+        unique_team_ids = set(player['team_id'] for player in players_data)
 
         def determine_event_possession(row):
-            # Default to using PLAYER1_TEAM_ID for possession
-            possession_key = "PLAYER1_TEAM_ID"
+            # Default assumption for possession based on PLAYER1_TEAM_ID
+            possession_key = 'PLAYER1_TEAM_ID'
 
-            event_type = row["EVENTMSGTYPE"]
-            # Adjust logic based on the type of event
-            if event_type in [1, 2, 5]:
-                possession_key = "PLAYER1_TEAM_ID"
+            event_type = row['EVENTMSGTYPE']
+            # Adjust logic based on event type
+            if event_type in [1, 2, 5]:  # Possession typically remains with PLAYER1's team
+                possession_key = 'PLAYER1_TEAM_ID'
             elif event_type == 6:
-                possession_key = "PLAYER2_TEAM_ID"
-            elif "Shot Clock" in str(row["VISITORDESCRIPTION"]):
-                # Assuming turnover gives possession to the other team
-                possession_key = "PLAYER2_TEAM_ID"
-            elif "T.Foul" in str(row["HOMEDESCRIPTION"]):
-                possession_key = "PLAYER1_TEAM_ID"
+                # If it's a type of foul, decide based on specific rules or descriptions
+                # For defensive fouls or where PLAYER2_ID is zero, special handling might be needed
+                if row['PLAYER2_ID'] == 0:
+                    # Here, we might need to determine possession based on the context of the foul
+                    # E.g., for a defensive 3 seconds violation, switch possession to the other team
+                    # This might need customization based on your data and rules
+                    if "Def. 3 Sec" in (str(row["VISITORDESCRIPTION"]) + str(row["HOMEDESCRIPTION"])).replace('nan', ''):
+                        # Determine the team that's not committing the foul
+                        non_fouling_team_id = next((id for id in unique_team_ids if id != row['PLAYER1_TEAM_ID']), 'Unknown')
+                        return non_fouling_team_id
+                    # Add additional foul-specific conditions here
+                else:
+                    # For other types of fouls, use PLAYER2_TEAM_ID when available
+                    possession_key = 'PLAYER2_TEAM_ID'
 
-            # Check if team ID is present; if not, derive from player ID
+            # Final check for possession, either directly or via player-team mapping
             if pd.isna(row.get(possession_key)):
-                # Use PLAYER1_ID or PLAYER2_ID based on the possession key
-                player_id_key = (
-                    "PLAYER1_ID"
-                    if possession_key == "PLAYER1_TEAM_ID"
-                    else "PLAYER2_ID"
-                )
+                player_id_key = 'PLAYER1_ID' if possession_key == 'PLAYER1_TEAM_ID' else 'PLAYER2_ID'
                 player_id = row.get(player_id_key)
-
-                # For some events, the player ID actually contains a team ID
-                if player_id in team_ids:
-                    return player_id
-
-                # In most cases, look up the team ID using the player ID
-                if player_id not in player_to_team_map:
-                    raise Exception(f"Unable to determine possesion for: {row}")
-                return player_to_team_map[player_id]
+                return player_to_team_map.get(player_id, 'Unknown')  # Default to 'Unknown' if mapping fails
             else:
                 return row.get(possession_key)
 
-        annotation_df["POSSESSION"] = annotation_df.apply(
-            determine_event_possession, axis=1
-        )
+        # Apply the custom logic to each event in the DataFrame
+        annotation_df['POSSESSION'] = annotation_df.apply(determine_event_possession, axis=1).astype(str)
 
         return annotation_df
+
 
     @staticmethod
     def determine_directionality(combined_event_df):
