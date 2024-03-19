@@ -18,7 +18,7 @@ class AnnotationProcessor:
             pd.DataFrame: Trimmed DataFrame with specified rows removed.
         """
         # Extract only make, miss, turnover, and (non-technical) foul events
-        annotation_df = annotation_df.loc[(annotation_df["EVENTMSGTYPE"].isin([1, 2, 5, 6])) & (annotation_df["EVENTMSGACTIONTYPE"] != 11)]
+        annotation_df = annotation_df.loc[annotation_df["EVENTMSGTYPE"].isin([1, 2, 5, 6])]
 
 
         # Trim out specific event types
