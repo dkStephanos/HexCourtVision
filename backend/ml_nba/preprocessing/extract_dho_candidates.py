@@ -33,7 +33,7 @@ def extract_dho_candidates(game_key: str, moment_range: int = None, events: list
     players_data = DataLoader.get_players_data(raw_df)
     players_dict = DataLoader.get_players_dict(raw_df)
     print("Extracted team/player data")
-    print(players_dict)
+
     if events != "<all>":
         game_df = game_df.loc[events]
 
@@ -49,7 +49,7 @@ def extract_dho_candidates(game_key: str, moment_range: int = None, events: list
 
         if not moments_df.empty:
             event_passes = FeatureUtil.get_passes_for_event(
-                moments_df, event["POSSESSION"], players_data
+                moments_df, int(event["POSSESSION"]), players_data
             )
 
             if len(event_passes) > 0:
@@ -86,5 +86,3 @@ def extract_dho_candidates(game_key: str, moment_range: int = None, events: list
     candidate_df = pd.DataFrame(final_candidates)
     candidate_df.to_csv(f"{ConstantsUtil.CANDIDATES_PATH}/candidates-{game_key}.csv")
     print("Saving to csv...\n")
-
-    print(all_results)
