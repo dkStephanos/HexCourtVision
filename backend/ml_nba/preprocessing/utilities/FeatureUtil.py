@@ -41,8 +41,15 @@ class FeatureUtil:
 
             event_type = row['EVENTMSGTYPE']
             # Adjust logic based on event type
-            if event_type in [1, 2, 5]:  # Possession typically remains with PLAYER1's team
+            if event_type in [1, 2]:  # Possession typically remains with PLAYER1's team
                 possession_key = 'PLAYER1_TEAM_ID'
+            elif event_type == 5:  # Handling all turnovers
+                # Check if PLAYER1_ID corresponds to a team ID, which indicates a team turnover
+                if row['PLAYER1_ID'] in unique_team_ids:
+                    # This signifies the team that has committed the turnover
+                    return row['PLAYER1_ID']
+                else:
+                    possession_key = 'PLAYER1_TEAM_ID'  # Handle individual turnovers normally
             elif event_type == 6:
                 # If it's a type of foul, decide based on specific rules or descriptions
                 # For defensive fouls or where PLAYER2_ID is zero, special handling might be needed
@@ -66,9 +73,8 @@ class FeatureUtil:
                 return player_to_team_map.get(player_id, 'Unknown')  # Default to 'Unknown' if mapping fails
             else:
                 return row.get(possession_key)
-
         # Apply the custom logic to each event in the DataFrame
-        annotation_df['POSSESSION'] = annotation_df.apply(determine_event_possession, axis=1).astype(str)
+        annotation_df['POSSESSION'] = annotation_df.apply(determine_event_possession, axis=1).astype(int)
 
         return annotation_df
 
@@ -623,7 +629,7 @@ class FeatureUtil:
         closest_players = ball_distances.loc[
             ball_distances.groupby("index")["dist_from_ball"].idxmin()
         ].drop(columns=["index"])
-        
+
         # Ensure player_id column is of type nullable int
         closest_players['player_id'] = closest_players['player_id'].astype('Int64')
 
