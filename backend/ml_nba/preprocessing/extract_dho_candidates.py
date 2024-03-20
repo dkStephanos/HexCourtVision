@@ -4,21 +4,19 @@ from ml_nba.preprocessing.utilities.DataLoader import DataLoader
 from ml_nba.preprocessing.utilities.ConstantsUtil import ConstantsUtil
 from ml_nba.preprocessing.utilities.EventsProcessor import EventsProcessor
 
-"""
-    MISSED POSITIVE EVENTS, GAME -> 20160122LACNYK:
-    
-    34,21500648-268-1,21500648-268,dribble-hand-off,,3,9:07,15.51,204001,Kristaps Porzingis,101181,Jose Calderon,TRUE
-    42,21500648-411-1,21500648-411,dribble-hand-off,,4,10:57,16.23,202682,Derrick Williams,1626170,Jerian Grant,TRUE
-    54,21500648-471-2,21500648-471,dribble-hand-off,,4,5:25,7.92,203085,Austin Rivers,202332,Cole Aldrich,TRUE
-    60,21500648-517-1,21500648-517,dribble-hand-off,,4,1:38,9.35,202332,Cole Aldrich,203912,CJ Wilcox,TRUE
-"""
 
-def extract_dho_candidates(game_key: str, moment_range: int = None, events: list = "<all>"):
-    print(f"\n\n------------------------------\n\nStarting {game_key}")
+def extract_dho_candidates(
+    game_key: str,
+    moment_range: int = None,
+    events: list = "<all>",
+    save_results: bool = True,
+):
+    print(f"\n\n-------\n\nStarting {game_key}")
 
     # Collect processed game and event data
     game_df = DataLoader.load_processed_game(game_key)
     raw_df = DataLoader.load_raw_game(game_key)
+    print(f"Loaded game {game_key}")
 
     # Not all recordings seem to be at the same frequency, moment_range helps scale this
     # NOTE: defaults to 8 ticks of the clock as the maximum window for the action to occur
@@ -27,8 +25,6 @@ def extract_dho_candidates(game_key: str, moment_range: int = None, events: list
             moment_range = ConstantsUtil.games[game_key]["moment_range"]
         else:
             moment_range = 8
-
-    print(f"Loaded game")
 
     players_data = DataLoader.get_players_data(raw_df)
     players_dict = DataLoader.get_players_dict(raw_df)
@@ -40,7 +36,6 @@ def extract_dho_candidates(game_key: str, moment_range: int = None, events: list
     all_candidates = []
     pass_detected = 0
     hand_off_detected = 0
-    all_results = "All Results:\n\n"
 
     print("Starting Candidate Extraction\n")
     for index, event in game_df.iterrows():
@@ -54,16 +49,22 @@ def extract_dho_candidates(game_key: str, moment_range: int = None, events: list
 
             if len(event_passes) > 0:
                 pass_detected += 1
-                
+
                 dribble_handoff_candidates = FeatureUtil.get_dribble_handoff_candidates(
                     event, moments_df, event_passes, moment_range, players_dict
                 )
                 if dribble_handoff_candidates:
-                    all_candidates.extend(dribble_handoff_candidates)  # Assuming this is a list
+                    all_candidates.extend(
+                        dribble_handoff_candidates
+                    )  # Assuming this is a list
                     hand_off_detected += 1
-                    print(f"Discovered {len(dribble_handoff_candidates)} dho candidates for event: {index}!")
+                    print(
+                        f"Discovered {len(dribble_handoff_candidates)} dho candidates for event: {index}!"
+                    )
                 else:
-                    print(f"No handoffs detected amoung {len(event_passes)} passes for event: {index}")
+                    print(
+                        f"No handoffs detected amoung {len(event_passes)} passes for event: {index}"
+                    )
             else:
                 print(f"No event_passes for event: {index}")
         else:
@@ -72,7 +73,7 @@ def extract_dho_candidates(game_key: str, moment_range: int = None, events: list
     final_candidates = EventsProcessor.remove_duplicate_candidates(all_candidates)
 
     result = (
-        f"\n\n------------------------------\n\nStats for {game_key}\n"
+        f"\n\n-------\n\nStats for {game_key}\n"
         + f"\nNumber of candidates parsed: {str(len(final_candidates))}"
         + f"\nEvents w/ pass detected: "
         + str(pass_detected)
@@ -80,9 +81,14 @@ def extract_dho_candidates(game_key: str, moment_range: int = None, events: list
         + str(hand_off_detected)
         + f"\nPercent w/ candidate: {str(round(hand_off_detected / (len(game_df)), 2) * 100)}%"
     )
-    all_results += result
     print(result)
 
     candidate_df = pd.DataFrame(final_candidates)
-    candidate_df.to_csv(f"{ConstantsUtil.CANDIDATES_PATH}/candidates-{game_key}.csv")
-    print("Saving to csv...\n")
+
+    if save_results:
+        print("Saving to csv...\n")
+        candidate_df.to_csv(
+            f"{ConstantsUtil.CANDIDATES_PATH}/candidates-{game_key}.csv"
+        )
+
+    return candidate_df
