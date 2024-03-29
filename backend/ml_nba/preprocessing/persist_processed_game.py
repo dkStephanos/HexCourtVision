@@ -32,10 +32,15 @@ def persist_processed_game(game_key: str):
 
     """
     print("Loading data files")
-    game_df, annotation_df, combined_event_df, candidate_df = DataLoader.load_all_data_for_game(game_key)
+    game_df = DataLoader.load_raw_game(game_key)
+    annotation_df = DataLoader.load_game_events(game_key)
+    combined_event_df = DataLoader.load_processed_game(game_key)
+    candidate_df = DataLoader.load_game_candidates(game_key)
 
     print("Processing Data Files")
-    game_data, teams_data, players_data = DataLoader.process_all_game_data(game_df, annotation_df)
+    game_data = DataLoader.get_game_data(game_df, annotation_df)
+    teams_data = DataLoader.get_teams_data(game_df)
+    players_data = DataLoader.get_players_data(game_df)
 
     print("Creating or Updating Game/Team/Player models")
     with transaction.atomic():
