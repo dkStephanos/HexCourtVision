@@ -1,20 +1,16 @@
 from django.db import transaction
-from ml_nba.models import Game
-from ml_nba.models import Team
-from ml_nba.models import Player
-from ml_nba.models import Event
-from ml_nba.models import Moment
-from ml_nba.models import Candidate
+from ml_nba.models import Game, Event, Moment, Candidate, Team, Player
 from ml_nba.preprocessing.utilities.DataLoader import DataLoader
+from ml_nba.preprocessing.utilities.DatabaseUtil import DatabaseUtil
 
 
-def persist_processed_game(game_key: str):
+def persist_processed_game(game_key: str, overwrite: bool = True):
     """
     Processes and persists all relevant data for a single NBA game into the database.
-    
+
     This function takes a game key, loads raw and processed data files associated with that game,
     processes the data to extract game, team, player, event, moment, and candidate information,
-    and updates or creates corresponding records in the database. Uses django transactions to 
+    and updates or creates corresponding records in the database. Uses django transactions to
     ensure atomic operations and rollback any changes if we run into an exception during persistence.
 
     Parameters:
@@ -31,6 +27,8 @@ def persist_processed_game(game_key: str):
     8. Utilize Django's transaction.atomic to ensure data integrity and efficient bulk operations.
 
     """
+    
+    
     print("Loading data files")
     game_df = DataLoader.load_raw_game(game_key)
     annotation_df = DataLoader.load_game_events(game_key)
@@ -41,26 +39,43 @@ def persist_processed_game(game_key: str):
     game_data = DataLoader.get_game_data(game_df, annotation_df)
     teams_data = DataLoader.get_teams_data(game_df)
     players_data = DataLoader.get_players_data(game_df)
-
+    print(teams_data, players_data)
     print("Creating or Updating Game/Team/Player models")
     with transaction.atomic():
-        home_team, _ = Team.objects.update_or_create(**teams_data[0])
-        visitor_team, _ = Team.objects.update_or_create(**teams_data[1])
+        home_team, _ = Team.objects.update_or_create(**teams_data["home_team"])
+        visitor_team, _ = Team.objects.update_or_create(**teams_data["away_team"])
         game, _ = Game.objects.update_or_create(
-            game_id=game_data["game_id"], 
-            defaults={**game_data, "home_team": home_team, "visitor_team": visitor_team})
+            game_id=game_data["game_id"],
+            defaults={
+                **game_data,
+                "home_team": home_team,
+                "visitor_team": visitor_team,
+            },
+        )
 
-        Player.objects.bulk_update_or_create(players_data)
+        DatabaseUtil.bulk_update_or_create(
+            Player,
+            players_data,
+            "player_id",
+            ["team_id", "last_name", "first_name", "jersey_number", "position"],
+        )
 
     print("Collecting and Creating Event and Moment Data")
-    events, moments = DataLoader.collect_events_and_moments(combined_event_df, candidate_df)
+    events, moments = DataLoader.collect_events_and_moments(
+        combined_event_df, candidate_df
+    )
 
     with transaction.atomic():
         for event_data in events:
             event, _ = Event.objects.get_or_create(**event_data)
-            
+
             # Assume moments_data is structured for bulk creation
-            Moment.objects.bulk_create([Moment(**moment_data, event=event) for moment_data in moments[event_data['event_id']]])
+            Moment.objects.bulk_create(
+                [
+                    Moment(**moment_data, event=event)
+                    for moment_data in moments[event_data["event_id"]]
+                ]
+            )
 
     print("Creating Candidate Models")
     with transaction.atomic():
