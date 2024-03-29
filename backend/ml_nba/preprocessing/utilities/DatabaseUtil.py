@@ -1,9 +1,29 @@
 from django.db import transaction
+from django.core.exceptions import ObjectDoesNotExist
+from ml_nba.models import Game, Event, Moment, Candidate, CandidateFeatureVector, CandidateHexmap
+
 
 class DatabaseUtil:
     """
     A utility class for extending Django ORM functionality
     """
+    
+    @staticmethod
+    def check_game_exists(game_id):
+        """
+        Checks if a game with the specified game ID exists in the database.
+
+        Parameters:
+        - game_id (str): The unique identifier for the game.
+
+        Returns:
+        - bool: True if the game exists, False otherwise.
+        """
+        try:
+            Game.objects.get(game_id=game_id)
+            return True
+        except ObjectDoesNotExist:
+            return False
 
     @staticmethod
     def bulk_update_or_create(model_class, model_data, unique_field, update_fields):
@@ -47,3 +67,28 @@ class DatabaseUtil:
                                 setattr(existing_instance, field, getattr(update_instance, field))
                             break
                 model_class.objects.bulk_update(existing_instances, update_fields)
+                
+    @staticmethod
+    def clear_game_related_data(game_id):
+        """
+        Clears all data related to a specific game, including Events, Moments, Candidates,
+        and their related data, before deleting the Game record itself.
+        """
+        with transaction.atomic():
+            # Fetch related events to the game
+            events = Event.objects.filter(game__game_id=game_id)
+
+            # Fetch related candidates to events
+            candidates = Candidate.objects.filter(event__in=events)
+            
+            # Delete Candidate related models
+            CandidateFeatureVector.objects.filter(candidate__in=candidates).delete()
+            CandidateHexmap.objects.filter(candidate__in=candidates).delete()
+            
+            # Delete Moments and Candidates
+            Moment.objects.filter(event__in=events).delete()
+            candidates.delete()
+            
+            # Now, it's safe to delete Events and then the Game
+            events.delete()
+            Game.objects.filter(game_id=game_id).delete()
