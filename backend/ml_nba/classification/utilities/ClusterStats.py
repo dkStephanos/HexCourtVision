@@ -30,12 +30,12 @@ class ClusterStats:
     def print_breakdown_by_team(self):
         print('Breakdown by team:')
         for key, cluster in self.clusters.items():
-            teams = [action[2]['abreviation'] for action in cluster]
+            teams = [action[2]['abbreviation'] for action in cluster]
             print(f'Team totals for cluster {key}: {Counter(teams).items()}')
 
     def print_breakdown_for_team(self, team_abbr):
         print(f'Breakdown for team: {team_abbr}')
-        counts = Counter([key for key, cluster in self.clusters.items() for action in cluster if action[2]['abreviation'] == team_abbr])
+        counts = Counter([key for key, cluster in self.clusters.items() for action in cluster if action[2]['abbreviation'] == team_abbr])
         print(f'Cluster totals for team {team_abbr}: {dict(counts)}')
 
     def print_player_breakdown(self, player_name):

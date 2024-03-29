@@ -8,7 +8,7 @@ class Team(models.Model):
     team_id = models.CharField(primary_key=True, max_length=15)
     color = models.CharField(max_length=7)
     name = models.CharField(max_length=25)
-    abreviation = models.CharField(max_length=3)
+    abbreviation = models.CharField(max_length=3)
 
 class Player(models.Model):
     class Meta:

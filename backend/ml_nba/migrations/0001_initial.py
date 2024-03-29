@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                 ('team_id', models.CharField(max_length=15, primary_key=True, serialize=False)),
                 ('color', models.CharField(max_length=7)),
                 ('name', models.CharField(max_length=25)),
-                ('abreviation', models.CharField(max_length=3)),
+                ('abbreviation', models.CharField(max_length=3)),
             ],
         ),
         migrations.CreateModel(
