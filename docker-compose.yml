@@ -21,21 +21,22 @@ services:
     env_file:
       - ./backend/.env
 
-  frontend:
-    build:
-      context: .
-      dockerfile: ./frontend/Dockerfile.frontend
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    ports:
-      - "3000:3000"
-    networks:
-      - app-network
-    depends_on:
-      - backend
-    env_file:
-      - ./frontend/.env
+  # Not building this currently, as development is hung waiting on backend refactor
+  # frontend:
+  #   build:
+  #     context: .
+  #     dockerfile: ./frontend/Dockerfile.frontend
+  #   volumes:
+  #     - ./frontend:/app
+  #     - /app/node_modules
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - app-network
+  #   depends_on:
+  #     - backend
+  #   env_file:
+  #     - ./frontend/.env
 
   db:
     image: postgres
