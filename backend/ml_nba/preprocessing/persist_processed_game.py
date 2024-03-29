@@ -43,7 +43,7 @@ def persist_processed_game(game_id: str, overwrite: bool = True):
     game_data = DataLoader.get_game_data(game_df, annotation_df)
     teams_data = DataLoader.get_teams_data(game_df)
     players_data = DataLoader.get_players_data(game_df)
-    print(teams_data, players_data)
+
     print("Creating or Updating Game/Team/Player models")
     with transaction.atomic():
         home_team, _ = Team.objects.update_or_create(**teams_data["home_team"])
@@ -65,9 +65,12 @@ def persist_processed_game(game_id: str, overwrite: bool = True):
         )
 
     print("Collecting and Creating Event and Moment Data")
-    events, moments = DataLoader.collect_events_and_moments(
-        combined_event_df, candidate_df
-    )
+    events = []
+    moments = []
+    for index, event in combined_event_df.iterrows():
+        if (f"{event['GAME_ID']}-{event.index}" in set(candidate_df['event_id'])):
+            events.append(event)
+            moments.append(DataLoader.get_moments_from_event(event))
 
     with transaction.atomic():
         for event_data in events:
