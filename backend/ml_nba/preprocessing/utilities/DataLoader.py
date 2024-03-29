@@ -78,6 +78,16 @@ class DataLoader:
         df["MOMENTS"] = df["MOMENTS"].apply(cls._eval_nested_list)
 
         return df
+    
+    @classmethod
+    def load_game_candidates(cls, game_key):
+        # Construct annotation file path
+        candidates_file_name = f"candidates-{game_key}.csv"  # Assuming the game_key can directly derive the file name
+        candidates_path = os.path.join(
+            ConstantsUtil.CANDIDATES_PATH, candidates_file_name
+        )
+
+        return pd.read_csv(candidates_path)
 
     @classmethod
     def _eval_nested_list(cls, row):
