@@ -15,6 +15,8 @@ def persist_processed_game(game_id: str, overwrite: bool = True):
 
     Parameters:
     - game_id (str): A unique identifier for the game being processed.
+    - overwrite (bool): Indicates whether to overwrite previous game data. Defaults to true,
+                        and an exception is thrown if False and game data found
 
     Steps involved:
     1. Load data files for the game, its events, combined event data, and candidate data.
@@ -27,7 +29,9 @@ def persist_processed_game(game_id: str, overwrite: bool = True):
     8. Utilize Django's transaction.atomic to ensure data integrity and efficient bulk operations.
 
     """
-    
+    if DatabaseUtil.check_game_exists(game_id):
+        if not overwrite:
+            raise Exception(f"Cannot persist requested game_id: {game_id}. Game already present and overwrite set to False.")
     
     print("Loading data files")
     game_df = DataLoader.load_raw_game(game_id)
