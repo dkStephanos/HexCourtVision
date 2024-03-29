@@ -73,7 +73,10 @@ class DatabaseUtil:
         """
         Clears all data related to a specific game, including Events, Moments, Candidates,
         and their related data, before deleting the Game record itself.
-        """
+        """  
+        if not DatabaseUtil.check_game_exists(game_id):
+            raise Exception(f"Cannot clear game related data for id: {game_id} -- No game data found!")
+        
         with transaction.atomic():
             # Fetch related events to the game
             events = Event.objects.filter(game__game_id=game_id)
