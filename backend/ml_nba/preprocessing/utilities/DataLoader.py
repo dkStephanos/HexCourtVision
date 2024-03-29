@@ -45,11 +45,11 @@ class DataLoader:
         return game_df, annotation_df
 
     @classmethod
-    def load_raw_game(cls, game_key):
+    def load_raw_game(cls, game_id):
         # Derive game folder name from game key
-        # This might require custom logic to convert game_key to folder name format, e.g., "YYYYMMDDAAAHHH" to "MM.DD.YYYY.AAA.at.HHH"
-        game_folder_name = cls.convert_game_key_to_folder_name(
-            game_key
+        # This might require custom logic to convert game_id to folder name format, e.g., "YYYYMMDDAAAHHH" to "MM.DD.YYYY.AAA.at.HHH"
+        game_folder_name = cls.convert_game_id_to_folder_name(
+            game_id
         )  # Placeholder for actual conversion logic
 
         game_folder_path = os.path.join(ConstantsUtil.RAW_DATA_PATH, game_folder_name)
@@ -60,9 +60,9 @@ class DataLoader:
         return pd.read_json(game_file_path)
 
     @classmethod
-    def load_game_events(cls, game_key):
+    def load_game_events(cls, game_id):
         # Construct annotation file path
-        annotation_file_name = f"events-{game_key}.csv"  # Assuming the game_key can directly derive the file name
+        annotation_file_name = f"events-{game_id}.csv"  # Assuming the game_id can directly derive the file name
         annotation_path = os.path.join(
             ConstantsUtil.EVENT_ANNOTATIONS_PATH, annotation_file_name
         )
@@ -80,9 +80,9 @@ class DataLoader:
         return df
     
     @classmethod
-    def load_game_candidates(cls, game_key):
+    def load_game_candidates(cls, game_id):
         # Construct annotation file path
-        candidates_file_name = f"candidates-{game_key}.csv"  # Assuming the game_key can directly derive the file name
+        candidates_file_name = f"candidates-{game_id}.csv"  # Assuming the game_id can directly derive the file name
         candidates_path = os.path.join(
             ConstantsUtil.CANDIDATES_PATH, candidates_file_name
         )
@@ -100,14 +100,14 @@ class DataLoader:
             return None
 
     @staticmethod
-    def convert_game_key_to_folder_name(game_key):
+    def convert_game_id_to_folder_name(game_id):
         # Placeholder for conversion logic
         # Convert "YYYYMMDDAAAHHH" to expected folder name format, e.g., "MM.DD.YYYY.AAA.at.HHH"
         # Example: "20160101DALMIA" -> "01.01.2016.DAL.at.MIA"
         # This is a simplified example and may need adjustment based on actual key structure and naming conventions
-        date = game_key[:8]
-        away_team = game_key[8:11]
-        home_team = game_key[11:14]
+        date = game_id[:8]
+        away_team = game_id[8:11]
+        home_team = game_id[11:14]
         formatted_date = f"{date[4:6]}.{date[6:8]}.{date[:4]}"
         folder_name = f"{formatted_date}.{away_team}.at.{home_team}"
 

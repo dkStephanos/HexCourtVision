@@ -7,13 +7,13 @@ from ml_nba.preprocessing.utilities.EventsProcessor import EventsProcessor
 
 
 def process_game(
-    game_key: str, save_results=True, save_dir=ConstantsUtil.CLEAN_DATA_PATH
+    game_id: str, save_results=True, save_dir=ConstantsUtil.CLEAN_DATA_PATH
 ):
     """
     Processes a single NBA game's raw data to prepare it for machine learning analysis.
 
     Parameters:
-    - game_key (str): The unique identifier for the game to be processed.
+    - game_id (str): The unique identifier for the game to be processed.
     - save_results (bool): Flag indicating whether to save the processed data to a file. Defaults to True.
     - save_dir (str): The directory path where the processed data files will be saved. Defaults to the CLEAN_DATA_PATH defined in ConstantsUtil.
 
@@ -21,12 +21,12 @@ def process_game(
     - DataFrame: A pandas DataFrame containing the processed game and event data, ready for ML analysis.
     """
 
-    # Load the raw game data and associated event annotations for the specified game_key
-    game_df = DataLoader.load_raw_game(game_key)
-    annotation_df = DataLoader.load_game_events(game_key)
+    # Load the raw game data and associated event annotations for the specified game_id
+    game_df = DataLoader.load_raw_game(game_id)
+    annotation_df = DataLoader.load_game_events(game_id)
 
     # Retrieve game-specific notes, including manual indicators of bad events and frame rate information
-    game_notes = ConstantsUtil.games[game_key]
+    game_notes = ConstantsUtil.games[game_id]
 
     # Extract player metadata from the raw game data
     players_data = DataLoader.get_players_data(game_df)
@@ -60,7 +60,7 @@ def process_game(
 
     # If saving results is enabled, write the processed data to a CSV file in the specified directory
     if save_results:
-        combined_event_df.to_csv(f"{save_dir}/{game_key}.csv")
+        combined_event_df.to_csv(f"{save_dir}/{game_id}.csv")
 
     # Return the processed DataFrame
     return combined_event_df

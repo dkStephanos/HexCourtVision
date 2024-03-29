@@ -4,7 +4,7 @@ from ml_nba.preprocessing.utilities.DataLoader import DataLoader
 from ml_nba.preprocessing.utilities.DatabaseUtil import DatabaseUtil
 
 
-def persist_processed_game(game_key: str, overwrite: bool = True):
+def persist_processed_game(game_id: str, overwrite: bool = True):
     """
     Processes and persists all relevant data for a single NBA game into the database.
 
@@ -14,7 +14,7 @@ def persist_processed_game(game_key: str, overwrite: bool = True):
     ensure atomic operations and rollback any changes if we run into an exception during persistence.
 
     Parameters:
-    - game_key (str): A unique identifier for the game being processed.
+    - game_id (str): A unique identifier for the game being processed.
 
     Steps involved:
     1. Load data files for the game, its events, combined event data, and candidate data.
@@ -30,10 +30,10 @@ def persist_processed_game(game_key: str, overwrite: bool = True):
     
     
     print("Loading data files")
-    game_df = DataLoader.load_raw_game(game_key)
-    annotation_df = DataLoader.load_game_events(game_key)
-    combined_event_df = DataLoader.load_processed_game(game_key)
-    candidate_df = DataLoader.load_game_candidates(game_key)
+    game_df = DataLoader.load_raw_game(game_id)
+    annotation_df = DataLoader.load_game_events(game_id)
+    combined_event_df = DataLoader.load_processed_game(game_id)
+    candidate_df = DataLoader.load_game_candidates(game_id)
 
     print("Processing Data Files")
     game_data = DataLoader.get_game_data(game_df, annotation_df)
