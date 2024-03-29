@@ -1,3 +1,4 @@
+from django.db import transaction
 from ml_nba.models import Game
 from ml_nba.models import Team
 from ml_nba.models import Player
@@ -6,108 +7,59 @@ from ml_nba.models import Moment
 from ml_nba.models import Candidate
 from ml_nba.preprocessing.utilities.DataLoader import DataLoader
 
+
 def persist_processed_game(game_key: str):
+    """
+    Processes and persists all relevant data for a single NBA game into the database.
+    
+    This function takes a game key, loads raw and processed data files associated with that game,
+    processes the data to extract game, team, player, event, moment, and candidate information,
+    and updates or creates corresponding records in the database. Uses django transactions to 
+    ensure atomic operations and rollback any changes if we run into an exception during persistence.
+
+    Parameters:
+    - game_key (str): A unique identifier for the game being processed.
+
+    Steps involved:
+    1. Load data files for the game, its events, combined event data, and candidate data.
+    2. Process the raw data files to extract structured data for game, teams, and players.
+    3. Update or create records for the home and visitor teams, and the game itself.
+    4. Bulk update or create player records to minimize database hits.
+    5. Collect event and moment data based on processed combined event data and candidate data.
+    6. Create event records and associated moment records in bulk, again to improve efficiency.
+    7. Process and create candidate records for the game.
+    8. Utilize Django's transaction.atomic to ensure data integrity and efficient bulk operations.
+
+    """
     print("Loading data files")
-    game_df = DataLoader.load_raw_game(game_key)
-    annotation_df = DataLoader.load_game_events(game_key)
-    combined_event_df = DataLoader.load_processed_game(game_key)
-    candidate_df = DataLoader.load_game_candidates(game_key)
+    game_df, annotation_df, combined_event_df, candidate_df = DataLoader.load_all_data_for_game(game_key)
 
     print("Processing Data Files")
-    game_data = DataLoader.get_game_data(game_df, annotation_df)
-    teams_data = DataLoader.get_teams_data(game_df)
-    players_data = DataLoader.get_players_data(game_df)
+    game_data, teams_data, players_data = DataLoader.process_all_game_data(game_df, annotation_df)
 
-    print("Creating Game/Team/Player models")
-    home_team = Team.objects.update_or_create(**teams_data[0])
-    visitor_team = Team.objects.update_or_create(**teams_data[1])
-    Game.objects.update_or_create(
-        game_id=game_data["game_id"], 
-        game_date=game_data["game_date"], 
-        home_team=home_team[0], 
-        visitor_team=visitor_team[0], 
-        final_score=game_data["final_score"])
+    print("Creating or Updating Game/Team/Player models")
+    with transaction.atomic():
+        home_team, _ = Team.objects.update_or_create(**teams_data[0])
+        visitor_team, _ = Team.objects.update_or_create(**teams_data[1])
+        game, _ = Game.objects.update_or_create(
+            game_id=game_data["game_id"], 
+            defaults={**game_data, "home_team": home_team, "visitor_team": visitor_team})
 
-    for player in players_data:
-        Player.objects.update_or_create(**player)
-        
-    print("Collecting Event and Moment data")
-    all_events = []
-    all_moments = []
-    for index, event in combined_event_df.iterrows():
-        if (f"{event['GAME_ID']}-{event['EVENTNUM']:03}" in set(candidate_df['event_id'])):
-            all_events.append(event)
-            all_moments.append(DataLoader.get_moments_from_event(event))
+        Player.objects.bulk_update_or_create(players_data)
 
-    print("\nCreating Event models")
-    for event in all_events:
-        try:
-            Event.objects.get(event_id=event['event_id'])
-        except:
-            try:
-                player_1 = Player.objects.get(player_id=str(int(event['PLAYER2_ID'])))
-            except:
-                player_1 = None
-            try:
-                player_2 = Player.objects.get(player_id=str(int(event['PLAYER2_ID'])))
-            except:
-                player_2 = None
-            try:
-                player_3 = Player.objects.get(player_id=str(int(event['PLAYER3_ID'])))
-            except:
-                player_3 = None
+    print("Collecting and Creating Event and Moment Data")
+    events, moments = DataLoader.collect_events_and_moments(combined_event_df, candidate_df)
 
-            Event.objects.create(
-                event_id = event['event_id'],
-                game = Game.objects.get(game_id=event['GAME_ID']),
-                possesion_team = Team.objects.get(team_id=str(int(event['possession']))),
-                player_1 = player_1,
-                player_2 = player_2,
-                player_3 = player_3,
-                event_num = event['EVENTNUM'],
-                event_msg_type = event['EVENTMSGTYPE'],
-                event_action_type = event['EVENTMSGACTIONTYPE'],
-                period = event['PERIOD'],
-                period_time = event['PCTIMESTRING'],
-                home_desc = event['HOMEDESCRIPTION'],
-                visitor_desc = event['VISITORDESCRIPTION'],
-                score = event['SCORE'],
-                directionality = event['direction']
-                )
+    with transaction.atomic():
+        for event_data in events:
+            event, _ = Event.objects.get_or_create(**event_data)
             
-    print("\nCreating Moment models")
-    for moments in all_moments:
-        for index, moment in moments.iterrows():
-            Moment.objects.get_or_create(
-                team = Team.objects.get(team_id=moment['team_id']) if moment['team_id'] != -1 else None, 
-                player = Player.objects.get(player_id=moment['player_id']) if moment['player_id'] != -1 else None, 
-                event = Event.objects.get(event_id=moment['event_id']), 
-                x_loc = moment['x_loc'], 
-                y_loc = moment['y_loc'], 
-                radius = moment['radius'], 
-                index = moment['moment'], 
-                game_clock = moment['game_clock'],
-                shot_clock = moment['shot_clock'],
-            )
-            
-    print("\nCreating Candidate models")
-    for index, candidate in candidate_df.iterrows():
-        try:
-            Candidate.objects.get(candidate_id=candidate['candidate_id'])
-        except:
-            Candidate.objects.create(
-                candidate_id = candidate['candidate_id'],
-                event = Event.objects.get(event_id=candidate['event_id']),
-                classification_type = candidate['classification_type'],
-                manual_label = candidate['manual_label'],
-                period = candidate['period'],
-                game_clock = candidate['game_clock'],
-                shot_clock = candidate['shot_clock'],
-                player_a = Player.objects.get(player_id=candidate['player_a']),
-                player_a_name = candidate['player_a_name'],
-                player_b = Player.objects.get(player_id=candidate['player_b']),
-                player_b_name = candidate['player_b_name'],
-                notes = candidate['notes'],
-            )
+            # Assume moments_data is structured for bulk creation
+            Moment.objects.bulk_create([Moment(**moment_data, event=event) for moment_data in moments[event_data['event_id']]])
+
+    print("Creating Candidate Models")
+    with transaction.atomic():
+        for candidate_data in candidate_df.itertuples(index=False):
+            Candidate.objects.get_or_create(**dict(candidate_data))
 
     print("Finished processing game")
