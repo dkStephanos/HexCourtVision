@@ -6,7 +6,7 @@ candidate_id,event_id,classification_type,period,game_clock,shot_clock,player_a,
 21500648-054-1,21500648-054,dribble-hand-off,1,05:34,11.56,201577,Robin Lopez,201167,Arron Afflalo,False
 21500648-059-1,21500648-059,dribble-hand-off,1,05:13,16.43,202682,Derrick Williams,2546,Carmelo Anthony,False
 21500648-066-1,21500648-066,dribble-hand-off,1,04:39,19.38,101108,Chris Paul,200755,JJ Redick,True
-21500648-070-1,21500648-070,dribble-hand-off,1,04:22,22.06,202325,Wesley Johnson,101108,Chris Paul,
+21500648-070-1,21500648-070,dribble-hand-off,1,04:22,22.06,202325,Wesley Johnson,101108,Chris Paul,False
 21500648-096-1,21500648-096,dribble-hand-off,1,01:20,16.68,201599,DeAndre Jordan,101108,Chris Paul,False
 21500648-104-1,21500648-104,dribble-hand-off,1,00:52,13.31,201599,DeAndre Jordan,101108,Chris Paul,False
 21500648-116-1,21500648-116,dribble-hand-off,2,11:49,9.39,202325,Wesley Johnson,203085,Austin Rivers,True
