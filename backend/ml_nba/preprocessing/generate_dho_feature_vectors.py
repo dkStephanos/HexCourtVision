@@ -6,7 +6,7 @@ from ml_nba.preprocessing.utilities.FeatureUtil import FeatureUtil
 
 pd.set_option('mode.chained_assignment', None)
 
-def run():
+def generate_dho_feature_vectors():
     num_failed_candidates = 0
     num_successful_candidates = 0
     issue_candidates = []
