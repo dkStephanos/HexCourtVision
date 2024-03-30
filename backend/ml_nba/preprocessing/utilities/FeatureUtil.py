@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 from scipy.spatial.distance import euclidean
 from scipy.stats import linregress
-from .EventsProcessor import EventsProcessor
 from .DataLoader import DataLoader
 from .PlayerMvmtProcessor import PlayerMvmtProcessor
 

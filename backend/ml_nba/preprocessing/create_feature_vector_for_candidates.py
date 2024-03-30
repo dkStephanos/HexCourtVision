@@ -1,23 +1,16 @@
-
+import math, sys, os, traceback
 import pandas as pd
 import matplotlib.pyplot as plt
-import math, sys, os, traceback
-from django.forms.models import model_to_dict
-
-from ml_nba.preprocessing.utilities.DataUtil import DataUtil
+from ml_nba.models import Game, Event, Moment, Candidate, CandidateFeatureVector, Player
+from ml_nba.preprocessing.utilities.DataLoader import DataLoader
 from ml_nba.preprocessing.utilities.FeatureUtil import FeatureUtil
-from ml_nba.preprocessing.utilities.GraphUtil import GraphUtil
+from ml_nba.preprocessing.utilities.PlayerMvmtProcessor import PlayerMvmtProcessor
+from ml_nba.visualization.GraphUtil import GraphUtil
 
-from ml_nba.models import Game
-from ml_nba.models import Player
-from ml_nba.models import Event
-from ml_nba.models import Moment
-from ml_nba.models import Candidate
-from ml_nba.models import CandidateFeatureVector
 
 pd.set_option('mode.chained_assignment', None)
 
-def generate_feature_vector(target_event, target_candidate):
+def generate_feature_vector(target_candidate):
     # Collects moments for single candidate
     moments = pd.DataFrame(list(Moment.objects.filter(event_id=target_candidate['event_id']).values()))
 
@@ -29,7 +22,7 @@ def generate_feature_vector(target_event, target_candidate):
     event_passes = FeatureUtil.get_passess_for_event(moments, Event.objects.values().get(event_id=target_candidate['event_id'])['possession_team_id'], list(Player.objects.values()))
 
     # Trim the moments data around the pass
-    game_clock = DataUtil.convert_timestamp_to_game_clock(target_candidate['game_clock'])
+    game_clock = DataLoader.convert_timestamp_to_game_clock(target_candidate['game_clock'])
     trimmed_moments = moments[(moments.game_clock > game_clock - 2) & (moments.game_clock < game_clock + 2)]
 
     # If the data occurs past half-court (x > 47), rotate the points about the center of the court so features appear consistent 
@@ -44,7 +37,7 @@ def generate_feature_vector(target_event, target_candidate):
     end_moment = execution_moments.iloc[len(execution_moments) - 12:len(execution_moments) - 1]
 
     # Gets screen moment
-    screener_pos_data = DataUtil.get_player_position_data(trimmed_moments, screener['player_id'])
+    screener_pos_data = PlayerMvmtProcessor.get_player_position_data(trimmed_moments, screener['player_id'])
     filtered_moments = trimmed_moments.loc[(trimmed_moments.player_id.isin([screener['player_id'], cutter['player_id']]))]
     distance_from_screener = FeatureUtil.distance_between_player_and_other_players(screener['player_id'], screener_pos_data, filtered_moments)
     min_dist_from_screen = min(distance_from_screener[0])
@@ -236,13 +229,12 @@ def run():
     for game in Game.objects.all():
         events = Event.objects.filter(game=game)
         for event in events:
-            target_event = model_to_dict(event)
             next_candidates = Candidate.objects.filter(event=event).values()
             for target_candidate in next_candidates:
                 has_vector = CandidateFeatureVector.objects.filter(candidate=target_candidate).exists()
                 if not has_vector:
                     try:
-                        vector = generate_feature_vector(target_event, target_candidate)
+                        vector = generate_feature_vector(target_candidate)
                         CandidateFeatureVector.objects.update_or_create(**vector)
                         num_successful_candidates += 1
                     except Exception as e:
