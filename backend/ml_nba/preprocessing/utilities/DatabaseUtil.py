@@ -33,7 +33,7 @@ class DatabaseUtil:
             return False
 
     @staticmethod
-    def bulk_update_or_create(model_class, model_data, unique_field, update_fields):
+    def bulk_update_or_create(model_class, model_data, unique_field):
         """
         Manually implement bulk update or create functionality for any Django model class.
 
@@ -41,7 +41,6 @@ class DatabaseUtil:
         - model_class: The Django model class to which the operation will be applied.
         - model_data (list of dicts): A list where each dict represents data for the model instance.
         - unique_field (str): The field name used to identify unique records.
-        - update_fields (list of str): Field names that should be updated if a record already exists.
         """
         with transaction.atomic():
             # Fetch existing records' unique field values
@@ -66,10 +65,13 @@ class DatabaseUtil:
                 existing_instances = model_class.objects.filter(
                     **{"%s__in" % unique_field: list(to_update.keys())}
                 )
+                update_fields = []
                 for instance in existing_instances:
                     update_data = to_update[getattr(instance, unique_field)]
-                    for field in update_fields:
-                        setattr(instance, field, update_data[field])
+                    for field in update_data.keys():
+                        if field != unique_field:
+                            update_fields.append(field)
+                            setattr(instance, field, update_data[field])
                 # Perform the bulk update
                 model_class.objects.bulk_update(existing_instances, update_fields)
 
