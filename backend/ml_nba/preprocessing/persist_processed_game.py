@@ -5,7 +5,7 @@ from ml_nba.preprocessing.utilities.DatabaseUtil import DatabaseUtil
 from ml_nba.preprocessing.utilities.EventsProcessor import EventsProcessor
 
 
-def persist_processed_game(game_id: str, overwrite: bool = False):
+def persist_processed_game(game_key: str, overwrite: bool = False):
     """
     Processes and persists all relevant data for a single NBA game into the database.
 
@@ -15,7 +15,7 @@ def persist_processed_game(game_id: str, overwrite: bool = False):
     ensure atomic operations and rollback any changes if we run into an exception during persistence.
 
     Parameters:
-    - game_id (str): A unique identifier for the game being processed.
+    - game_key (str): A unique identifier for the game being processed. ex: '20160122LACNYK'
     - overwrite (bool): Indicates whether to overwrite previous game data. Defaults to False.
                         NOTE: An exception is thrown if False and game data found
 
@@ -30,14 +30,14 @@ def persist_processed_game(game_id: str, overwrite: bool = False):
     8. Utilize Django's transaction.atomic to ensure data integrity and efficient bulk operations.
 
     """
-    if DatabaseUtil.check_game_exists(game_id):
+    if DatabaseUtil.check_game_exists(game_key):
         if not overwrite:
-            raise Exception(f"Cannot persist requested game_id: {game_id}. Game already present and overwrite set to False.")
+            raise Exception(f"Cannot persist requested game_key: {game_key}. Game already present and overwrite set to False.")
         else:
             print('Overwrite set to True. Dropping previous entries...')
             with transaction.atomic():
                 # Fetch related Event instances
-                game = Game.objects.get(game_id=game_id)
+                game = Game.objects.get(game_id=game_key) # Internally, we use the game_key as the game_id
                 related_events = Event.objects.filter(game=game)
                 
                 # Delete related Moment/Candidate instances
@@ -63,10 +63,13 @@ def persist_processed_game(game_id: str, overwrite: bool = False):
     with transaction.atomic():
         home_team, _ = Team.objects.update_or_create(**teams_data["home_team"])
         visitor_team, _ = Team.objects.update_or_create(**teams_data["away_team"])
+        
+        # We use the more readable game_key as our internal game_id
         game, _ = Game.objects.update_or_create(
-            game_id=game_data["game_id"],
+            game_id=game_key,
             defaults={
                 **game_data,
+                "game_id": game_key,
                 "home_team": home_team,
                 "visitor_team": visitor_team,
             },
@@ -158,4 +161,4 @@ def persist_processed_game(game_id: str, overwrite: bool = False):
         if candidate_instances:
             Candidate.objects.bulk_create(candidate_instances)
 
-    print("Finished processing game.")
+    print("Finished processing game")
