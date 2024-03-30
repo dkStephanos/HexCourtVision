@@ -25,6 +25,8 @@ class Game(models.Model):
     class Meta:
         app_label = 'ml_nba'
         
+    # Internally, game_id is game_key in the processing scripts. 
+    # Tracking data has an internal game_id that is less readable, thus we favor the format: Date-AwayAbrv-HomeAbrv, ie. 20160122LACNYK
     game_id = models.CharField(primary_key=True, max_length=15)
     home_team = models.ForeignKey(Team, related_name="home_team", on_delete=models.SET_NULL, null=True)
     visitor_team = models.ForeignKey(Team, related_name="visitor_team", on_delete=models.SET_NULL, null=True)
