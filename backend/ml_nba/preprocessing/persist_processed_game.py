@@ -47,11 +47,12 @@ def persist_processed_game(game_id: str, overwrite: bool = False):
                 # Now, you can delete the Event instances
                 related_events.delete()
     
-    print("Loading data files...")
-    game_df = DataLoader.load_raw_game(game_id)
-    annotation_df = DataLoader.load_game_events(game_id)
-    combined_event_df = DataLoader.load_processed_game(game_id)
-    candidate_df = DataLoader.load_game_candidates(game_id)
+    
+    print("Loading data files")
+    game_df = DataLoader.load_raw_game(game_key)
+    annotation_df = DataLoader.load_game_events(game_key)
+    combined_event_df = DataLoader.load_processed_game(game_key)
+    candidate_df = DataLoader.load_game_candidates(game_key)
 
     print("Processing Data Files...")
     game_data = DataLoader.get_game_data(game_df, annotation_df)

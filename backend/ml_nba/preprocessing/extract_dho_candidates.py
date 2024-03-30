@@ -6,23 +6,23 @@ from ml_nba.preprocessing.utilities.EventsProcessor import EventsProcessor
 
 
 def extract_dho_candidates(
-    game_id: str,
+    game_key: str,
     moment_range: int = None,
     events: list = "<all>",
     save_results: bool = True,
 ):
-    print(f"\n\n-------\n\nStarting {game_id}")
+    print(f"\n\n-------\n\nStarting {game_key}")
 
     # Collect processed game and event data
-    game_df = DataLoader.load_processed_game(game_id)
-    raw_df = DataLoader.load_raw_game(game_id)
-    print(f"Loaded game {game_id}")
+    game_df = DataLoader.load_processed_game(game_key)
+    raw_df = DataLoader.load_raw_game(game_key)
+    print(f"Loaded game {game_key}")
 
     # Not all recordings seem to be at the same frequency, moment_range helps scale this
     # NOTE: defaults to 8 ticks of the clock as the maximum window for the action to occur
     if moment_range is None:
-        if game_id in ConstantsUtil.games:
-            moment_range = ConstantsUtil.games[game_id]["moment_range"]
+        if game_key in ConstantsUtil.games:
+            moment_range = ConstantsUtil.games[game_key]["moment_range"]
         else:
             moment_range = 8
 
@@ -73,7 +73,7 @@ def extract_dho_candidates(
     final_candidates = EventsProcessor.remove_duplicate_candidates(all_candidates)
 
     result = (
-        f"\n\n-------\n\nStats for {game_id}\n"
+        f"\n\n-------\n\nStats for {game_key}\n"
         + f"\nNumber of candidates parsed: {str(len(final_candidates))}"
         + f"\nEvents w/ pass detected: "
         + str(pass_detected)
@@ -88,7 +88,7 @@ def extract_dho_candidates(
     if save_results:
         print("Saving to csv...\n")
         candidate_df.to_csv(
-            f"{ConstantsUtil.CANDIDATES_PATH}/candidates-{game_id}.csv"
+            f"{ConstantsUtil.CANDIDATES_PATH}/candidates-{game_key}.csv"
         )
 
     return candidate_df
