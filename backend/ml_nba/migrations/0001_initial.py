@@ -94,7 +94,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='event',
-            name='possesion_team',
+            name='possession_team',
             field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='ml_nba.team'),
         ),
         migrations.CreateModel(

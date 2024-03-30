@@ -26,7 +26,7 @@ def generate_feature_vector(target_event, target_candidate):
     cutter = Player.objects.values().get(player_id=target_candidate['player_b_id'])
 
     # Collects passes for event
-    event_passes = FeatureUtil.get_passess_for_event(moments, Event.objects.values().get(event_id=target_candidate['event_id'])['possesion_team_id'], list(Player.objects.values()))
+    event_passes = FeatureUtil.get_passess_for_event(moments, Event.objects.values().get(event_id=target_candidate['event_id'])['possession_team_id'], list(Player.objects.values()))
 
     # Trim the moments data around the pass
     game_clock = DataUtil.convert_timestamp_to_game_clock(target_candidate['game_clock'])

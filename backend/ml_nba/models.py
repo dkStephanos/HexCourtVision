@@ -37,7 +37,7 @@ class Event(models.Model):
         
     event_id = models.CharField(primary_key=True, max_length=15)
     game = models.ForeignKey(Game, related_name="events", on_delete=models.SET_NULL, null=True)
-    possesion_team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
+    possession_team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
     player_1 = models.ForeignKey(Player, related_name="player_1", on_delete=models.SET_NULL, null=True)
     player_2 = models.ForeignKey(Player, related_name="player_2", on_delete=models.SET_NULL, null=True)
     player_3 = models.ForeignKey(Player, related_name="player_3", on_delete=models.SET_NULL, null=True)

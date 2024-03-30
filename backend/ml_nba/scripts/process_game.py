@@ -87,7 +87,7 @@ def run():
             Event.objects.create(
                 event_id = event['event_id'],
                 game = Game.objects.get(game_id=event['GAME_ID']),
-                possesion_team = Team.objects.get(team_id=str(int(event['possession']))),
+                possession_team = Team.objects.get(team_id=str(int(event['possession']))),
                 player_1 = player_1,
                 player_2 = player_2,
                 player_3 = player_3,

@@ -36,7 +36,7 @@ def generate_trajectory_image(target_event, target_candidate):
     # Collects moments for single candidate
     moments = pd.DataFrame(list(Moment.objects.filter(event_id=target_candidate['event_id']).values()))
 
-    event_passes = FeatureUtil.get_passess_for_event(moments, Event.objects.values().get(event_id=target_candidate['event_id'])['possesion_team_id'], list(Player.objects.values()))
+    event_passes = FeatureUtil.get_passess_for_event(moments, Event.objects.values().get(event_id=target_candidate['event_id'])['possession_team_id'], list(Player.objects.values()))
     pass_moment, receive_moment = FeatureUtil.get_pass_start_end(moments, event_passes, target_candidate)
 
     # Collects players for single candidate
