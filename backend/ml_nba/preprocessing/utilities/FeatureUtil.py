@@ -871,6 +871,27 @@ class FeatureUtil:
 
     @staticmethod
     def generate_dribble_handoff_feature_vector(target_candidate):
+        """
+        Generates a feature vector for a dribble handoff (DHO) event involving a specific candidate.
+
+        This method processes moments data to extract and compute features relevant to the DHO
+        play, including player positions, movements, and interactions. It handles data transformations,
+        computes distances, speeds, and trajectories, and organizes these into a structured feature vector.
+
+        Parameters:
+        - target_candidate (dict): A dictionary containing information about the candidate,
+                                    including event_id, player_a_id (screener), and player_b_id (cutter).
+
+        Returns:
+        - dict: A dictionary representing the feature vector for the DHO event, containing
+                classification data, player data, location data, travel distance data,
+                relative distance data, speed/acceleration data, linear regression data,
+                and play data.
+
+        Raises:
+        - Exception: If any errors occur during the generation of the feature vector,
+                        including issues with data retrieval or processing.
+        """
         # Collects moments for single candidate
         moments = pd.DataFrame(list(Moment.objects.filter(event_id=target_candidate['event_id']).values()))
 
@@ -1075,9 +1096,5 @@ class FeatureUtil:
             'num_players_past_half_court': FeatureUtil.num_players_past_halfcourt(pass_moment),
             'is_inbounds_pass': FeatureUtil.check_for_inbound_pass(moments, event_passes[0])
         }
-
-        print("\n\n------------------------------ Feature Vector ---------------------------\n")
-        print(feature_vector)
-        print(f"\n Num Features: {len(feature_vector.keys())-2}")
 
         return feature_vector
