@@ -262,7 +262,7 @@ class FeatureUtil:
         Returns:
             float: Euclidean distance between player A and player B at the moment.
         """
-        return euclidean(player_a[["x_loc", "y_loc"]], player_b[["x_loc", "y_loc"]])
+        return euclidean(player_a, player_b)
 
     @staticmethod
     def distance_between_players(player_a, player_b):
@@ -373,9 +373,9 @@ class FeatureUtil:
             lambda x: [
                 (
                     euclidean(
-                        player_loc[["x_loc", "y_loc"]], x.iloc[i][["x_loc", "y_loc"]]
+                        player_loc[["x_loc", "y_loc"]].values[0], x.iloc[i][["x_loc", "y_loc"]]
                     ),
-                    x.iloc[i][2],
+                    x.iloc[i]["index"],
                 )
                 for i in range(len(x))
             ]
