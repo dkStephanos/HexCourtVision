@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Attach to Jupyter",
+            "type": "debugpy",
+            "request": "attach",
+            "connect": {
+                "host": "192.168.99.100",
+                "port": 5679
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/backend", // Adjust if your local workspace structure is different
+                    "remoteRoot": "/app/backend/notebooks" // Adjust if your Django project is in a subdirectory of /app
+                }
+            ]
+        }
+    ]
+}
