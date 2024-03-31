@@ -1,7 +1,4 @@
-import os
-import ast
-import glob
-import easygui
+import os, ast, glob, easygui
 import pandas as pd
 import numpy as np
 from .ConstantsUtil import ConstantsUtil
@@ -162,6 +159,7 @@ class DataLoader:
         game_dict["home_team"] = game_df.iloc[0]["events"]["home"]["teamid"]
         game_dict["visitor_team"] = game_df.iloc[0]["events"]["visitor"]["teamid"]
         game_dict["final_score"] = annotation_df.iloc[-1]["SCORE"]
+        
         return game_dict
 
     @staticmethod
