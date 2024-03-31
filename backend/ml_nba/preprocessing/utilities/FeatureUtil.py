@@ -736,9 +736,10 @@ class FeatureUtil:
                         "classification_type": "dribble-hand-off",
                         "manual_label": pd.NA,
                         "period": moment["period"].iloc[0],
-                        "game_clock": DataLoader.convert_game_clock_to_timestamp(
+                        "timestamp": DataLoader.convert_game_clock_to_timestamp(
                             moment["game_clock"].iloc[0]
                         ),
+                        "game_clock": moment["game_clock"].iloc[0],
                         "shot_clock": moment["shot_clock"].iloc[0],
                         "player_a": event_pass["passer"],
                         "player_a_name": players_dict[event_pass["passer"]][0],
@@ -932,7 +933,7 @@ class FeatureUtil:
         cutter_df_execution = execution_moments[execution_moments['player_id'] == cutter['player_id']][['x_loc', 'y_loc']]
         screener_df_execution = execution_moments[execution_moments['player_id'] == screener['player_id']][['x_loc', 'y_loc']]
         ball_df_execution = execution_moments[execution_moments['player_id'] == -1][['x_loc', 'y_loc']]
-        
+
         # Collect linregress stats for cutter, screener, ball for approach/execution stages
         cutter_linregress_stats_approach = FeatureUtil.get_lingress_results_for_player_trajectory(cutter_df_approach)
         screener_linregress_stats_approach = FeatureUtil.get_lingress_results_for_player_trajectory(screener_df_approach)
