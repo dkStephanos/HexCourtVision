@@ -931,16 +931,18 @@ class FeatureUtil:
         screener_df = trimmed_moments[trimmed_moments['player_id'] == screener['player_id']][['x_loc', 'y_loc']]
         ball_df = trimmed_moments[trimmed_moments['player_id'].isna()][['x_loc', 'y_loc']]
         
-        # Collect linregress stats for cutter, screener, ball
+        # Segment cutter, screener, and ball actions into approach/execution stages
         cutter_df_approach = approach_moments[approach_moments['player_id'] == cutter['player_id']][['x_loc', 'y_loc']]
         screener_df_approach = approach_moments[approach_moments['player_id'] == screener['player_id']][['x_loc', 'y_loc']]
         ball_df_approach = approach_moments[approach_moments['player_id'].isna()][['x_loc', 'y_loc']]
-        cutter_linregress_stats_approach = FeatureUtil.get_lingress_results_for_player_trajectory(cutter_df_approach)
-        screener_linregress_stats_approach = FeatureUtil.get_lingress_results_for_player_trajectory(screener_df_approach)
-        ball_linregress_stats_approach = FeatureUtil.get_lingress_results_for_player_trajectory(ball_df_approach)
         cutter_df_execution = execution_moments[execution_moments['player_id'] == cutter['player_id']][['x_loc', 'y_loc']]
         screener_df_execution = execution_moments[execution_moments['player_id'] == screener['player_id']][['x_loc', 'y_loc']]
         ball_df_execution = execution_moments[execution_moments['player_id'].isna()][['x_loc', 'y_loc']]
+        
+        # Collect linregress stats for cutter, screener, ball for approach/execution stages
+        cutter_linregress_stats_approach = FeatureUtil.get_lingress_results_for_player_trajectory(cutter_df_approach)
+        screener_linregress_stats_approach = FeatureUtil.get_lingress_results_for_player_trajectory(screener_df_approach)
+        ball_linregress_stats_approach = FeatureUtil.get_lingress_results_for_player_trajectory(ball_df_approach)
         cutter_linregress_stats_execution = FeatureUtil.get_lingress_results_for_player_trajectory(cutter_df_execution)
         screener_linregress_stats_execution = FeatureUtil.get_lingress_results_for_player_trajectory(screener_df_execution)
         ball_linregress_stats_execution = FeatureUtil.get_lingress_results_for_player_trajectory(ball_df_execution)
