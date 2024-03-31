@@ -2,12 +2,13 @@ import math
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from ml_nba.models import Event, Moment, Player
+from ml_nba.models import Event, Player
 from ml_nba.visualization.GraphUtil import GraphUtil
 from scipy.spatial.distance import euclidean
 from scipy.stats import linregress
 from .DataLoader import DataLoader
 from .PlayerMvmtProcessor import PlayerMvmtProcessor
+from .DatabaseUtil import DatabaseUtil
 
 
 class FeatureUtil:
@@ -337,7 +338,7 @@ class FeatureUtil:
         merged_df = players_df.merge(
             ball_positions_df, on="index", suffixes=("_player", "_ball")
         )
-
+        
         # Calculate distances using numpy's norm function across rows (axis=1)
         merged_df["dist_from_ball"] = np.linalg.norm(
             merged_df[["x_loc_player", "y_loc_ball"]].values
@@ -838,7 +839,8 @@ class FeatureUtil:
         Returns:
             int or float: Duration of the pass event.
         """
-        for event_pass in event_passes:
+        print("get_pass_duration", moments, event_passes, target_candidate)
+        for event_pass in event_passes:  
             if (
                 moments.iloc[11 * event_pass["pass_moment"]]["shot_clock"]
                 == target_candidate["shot_clock"]
@@ -893,7 +895,7 @@ class FeatureUtil:
                         including issues with data retrieval or processing.
         """
         # Collects moments for single candidate
-        moments = pd.DataFrame(list(Moment.objects.filter(event_id=target_candidate['event_id']).values()))
+        moments = DatabaseUtil.get_moments_for_event(target_candidate["event_id"])
 
         # Collects players for single candidate
         screener = Player.objects.values().get(player_id=target_candidate['player_a_id'])

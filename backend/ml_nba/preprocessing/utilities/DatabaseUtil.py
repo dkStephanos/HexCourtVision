@@ -1,3 +1,4 @@
+import pandas as pd
 from django.db import transaction
 from django.core.exceptions import ObjectDoesNotExist
 from ml_nba.models import (
@@ -104,3 +105,19 @@ class DatabaseUtil:
             # Now, it's safe to delete Events and then the Game
             events.delete()
             Game.objects.filter(game_id=game_id).delete()
+
+    @staticmethod
+    def get_moments_for_event(event_id):
+        # Fetch data from the database
+        moments_list = list(Moment.objects.filter(event_id=event_id).values())
+
+        # Create a DataFrame from the list
+        moments = pd.DataFrame(moments_list)
+
+        # Convert 'player_id' and 'team_id' to integers
+        # Ensure first that these columns do not contain any NaN or None values
+        # If they do, you need to handle them before conversion
+        moments['player_id'] = moments['player_id'].fillna(-1).astype(int)
+        moments['team_id'] = moments['team_id'].fillna(-1).astype(int)
+        
+        return moments
