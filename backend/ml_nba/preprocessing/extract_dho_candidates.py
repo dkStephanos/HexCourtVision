@@ -39,7 +39,6 @@ def extract_dho_candidates(
 
     print("Starting Candidate Extraction\n")
     for index, event in game_df.iterrows():
-        print(f"processing event: {event}")
         moments_df = EventsProcessor.get_moments_from_event(event)
 
         if not moments_df.empty:
@@ -88,7 +87,7 @@ def extract_dho_candidates(
     if save_results:
         print("Saving to csv...\n")
         candidate_df.to_csv(
-            f"{ConstantsUtil.CANDIDATES_PATH}/candidates-{game_key}.csv"
+            f"{ConstantsUtil.CANDIDATES_PATH}/candidates-{game_key}.csv", index=False
         )
 
     return candidate_df
