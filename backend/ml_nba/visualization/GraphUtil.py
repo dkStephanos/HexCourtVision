@@ -19,8 +19,11 @@ class GraphUtil:
         Returns:
             matplotlib.axes.Axes: The updated Axes.
         """
+        # Reset the current plot before drawing the fresh court
+        plt.clf()
+        
         if ax is None:	
-            ax = plt.gca()	
+            ax = plt.gca()
 
         # Creates the out of bounds lines around the court	
         outer = Rectangle((0,-50), width=94, height=50, color=color,	
