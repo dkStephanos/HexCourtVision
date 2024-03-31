@@ -839,8 +839,7 @@ class FeatureUtil:
         Returns:
             int or float: Duration of the pass event.
         """
-        print("get_pass_duration", moments, event_passes, target_candidate)
-        for event_pass in event_passes:  
+        for _, event_pass in event_passes.iterrows():
             if (
                 moments.iloc[11 * event_pass["pass_moment"]]["shot_clock"]
                 == target_candidate["shot_clock"]
@@ -1100,7 +1099,7 @@ class FeatureUtil:
             'offset_into_play': math.floor(pass_moment.iloc[0]['shot_clock'] / 6),
             'pass_duration': FeatureUtil.get_pass_duration(moments, event_passes, target_candidate),
             'num_players_past_half_court': FeatureUtil.num_players_past_halfcourt(pass_moment),
-            'is_inbounds_pass': FeatureUtil.check_for_inbound_pass(moments, event_passes[0])
+            'is_inbounds_pass': FeatureUtil.check_for_inbound_pass(moments, event_passes.iloc[0])
         }
 
         return feature_vector
