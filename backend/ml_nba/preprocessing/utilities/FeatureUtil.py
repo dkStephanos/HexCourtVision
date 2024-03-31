@@ -923,7 +923,7 @@ class FeatureUtil:
         screener_pos_data = PlayerMvmtProcessor.get_player_position_data(trimmed_moments, screener['player_id'])
         filtered_moments = trimmed_moments.loc[(trimmed_moments.player_id.isin([screener['player_id'], cutter['player_id']]))]
         distance_from_screener = FeatureUtil.distance_between_player_and_other_players(screener['player_id'], screener_pos_data, filtered_moments)
-        min_dist_from_screen = min(distance_from_screener[0])
+        min_dist_from_screen = min(distance_from_screener[cutter['player_id']])
         screen_moment = trimmed_moments.loc[trimmed_moments['index'] == int(min_dist_from_screen[1])]
 
         # Isolate cutter, screener and ball from trimmed_moments
