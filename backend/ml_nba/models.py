@@ -5,7 +5,7 @@ class Team(models.Model):
     class Meta:
         app_label = 'ml_nba'
         
-    team_id = models.CharField(primary_key=True, max_length=15)
+    team_id = models.IntegerField(primary_key=True)
     color = models.CharField(max_length=7)
     name = models.CharField(max_length=25)
     abbreviation = models.CharField(max_length=3)
@@ -15,7 +15,7 @@ class Player(models.Model):
         app_label = 'ml_nba'
         
     team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True)
-    player_id = models.CharField(primary_key=True, max_length=15)
+    player_id = models.IntegerField(primary_key=True)
     last_name = models.CharField(max_length=20)
     first_name = models.CharField(max_length=20)
     jersey_number = models.IntegerField()

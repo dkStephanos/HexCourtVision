@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Team',
             fields=[
-                ('team_id', models.CharField(max_length=15, primary_key=True, serialize=False)),
+                ('team_id', models.IntegerField(primary_key=True, serialize=False)),
                 ('color', models.CharField(max_length=7)),
                 ('name', models.CharField(max_length=25)),
                 ('abbreviation', models.CharField(max_length=3)),
@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Player',
             fields=[
-                ('player_id', models.CharField(max_length=15, primary_key=True, serialize=False)),
+                ('player_id', models.IntegerField(primary_key=True, serialize=False)),
                 ('last_name', models.CharField(max_length=20)),
                 ('first_name', models.CharField(max_length=20)),
                 ('jersey_number', models.IntegerField()),
