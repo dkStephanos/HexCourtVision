@@ -51,9 +51,9 @@ class DatabaseUtil:
 
             to_create, to_update = [], {}
             for data in model_data:
-                if str(data[unique_field]) in existing_objects:
+                if data[unique_field] in existing_objects:
                     # Prepare a dict for updates
-                    to_update[str(data[unique_field])] = data
+                    to_update[data[unique_field]] = data
                 else:
                     # Prepare instances for creation
                     to_create.append(model_class(**data))
