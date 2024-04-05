@@ -1,5 +1,4 @@
-from Team import Team
-
+from .Team import Team
 
 class Player:
     """A class for keeping info about the players"""

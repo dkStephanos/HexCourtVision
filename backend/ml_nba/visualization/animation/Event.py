@@ -1,11 +1,8 @@
-import pandas
-from Constant import Constant
-from Moment import Moment
-from Team import Team
+import os
 import matplotlib.pyplot as plt
 from matplotlib import animation
-from matplotlib.patches import Circle, Rectangle, Arc
-
+from .Constant import Constant
+from .Moment import Moment
 
 class Event:
     """A class for handling and showing events"""
@@ -100,13 +97,16 @@ class Event:
                          fig, self.update_radius,
                          fargs=(player_circles, ball_circle, annotations, clock_info),
                          frames=len(self.moments), interval=Constant.INTERVAL)
-        court = plt.imread("C:/Users/Stephanos/Documents/Dev/NBAThesis/NBA-Player-Movements/court.png")
+        
+        file_dir = os.path.dirname(__file__)  # Directory of the script
+        img_path = os.path.join(file_dir, 'court.png')
+        court = plt.imread(img_path)
         plt.imshow(court, zorder=0, extent=[Constant.X_MIN, Constant.X_MAX - Constant.DIFF,
                                             Constant.Y_MAX, Constant.Y_MIN])
 
         # Set up formatting for the movie files
-        Writer = animation.writers['ffmpeg']
-        writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
+        Writer = animation.writers['pillow']
+        writer = Writer(fps=20, metadata=dict(artist='Me'), bitrate=1800)
 
-        #anim.save('play.mp4', writer=writer)
+        anim.save('play.gif', writer=writer)
         plt.show()

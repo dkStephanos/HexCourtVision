@@ -1,7 +1,6 @@
 import pandas as pd
-from Event import Event
-from Team import Team
-from Constant import Constant
+from .Event import Event
+from .Team import Team
 
 
 class Game:
@@ -17,7 +16,7 @@ class Game:
     @staticmethod
     def load_event_by_num(game_df, event_num):
         for event in game_df['events']:
-            if(event['eventId']  == event_num):
+            if(event['eventId']  == str(event_num)):
                 return event
 
     def read_json(self):

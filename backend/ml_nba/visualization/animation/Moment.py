@@ -1,5 +1,5 @@
-from Ball import Ball
-from Player import Player
+from .Ball import Ball
+from .Player import Player
 
 class Moment:
     """A class for keeping info about the moments"""
