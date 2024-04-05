@@ -2,7 +2,7 @@ candidate_id,event_id,classification_type,period,timestamp,game_clock,shot_clock
 21500648-002-1,21500648-002,dribble-hand-off,1,11:50,710.89,9.22,101181,Jose Calderon,204001,Kristaps Porzingis,False
 21500648-025-1,21500648-025,dribble-hand-off,1,08:10,490.67,23.29,201577,Robin Lopez,2546,Carmelo Anthony,True
 21500648-035-1,21500648-035,dribble-hand-off,1,07:26,446.46,19.22,200755,JJ Redick,1718,Paul Pierce,False
-21500648-038-1,21500648-038,dribble-hand-off,1,07:03,423.37,24.0,101181,Jose Calderon,201577,Robin Lopez,
+21500648-038-1,21500648-038,dribble-hand-off,1,07:03,423.37,24.0,101181,Jose Calderon,201577,Robin Lopez,False
 21500648-038-2,21500648-038,dribble-hand-off,1,07:03,423.21,24.0,201577,Robin Lopez,2546,Carmelo Anthony,False
 21500648-054-1,21500648-054,dribble-hand-off,1,05:34,334.05,11.56,201577,Robin Lopez,201167,Arron Afflalo,False
 21500648-059-1,21500648-059,dribble-hand-off,1,05:13,313.87,16.43,202682,Derrick Williams,2546,Carmelo Anthony,False
