@@ -905,16 +905,15 @@ class FeatureUtil:
         event_passes = FeatureUtil.get_passes_for_event(moments, Event.objects.values().get(event_id=target_candidate['event_id'])['possession_team_id'], list(Player.objects.values()))
 
         # Trim the moments data around the pass
-        game_clock = DataLoader.convert_timestamp_to_game_clock(target_candidate['game_clock'])
-        trimmed_moments = moments[(moments.game_clock > game_clock - 2) & (moments.game_clock < game_clock + 2)]
+        trimmed_moments = moments[(moments.game_clock > target_candidate['game_clock'] - 2) & (moments.game_clock < target_candidate['game_clock'] + 2)]
 
         # If the data occurs past half-court (x > 47), rotate the points about the center of the court so features appear consistent 
         if(trimmed_moments.iloc[math.ceil(len(trimmed_moments)/2)]['x_loc'] > 47.0):
             trimmed_moments = FeatureUtil.rotate_coordinates_around_center_court(trimmed_moments)
 
         # Pull out other moment subsects for features
-        approach_moments = trimmed_moments[trimmed_moments.game_clock < game_clock]
-        execution_moments = trimmed_moments[trimmed_moments.game_clock > game_clock]
+        approach_moments = trimmed_moments[trimmed_moments.game_clock < target_candidate['game_clock']]
+        execution_moments = trimmed_moments[trimmed_moments.game_clock > target_candidate['game_clock']]
         pass_moment = trimmed_moments.iloc[math.ceil(len(trimmed_moments)/2):math.ceil(len(trimmed_moments)/2) + 11]
         start_moment = approach_moments.iloc[0:11]
         end_moment = execution_moments.iloc[len(execution_moments) - 12:len(execution_moments) - 1]
