@@ -11,7 +11,7 @@ class AnimationUtil:
     INTERVAL: int = 2
     COURT_DIMS: Tuple[int, int, int, int] = (
         0,
-        94,
+        100,
         0,
         50,
     )  # Court dimensions: X_MIN, X_MAX, Y_MIN, Y_MAX
@@ -33,11 +33,8 @@ class AnimationUtil:
             self.teams_data["home_team"]["team_id"]:  self.teams_data["home_team"]["color"],
             self.teams_data["away_team"]["team_id"]:  self.teams_data["away_team"]["color"]
         }
-        self.players_data = sorted(
-            DataLoader.get_players_data(game_df), key=lambda player: player["team_id"]
-        )
         self.players_dict = DataLoader.get_players_dict(game_df)
-        self.fig, self.ax = plt.subplots()
+        self.fig, self.ax = plt.subplots(figsize=(12, 8))
         self.last_animation = None  # To store the reference to the last animation
         self.court = plt.imread("/app/static/ml_nba/imgs/fullcourt.png")
 
@@ -59,6 +56,7 @@ class AnimationUtil:
 
         # Display the court image
         self.ax.imshow(self.court, zorder=0, extent=[x_min, x_max, y_min, y_max])
+        self.ax.set_aspect('equal', 'box')
 
         # Prepare table
         column_labels = tuple(
@@ -72,17 +70,19 @@ class AnimationUtil:
         )
         cell_colours = [column_colours for _ in range(5)]
 
+
+        players = start_moment[5][1:]
         home_players = [
             " #".join(
-                [self.players_dict[player["player_id"]][0], self.players_dict[player["player_id"]][1]]
+                [self.players_dict[player[1]][0], self.players_dict[player[1]][1]]
             )
-            for player in self.players_data[:5]
+            for player in players[:5]
         ]
         guest_players = [
             " #".join(
-                [self.players_dict[player["player_id"]][0], self.players_dict[player["player_id"]][1]]
+                [self.players_dict[player[1]][0], self.players_dict[player[1]][1]]
             )
-            for player in self.players_data[5:]
+            for player in players[5:]
         ]
         table = plt.table(
             cellText=list(zip(home_players, guest_players)),
@@ -119,10 +119,10 @@ class AnimationUtil:
 
         # Finally set up and add circles for the players and ball
         self.player_circles = [
-            plt.Circle((0, 0), self.PLAYER_CIRCLE_SIZE, color=self.team_color_dict[player[0]])
+            Circle((0, 0), self.PLAYER_CIRCLE_SIZE, color=self.team_color_dict[player[0]])
             for player in start_moment[5][1:]
         ]
-        self.ball_circle = plt.Circle(
+        self.ball_circle = Circle(
             (0, 0), self.PLAYER_CIRCLE_SIZE, color="#ff8c00"
         )  # Hardcoded orange
         
