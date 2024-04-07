@@ -11,6 +11,9 @@ WORKDIR /app
 COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Needed for visualizations
+RUN apt-get update && apt-get install -y ffmpeg
+
 # Copy the current directory contents into the container at /app
 COPY backend/ .
 
