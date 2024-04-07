@@ -45,7 +45,8 @@ frontend/package-lock.json
 backend/.env
 
 # Data
-/backend/static/ml_nba/2016.NBA.Raw.SportVU.Game.Logs/
+/2016.NBA.Raw.SportVU.Game.Logs/
 /backend/static/ml_nba/event_annotations/
+/backend/static/ml_nba/raw_sportvu_data/*/*
 backend/notebooks/sandbox.ipynb
 /backend/static/ml_nba/*/*.png
