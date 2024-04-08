@@ -14,6 +14,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Needed for visualizations
 RUN apt-get update && apt-get install -y ffmpeg
 
+# Create the IPython startup directory
+RUN mkdir -p /root/.ipython/profile_default/startup/
+
+# Copy the startup.py file into the container
+COPY ./backend/notebooks/startup.py /root/.ipython/profile_default/startup/
+
 # Copy the current directory contents into the container at /app
 COPY backend/ .
 
