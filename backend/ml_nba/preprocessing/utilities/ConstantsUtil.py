@@ -334,7 +334,7 @@ class ConstantsUtil:
             "event_offset": 0,
         },
         "20160122LACNYK": {
-            "bad_events": [],
+            "bad_events": [68],
             "moment_range": 8,
             "event_offset": 0,
         },
