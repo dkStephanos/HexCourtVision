@@ -1,6 +1,7 @@
 # The code in this file was lifted and modified. The original source author/repo: https://github.com/linouk23/NBA-Player-Movements
 import pandas as pd
 import matplotlib.pyplot as plt
+from IPython.display import HTML
 from matplotlib import animation
 from matplotlib.patches import Circle
 from typing import List, Dict, Tuple
@@ -27,6 +28,7 @@ class AnimationUtil:
     Y_CENTER: float = COURT_DIMS[3] - DIFF / 1.5 - 0.35
 
     def __init__(self, game_df: pd.DataFrame):
+        plt.ioff()
         self.game_df: pd.DataFrame = game_df
         self.teams_data = DataLoader.get_teams_data(game_df)
         self.team_color_dict = {
@@ -34,8 +36,8 @@ class AnimationUtil:
             self.teams_data["away_team"]["team_id"]:  self.teams_data["away_team"]["color"]
         }
         self.players_dict = DataLoader.get_players_dict(game_df)
-        self.fig, self.ax = plt.subplots(figsize=(12, 8))
-        self.last_animation = None  # To store the reference to the last animation
+        self.fig, self.ax = None, None
+        self.last_animation = {}  # To store the reference to the last animation, outer dict key is interval, inner is event_num
         self.court = plt.imread("/app/static/ml_nba/imgs/fullcourt.png")
 
     def extract_event_moments(self, event_num: int) -> List[Dict]:
@@ -48,7 +50,7 @@ class AnimationUtil:
         return event["moments"]
 
     def setup_animation(self, start_moment):
-        """Configure the matplotlib figure and axes for the animation."""
+        """Configure the matplotlib figure and axes for the animation.""" 
         x_min, x_max, y_min, y_max = self.COURT_DIMS
         self.ax.set_xlim(x_min, x_max)
         self.ax.set_ylim(y_min, y_max)
@@ -165,41 +167,39 @@ class AnimationUtil:
                 updated_artists.append(annotations[j])  # Add annotation to list of updated artists
 
         return updated_artists
-
-    def display_animation(self, event_num: int, show: bool = True):
-        """Configure and display the animation for the specified event number."""
+    
+    def _create_animation(self, event_num: int, interval: int):
+        """Support method for display/save methods with caching support."""
+        self.fig, self.ax = plt.subplots(figsize=(12, 8))
         moments = self.extract_event_moments(event_num)
         annotations, clock_info = self.setup_animation(
             moments[0]
         )
 
-        anim = animation.FuncAnimation(
+        return animation.FuncAnimation(
             self.fig,
             self.animate,
             fargs=(moments, annotations, clock_info),
             frames=len(moments),
-            interval=self.INTERVAL,
+            interval=interval,
             blit=True
         )
-        self.last_animation = {"event_num": event_num, "animation": anim}
-
-        if show:
-            plt.show()
+        
+    def display_animation(self, event_num: int):
+        """Configure and display the animation for the specified event number. Designed for inline Jupyter cells"""
+        anim = self._create_animation(event_num=event_num, interval=50)  # To ensure the animation is created      
+        return HTML(anim.to_html5_video())
 
     def save_animation(
         self,
         event_num: int,
-        filename: str,
+        filename: str = "play.gif",
         fps: int = 20,
         writer_option: str = "pillow",
-        bitrate: int = 1800,
+        bitrate: int = 800,
     ):
-        """Save the animation for the specified event number."""
-        if not self.last_animation or self.last_animation["event_num"] != event_num:
-            self.display_animation(
-                event_num, show=False
-            )  # To ensure the animation is created
-        anim = self.last_animation["animation"]
+        """Save the animation for the specified event number. Defaults to pillow writer/gif format"""
+        anim = self._create_animation(event_num=event_num, interval=2)  # To ensure the animation is created
 
         Writer = animation.writers[writer_option]
         writer = Writer(fps=fps, metadata=dict(artist="Me"), bitrate=bitrate)
